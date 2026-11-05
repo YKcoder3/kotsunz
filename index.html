@@ -231,7 +231,7 @@
       <div id="acct-in" hidden>
         <div class="row" style="align-items:center"><div><b>ログイン中</b><div class="muted" id="acct-sync">クラウドに保存します</div></div><button class="btn ghost small" style="flex:none;width:auto" id="b-logout">ログアウト</button></div>
       </div>
-      <div id="acct-none"><p class="muted">ログイン機能はまだ設定されていません（Firebaseの設定を入れると使えます）。今はこの端末に保存されます。</p></div>
+      <div id="acct-none"><p class="lbl">記録</p><p class="muted">キャラ・レベル・戦績は、このスマホのブラウザに保存されます。同じスマホの同じブラウザで開けば、続きから遊べます。</p></div>
     </div>
     <div class="card me" id="home-me" hidden></div>
     <div class="row">
@@ -257,8 +257,8 @@
     <div class="spacer"></div>
     <footer>
       コツンズの試作です。招待リンクで離れた人も入れますが、ゲームを始めるには全員が近くの人とスマホをコツンする必要があります（試作では、2人で同時に「コツンした！」を押しても成立）。<br>
-      ログインにはGoogleアカウントを使いますが、メールアドレスや本名は保存しません。クラウドに保存するのはニックネーム・キャラ・戦績だけで、本人しか読み書きできません。位置情報・写真・連絡先は集めません。<br>
-      使っているもの　PeerJS 1.5.4（MIT License）、qrcode-generator 1.4.4（MIT License, Kazuhiko Arase）。キャラと国旗の絵、クイズの問題文は自作。音楽イントロの音はページ内でWeb Audio APIを使って合成し、曲は作曲者の死後70年以上たったクラシックと日本古謡・フランス民謡だけです。
+      記録はこのスマホのブラウザの中だけに保存し、どこにも送りません。対戦中は、ニックネーム・キャラ・答えだけを公開の中継サーバーを通して部屋の人に送ります。本名・位置情報・写真・連絡先は集めません。<br>
+      使っているもの　MQTT.js 5.16.1（MIT License）、公開MQTTサーバー（EMQX / HiveMQ / Eclipse Mosquitto の無料テスト用サーバー）、qrcode-generator 1.4.4（MIT License, Kazuhiko Arase）。キャラと国旗の絵、クイズの問題文は自作。音楽イントロの音はページ内でWeb Audio APIを使って合成し、曲は作曲者の死後70年以上たったクラシックと日本古謡・フランス民謡だけです。
     </footer>
   </section>
 
@@ -273,6 +273,7 @@
       <div style="flex:1;min-width:0">
         <button class="btn small" id="b-share">招待リンクを送る（LINEなど）</button>
         <div class="link" id="l-link"></div>
+        <div class="muted" style="font-size:11px;margin-top:6px;line-height:1.5">送ったら、すぐこの画面にもどってね。ホストの画面を閉じると部屋が止まります。</div>
       </div>
     </div>
     <div class="bump" id="l-bump">
@@ -361,21 +362,7 @@
 </div>
 <div class="ov ko" id="ko" hidden><div class="kotext">KO</div><p>HPが0になった…あとは観戦しよう</p></div>
 
-<script>
-// ===== ここに Firebase の設定を貼る（Firebase コンソール → プロジェクトの設定 → マイアプリ → firebaseConfig）=====
-// これは「どのFirebaseプロジェクトを使うか」を示す公開用の値で、パスワードのような秘密の鍵ではありません。
-// データは Firestore のセキュリティルールで「本人だけが読み書きできる」ように守ります。空のままだと端末保存で動きます。
-window.KOTSUNZ_FIREBASE = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  appId: ""
-};
-</script>
-<script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore-compat.js"></script>
-<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://unpkg.com/mqtt@5.16.1/dist/mqtt.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
 (() => {
@@ -1154,19 +1141,49 @@ window.KOTSUNZ_FIREBASE = {
   function toast(t){ const e = $("toast"); e.textContent = t; e.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove("on"), 2200); }
   const buzz = p => { try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
 
-  // ---------- 通信（ホストが全員とつながる。ホストがすべてを決める） ----------
-  let peer = null, role = null, demo = false, myId = null, hostConn = null, roomCode = "";
+  // ---------- 通信 ----------
+  // 全員が公開のMQTT中継サーバーにつなぎ、部屋ごとの「宛先（トピック）」でやりとりする。
+  // スマホ同士を直接つながないので、モバイル回線や学校のWi-Fiでも通る。ホストがすべてを決める。
+  let mq = null, brokerIx = 0, role = null, demo = false, myId = null, hostConn = null, roomCode = "";
   const conns = new Map();
   let offset = 0, bestRtt = Infinity;
   let H = null;     // ホストだけが持つ状態
   let VS = { lobby: null, game: null };   // 全員が持つ見た目の状態
+  let joinT = null, hostWaitToast = false;
 
-  function peerOptions(){
-    const o = { debug: 0 };
-    if(Q.get("peerhost")){ o.host = Q.get("peerhost"); o.port = +Q.get("peerport") || 9000; o.path = Q.get("peerpath") || "/"; o.secure = Q.get("peersecure") === "1"; }
-    return o;
+  const BROKERS = ["wss://broker.emqx.io:8084/mqtt", "wss://broker.hivemq.com:8884/mqtt", "wss://test.mosquitto.org:8081/mqtt"];
+  const brokers = () => Q.get("broker") ? [Q.get("broker")] : BROKERS;
+  const TOPIC = "kotsunz-hb/v1/";
+  const tRoom = c => TOPIC + c + "/room", tHost = c => TOPIC + c + "/h", tCli = (c, id) => TOPIC + c + "/c/" + id;
+  const randId = n => [...crypto.getRandomValues(new Uint8Array(n))].map(x => "abcdefghijkmnpqrstuvwxyz23456789"[x % 32]).join("");
+  const LIGHT = { hb: 1, ping: 1, pong: 1 };
+
+  function mqOpen(url, will){
+    return new Promise(res => {
+      let done = false, c;
+      try{ c = mqtt.connect(url, { clientId: "kz_" + randId(10), clean: true, keepalive: 20, reconnectPeriod: 1500, connectTimeout: 6000, protocolVersion: 4, will }); }
+      catch(e){ return res(null); }
+      const t = setTimeout(() => { if(done) return; done = true; try{ c.end(true); }catch(e){} res(null); }, 6500);
+      c.once("connect", () => { if(done) return; done = true; clearTimeout(t); res(c); });
+      c.on("error", () => {});
+    });
   }
-  const hostPeerId = code => "kotsunz-hb-" + code;
+  function pub(topic, m, retain){
+    if(!mq) return;
+    try{ mq.publish(topic, typeof m === "string" ? m : JSON.stringify(m), { qos: m && LIGHT[m.t] ? 0 : 1, retain: !!retain }); }catch(e){}
+  }
+  function parse(buf){ try{ const s = buf.toString(); return s ? JSON.parse(s) : null; }catch(e){ return null; } }
+  function closeMq(clearRoom){
+    const c = mq; if(!c) return;
+    if(clearRoom) pub(tRoom(roomCode), "", true);
+    mq = null;
+    setTimeout(() => { try{ c.end(false); }catch(e){} }, 400);
+  }
+  // 画面に戻ってきたら、すぐにつなぎ直す（iPhoneは裏に回すと通信を止めるため）
+  document.addEventListener("visibilitychange", () => {
+    if(document.visibilityState === "visible" && mq && !mq.connected){ try{ mq.reconnect(); }catch(e){} }
+  });
+
   function homeStatus(t, err){ const s = $("home-status"); s.textContent = t || ""; s.classList.toggle("err", !!err); }
 
   function sendToHost(m){ if(role === "host") hostHandle(myId, m); else if(hostConn && hostConn.open) try{ hostConn.send(m); }catch(e){} }
@@ -1190,51 +1207,86 @@ window.KOTSUNZ_FIREBASE = {
     audio();
   }
 
+  let busy = false;
   async function createRoom(){
-    if(!needName()) return;
-    if(typeof Peer === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認してください。", true); return; }
+    if(busy || !needName()) return;
+    if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認して、ページを開き直してね。", true); return; }
+    busy = true;
     await enableMotion();
     homeStatus("部屋を作っています…");
-    role = "host"; myId = "host";
     const code = String(100000 + (crypto.getRandomValues(new Uint32Array(1))[0] % 900000));
-    peer = new Peer(hostPeerId(code), peerOptions());
-    peer.on("open", () => { homeStatus(""); startHost(code, false); });
-    peer.on("connection", c => {
-      c.on("open", () => { conns.set(c.peer, c); });
-      c.on("data", m => hostHandle(c.peer, m));
-      c.on("close", () => dropPlayer(c.peer));
-      c.on("error", () => {});
+    const list = brokers();
+    let c = null;
+    for(let i = 0; i < list.length && !c; i++){
+      c = await mqOpen(list[i], { topic: tRoom(code), payload: "", retain: true, qos: 1 });
+      if(c) brokerIx = i;
+    }
+    busy = false;
+    if(!c){ homeStatus("通信サーバーにつながりません。電波を確認して、もう一度ためしてね。", true); return; }
+    mq = c; role = "host"; myId = "host";
+    const announce = () => pub(tRoom(code), { v: 1, at: Date.now() }, true);
+    mq.on("message", (topic, buf) => {
+      if(topic !== tHost(code)) return;
+      const d = parse(buf); if(!d || !d.m) return;
+      const f = String(d.f || "").replace(/[^a-z0-9]/g, "").slice(0, 16);
+      if(!f) return;
+      if(!conns.has(f)) conns.set(f, { open: true, send: m => pub(tCli(code, f), m), close(){} });
+      hostHandle(f, d.m);
     });
-    peer.on("error", e => {
-      if(e && e.type === "unavailable-id"){ try{ peer.destroy(); }catch(x){} createRoom(); return; }
-      if(e && (e.type === "network" || e.type === "server-error" || e.type === "socket-error")) homeStatus("通信サーバーにつながりません。電波を確認してください。", true);
-    });
+    mq.on("connect", announce);   // つなぎ直したら、部屋があることを知らせ直す
+    mq.subscribe(tHost(code), { qos: 1 });
+    announce();
+    homeStatus(""); startHost(code, false);
   }
 
+  function guestId(code){
+    const k = "kotsunz-gid-" + code;
+    try{ let v = sessionStorage.getItem(k); if(!v){ v = "g" + randId(9); sessionStorage.setItem(k, v); } return v; }
+    catch(e){ return "g" + randId(9); }
+  }
   async function joinRoom(code){
-    if(!needName()) return;
+    if(busy || !needName()) return;
     if(!/^\d{6}$/.test(code)){ homeStatus("6けたのコードを入れてね。", true); return; }
-    if(typeof Peer === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認してください。", true); return; }
+    if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認して、ページを開き直してね。", true); return; }
+    busy = true;
     await enableMotion();
-    homeStatus("部屋につないでいます…");
-    role = "guest";
-    peer = new Peer(undefined, peerOptions());
-    peer.on("open", id => {
-      myId = id;
-      const c = peer.connect(hostPeerId(code), { reliable: true });
-      hostConn = c;
-      c.on("open", () => {
-        c.send({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter() });
-        syncClock(); startHeartbeat();
+    homeStatus("部屋をさがしています…");
+    const list = brokers(), order = [...list.keys()];
+    const bq = parseInt(Q.get("b"), 10);
+    if(code === ROOM_Q && bq >= 0 && bq < list.length){ order.splice(order.indexOf(bq), 1); order.unshift(bq); }
+    let found = null, reached = false;
+    for(const i of order){
+      const c = await mqOpen(list[i]);
+      if(!c) continue;
+      reached = true;
+      const ok = await new Promise(res => {
+        const t = setTimeout(() => res(false), 3000);
+        c.on("message", (topic, buf) => { if(topic === tRoom(code)){ const d = parse(buf); if(d && d.v){ clearTimeout(t); res(true); } } });
+        c.subscribe(tRoom(code), { qos: 1 });
       });
-      c.on("data", clientHandle);
-      c.on("close", () => leave("ホストとの接続が切れました。"));
-      c.on("error", () => {});
-    });
-    peer.on("error", e => {
-      if(e && e.type === "peer-unavailable") leave("その部屋が見つかりません。コードかリンクを確かめてね。");
-      else if(e && (e.type === "network" || e.type === "server-error" || e.type === "socket-error")) leave("通信サーバーにつながりません。電波を確認してください。");
-    });
+      if(ok){ found = c; brokerIx = i; break; }
+      try{ c.end(true); }catch(e){}
+    }
+    busy = false;
+    if(!found){
+      homeStatus(reached ? "その部屋が見つかりません。コードかリンクを確かめてね。ホストの人は、部屋の画面を開いたままにしてね。" : "通信サーバーにつながりません。電波を確認して、もう一度ためしてね。", true);
+      return;
+    }
+    mq = found; role = "guest"; myId = guestId(code); roomCode = code;
+    mq.removeAllListeners("message");
+    mq.unsubscribe(tRoom(code));
+    hostConn = { open: true, send: m => pub(tHost(code), { f: myId, m }) };
+    const hello = () => sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter() });
+    mq.on("message", (topic, buf) => { if(topic !== tCli(code, myId)) return; const d = parse(buf); if(d) clientHandle(d); });
+    mq.on("connect", () => { if(role === "guest") hello(); });   // つなぎ直したら名のり直す
+    mq.subscribe(tCli(code, myId), { qos: 1 }, () => hello());
+    homeStatus("部屋につないでいます…");
+    clearTimeout(joinT);
+    joinT = setTimeout(() => {
+      if(role !== "guest" || screen !== "home") return;
+      hello();
+      joinT = setTimeout(() => { if(role === "guest" && screen === "home") leave("部屋から返事がありません。ホストの人に、部屋の画面を開いておいてもらってね。"); }, 7000);
+    }, 6000);
   }
 
   function startDemo(){
@@ -1253,10 +1305,15 @@ window.KOTSUNZ_FIREBASE = {
   function startHeartbeat(){
     clearInterval(hbTimer); lastHost = performance.now();
     hbTimer = setInterval(() => {
-      if(role === "guest"){ sendToHost({ t:"hb" }); if(performance.now() - lastHost > 9000) leave("ホストとの接続が切れました。"); }
+      if(role === "guest"){
+        sendToHost({ t:"hb" });
+        const quiet = performance.now() - lastHost;
+        if(quiet > 8000 && !hostWaitToast){ hostWaitToast = true; toast("ホストの電波を待っています…"); }
+        if(quiet > 40000) leave("ホストとの接続が切れました。");
+      }
       if(role === "host" && H && !demo){
         for(const c of conns.values()) if(c.open) try{ c.send({ t:"hb" }); }catch(e){}
-        for(const p of H.players.values()) if(!p.cpu && p.id !== "host" && performance.now() - p.seen > 9000) dropPlayer(p.id);
+        for(const p of H.players.values()) if(!p.cpu && p.id !== "host" && !p.gone && performance.now() - p.seen > 20000) dropPlayer(p.id);
       }
     }, 2000);
   }
@@ -1265,8 +1322,9 @@ window.KOTSUNZ_FIREBASE = {
   function leave(msg){
     clearInterval(hbTimer); stopGameTimers();
     if(H && H.game) clearTimeout(H.game.timer);
-    try{ if(peer) peer.destroy(); }catch(e){}
-    peer = null; role = null; demo = false; myId = null; hostConn = null; H = null; conns.clear();
+    clearTimeout(joinT); busy = false;
+    try{ closeMq(role === "host" && !demo); }catch(e){}
+    role = null; demo = false; myId = null; hostConn = null; H = null; conns.clear();
     VS = { lobby: null, game: null }; offset = 0; bestRtt = Infinity;
     $("birth").hidden = true; $("sheet").classList.remove("on"); $("rename").hidden = true; $("ko").hidden = true; document.body.classList.remove("hurt");
     show("home"); homeStatus(msg || "", !!msg);
@@ -1313,12 +1371,23 @@ window.KOTSUNZ_FIREBASE = {
     if(!H || !m || typeof m !== "object") return;
     const p = H.players.get(from);
     if(p) p.seen = performance.now();
+    if(!p && from !== "host" && m.t !== "hello" && m.t !== "bye"){ sendTo(from, { t:"who" }); return; }
     switch(m.t){
       case "hello": {
         const c = conns.get(from);
         const name = String(m.name || "").trim().slice(0, 10) || "ゲスト";
-        if(H.phase !== "lobby"){ if(c) c.send({ t:"reject", reason:"いまゲーム中です。終わってから入ってね。" }); setTimeout(() => c && c.close(), 400); return; }
-        if(!p && H.players.size >= MAX_PLAYERS){ if(c) c.send({ t:"reject", reason:"満員です（最大" + MAX_PLAYERS + "人）。" }); setTimeout(() => c && c.close(), 400); return; }
+        if(p){   // つなぎ直し。コツンや体力はそのまま
+          p.gone = false; p.name = name;
+          if(H.phase !== "game" && m.fighter){ const f = sanitize(m.fighter); if(f) p.fighter = f; }
+          sendTo(from, { t:"welcome", you: from, code: H.code });
+          if(H.phase === "game" && H.game){
+            sendTo(from, startView());
+            if(H.game.lastQ && H.game.lastQ.r === H.game.r) sendTo(from, H.game.lastQ);
+          }else pushLobby();
+          break;
+        }
+        if(H.phase !== "lobby"){ if(c) c.send({ t:"reject", reason:"いまゲーム中です。終わってから入ってね。" }); conns.delete(from); return; }
+        if(H.players.size >= MAX_PLAYERS){ if(c) c.send({ t:"reject", reason:"満員です（最大" + MAX_PLAYERS + "人）。" }); conns.delete(from); return; }
         addPlayer(from, name, String(m.deviceId || "").slice(0, 16), m.fighter, false);
         sendTo(from, { t:"welcome", you: from, code: H.code });
         pushLobby();
@@ -1376,9 +1445,10 @@ window.KOTSUNZ_FIREBASE = {
     H.phase = "game";
     for(const p of H.players.values()){ p.max = maxHp(p.fighter); p.hp = p.max; p.alive = true; p.streak = 0; p.correct = 0; p.totalMs = 0; p.outR = null; }
     H.game = { r: -1, total: H.count, genres: [...H.genres], used: new Set(), q: null, ans: new Map(), timer: null, limit: {} };
-    bcast({ t:"start", total: H.count, players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, hp: p.hp, max: p.max }; }) });
+    bcast(startView());
     H.game.timer = setTimeout(nextQ, 1500);
   }
+  function startView(){ return { t:"start", total: H.count, players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, hp: p.hp, max: p.max }; }) }; }
   function nextQ(){
     const G = H.game; if(!G) return;
     G.r++;
@@ -1391,7 +1461,8 @@ window.KOTSUNZ_FIREBASE = {
     G.limit = limit;
     const at = performance.now() + COUNTDOWN;
     // 正解の番号は送らない（答え合わせで送る）
-    bcast({ t:"q", r: G.r, total: G.total, genre, prompt: q.prompt, choices: q.choices, flag: q.flag, melody: q.melody, at, limit, hide });
+    G.lastQ = { t:"q", r: G.r, total: G.total, genre, prompt: q.prompt, choices: q.choices, flag: q.flag, melody: q.melody, at, limit, hide };
+    bcast(G.lastQ);
     G.timer = setTimeout(resolveQ, COUNTDOWN + Math.max(...Object.values(limit)) + 1500);
     for(const p of alive) if(p.cpu){
       const ms = 1500 + Math.random() * 7000, ok = Math.random() < .55, r = G.r;
@@ -1506,9 +1577,14 @@ window.KOTSUNZ_FIREBASE = {
   // ---------- 全員の画面 ----------
   function clientHandle(m){
     if(!m || typeof m !== "object") return;
-    if(role === "guest") lastHost = performance.now();
+    if(role === "guest"){ lastHost = performance.now(); hostWaitToast = false; }
     switch(m.t){
-      case "welcome": myId = m.you; roomCode = String(m.code || ""); show("lobby"); break;
+      case "welcome":
+        myId = m.you; roomCode = String(m.code || "");
+        if(role === "guest"){ clearTimeout(joinT); homeStatus(""); startHeartbeat(); syncClock(); }
+        if(screen === "home") show("lobby");
+        break;
+      case "who": if(role === "guest") sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter() }); break;
       case "reject": leave(String(m.reason || "入れませんでした。").slice(0, 60)); break;
       case "pong": { const now = performance.now(), rtt = now - m.a; if(rtt < bestRtt){ bestRtt = rtt; offset = m.h - (m.a + now) / 2; } break; }
       case "lobby": VS.lobby = m; if(screen === "lobby" || (screen === "end" && m.phase === "lobby")){ show("lobby"); renderLobby(); } break;
@@ -1580,7 +1656,8 @@ window.KOTSUNZ_FIREBASE = {
     $("l-code").textContent = L.demo ? "デモ" : L.code;
     $("l-count").textContent = L.players.length + " / " + MAX_PLAYERS + "人";
     const u = new URL(location.href); u.search = ""; u.hash = ""; u.searchParams.set("room", L.code);
-    for(const k of ["peerhost","peerport","peerpath","peersecure","debug"]) if(Q.get(k) !== null) u.searchParams.set(k, Q.get(k));
+    u.searchParams.set("b", String(brokerIx));
+    for(const k of ["broker","debug"]) if(Q.get(k) !== null) u.searchParams.set(k, Q.get(k));
     const link = u.toString(); $("l-link").textContent = L.demo ? "（デモでは招待できません）" : link;
     $("b-share").disabled = !!L.demo; $("b-share").dataset.link = link;
     if(!L.demo && typeof qrcode !== "undefined" && $("l-qr").dataset.link !== link){
