@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3f3f1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>コツンズ 早押しバトル</title>
+<style>
+  :root{ --bg:#f3f3f1; --ink:#111; --sub:#6b6b6b; --line:#d9d9d5; --card:#fff; --hot:#F2B233; --bad:#d94b4b;
+         --st:env(safe-area-inset-top,0px); --sb:env(safe-area-inset-bottom,0px); }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink)}
+  body{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;touch-action:manipulation;-webkit-text-size-adjust:100%}
+  main{max-width:480px;margin:0 auto;min-height:100dvh;padding:calc(18px + var(--st)) 16px calc(24px + var(--sb));display:flex;flex-direction:column}
+  section{display:flex;flex-direction:column;flex:1;gap:12px}
+  section[hidden]{display:none!important}
+  h1{font-size:40px;line-height:1.1;margin:18px 0 0;font-weight:900;letter-spacing:.02em}
+  h2{font-size:22px;margin:0;font-weight:900}
+  p{margin:0;line-height:1.65}
+  .muted{color:var(--sub);font-size:13px}
+  .tag{align-self:flex-start;border:1.5px solid var(--ink);border-radius:999px;padding:3px 10px;font-size:11px;font-weight:800;letter-spacing:.08em}
+  .card{background:var(--card);border-radius:18px;padding:14px}
+  .btn{appearance:none;border:0;border-radius:16px;background:var(--ink);color:#fff;font:inherit;font-size:17px;font-weight:800;padding:17px 18px;width:100%;cursor:pointer;min-height:56px}
+  .btn:active{transform:scale(.98)}
+  .btn:disabled{opacity:.35}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn.small{font-size:14px;padding:11px 12px;min-height:44px;border-radius:12px}
+  .btn.hot{background:var(--hot);color:#111}
+  .row{display:flex;gap:8px}
+  .row > *{flex:1}
+  .spacer{flex:1}
+  input.text{width:100%;font:inherit;font-size:17px;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:#fff;min-width:0}
+  .codein{font-size:24px;letter-spacing:.25em;text-align:center}
+  .status{min-height:20px;font-size:13px;color:var(--sub);text-align:center}
+  .status.err{color:var(--bad);font-weight:700}
+  footer{font-size:10.5px;color:var(--sub);line-height:1.6;border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+
+  /* lobby */
+  .roomhead{display:flex;justify-content:space-between;align-items:flex-end}
+  .roomcode{font-family:ui-monospace,Menlo,monospace;font-size:30px;font-weight:900;letter-spacing:.14em}
+  .count{font-weight:900;font-size:15px}
+  .invite{display:flex;gap:12px;align-items:center}
+  .qr{width:96px;height:96px;flex:none;background:#fff;border-radius:10px;padding:4px}
+  .qr svg{width:100%;height:100%;display:block}
+  .invite .link{font-size:11px;color:var(--sub);word-break:break-all;margin-top:6px}
+  .bump{position:relative;background:var(--ink);color:#fff;border-radius:22px;padding:16px 16px 14px;text-align:center;overflow:hidden}
+  .bump h3{margin:0;font-size:20px;font-weight:900}
+  .bump .phones{position:relative;height:96px;margin:4px 0}
+  .bump .ph{position:absolute;top:10px;width:42px;height:76px;border:3px solid #fff;border-radius:10px}
+  .bump .ph.l{left:calc(50% - 56px);animation:bl 1.5s ease-in-out infinite}
+  .bump .ph.r{left:calc(50% + 14px);animation:br 1.5s ease-in-out infinite}
+  @keyframes bl{0%,100%{transform:translateX(0) rotate(-8deg)}45%,55%{transform:translateX(14px) rotate(0)}}
+  @keyframes br{0%,100%{transform:translateX(0) rotate(8deg)}45%,55%{transform:translateX(-14px) rotate(0)}}
+  .bump .ok{font-weight:800;font-size:14px}
+  .bump .btn{background:#fff;color:#111;margin-top:10px}
+  .bump.done{background:#1d1d1d}
+  .bump .flash{position:absolute;inset:0;background:var(--hot);opacity:0;pointer-events:none;transition:opacity .4s}
+  .bump .flash.on{opacity:.9;transition:none}
+  .me{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .me .tx div{margin-top:1px}
+  .me > .btn{flex:1 1 100%}
+  .me .pic{width:72px;height:72px;flex:none}
+  .me .pic svg{width:100%;height:100%}
+  .me .tx{flex:1;min-width:0;font-size:12px;color:var(--sub);line-height:1.5}
+  .me .tx b{display:block;color:var(--ink);font-size:16px}
+  .egg{width:72px;height:72px;flex:none;border-radius:50% 50% 46% 46%/58% 58% 42% 42%;border:3px dashed var(--line)}
+  .plist{display:flex;flex-direction:column;gap:6px}
+  .pl{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:6px 10px;min-height:52px}
+  .pl .pic{width:40px;height:40px;flex:none}
+  .pl .pic svg{width:100%;height:100%}
+  .pl .nm{flex:1;font-weight:800;font-size:15px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pl .nm small{font-weight:600;color:var(--sub);font-size:11px;margin-left:4px}
+  .pl .kt{font-size:12px;font-weight:800;white-space:nowrap}
+  .pl .kt.no{color:var(--sub);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{appearance:none;font:inherit;font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);min-height:38px}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .chip:disabled{opacity:1}
+  .cat{font-size:11px;font-weight:800;color:var(--sub);margin:6px 0 4px;letter-spacing:.06em}
+  .seg{display:flex;border:1.5px solid var(--ink);border-radius:12px;overflow:hidden}
+  .seg button{flex:1;appearance:none;border:0;background:transparent;font:inherit;font-weight:800;padding:10px 0;min-height:44px;color:var(--ink)}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+  .lbl{font-weight:900;font-size:14px;margin:4px 0 6px}
+
+  /* game */
+  #s-game{gap:10px}
+  .roster{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+  .roster::-webkit-scrollbar{display:none}
+  .rs{flex:none;width:52px;text-align:center;font-size:10px;font-weight:700;position:relative}
+  .rs .pic{width:44px;height:44px;margin:0 auto}
+  .rs .pic svg{width:100%;height:100%}
+  .rs .hpb{height:5px;background:var(--line);border-radius:3px;overflow:hidden;margin:2px 4px}
+  .rs .hpb i{display:block;height:100%;background:var(--ink);transition:width .4s}
+  .rs .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rs.me .n{color:var(--ink);text-decoration:underline}
+  .rs.out{opacity:.3}
+  .rs .bolt{position:absolute;right:0;top:-2px;background:var(--hot);border-radius:999px;font-size:10px;padding:0 5px;display:none}
+  .rs.ans .bolt{display:block}
+  .rs .dmg{position:absolute;left:0;right:0;top:10px;color:var(--bad);font-weight:900;font-size:15px;opacity:0;pointer-events:none}
+  .rs .dmg.on{animation:dmg 1.6s ease-out}
+  @keyframes dmg{0%{opacity:0;transform:translateY(6px)}15%{opacity:1;transform:translateY(-6px)}80%{opacity:1}100%{opacity:0;transform:translateY(-16px)}}
+  .gtop{display:flex;justify-content:space-between;align-items:center;font-weight:900;font-size:14px}
+  .gtop .genre{background:var(--ink);color:#fff;border-radius:999px;padding:3px 10px;font-size:12px}
+  .qcard{background:#fff;border-radius:20px;padding:16px;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative}
+  .qprompt{font-size:20px;font-weight:900;line-height:1.5}
+  .qmedia svg{width:min(220px,62vw);height:auto;display:block;margin:10px auto 0;border-radius:4px}
+  .count3{font-size:84px;font-weight:900;line-height:1}
+  .disc{width:76px;height:76px;border-radius:50%;border:6px solid var(--ink);border-top-color:var(--line);margin:10px auto 6px;animation:spin 1.4s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .timer{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+  .timer i{display:block;height:100%;width:100%;background:var(--ink)}
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .choices.one{grid-template-columns:1fr}
+  .choices button{appearance:none;font:inherit;font-size:16px;font-weight:800;line-height:1.35;padding:12px 10px;min-height:72px;border-radius:16px;border:2px solid var(--ink);background:#fff;color:var(--ink)}
+  .choices.one button{min-height:56px}
+  .choices button:active{background:#eee}
+  .choices button.mine{background:var(--ink);color:#fff}
+  .choices button.correct{background:var(--hot);border-color:var(--hot);color:#111}
+  .choices button.wrong{text-decoration:line-through;opacity:.4}
+  .choices button.gone{visibility:hidden}
+  .choices button:disabled{cursor:default}
+  .gstat{text-align:center;font-weight:800;font-size:15px;min-height:22px}
+  .res{background:#fff;border-radius:18px;padding:12px 14px}
+  .res .big{font-size:22px;font-weight:900;text-align:center}
+  .res .sub{font-size:13px;color:var(--sub);text-align:center;margin-top:2px}
+  .rank{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+  .rank div{display:flex;justify-content:space-between;font-size:13px;font-weight:700}
+  .rank div b{display:inline-block;width:26px}
+  .watch{font-size:12px;color:var(--sub);text-align:center}
+
+  /* end */
+  .winner{text-align:center}
+  .winner .pic{width:150px;height:150px;margin:0 auto}
+  .winner .pic svg{width:100%;height:100%}
+  .winner .w{font-size:30px;font-weight:900}
+  .rk{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:6px 10px}
+  .rk .no{font-size:20px;font-weight:900;width:30px;text-align:center}
+  .rk .pic{width:40px;height:40px;flex:none}
+  .rk .pic svg{width:100%;height:100%}
+  .rk .nm{flex:1;font-weight:800;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rk .st{font-size:11px;color:var(--sub);text-align:right;white-space:nowrap}
+  .rk.me{outline:3px solid var(--hot)}
+  .lvup{background:#fff;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center}
+  .lvup .pic{width:60px;height:60px;flex:none}
+  .lvup .pic svg{width:100%;height:100%}
+  .lvup b{font-size:16px}
+  .expbar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:6px}
+  .expbar i{display:block;height:100%;background:var(--hot);transition:width 1.2s ease-out}
+  .lvup.up{outline:3px solid var(--hot)}
+
+  /* overlays */
+  .toast{position:fixed;left:50%;top:calc(14px + var(--st));transform:translateX(-50%) translateY(calc(-100% - 40px));opacity:0;background:var(--ink);color:#fff;border-radius:999px;padding:10px 18px;font-weight:800;font-size:14px;z-index:30;transition:transform .3s;max-width:90vw;text-align:center}
+  .toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+  .ov{position:fixed;inset:0;background:rgba(17,17,17,.9);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;color:#fff;text-align:center}
+  .ov[hidden]{display:none}
+  .ov .pic{width:200px;height:200px;animation:pop .6s cubic-bezier(.3,1.6,.5,1)}
+  .ov .pic svg{width:100%;height:100%}
+  @keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+  .sheet{display:none;position:fixed;left:0;right:0;bottom:0;max-height:78dvh;background:var(--bg);border-radius:22px 22px 0 0;z-index:25;padding:16px 16px calc(16px + var(--sb));overflow-y:auto;box-shadow:0 -10px 30px rgba(0,0,0,.25);transform:translateY(105%);transition:transform .3s}
+  .sheet.on{display:block;transform:translateY(0);animation:up .3s ease-out}
+  @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .dexgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+  .dx{background:#fff;border-radius:14px;padding:6px;text-align:center;font-size:11px;line-height:1.4;border:2px solid transparent}
+  .dx.sel{border-color:var(--ink)}
+  .dx svg{width:100%;height:auto}
+  .dx b{display:block;font-size:12px}
+
+  /* v3 additions */
+  .tx .stat, .dx .stat{font-weight:800;color:var(--ink);font-size:12px}
+  .pl .fname{font-size:11px;font-weight:600;color:var(--sub);overflow:hidden;text-overflow:ellipsis}
+  .dx{position:relative}
+  .mini-btn{appearance:none;border:1.5px solid var(--ink);background:#fff;border-radius:999px;font:inherit;font-size:11px;font-weight:800;padding:3px 10px;margin-top:4px;min-height:28px}
+  .rs .hpn{font-size:10px;font-weight:900}
+  .rs.out .hpn{color:var(--bad)}
+  .rs.shake{animation:shk .5s}
+  @keyframes shk{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+  #s-game{padding-bottom:104px}
+  .myhud{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + var(--sb));width:min(456px,calc(100% - 20px));background:var(--ink);color:#fff;border-radius:20px;padding:10px 12px;display:flex;gap:10px;align-items:center;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .myhud .pic{width:56px;height:56px;flex:none;background:#fff;border-radius:14px}
+  .myhud .pic svg{width:100%;height:100%}
+  .myhud .tx{flex:1;min-width:0}
+  .myhud .nm{display:flex;justify-content:space-between;gap:8px;font-size:13px}
+  .myhud .nm b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .myhud .hpnum{font-size:12px;white-space:nowrap}
+  .myhud .hpnum b{font-size:18px}
+  .myhud .hpbar{height:12px;background:#444;border-radius:6px;overflow:hidden;margin-top:5px}
+  .myhud .hpbar i{display:block;height:100%;background:#7ee07e;transition:width .6s ease-out}
+  .myhud.low .hpbar i{background:var(--bad)}
+  .myhud.low{box-shadow:0 0 0 3px var(--bad)}
+  @keyframes lowpulse{50%{box-shadow:0 0 0 3px var(--bad)}}
+  .myhud.out{opacity:.6}
+  .myhud .gmnote{font-size:11px;margin-top:3px;color:var(--hot);font-weight:800;min-height:14px}
+  .gmdmg{position:absolute;right:16px;top:-26px;color:var(--bad);font-weight:900;font-size:28px;opacity:0;pointer-events:none;text-shadow:0 2px 0 #fff}
+  .gmdmg.on{animation:dmg 1.6s ease-out}
+  body.hurt::after{content:"";position:fixed;inset:0;background:var(--bad);opacity:0;pointer-events:none;z-index:40;animation:hurt .5s ease-out}
+  @keyframes hurt{0%{opacity:.45}100%{opacity:0}}
+  body.hurt .qcard, body.hurt .choices{animation:shk .45s}
+  body.hurt .myhud{animation:shk2 .45s}
+  @keyframes shk2{0%,100%{transform:translateX(-50%)}25%{transform:translateX(calc(-50% - 7px))}50%{transform:translateX(calc(-50% + 7px))}75%{transform:translateX(calc(-50% - 4px))}}
+  .banner{position:fixed;left:50%;top:38%;transform:translate(-50%,-50%) scale(.6);background:var(--ink);color:#fff;font-weight:900;font-size:22px;padding:14px 22px;border-radius:18px;opacity:0;pointer-events:none;z-index:15;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
+  .banner.on{animation:ban 1.3s ease-out}
+  .banner.crit{background:var(--hot);color:#111;font-size:24px}
+  .banner.none{background:#666}
+  @keyframes ban{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}25%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-60%) scale(1)}}
+  .genre-big{font-size:14px;font-weight:900;letter-spacing:.1em;color:var(--sub)}
+  .note{margin-top:8px;font-size:13px;font-weight:900;border-radius:999px;padding:4px 12px}
+  .note.good{background:var(--hot);color:#111}
+  .note.weak{background:#dfe7f5;color:#1f3f7a}
+  .timer i{transition:background .3s}
+  .timer i.hurry{background:var(--bad)}
+  .ov.ko{background:rgba(120,0,0,.85)}
+  .kotext{font-size:110px;font-weight:900;line-height:1;animation:pop .5s cubic-bezier(.3,1.6,.5,1)}
+</style>
+</head>
+<body>
+<main>
+  <!-- ホーム -->
+  <section id="s-home">
+    <span class="tag">KOTSUNZ</span>
+    <h1>コツンズ<br>早押しバトル</h1>
+    <p class="muted">リンクで最大10人。近くの人とスマホをコツンしてキャラを生み、早押しクイズで戦おう。速く正解した人ほど、たくさんの相手に大きなダメージ。</p>
+    <div class="card" id="acct">
+      <div id="acct-out" hidden>
+        <p class="lbl">ログイン</p>
+        <p class="muted">Googleでログインすると、キャラ・レベル・戦績がクラウドに保存され、別のスマホでも続きから遊べます。</p>
+        <button class="btn" id="b-login" style="margin-top:10px">Googleでログイン</button>
+      </div>
+      <div id="acct-in" hidden>
+        <div class="row" style="align-items:center"><div><b>ログイン中</b><div class="muted" id="acct-sync">クラウドに保存します</div></div><button class="btn ghost small" style="flex:none;width:auto" id="b-logout">ログアウト</button></div>
+      </div>
+      <div id="acct-none"><p class="muted">ログイン機能はまだ設定されていません（Firebaseの設定を入れると使えます）。今はこの端末に保存されます。</p></div>
+    </div>
+    <div class="card me" id="home-me" hidden></div>
+    <div class="row">
+      <button class="btn ghost small" id="home-dex">図鑑</button>
+      <button class="btn ghost small" id="b-sound">効果音 ON</button>
+    </div>
+    <p class="muted" style="text-align:center" id="home-rec"></p>
+    <div class="card">
+      <p class="lbl">ニックネーム</p>
+      <input class="text" id="name" maxlength="10" placeholder="例）YK" autocomplete="off">
+      <p class="muted" style="margin-top:6px;font-size:11px">本名は入れないでね。部屋の中のみんなにだけ見えます。</p>
+    </div>
+    <div id="home-join" hidden>
+      <button class="btn hot" id="b-join-link">招待された部屋に入る</button>
+    </div>
+    <button class="btn" id="b-create">部屋を作る（ホスト）</button>
+    <div class="row">
+      <input class="text codein" id="code" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="6けたのコード" autocomplete="off">
+      <button class="btn small" style="flex:none;width:auto;padding:0 18px" id="b-join">入る</button>
+    </div>
+    <button class="btn ghost small" id="b-demo">1人で試す（CPU 3人と対戦）</button>
+    <div class="status" id="home-status"></div>
+    <div class="spacer"></div>
+    <footer>
+      コツンズの試作です。招待リンクで離れた人も入れますが、ゲームを始めるには全員が近くの人とスマホをコツンする必要があります（試作では、2人で同時に「コツンした！」を押しても成立）。<br>
+      ログインにはGoogleアカウントを使いますが、メールアドレスや本名は保存しません。クラウドに保存するのはニックネーム・キャラ・戦績だけで、本人しか読み書きできません。位置情報・写真・連絡先は集めません。<br>
+      使っているもの　PeerJS 1.5.4（MIT License）、qrcode-generator 1.4.4（MIT License, Kazuhiko Arase）。キャラと国旗の絵、クイズの問題文は自作。音楽イントロの音はページ内でWeb Audio APIを使って合成し、曲は作曲者の死後70年以上たったクラシックと日本古謡・フランス民謡だけです。
+    </footer>
+  </section>
+
+  <!-- ロビー -->
+  <section id="s-lobby" hidden>
+    <div class="roomhead">
+      <div><div class="muted" style="font-size:11px;font-weight:800">部屋コード</div><div class="roomcode" id="l-code"></div></div>
+      <div class="count" id="l-count"></div>
+    </div>
+    <div class="card invite">
+      <div class="qr" id="l-qr"></div>
+      <div style="flex:1;min-width:0">
+        <button class="btn small" id="b-share">招待リンクを送る（LINEなど）</button>
+        <div class="link" id="l-link"></div>
+      </div>
+    </div>
+    <div class="bump" id="l-bump">
+      <div class="flash" id="l-flash"></div>
+      <h3>近くの人とスマホをコツン！</h3>
+      <div class="phones"><div class="ph l"></div><div class="ph r"></div></div>
+      <div class="ok" id="l-bumpok">まだコツンしていません</div>
+      <button class="btn small" id="b-bump">コツンした！（試作用・2人で同時に押す）</button>
+    </div>
+    <div class="card me" id="l-me"></div>
+    <div>
+      <p class="lbl">参加者</p>
+      <div class="plist" id="l-players"></div>
+    </div>
+    <div id="l-host" hidden>
+      <p class="lbl">ジャンル</p>
+      <div id="l-genres"></div>
+      <p class="lbl" style="margin-top:12px">問題数</p>
+      <div class="seg" id="l-count-seg"><button data-n="5">5問</button><button data-n="10">10問</button><button data-n="15">15問</button></div>
+    </div>
+    <div id="l-guest" class="card" hidden>
+      <p class="lbl" style="margin:0">ジャンル</p>
+      <p class="muted" id="l-genre-text"></p>
+    </div>
+    <div class="status" id="l-status"></div>
+    <button class="btn hot" id="b-start" hidden>スタート</button>
+    <button class="btn ghost small" id="b-leave">部屋を出る</button>
+  </section>
+
+  <!-- ゲーム -->
+  <section id="s-game" hidden>
+    <div class="roster" id="g-roster"></div>
+    <div class="gtop"><span id="g-round"></span><span class="genre" id="g-genre"></span></div>
+    <div class="qcard" id="g-card"></div>
+    <div class="timer"><i id="g-timer"></i></div>
+    <div class="choices" id="g-choices"></div>
+    <div class="gstat" id="g-stat"></div>
+    <div class="res" id="g-res" hidden></div>
+    <div class="banner" id="g-banner"></div>
+    <div class="myhud" id="g-me">
+      <div class="pic" id="gm-pic"></div>
+      <div class="tx">
+        <div class="nm"><b id="gm-name"></b><span class="hpnum">HP <b id="gm-hp"></b></span></div>
+        <div class="hpbar"><i id="gm-bar"></i></div>
+        <div class="gmnote" id="gm-note"></div>
+      </div>
+      <div class="gmdmg" id="gm-dmg"></div>
+    </div>
+  </section>
+
+  <!-- 結果 -->
+  <section id="s-end" hidden>
+    <span class="tag">結果</span>
+    <div class="winner" id="e-win"></div>
+    <div class="lvup" id="e-lv"></div>
+    <div class="plist" id="e-rank"></div>
+    <p style="text-align:center;font-weight:900" id="e-rule"></p>
+    <p class="muted" style="text-align:center" id="e-save"></p>
+    <div class="status" id="e-status"></div>
+    <div class="spacer"></div>
+    <button class="btn hot" id="b-again" hidden>もう1回（同じメンバー）</button>
+    <button class="btn ghost small" id="b-leave2">部屋を出る</button>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+<div class="ov" id="birth" hidden>
+  <div style="font-weight:800;opacity:.8" id="bi-from"></div>
+  <div class="pic" id="bi-pic"></div>
+  <h2 id="bi-name" style="color:#fff;margin-top:6px"></h2>
+  <p id="bi-desc" style="opacity:.85;font-size:13px;margin-top:6px;max-width:320px"></p>
+  <button class="btn" style="background:#fff;color:#111;max-width:300px;margin-top:18px" id="b-birth-ok">この子で戦う</button>
+  <button class="btn ghost" style="color:#fff;border-color:#fff;max-width:300px;margin-top:10px" id="b-birth-name">名前をつける</button>
+</div>
+<div class="sheet" id="sheet">
+  <div class="row" style="align-items:center"><h2>図鑑 <small class="muted" id="sheet-count"></small></h2><button class="btn ghost small" style="flex:none;width:auto" id="b-sheet-close">閉じる</button></div>
+  <p class="muted" style="margin-top:6px">タップすると、そのキャラで戦います。「名前」で好きな名前に変えられます。</p>
+  <div class="dexgrid" id="sheet-grid"></div>
+</div>
+<div class="ov" id="rename" hidden>
+  <div class="pic" id="rn-pic" style="width:140px;height:140px"></div>
+  <h2 style="color:#fff;margin:8px 0">名前を変える</h2>
+  <input class="text" id="rn-input" maxlength="10" autocomplete="off" style="max-width:300px;text-align:center">
+  <p style="opacity:.75;font-size:12px;margin-top:6px">10文字まで。空にするともとの名前にもどります。</p>
+  <div class="row" style="max-width:300px;width:100%;margin-top:14px"><button class="btn ghost" style="color:#fff;border-color:#fff" id="b-rn-cancel">やめる</button><button class="btn" style="background:#fff;color:#111" id="b-rn-ok">決定</button></div>
+</div>
+<div class="ov ko" id="ko" hidden><div class="kotext">KO</div><p>HPが0になった…あとは観戦しよう</p></div>
+
+<script>
+// ===== ここに Firebase の設定を貼る（Firebase コンソール → プロジェクトの設定 → マイアプリ → firebaseConfig）=====
+// これは「どのFirebaseプロジェクトを使うか」を示す公開用の値で、パスワードのような秘密の鍵ではありません。
+// データは Firestore のセキュリティルールで「本人だけが読み書きできる」ように守ります。空のままだと端末保存で動きます。
+window.KOTSUNZ_FIREBASE = {
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  appId: ""
+};
+</script>
+<script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore-compat.js"></script>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+(() => {
+  "use strict";
+
+  // ---------- 設定 ----------
+  const Q = new URLSearchParams(location.search);
+  const DEBUG = Q.has("debug");
+  const ROOM_Q = (Q.get("room") || "").replace(/\D/g, "").slice(0, 6);
+  const THRESHOLD = parseFloat(Q.get("th")) || 14;   // コツンとみなす揺れ（m/s^2）
+  const BUMP_WIN = 500;                              // 2台の揺れがこの時間内ならコツン成立
+  const MAX_PLAYERS = 10;
+  const BASE_LIMIT = 10000;                          // 1問の制限時間
+  const COUNTDOWN = 3200, RESULT_MS = 4300;
+  const STORE = "kotsunz-hayaoshi-v1";
+
+  function rid(n){ const c = "abcdefghijkmnpqrstuvwxyz23456789"; let s = ""; const a = new Uint32Array(n); crypto.getRandomValues(a); for(const v of a) s += c[v % c.length]; return s; }
+  const $ = id => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if(cls) e.className = cls; if(text != null) e.textContent = text; return e; };
+
+  // ---------- 端末内の保存（名前・キャラだけ。サーバーには送らない） ----------
+  function load(){ try{ return JSON.parse(localStorage.getItem(STORE)); }catch(e){ return null; } }
+  function saveLocal(){ try{ localStorage.setItem(STORE, JSON.stringify(S)); }catch(e){} }
+  // Firebase（ログインと保存）の設定は、ページ上の KOTSUNZ_FIREBASE に入れる
+  const FIREBASE_CONFIG = window.KOTSUNZ_FIREBASE || null;
+  let fb = null, fbUser = null, pushT = null;
+  function save(){ saveLocal(); if(fbUser) schedulePush(); }
+  let S = load();
+  if(!S || !S.deviceId) S = { deviceId: rid(12), name: "", dex: [], fid: null };
+  save();
+
+  let place = "machi";
+  const PLACES = { umi:"海", yama:"山", machi:"街", naka:"室内" };
+
+  const TYPES = {
+    umi:   { label:"みず",   main:"#4FA3E0", sub:"#CDEBFC", deep:"#1F5F99", pre:["チャプ","ナミ","シズ","アワ","ポチャ"] },
+    yama:  { label:"もり",   main:"#6BBF59", sub:"#DDF3D1", deep:"#2F6B2A", pre:["コケ","モク","ドン","ハッパ","ツル"] },
+    machi: { label:"ひかり", main:"#F2B233", sub:"#FFF1C9", deep:"#A8660F", pre:["キラ","ネオ","チカ","ランプ","ポッ"] },
+    naka:  { label:"ゆめ",   main:"#B58BE0", sub:"#EEE2FB", deep:"#6A3FA0", pre:["フワ","ネム","ユメ","モフ","ポワ"] },
+  };
+  const SUF = ["ポン","リン","まる","ッチ","ゴン","ミー","ピィ","すけ"];
+  const BODIES = ["round","drop","bean","cloud","ghost"];
+  const EXTRAS = ["none","ears","antenna","sprout","fin","horn"];
+  const PATTERNS = ["none","belly","spots","stripes","cheeks"];
+  const EYES = ["dot","wide","sleepy","shine","one"];
+  const PERS = ["のんびり","せっかち","ひとなつっこい","てれや","くいしんぼう","ねぼすけ","がんばりや","きまぐれ","おしゃべり","まじめ"];
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+
+  function mix(hex, to, t){
+    const a = parseInt(hex.slice(1),16), b = parseInt(to.slice(1),16);
+    const r = Math.round(((a>>16)&255)*(1-t) + ((b>>16)&255)*t);
+    const g = Math.round(((a>>8)&255)*(1-t) + ((b>>8)&255)*t);
+    const bl = Math.round((a&255)*(1-t) + (b&255)*t);
+    return "#" + ((1<<24) + (r<<16) + (g<<8) + bl).toString(16).slice(1);
+  }
+
+  function makePair(meetCount, first){
+    const T = TYPES[place];
+    const hour = new Date().getHours();
+    const night = hour >= 18 || hour < 5;
+    // 初対面だとレアが出やすい
+    const r = Math.random();
+    const rarity = r < (first ? 0.08 : 0.03) ? 3 : r < (first ? 0.38 : 0.15) ? 2 : 1;
+    let main = T.main, sub = T.sub, deep = T.deep;
+    if(night){ main = mix(main, "#2B2B4A", .35); deep = mix(deep, "#151530", .3); }
+    const body = pick(BODIES), extra = pick(EXTRAS), pattern = pick(PATTERNS);
+    const species = (night ? "よる" : "") + pick(T.pre) + pick(SUF);
+    const bornAt = new Date().toISOString();
+    const shared = { species, type: T.label, place: PLACES[place], night, rarity, body, extra, pattern, main, sub, deep, bornAt, meet: meetCount, first };
+    const persA = pick(PERS); let persB = pick(PERS); while(persB === persA) persB = pick(PERS);
+    const eyeA = pick(EYES); let eyeB = pick(EYES); while(eyeB === eyeA) eyeB = pick(EYES);
+    const a = Object.assign({}, shared, { id: rid(10), eyes: eyeA, pers: persA, sibPers: persB, nick:"" });
+    const b = Object.assign({}, shared, { id: rid(10), eyes: eyeB, pers: persB, sibPers: persA, nick:"", main: mix(main, "#ffffff", .12) });
+    return [a, b];
+  }
+
+  function sanitize(c){
+    if(!c || typeof c !== "object") return null;
+    const hex = v => /^#[0-9a-f]{6}$/i.test(v) ? v : "#999999";
+    const one = (v, list, d) => list.includes(v) ? v : d;
+    const str = (v, n) => String(v == null ? "" : v).slice(0, n);
+    const stat = v => { const x = +v; return x >= .8 && x <= 1.25 ? Math.round(x * 100) / 100 : null; };
+    return {
+      id: str(c.id, 16) || rid(10), species: str(c.species, 16), type: str(c.type, 8), place: str(c.place, 4),
+      night: !!c.night, rarity: [1,2,3].includes(c.rarity) ? c.rarity : 1,
+      body: one(c.body, BODIES, "round"), extra: one(c.extra, EXTRAS, "none"), pattern: one(c.pattern, PATTERNS, "none"),
+      eyes: one(c.eyes, EYES, "dot"), main: hex(c.main), sub: hex(c.sub), deep: hex(c.deep),
+      pers: one(c.pers, PERS, "のんびり"), sibPers: one(c.sibPers, PERS, "のんびり"),
+      bornAt: str(c.bornAt, 30), hpx: stat(c.hpx), atkx: stat(c.atkx), defx: stat(c.defx), exp: Math.max(0, Math.min(1000000, parseInt(c.exp) || 0)), meet: Math.max(1, Math.min(9999, parseInt(c.meet) || 1)), first: !!c.first, nick: str(c.nick, 12),
+      know: Object.fromEntries(Object.entries(c.know && typeof c.know === "object" ? c.know : {}).filter(([k, v]) => Object.prototype.hasOwnProperty.call(GENRES, k)).map(([k, v]) => [k, Math.max(0, Math.min(999, parseInt(v) || 0))]))
+    };
+  }
+
+  // ---------- 絵（SVG）。中身はすべてこのページが決めた値だけで作る ----------
+  let svgSeq = 0;
+  function drawCreature(c){
+    const k = "c" + (++svgSeq);
+    const bodyShape = {
+      round: `<ellipse cx="100" cy="118" rx="62" ry="56"/>`,
+      drop:  `<path d="M100 44 C140 92 166 120 152 152 C138 182 62 182 48 152 C34 120 60 92 100 44Z"/>`,
+      bean:  `<rect x="40" y="62" width="120" height="114" rx="56"/>`,
+      cloud: `<circle cx="70" cy="128" r="40"/><circle cx="130" cy="128" r="40"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="142" r="40"/>`,
+      ghost: `<path d="M44 172 L44 108 A56 56 0 0 1 156 108 L156 172 Q142 158 128 172 Q114 158 100 172 Q86 158 72 172 Q58 158 44 172Z"/>`,
+    }[c.body];
+    const extra = {
+      none: "",
+      ears: `<path d="M58 84 L66 44 L92 72Z M142 84 L134 44 L108 72Z" fill="${c.main}" stroke="${c.deep}" stroke-width="4" stroke-linejoin="round"/>`,
+      antenna: `<path d="M84 70 Q76 44 66 34 M116 70 Q124 44 134 34" fill="none" stroke="${c.deep}" stroke-width="4" stroke-linecap="round"/><circle cx="66" cy="32" r="8" fill="${c.sub}" stroke="${c.deep}" stroke-width="4"/><circle cx="134" cy="32" r="8" fill="${c.sub}" stroke="${c.deep}" stroke-width="4"/>`,
+      sprout: `<path d="M100 66 L100 40" stroke="${c.deep}" stroke-width="4" stroke-linecap="round"/><path d="M100 44 Q78 24 70 44 Q86 54 100 44Z M100 40 Q122 18 132 38 Q114 50 100 40Z" fill="#7CCB63" stroke="${c.deep}" stroke-width="3" stroke-linejoin="round"/>`,
+      fin: `<path d="M44 120 Q16 108 22 92 Q40 104 52 108Z M156 120 Q184 108 178 92 Q160 104 148 108Z" fill="${c.sub}" stroke="${c.deep}" stroke-width="4" stroke-linejoin="round"/>`,
+      horn: `<path d="M90 70 L100 30 L110 70Z" fill="${c.sub}" stroke="${c.deep}" stroke-width="4" stroke-linejoin="round"/>`,
+    }[c.extra];
+    const pattern = {
+      none: "",
+      belly: `<ellipse cx="100" cy="150" rx="40" ry="28" fill="${c.sub}"/>`,
+      spots: `<circle cx="62" cy="104" r="9" fill="${c.sub}"/><circle cx="142" cy="120" r="12" fill="${c.sub}"/><circle cx="74" cy="152" r="7" fill="${c.sub}"/><circle cx="132" cy="160" r="6" fill="${c.sub}"/>`,
+      stripes: `<path d="M30 92 Q100 76 170 92 M26 162 Q100 146 174 162" fill="none" stroke="${c.sub}" stroke-width="9"/>`,
+      cheeks: `<ellipse cx="66" cy="132" rx="11" ry="7" fill="#F48FA6" opacity=".8"/><ellipse cx="134" cy="132" rx="11" ry="7" fill="#F48FA6" opacity=".8"/>`,
+    }[c.pattern];
+    const eyes = {
+      dot: `<circle cx="80" cy="114" r="7" fill="#111"/><circle cx="120" cy="114" r="7" fill="#111"/>`,
+      wide: `<circle cx="80" cy="112" r="13" fill="#fff" stroke="#111" stroke-width="3"/><circle cx="120" cy="112" r="13" fill="#fff" stroke="#111" stroke-width="3"/><circle cx="83" cy="114" r="6" fill="#111"/><circle cx="117" cy="114" r="6" fill="#111"/>`,
+      sleepy: `<path d="M70 114 Q80 122 90 114 M110 114 Q120 122 130 114" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>`,
+      shine: `<circle cx="80" cy="113" r="10" fill="#111"/><circle cx="120" cy="113" r="10" fill="#111"/><circle cx="84" cy="109" r="3.5" fill="#fff"/><circle cx="124" cy="109" r="3.5" fill="#fff"/>`,
+      one: `<circle cx="100" cy="110" r="18" fill="#fff" stroke="#111" stroke-width="3"/><circle cx="102" cy="112" r="9" fill="#111"/><circle cx="106" cy="107" r="3" fill="#fff"/>`,
+    }[c.eyes];
+    const mouth = c.eyes === "sleepy"
+      ? `<ellipse cx="100" cy="136" rx="5" ry="4" fill="#111"/>`
+      : `<path d="M90 134 Q100 144 110 134" fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>`;
+    const rare = c.rarity >= 2 ? `<g fill="#F6C945" stroke="#8a6a00" stroke-width="1.5"><path d="M30 46 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4z"/><path d="M168 64 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3z"/></g>` : "";
+    const halo = c.rarity === 3 ? `<ellipse cx="100" cy="26" rx="34" ry="9" fill="none" stroke="#E2B227" stroke-width="5"/>` : "";
+    return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="キャラ">
+      <defs><clipPath id="${k}">${bodyShape}</clipPath></defs>
+      ${halo}
+      ${c.extra === "fin" ? extra : ""}
+      <g fill="${c.main}" stroke="${c.deep}" stroke-width="5" stroke-linejoin="round">${bodyShape}</g>
+      <g fill="${c.main}">${bodyShape}</g>
+      <g clip-path="url(#${k})">${pattern}</g>
+      ${c.extra !== "fin" ? extra : ""}
+      ${eyes}${mouth}${rare}
+    </svg>`;
+  }
+
+  const GENRES = {
+    music:"音楽イントロ", flag:"国旗", heritage:"世界遺産", history:"歴史人物", science:"科学", proverb:"ことわざ", math:"数学",
+    movie:"映画", drama:"ドラマ・俳優", kdrama:"韓国ドラマ",
+    kpop:"K-POP", western:"洋楽", hiphop:"HIP-HOP", enka:"演歌", theme:"主題歌", classic:"クラシック",
+    soccer:"サッカー", baseball:"野球", basketball:"バスケ", football:"アメフト",
+  };
+  const GENRE_GROUPS = [
+    ["教養", ["music","flag","heritage","history","science","proverb","math"]],
+    ["エンタメ", ["movie","drama","kdrama"]],
+    ["ヒット曲", ["kpop","western","hiphop","enka","theme","classic"]],
+    ["スポーツ", ["soccer","baseball","basketball","football"]],
+  ];
+  // タイプごとの得意ジャンル（正解したときダメージ1.5倍）
+  const AFFINITY = {
+    "みず":   ["flag","science","math","soccer","western"],
+    "もり":   ["heritage","proverb","enka","baseball","classic"],
+    "ひかり": ["history","movie","kpop","basketball","hiphop"],
+    "ゆめ":   ["music","drama","kdrama","theme","football"],
+  };
+  // 相性は みず→ひかり→もり→ゆめ→みず の順に強い
+  const BEATS = { "みず":"ひかり", "ひかり":"もり", "もり":"ゆめ", "ゆめ":"みず" };
+  // ----- 問題（音楽はすべて著作権の切れたクラシック・古謡。音はこのページで合成） -----
+  const MELODIES = {
+    elise:     { t:"エリーゼのために（ベートーヴェン）", bpm:150, n:"E5:.5 D#5:.5 E5:.5 D#5:.5 E5:.5 B4:.5 D5:.5 C5:.5 A4:1.5 R:.5 C4:.5 E4:.5 A4:.5 B4:1.5 R:.5 E4:.5 G#4:.5 B4:.5 C5:1.5" },
+    joy:       { t:"歓喜の歌（ベートーヴェン）", bpm:150, n:"E4:1 E4:1 F4:1 G4:1 G4:1 F4:1 E4:1 D4:1 C4:1 C4:1 D4:1 E4:1 E4:1.5 D4:.5 D4:2" },
+    fate:      { t:"運命（ベートーヴェン）", bpm:210, n:"R:1 G4:1 G4:1 G4:1 D#4:5 R:2 F4:1 F4:1 F4:1 D4:6" },
+    turkish:   { t:"トルコ行進曲（モーツァルト）", bpm:250, n:"B4:1 A4:1 G#4:1 A4:1 C5:4 D5:1 C5:1 B4:1 C5:1 E5:4 F5:1 E5:1 D#5:1 E5:1 B5:1 A5:1 G#5:1 A5:1 B5:1 A5:1 G#5:1 A5:1 C6:4" },
+    goinghome: { t:"家路・新世界より（ドヴォルザーク）", bpm:66, n:"E4:1.5 G4:.5 G4:2 E4:1.5 D4:.5 C4:2 D4:1 E4:1 G4:1 E4:1 D4:3" },
+    canon:     { t:"カノン（パッヘルベル）", bpm:84, n:"F#5:1 E5:1 D5:1 C#5:1 B4:1 A4:1 B4:1 C#5:1 D5:1 C#5:1 B4:1 A4:1 G4:1 F#4:1 G4:1 E4:2" },
+    spring:    { t:"春・四季より（ヴィヴァルディ）", bpm:200, n:"E5:1 G#5:1 G#5:1 G#5:1 F#5:.5 E5:.5 B5:3 B5:.5 A5:.5 G#5:1 G#5:1 G#5:1 F#5:.5 E5:.5 B5:3" },
+    wedding:   { t:"婚礼の合唱（ワーグナー）", bpm:88, n:"G4:1 C5:.75 C5:.25 C5:2 G4:1 D5:.75 B4:.25 C5:2" },
+    sakura:    { t:"さくらさくら（日本古謡）", bpm:84, n:"A4:1 A4:1 B4:2 A4:1 A4:1 B4:2 A4:1 B4:1 C5:1 B4:1 A4:1 B4:.5 A4:.5 F4:2" },
+    twinkle:   { t:"きらきら星（フランス民謡）", bpm:120, n:"C4:1 C4:1 G4:1 G4:1 A4:1 A4:1 G4:2 F4:1 F4:1 E4:1 E4:1 D4:1 D4:1 C4:2" },
+  };
+  // [国名, 形, 色...]
+  const FLAGS = {
+    jp:["日本","circle","#ffffff","#BC002D",75], bd:["バングラデシュ","circle","#006A4E","#F42A41",67.5],
+    fr:["フランス","v",["#0055A4","#ffffff","#EF4135"]], it:["イタリア","v",["#009246","#ffffff","#CE2B37"]],
+    ie:["アイルランド","v",["#169B62","#ffffff","#FF883E"]], be:["ベルギー","v",["#111111","#FDDA24","#EF3340"]],
+    ro:["ルーマニア","v",["#002B7F","#FCD116","#CE1126"]], ng:["ナイジェリア","v",["#008751","#ffffff","#008751"]],
+    pe:["ペルー","v",["#D91023","#ffffff","#D91023"]],
+    de:["ドイツ","h",["#111111","#DD0000","#FFCE00"]], nl:["オランダ","h",["#AE1C28","#ffffff","#21468B"]],
+    ru:["ロシア","h",["#ffffff","#0039A6","#D52B1E"]], at:["オーストリア","h",["#C8102E","#ffffff","#C8102E"]],
+    hu:["ハンガリー","h",["#CE2939","#ffffff","#477050"]], bg:["ブルガリア","h",["#ffffff","#00966E","#D62612"]],
+    ee:["エストニア","h",["#0072CE","#111111","#ffffff"]], lt:["リトアニア","h",["#FDB913","#006A44","#C1272D"]],
+    ua:["ウクライナ","h",["#0057B7","#FFD700"]], pl:["ポーランド","h",["#ffffff","#DC143C"]], id:["インドネシア","h",["#CE1126","#ffffff"]],
+    th:["タイ","hw",["#A51931","#F4F5F8","#2D2A4A","#F4F5F8","#A51931"],[1,1,2,1,1]],
+    co:["コロンビア","hw",["#FCD116","#003893","#CE1126"],[2,1,1]],
+    se:["スウェーデン","nordic","#006AA7","#FECC00"], dk:["デンマーク","nordic","#C8102E","#ffffff"],
+    fi:["フィンランド","nordic","#ffffff","#002F6C"], no:["ノルウェー","nordic2","#BA0C2F","#ffffff","#00205B"],
+  };
+  // [問題, 正解, まちがい×3]
+  const BANK = {
+    heritage: [
+      ["「法隆寺地域の仏教建造物」がある都道府県は？","奈良県","京都府","大阪府","滋賀県"],
+      ["白神山地は青森県とどこにまたがる？","秋田県","岩手県","山形県","北海道"],
+      ["マチュ・ピチュがある国は？","ペルー","ボリビア","チリ","メキシコ"],
+      ["アンコール・ワットがある国は？","カンボジア","タイ","ベトナム","ラオス"],
+      ["タージ・マハルがある国は？","インド","パキスタン","ネパール","バングラデシュ"],
+      ["屋久島がある都道府県は？","鹿児島県","宮崎県","熊本県","沖縄県"],
+      ["1993年、日本で最初に世界遺産になった4件に入っていないのは？","富士山","姫路城","屋久島","白神山地"],
+      ["富士山は何遺産として登録された？","文化遺産","自然遺産","複合遺産","無形文化遺産"],
+      ["ギザのピラミッドがある国は？","エジプト","スーダン","ヨルダン","モロッコ"],
+      ["ガラパゴス諸島がある国は？","エクアドル","ペルー","チリ","コロンビア"],
+      ["モン・サン＝ミシェルがある国は？","フランス","イギリス","ベルギー","スペイン"],
+      ["モアイ像で有名なイースター島がある国は？","チリ","ペルー","ニュージーランド","アルゼンチン"],
+      ["原爆ドームがある都市は？","広島市","長崎市","福岡市","岡山市"],
+      ["厳島神社がある県は？","広島県","山口県","岡山県","愛媛県"],
+      ["サグラダ・ファミリアがある都市は？","バルセロナ","マドリード","リスボン","セビリア"],
+    ],
+    history: [
+      ["『源氏物語』を書いたのは？","紫式部","清少納言","和泉式部","小野小町"],
+      ["江戸幕府を開いたのは？","徳川家康","豊臣秀吉","織田信長","徳川家光"],
+      ["鎌倉幕府を開いたのは？","源頼朝","源義経","足利尊氏","平清盛"],
+      ["地動説を唱えたポーランドの天文学者は？","コペルニクス","ガリレオ","ケプラー","ニュートン"],
+      ["相対性理論を発表したのは？","アインシュタイン","ニュートン","ボーア","ホーキング"],
+      ["『学問のすゝめ』を書いたのは？","福沢諭吉","新渡戸稲造","夏目漱石","野口英世"],
+      ["「我思う、ゆえに我あり」で知られる哲学者は？","デカルト","カント","パスカル","ソクラテス"],
+      ["1492年にアメリカ大陸近くの島に到達した航海者は？","コロンブス","マゼラン","バスコ・ダ・ガマ","クック"],
+      ["日本の初代内閣総理大臣は？","伊藤博文","大久保利通","西郷隆盛","板垣退助"],
+      ["黄熱病の研究中に亡くなった細菌学者は？","野口英世","北里柴三郎","志賀潔","湯川秀樹"],
+      ["「モナ・リザ」を描いたのは？","レオナルド・ダ・ヴィンチ","ミケランジェロ","ラファエロ","ボッティチェリ"],
+      ["ナイチンゲールが看護で活躍した戦争は？","クリミア戦争","南北戦争","第一次世界大戦","ナポレオン戦争"],
+      ["『種の起源』で進化論を説いたのは？","ダーウィン","メンデル","ラマルク","パスツール"],
+      ["大化の改新を中大兄皇子と進めたのは？","中臣鎌足","蘇我入鹿","聖徳太子","藤原道長"],
+    ],
+    science: [
+      ["水の化学式は？","H₂O","CO₂","O₂","H₂O₂"],
+      ["光の速さはおよそ秒速何km？","約30万km","約3万km","約300万km","約3000km"],
+      ["太陽系で一番大きい惑星は？","木星","土星","海王星","天王星"],
+      ["赤血球にふくまれ、酸素を運ぶたんぱく質は？","ヘモグロビン","インスリン","コラーゲン","ケラチン"],
+      ["元素記号「Fe」は何？","鉄","フッ素","銅","金"],
+      ["音が伝わらないのはどこ？","真空","水の中","鉄の中","空気中"],
+      ["植物が光合成で取り入れる気体は？","二酸化炭素","酸素","窒素","水素"],
+      ["地球から一番近い恒星は？","太陽","シリウス","北極星","プロキシマ・ケンタウリ"],
+      ["1気圧で水が沸騰する温度は？","100℃","90℃","80℃","120℃"],
+      ["DNAの形は何と呼ばれる？","二重らせん","三重らせん","リング形","ジグザグ形"],
+      ["人の内臓で一番大きいのは？","肝臓","心臓","胃","腎臓"],
+      ["月が光って見えるのはなぜ？","太陽の光を反射しているから","自分で燃えているから","地球の光を出しているから","電気を帯びているから"],
+    ],
+    proverb: [
+      ["猫に〇〇","小判","真珠","鰹節","鈴"],
+      ["石の上にも〇年","三","五","十","一"],
+      ["急がば〇〇","回れ","走れ","止まれ","進め"],
+      ["〇も木から落ちる","猿","猫","鳥","熊"],
+      ["「情けは人のためならず」の本当の意味は？","親切にすると、めぐって自分に返ってくる","親切にするとその人のためにならない","人に情けをかけすぎてはいけない","人は情けでは動かない"],
+      ["花より〇〇","団子","実","草","酒"],
+      ["二階から〇〇","目薬","水","雨","石"],
+      ["〇の耳に念仏","馬","牛","犬","猫"],
+      ["棚から〇〇","ぼたもち","おにぎり","だんご","せんべい"],
+      ["七転び〇起き","八","七","九","六"],
+      ["百聞は〇〇に如かず","一見","一言","一歩","一度"],
+      ["捕らぬ狸の〇〇算用","皮","肉","毛","尾"],
+    ],
+    movie: [
+      ["映画『タイタニック』（1997年）の監督は？","ジェームズ・キャメロン","スティーヴン・スピルバーグ","クリストファー・ノーラン","リドリー・スコット"],
+      ["『千と千尋の神隠し』の監督は？","宮崎駿","高畑勲","細田守","新海誠"],
+      ["『君の名は。』の監督は？","新海誠","細田守","宮崎駿","庵野秀明"],
+      ["英語以外の映画で初めてアカデミー賞作品賞を取った韓国映画は？","パラサイト 半地下の家族","オールド・ボーイ","新感染 ファイナル・エクスプレス","母なる証明"],
+      ["『ジュラシック・パーク』の監督は？","スティーヴン・スピルバーグ","ジェームズ・キャメロン","ジョージ・ルーカス","ロン・ハワード"],
+      ["『ゴジラ-1.0』が2024年に受賞したアカデミー賞の部門は？","視覚効果賞","作品賞","長編アニメ映画賞","国際長編映画賞"],
+      ["『スター・ウォーズ』シリーズを生み出した監督は？","ジョージ・ルーカス","スティーヴン・スピルバーグ","J・J・エイブラムス","ピーター・ジャクソン"],
+      ["2024年にアカデミー賞長編アニメ映画賞を取った宮崎駿監督の作品は？","君たちはどう生きるか","風立ちぬ","崖の上のポニョ","もののけ姫"],
+      ["『ハリー・ポッター』の主人公が通う魔法学校は？","ホグワーツ","ボーバトン","ダームストラング","イルヴァーモーニー"],
+    ],
+    drama: [
+      ["「倍返しだ！」の決めぜりふで有名なドラマは？","半沢直樹","下町ロケット","HERO","リーガル・ハイ"],
+      ["ドラマ『半沢直樹』で主人公を演じたのは？","堺雅人","木村拓哉","香川照之","阿部寛"],
+      ["「朝ドラ（連続テレビ小説）」を放送しているのは？","NHK","日本テレビ","TBS","フジテレビ"],
+      ["『SHOGUN 将軍』で2024年エミー賞の主演男優賞を取った日本人俳優は？","真田広之","渡辺謙","浅野忠信","役所広司"],
+      ["『SHOGUN 将軍』で2024年エミー賞の主演女優賞を取ったのは？","アンナ・サワイ","菊地凛子","水原希子","杏"],
+      ["映画『ラスト サムライ』でアカデミー助演男優賞にノミネートされた日本人俳優は？","渡辺謙","真田広之","役所広司","浅野忠信"],
+      ["映画『PERFECT DAYS』で2023年カンヌ国際映画祭の男優賞を取ったのは？","役所広司","柳楽優弥","是枝裕和","西島秀俊"],
+      ["『踊る大捜査線』で青島刑事を演じたのは？","織田裕二","江口洋介","木村拓哉","反町隆史"],
+    ],
+    kdrama: [
+      ["『愛の不時着』で、主人公ユン・セリがパラグライダーで不時着した先は？","北朝鮮","中国","日本","ロシア"],
+      ["『愛の不時着』で将校リ・ジョンヒョクを演じたのは？","ヒョンビン","パク・ソジュン","イ・ミンホ","コン・ユ"],
+      ["『イカゲーム』を配信しているサービスは？","Netflix","Disney+","Amazon Prime Video","Hulu"],
+      ["『イカゲーム』で最初に行われるゲームは？","だるまさんがころんだ","綱引き","ビー玉遊び","型抜き"],
+      ["『イカゲーム』の主人公を演じ、エミー賞主演男優賞を取ったのは？","イ・ジョンジェ","パク・ヘス","コン・ユ","ヒョンビン"],
+      ["『冬のソナタ』に主演し「ヨン様」と呼ばれたのは？","ペ・ヨンジュン","イ・ビョンホン","チャン・ドンゴン","ウォンビン"],
+      ["『梨泰院クラス』で主人公パク・セロイを演じたのは？","パク・ソジュン","ヒョンビン","ソン・ジュンギ","イ・ミンホ"],
+      ["『トッケビ（鬼）』で主人公のトッケビを演じたのは？","コン・ユ","ヒョンビン","ソン・ジュンギ","イ・ジョンジェ"],
+    ],
+    kpop: [
+      ["BTSが2020年に初めてアメリカのビルボードHot100で1位を取った曲は？","Dynamite","Butter","Boy With Luv","Permission to Dance"],
+      ["BLACKPINKのメンバーは何人？","4人","3人","5人","7人"],
+      ["TWICEの日本出身メンバーは何人？","3人","1人","2人","4人"],
+      ["2012年に世界的に大ヒットしたPSYの曲は？","江南スタイル","Gentleman","Fantastic Baby","Gee"],
+      ["BLACKPINKのリサの出身国は？","タイ","韓国","日本","オーストラリア"],
+      ["SEVENTEENのメンバーは何人？","13人","7人","9人","17人"],
+      ["日韓合同のオーディション番組『Nizi Project』から生まれたグループは？","NiziU","LE SSERAFIM","ITZY","aespa"],
+      ["BTSのメンバーは何人？","7人","5人","9人","13人"],
+    ],
+    western: [
+      ["「キング・オブ・ポップ」と呼ばれた歌手は？","マイケル・ジャクソン","エルヴィス・プレスリー","プリンス","スティーヴィー・ワンダー"],
+      ["ビートルズが生まれたイギリスの都市は？","リバプール","ロンドン","マンチェスター","バーミンガム"],
+      ["「ボヘミアン・ラプソディ」で有名なバンドは？","クイーン","ザ・ローリング・ストーンズ","ビートルズ","レッド・ツェッペリン"],
+      ["「Shape of You」を歌ったのは？","エド・シーラン","ジャスティン・ビーバー","ブルーノ・マーズ","ハリー・スタイルズ"],
+      ["マーク・ロンソンと「Uptown Funk」を歌ったのは？","ブルーノ・マーズ","ファレル・ウィリアムス","ジャスティン・ティンバーレイク","ザ・ウィークエンド"],
+      ["2025年のグラミー賞で最優秀アルバム賞を取ったビヨンセのアルバムは？","カウボーイ・カーター","ルネッサンス","レモネード","4"],
+      ["テイラー・スウィフトの出身国は？","アメリカ","イギリス","カナダ","オーストラリア"],
+      ["「Hello」「Someone Like You」で知られるイギリスの歌手は？","アデル","エイミー・ワインハウス","デュア・リパ","エド・シーラン"],
+    ],
+    hiphop: [
+      ["ヒップホップが生まれたとされるニューヨークの地区は？","ブロンクス","ブルックリン","マンハッタン","クイーンズ"],
+      ["エミネムが主演した映画は？","8 Mile","ストレイト・アウタ・コンプトン","ボーイズ'ン・ザ・フッド","ゲット・リッチ・オア・ダイ・トライン"],
+      ["2018年、ラッパーとして初めてピュリツァー賞を取ったのは？","ケンドリック・ラマー","ジェイ・Z","カニエ・ウェスト","ドレイク"],
+      ["ヒップホップの4大要素に入らないのは？","ジャズ","DJ","グラフィティ","ブレイクダンス"],
+      ["2024年のパリ五輪で初めて正式種目になったダンス競技は？","ブレイキン","ヒップホップダンス","ジャズダンス","ストリートダンス"],
+      ["ドレイクの出身国は？","カナダ","アメリカ","イギリス","ジャマイカ"],
+      ["カントリーとラップを混ぜた「Old Town Road」で大ヒットしたのは？","リル・ナズ・X","ポスト・マローン","トラヴィス・スコット","リル・ウェイン"],
+      ["ジェイ・Zと結婚している歌手は？","ビヨンセ","リアーナ","アリシア・キーズ","ニッキー・ミナージュ"],
+    ],
+    enka: [
+      ["「川の流れのように」を歌ったのは？","美空ひばり","石川さゆり","八代亜紀","都はるみ"],
+      ["「天城越え」を歌ったのは？","石川さゆり","坂本冬美","天童よしみ","八代亜紀"],
+      ["「与作」を歌ったのは？","北島三郎","五木ひろし","細川たかし","森進一"],
+      ["「北酒場」を歌ったのは？","細川たかし","北島三郎","五木ひろし","吉幾三"],
+      ["「舟唄」を歌ったのは？","八代亜紀","美空ひばり","坂本冬美","石川さゆり"],
+      ["演歌で、音を細かく回して味を出す歌い方を何という？","こぶし","ファルセット","シャウト","ラップ"],
+      ["『NHK紅白歌合戦』で、紅組は？","女性歌手のチーム","男性歌手のチーム","新人歌手のチーム","演歌歌手のチーム"],
+    ],
+    theme: [
+      ["映画『タイタニック』の主題歌「My Heart Will Go On」を歌ったのは？","セリーヌ・ディオン","ホイットニー・ヒューストン","マライア・キャリー","マドンナ"],
+      ["映画『ボディガード』の主題歌「I Will Always Love You」を歌ったのは？","ホイットニー・ヒューストン","セリーヌ・ディオン","マライア・キャリー","アデル"],
+      ["アニメ『鬼滅の刃』の主題歌「紅蓮華」を歌ったのは？","LiSA","Aimer","YOASOBI","Ado"],
+      ["映画『君の名は。』の音楽を担当したバンドは？","RADWIMPS","Mr.Children","back number","ONE OK ROCK"],
+      ["『新世紀エヴァンゲリオン』の主題歌「残酷な天使のテーゼ」を歌ったのは？","高橋洋子","林原めぐみ","LiSA","水樹奈々"],
+      ["映画『アナと雪の女王』の有名な主題歌は？","レット・イット・ゴー","ホール・ニュー・ワールド","美女と野獣","どこまでも〜How Far I'll Go〜"],
+      ["アニメ『ポケットモンスター』最初の主題歌「めざせポケモンマスター」を歌ったのは？","松本梨香","大谷育江","林原めぐみ","高橋洋子"],
+    ],
+    classic: [
+      ["「交響曲第9番（合唱付き）」の作曲者は？","ベートーヴェン","モーツァルト","ブラームス","ハイドン"],
+      ["オペラ「魔笛」の作曲者は？","モーツァルト","ヴェルディ","ワーグナー","プッチーニ"],
+      ["「四季」の作曲者は？","ヴィヴァルディ","バッハ","ヘンデル","ハイドン"],
+      ["「ピアノの詩人」と呼ばれる作曲家は？","ショパン","リスト","シューマン","ドビュッシー"],
+      ["バレエ音楽「白鳥の湖」の作曲者は？","チャイコフスキー","ストラヴィンスキー","ラヴェル","プロコフィエフ"],
+      ["「G線上のアリア」の原曲を作曲したのは？","バッハ","ヘンデル","ヴィヴァルディ","パッヘルベル"],
+      ["交響曲「新世界より」の作曲者は？","ドヴォルザーク","スメタナ","チャイコフスキー","マーラー"],
+      ["オーケストラで、音合わせの最初の音を出すことが多い楽器は？","オーボエ","トランペット","バイオリン","フルート"],
+    ],
+    soccer: [
+      ["FIFAワールドカップで最も多く優勝している国は？","ブラジル","ドイツ","イタリア","アルゼンチン"],
+      ["2022年のFIFAワールドカップで優勝した国は？","アルゼンチン","フランス","クロアチア","ブラジル"],
+      ["2022年のワールドカップで、日本がグループリーグで勝った2か国は？","ドイツとスペイン","ドイツとコスタリカ","スペインとクロアチア","ブラジルとドイツ"],
+      ["サッカーで1チームが試合に出られる人数は？","11人","9人","10人","12人"],
+      ["バロンドールを最も多く取った選手は？","リオネル・メッシ","クリスティアーノ・ロナウド","ヨハン・クライフ","ミシェル・プラティニ"],
+      ["Jリーグが始まった年は？","1993年","1989年","1998年","2002年"],
+      ["「キングカズ」と呼ばれる選手は？","三浦知良","中田英寿","本田圭佑","中村俊輔"],
+      ["審判の判定を映像で確かめる仕組みの略称は？","VAR","GPS","AED","MVP"],
+    ],
+    baseball: [
+      ["2023年のWBC（ワールド・ベースボール・クラシック）で優勝した国は？","日本","アメリカ","ドミニカ共和国","韓国"],
+      ["大谷翔平が2024年にMLB史上初めて達成した記録は？","50本塁打・50盗塁","60本塁打","打率4割","シーズン20勝・40本塁打"],
+      ["野球で守備につく人数は？","9人","10人","11人","8人"],
+      ["イチローが2004年に作った、MLBのシーズン最多記録は？","安打","本塁打","盗塁","打点"],
+      ["王貞治の通算本塁打数は？","868本","755本","714本","657本"],
+      ["「夏の甲子園」の正式な大会名は？","全国高等学校野球選手権大会","選抜高等学校野球大会","都市対抗野球大会","全日本大学野球選手権大会"],
+      ["打者がストライクを3つ取られることを何という？","三振","四球","併殺","犠打"],
+      ["大谷翔平が2023年12月に契約したMLB球団は？","ロサンゼルス・ドジャース","ロサンゼルス・エンゼルス","ニューヨーク・ヤンキース","サンディエゴ・パドレス"],
+    ],
+    basketball: [
+      ["バスケットボールで1チームがコートに出る人数は？","5人","6人","7人","4人"],
+      ["スリーポイントラインの外から決めたシュートは何点？","3点","2点","4点","1点"],
+      ["フリースローは1本何点？","1点","2点","3点","0.5点"],
+      ["「バスケの神様」と呼ばれたシカゴ・ブルズの選手は？","マイケル・ジョーダン","コービー・ブライアント","マジック・ジョンソン","シャキール・オニール"],
+      ["八村塁がNBAのドラフトで指名された年は？","2019年","2017年","2018年","2021年"],
+      ["漫画『SLAM DUNK』の主人公は？","桜木花道","流川楓","赤木剛憲","三井寿"],
+      ["2023年にNBAの通算得点で歴代1位になったのは？","レブロン・ジェームズ","カリーム・アブドゥル＝ジャバー","マイケル・ジョーダン","ステフィン・カリー"],
+    ],
+    football: [
+      ["NFLの優勝決定戦の名前は？","スーパーボウル","ワールドシリーズ","ファイナルズ","ローズボウル"],
+      ["タッチダウンは何点？","6点","7点","3点","5点"],
+      ["フィールドゴールは何点？","3点","2点","1点","6点"],
+      ["アメフトで1チームがフィールドに出る人数は？","11人","9人","15人","13人"],
+      ["攻撃側が4回の攻撃（ダウン）で進まないといけない距離は？","10ヤード","5ヤード","15ヤード","20ヤード"],
+      ["トム・ブレイディがスーパーボウルで優勝した回数は？","7回","5回","4回","6回"],
+      ["日本の大学アメフトの日本一を決める試合は？","甲子園ボウル","ライスボウル","パールボウル","東京ボウル"],
+    ],
+  };
+
+  function flagSVG(key){
+    const f = FLAGS[key]; if(!f) return "";
+    const W = 150, H = 100; let body = "";
+    if(f[1] === "circle") body = `<rect width="${W}" height="${H}" fill="${f[2]}"/><circle cx="${f[4]}" cy="50" r="30" fill="${f[3]}"/>`;
+    else if(f[1] === "v"){ const w = W / f[2].length; f[2].forEach((c,i) => body += `<rect x="${i*w}" width="${w+.5}" height="${H}" fill="${c}"/>`); }
+    else if(f[1] === "h" || f[1] === "hw"){
+      const ws = f[3] || f[2].map(() => 1), tot = ws.reduce((a,b) => a+b, 0); let y = 0;
+      f[2].forEach((c,i) => { const h = H * ws[i] / tot; body += `<rect y="${y}" width="${W}" height="${h+.5}" fill="${c}"/>`; y += h; });
+    }
+    else if(f[1] === "nordic") body = `<rect width="${W}" height="${H}" fill="${f[2]}"/><rect x="45" width="20" height="${H}" fill="${f[3]}"/><rect y="40" width="${W}" height="20" fill="${f[3]}"/>`;
+    else if(f[1] === "nordic2") body = `<rect width="${W}" height="${H}" fill="${f[2]}"/><rect x="41" width="28" height="${H}" fill="${f[3]}"/><rect y="36" width="${W}" height="28" fill="${f[3]}"/><rect x="48" width="14" height="${H}" fill="${f[4]}"/><rect y="43" width="${W}" height="14" fill="${f[4]}"/>`;
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="国旗">${body}<rect width="${W}" height="${H}" fill="none" stroke="#cfcfcb" stroke-width="2"/></svg>`;
+  }
+
+  // ----- 音（Web Audio でメロディーを合成） -----
+  let actx = null, voices = [];
+  function audio(){
+    try{
+      if(!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      if(actx.state === "suspended") actx.resume();
+    }catch(e){}
+    return actx;
+  }
+  function noteFreq(n){
+    const m = /^([A-G])(#?)(\d)$/.exec(n); if(!m) return 440;
+    const midi = (+m[3] + 1) * 12 + { C:0, D:2, E:4, F:5, G:7, A:9, B:11 }[m[1]] + (m[2] ? 1 : 0);
+    return 440 * Math.pow(2, (midi - 69) / 12);
+  }
+  function stopMelody(){ for(const o of voices){ try{ o.stop(); }catch(e){} } voices = []; }
+  function playMelody(key){
+    const a = audio(), m = MELODIES[key]; if(!a || !m) return;
+    stopMelody();
+    const sec = 60 / m.bpm; let t = a.currentTime + .08;
+    for(const tok of m.n.split(" ")){
+      const [nn, bb] = tok.split(":"), dur = parseFloat(bb) * sec;
+      if(nn !== "R"){
+        const o = a.createOscillator(), g = a.createGain();
+        o.type = "triangle"; o.frequency.value = noteFreq(nn);
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.25, t + .015);
+        g.gain.exponentialRampToValueAtTime(.07, t + dur * .85); g.gain.linearRampToValueAtTime(0, t + dur * .97);
+        o.connect(g); g.connect(a.destination); o.start(t); o.stop(t + dur); voices.push(o);
+      }
+      t += dur;
+    }
+  }
+
+  function shuffle(a){ for(let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+  const rnd = n => Math.floor(Math.random() * n);
+
+  // 数学は毎回その場で問題を作る（答えは計算で出すので必ず正しい）
+  function genMath(){
+    const near = (a, spread) => { const s = new Set(); let guard = 0; while(s.size < 3 && guard++ < 200){ const d = a + rnd(spread * 2 + 1) - spread; if(d !== a && d > 0) s.add(d); } return [...s]; };
+    const kanji = { 3:"三", 4:"四", 5:"五", 6:"六", 8:"八" };
+    const t = rnd(6);
+    if(t === 0){ const a = 12 + rnd(38), b = 3 + rnd(7), c = 1 + rnd(49), ans = a * b + c;
+      return { prompt: `${a} × ${b} ＋ ${c} は？`, right: String(ans), wrongs: near(ans, 12).map(String) }; }
+    if(t === 1){ let n, p; do{ n = pick([40,60,80,120,150,200,240,360,500]); p = pick([10,20,25,30,40,50,75]); }while((n * p) % 100);
+      const ans = n * p / 100; return { prompt: `${n} の ${p}% は？`, right: String(ans), wrongs: near(ans, Math.max(4, Math.round(ans / 3))).map(String) }; }
+    if(t === 2){
+      if(Math.random() < .5){ const a = 1 + rnd(5), r = pick([2,3]), s = [a, a*r, a*r*r, a*r*r*r], ans = a*r*r*r*r;
+        return { prompt: `${s.join(", ")}, の次の数は？`, right: String(ans), wrongs: [...new Set([ans + a*r, ans - a*r*r, a*r*r*r + a*r].concat(near(ans, 6)))].filter(x => x > 0 && x !== ans).slice(0,3).map(String) }; }
+      const a = 2 + rnd(20), d = 3 + rnd(9), s = [a, a+d, a+2*d, a+3*d], ans = a + 4*d;
+      return { prompt: `${s.join(", ")}, の次の数は？`, right: String(ans), wrongs: near(ans, d).map(String) }; }
+    if(t === 3){ const k = pick([6,7,8,9,11,12,13,14,15]);
+      return { prompt: `√${k*k} は？`, right: String(k), wrongs: near(k, 3).map(String) }; }
+    if(t === 4){ const n = pick([3,4,5,6,8]), ans = (n - 2) * 180;
+      const ws = [ans + 180, ans + 90, ans - 180, ans + 360].filter(x => x > 0 && x !== ans).slice(0, 3);
+      return { prompt: `${n === 4 ? "正方形" : "正" + kanji[n] + "角形"}の内角の和は？`, right: ans + "°", wrongs: ws.map(x => x + "°") }; }
+    const primes = [23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97], comps = [21,27,33,39,49,51,57,63,69,77,81,87,91,93];
+    return { prompt: "次のうち素数はどれ？", right: String(pick(primes)), wrongs: shuffle(comps.slice()).slice(0, 3).map(String) };
+  }
+
+  function makeQuestionBase(genre, used){
+    let prompt, right, wrongs, extra = {};
+    if(genre === "music"){
+      const keys = Object.keys(MELODIES), fresh = keys.filter(k => !used.has("m" + k)), k = pick(fresh.length ? fresh : keys);
+      used.add("m" + k); prompt = "このメロディーの曲名は？"; right = MELODIES[k].t;
+      wrongs = shuffle(keys.filter(x => x !== k)).slice(0, 3).map(x => MELODIES[x].t); extra.melody = k;
+    }else if(genre === "flag"){
+      const keys = Object.keys(FLAGS), fresh = keys.filter(k => !used.has("f" + k)), k = pick(fresh.length ? fresh : keys);
+      used.add("f" + k); prompt = "この国旗はどこの国？"; right = FLAGS[k][0];
+      wrongs = shuffle(keys.filter(x => x !== k)).slice(0, 3).map(x => FLAGS[x][0]); extra.flag = k;
+    }else if(genre === "math"){
+      ({ prompt, right, wrongs } = genMath());
+    }else{
+      const list = BANK[genre], fresh = list.filter(q => !used.has(q[0])), q = pick(fresh.length ? fresh : list);
+      used.add(q[0]); prompt = q[0]; right = q[1]; wrongs = q.slice(2);
+    }
+    const choices = shuffle([right].concat(wrongs.slice(0, 3)));
+    return Object.assign({ genre, prompt, choices, answer: choices.indexOf(right) }, extra);
+  }
+  function wrongIndex(q){ const w = [0,1,2,3].filter(i => i !== q.answer && i < q.choices.length); return pick(w); }
+  // ---------- ジャンルの追加（表から自動で問題を作る） ----------
+  Object.assign(GENRES, {
+    capital:"世界の首都", pref:"県庁所在地", english:"英単語", kanji:"漢字の読み",
+    element:"元素記号", nengo:"日本史の年号", animal:"動物", space:"宇宙",
+  });
+  GENRE_GROUPS.splice(0, GENRE_GROUPS.length,
+    ["教養", ["music","flag","heritage","history","science","proverb","math"]],
+    ["地理", ["capital","pref"]],
+    ["ことば", ["english","kanji"]],
+    ["理科", ["element","animal","space"]],
+    ["日本史", ["nengo"]],
+    ["エンタメ", ["movie","drama","kdrama"]],
+    ["ヒット曲", ["kpop","western","hiphop","enka","theme","classic"]],
+    ["スポーツ", ["soccer","baseball","basketball","football"]],
+  );
+  // 得意ジャンル（こうげきアップ）と苦手ジャンル（ぼうぎょアップ）
+  AFFINITY["みず"]   = ["flag","science","math","soccer","western","capital","element"];
+  AFFINITY["もり"]   = ["heritage","proverb","enka","baseball","classic","pref","animal"];
+  AFFINITY["ひかり"] = ["history","movie","kpop","basketball","hiphop","nengo","english"];
+  AFFINITY["ゆめ"]   = ["music","drama","kdrama","theme","football","kanji","space"];
+  const WEAK = {
+    "みず":   ["kanji","proverb","enka","history"],
+    "もり":   ["kpop","hiphop","space","math"],
+    "ひかり": ["classic","heritage","element","theme"],
+    "ゆめ":   ["soccer","capital","baseball","nengo"],
+  };
+
+  // [国, 首都, ひっかけ（首都とまちがえやすい大都市）]
+  const CAPITALS = [
+    ["韓国","ソウル","プサン"],["中国","北京","上海"],["タイ","バンコク","チェンマイ"],["ベトナム","ハノイ","ホーチミン"],
+    ["フィリピン","マニラ","セブ"],["マレーシア","クアラルンプール",""],["インド","ニューデリー","ムンバイ"],["パキスタン","イスラマバード","カラチ"],
+    ["トルコ","アンカラ","イスタンブール"],["エジプト","カイロ","アレクサンドリア"],["ケニア","ナイロビ",""],["ナイジェリア","アブジャ","ラゴス"],
+    ["モロッコ","ラバト","カサブランカ"],["イギリス","ロンドン",""],["フランス","パリ","マルセイユ"],["ドイツ","ベルリン","ミュンヘン"],
+    ["イタリア","ローマ","ミラノ"],["スペイン","マドリード","バルセロナ"],["ポルトガル","リスボン","ポルト"],["ベルギー","ブリュッセル",""],
+    ["スイス","ベルン","チューリッヒ"],["オーストリア","ウィーン",""],["スウェーデン","ストックホルム",""],["ノルウェー","オスロ",""],
+    ["フィンランド","ヘルシンキ",""],["デンマーク","コペンハーゲン",""],["ポーランド","ワルシャワ",""],["ギリシャ","アテネ",""],
+    ["ロシア","モスクワ","サンクトペテルブルク"],["ウクライナ","キーウ",""],["ハンガリー","ブダペスト",""],["チェコ","プラハ",""],
+    ["アイルランド","ダブリン",""],["アメリカ","ワシントンD.C.","ニューヨーク"],["カナダ","オタワ","トロント"],["メキシコ","メキシコシティ",""],
+    ["ブラジル","ブラジリア","リオデジャネイロ"],["アルゼンチン","ブエノスアイレス",""],["ペルー","リマ",""],["チリ","サンティアゴ",""],
+    ["コロンビア","ボゴタ",""],["オーストラリア","キャンベラ","シドニー"],["ニュージーランド","ウェリントン","オークランド"],["サウジアラビア","リヤド",""],
+    ["イラン","テヘラン",""],["モンゴル","ウランバートル",""],["カンボジア","プノンペン",""],["ネパール","カトマンズ",""],
+    ["エチオピア","アディスアベバ",""],["ミャンマー","ネピドー","ヤンゴン"],
+  ];
+  // [都道府県, 県庁所在地, ひっかけ]
+  const PREFS = [
+    ["北海道","札幌市","函館市"],["岩手県","盛岡市",""],["宮城県","仙台市",""],["茨城県","水戸市","つくば市"],["栃木県","宇都宮市",""],
+    ["群馬県","前橋市","高崎市"],["埼玉県","さいたま市","川越市"],["神奈川県","横浜市","川崎市"],["石川県","金沢市",""],["山梨県","甲府市",""],
+    ["愛知県","名古屋市","豊田市"],["三重県","津市","四日市市"],["滋賀県","大津市",""],["兵庫県","神戸市","姫路市"],["島根県","松江市","出雲市"],
+    ["香川県","高松市",""],["愛媛県","松山市",""],["沖縄県","那覇市",""],
+  ];
+  // [英語, 日本語]
+  const ENGLISH = [
+    ["achieve","達成する"],["ancient","古代の"],["borrow","借りる"],["career","経歴・職業"],["curious","好奇心の強い"],["decrease","減る"],
+    ["environment","環境"],["explore","探検する"],["frequent","よく起こる"],["genuine","本物の"],["harvest","収穫"],["imagine","想像する"],
+    ["journey","旅"],["knowledge","知識"],["measure","測る"],["neighbor","隣人"],["obvious","明らかな"],["purchase","購入する"],
+    ["quantity","量"],["recognize","見分ける"],["require","必要とする"],["schedule","予定"],["temperature","温度"],["universe","宇宙"],
+    ["valuable","価値のある"],["wealth","富"],["absorb","吸収する"],["brave","勇敢な"],["compare","比べる"],["deliver","届ける"],
+    ["efficient","効率のよい"],["forgive","許す"],["gradually","だんだんと"],["honest","正直な"],["inform","知らせる"],["literature","文学"],
+    ["manufacture","製造する"],["narrow","狭い"],["opportunity","機会"],["permanent","永久の"],["recover","回復する"],["sufficient","十分な"],
+    ["translate","翻訳する"],["urgent","急を要する"],["vehicle","乗り物"],["weigh","重さを量る"],["ancestor","祖先"],["boundary","境界"],
+    ["climate","気候"],["democracy","民主主義"],["evidence","証拠"],["festival","祭り"],["generation","世代"],["humid","湿気の多い"],
+  ];
+  // [漢字, 読み]
+  const KANJI = [
+    ["紫陽花","あじさい"],["向日葵","ひまわり"],["秋刀魚","さんま"],["海老","えび"],["蒲公英","たんぽぽ"],["土竜","もぐら"],
+    ["河豚","ふぐ"],["烏賊","いか"],["胡瓜","きゅうり"],["南瓜","かぼちゃ"],["西瓜","すいか"],["林檎","りんご"],
+    ["葡萄","ぶどう"],["檸檬","れもん"],["蜜柑","みかん"],["薔薇","ばら"],["蝸牛","かたつむり"],["蜻蛉","とんぼ"],
+    ["蝙蝠","こうもり"],["海月","くらげ"],["心太","ところてん"],["欠伸","あくび"],["案山子","かかし"],["雪崩","なだれ"],
+    ["時雨","しぐれ"],["五月雨","さみだれ"],["蒲鉾","かまぼこ"],["土産","みやげ"],["為替","かわせ"],["相撲","すもう"],
+    ["田舎","いなか"],["硝子","がらす"],["珈琲","こーひー"],["炬燵","こたつ"],["団扇","うちわ"],["浴衣","ゆかた"],
+    ["台詞","せりふ"],["蝋燭","ろうそく"],["海豚","いるか"],["駱駝","らくだ"],["麒麟","きりん"],["鸚鵡","おうむ"],
+    ["河馬","かば"],["山羊","やぎ"],["海星","ひとで"],["玉蜀黍","とうもろこし"],["若布","わかめ"],["独楽","こま"],
+  ];
+  // [元素記号, 名前]
+  const ELEMENTS = [
+    ["H","水素"],["He","ヘリウム"],["Li","リチウム"],["C","炭素"],["N","窒素"],["O","酸素"],["F","フッ素"],["Ne","ネオン"],
+    ["Na","ナトリウム"],["Mg","マグネシウム"],["Al","アルミニウム"],["Si","ケイ素"],["P","リン"],["S","硫黄"],["Cl","塩素"],
+    ["Ar","アルゴン"],["K","カリウム"],["Ca","カルシウム"],["Fe","鉄"],["Cu","銅"],["Zn","亜鉛"],["Ag","銀"],["Au","金"],
+    ["Hg","水銀"],["Pb","鉛"],["U","ウラン"],["Sn","スズ"],["Ni","ニッケル"],["I","ヨウ素"],["Pt","白金"],
+  ];
+  // [できごと, 年]
+  const NENGO = [
+    ["大化の改新が始まった",645],["平城京に都が移った",710],["平安京に都が移った",794],["応仁の乱が始まった",1467],
+    ["種子島に鉄砲が伝わった",1543],["本能寺の変が起きた",1582],["関ヶ原の戦いが起きた",1600],["江戸幕府が開かれた",1603],
+    ["ペリーが浦賀に来航した",1853],["大政奉還が行われた",1867],["元号が明治になった",1868],["大日本帝国憲法が発布された",1889],
+    ["日清戦争が始まった",1894],["日露戦争が始まった",1904],["関東大震災が起きた",1923],["太平洋戦争が終わった",1945],
+    ["日本国憲法が施行された",1947],["1回目の東京オリンピックが開かれた",1964],["1回目の大阪万博が開かれた",1970],
+    ["元号が平成になった",1989],["阪神・淡路大震災が起きた",1995],["東日本大震災が起きた",2011],["元号が令和になった",2019],
+  ];
+  Object.assign(BANK, {
+    animal: [
+      ["世界で一番大きい動物は？","シロナガスクジラ","アフリカゾウ","ジンベエザメ","キリン"],
+      ["陸上で一番大きい動物は？","アフリカゾウ","キリン","カバ","サイ"],
+      ["クジラは何のなかま？","哺乳類","魚類","両生類","爬虫類"],
+      ["ペンギンは何のなかま？","鳥類","哺乳類","魚類","両生類"],
+      ["タコの心臓はいくつ？","3つ","1つ","2つ","8つ"],
+      ["キリンの首の骨の数は？","7個","3個","14個","30個"],
+      ["コアラが主に食べる葉は？","ユーカリ","笹","桑","松"],
+      ["ラクダのこぶの中に主に入っているのは？","脂肪","水","空気","骨"],
+      ["フラミンゴの体がピンク色なのはなぜ？","食べ物にふくまれる色素のため","血の色が透けているため","日焼けしたため","生まれつき羽がピンクだから"],
+      ["卵を産む哺乳類はどれ？","カモノハシ","コウモリ","イルカ","カンガルー"],
+      ["チーターが走る速さはおよそ時速何km？","約100km","約30km","約50km","約200km"],
+      ["ジャイアントパンダが主に食べるのは？","竹や笹","果物","魚","虫"],
+    ],
+    space: [
+      ["太陽系で太陽に一番近い惑星は？","水星","金星","火星","地球"],
+      ["大きな環（リング）で有名な惑星は？","土星","木星","火星","水星"],
+      ["人類が初めて月に降り立った宇宙船は？","アポロ11号","スプートニク1号","ボストーク1号","スペースシャトル"],
+      ["初めて月面を歩いた人は？","ニール・アームストロング","ユーリイ・ガガーリン","バズ・オルドリン","毛利衛"],
+      ["太陽の光が地球に届くまでの時間はおよそ？","約8分","約8秒","約8時間","約8日"],
+      ["国際宇宙ステーションの略称は？","ISS","NASA","JAXA","ESA"],
+      ["冥王星は2006年から何に分類されている？","準惑星","惑星","衛星","すい星"],
+      ["北極星がある星座は？","こぐま座","おおぐま座","カシオペヤ座","オリオン座"],
+      ["火星が赤く見えるのはなぜ？","表面の土に酸化鉄（さび）が多いから","表面が燃えているから","赤い植物があるから","太陽に一番近いから"],
+      ["小惑星リュウグウから砂を持ち帰った日本の探査機は？","はやぶさ2","かぐや","あかつき","ひてん"],
+      ["地球の衛星は？","月","火星","金星","太陽"],
+    ],
+  });
+
+  function tableQuestion(genre){
+    const others = (list, i, k) => shuffle(list.filter((x, j) => j !== i).map(x => x[k])).slice(0, 3);
+    if(genre === "capital"){
+      const i = rnd(CAPITALS.length), [c, cap, trick] = CAPITALS[i];
+      const w = (trick ? [trick] : []).concat(others(CAPITALS, i, 1)).slice(0, 3);
+      return { prompt: c + "の首都は？", right: cap, wrongs: w };
+    }
+    if(genre === "pref"){
+      const i = rnd(PREFS.length), [p, city, trick] = PREFS[i];
+      const w = (trick ? [trick] : []).concat(others(PREFS, i, 1)).slice(0, 3);
+      return { prompt: p + "の県庁所在地は？", right: city, wrongs: w };
+    }
+    if(genre === "english"){
+      const i = rnd(ENGLISH.length);
+      if(Math.random() < .5) return { prompt: "「" + ENGLISH[i][0] + "」の意味は？", right: ENGLISH[i][1], wrongs: others(ENGLISH, i, 1) };
+      return { prompt: "「" + ENGLISH[i][1] + "」を英語で言うと？", right: ENGLISH[i][0], wrongs: others(ENGLISH, i, 0) };
+    }
+    if(genre === "kanji"){
+      const i = rnd(KANJI.length);
+      return { prompt: "「" + KANJI[i][0] + "」の読みは？", right: KANJI[i][1], wrongs: others(KANJI, i, 1) };
+    }
+    if(genre === "element"){
+      const i = rnd(ELEMENTS.length);
+      if(Math.random() < .5) return { prompt: "元素記号「" + ELEMENTS[i][0] + "」は何？", right: ELEMENTS[i][1], wrongs: others(ELEMENTS, i, 1) };
+      return { prompt: ELEMENTS[i][1] + "の元素記号は？", right: ELEMENTS[i][0], wrongs: others(ELEMENTS, i, 0) };
+    }
+    if(genre === "nengo"){
+      const i = rnd(NENGO.length), [ev, y] = NENGO[i];
+      const s = new Set(); while(s.size < 3){ const d = y + (rnd(2) ? 1 : -1) * (1 + rnd(25)); if(d !== y && d > 0) s.add(d); }
+      return { prompt: ev + "のは何年？", right: y + "年", wrongs: [...s].map(x => x + "年") };
+    }
+    return null;
+  }
+
+  function makeQuestion(genre, used){
+    const t = tableQuestion(genre);
+    if(!t) return makeQuestionBase(genre, used);
+    // 同じ試合で同じ問題が出ないように数回引き直す
+    let q = t, n = 0; while(used.has("t" + q.prompt) && n++ < 8) q = tableQuestion(genre);
+    used.add("t" + q.prompt);
+    const choices = shuffle([q.right].concat(q.wrongs.slice(0, 3)));
+    return { genre, prompt: q.prompt, choices, answer: choices.indexOf(q.right) };
+  }
+
+  // ----- 少なかったジャンルに問題を足す -----
+  const MORE = {
+    movie: [
+      ["『トイ・ストーリー』を作ったスタジオは？","ピクサー","ドリームワークス","スタジオジブリ","イルミネーション"],
+      ["『となりのトトロ』の監督は？","宮崎駿","高畑勲","細田守","新海誠"],
+      ["『アナと雪の女王』に出てくる雪だるまの名前は？","オラフ","スヴェン","クリストフ","ハンス"],
+      ["『ライオン・キング』の主人公のライオンの名前は？","シンバ","ムファサ","スカー","ナラ"],
+      ["『スター・ウォーズ』で、フォースを使って平和を守る騎士は？","ジェダイ","シス","トルーパー","マンダロリアン"],
+    ],
+    proverb: [
+      ["腐っても〇","鯛","鯉","鮭","鰤"],
+      ["〇に真珠","豚","猫","犬","牛"],
+      ["井の中の〇","蛙","鯉","亀","魚"],
+      ["〇の甲より年の功","亀","鶴","蛇","牛"],
+      ["笑う門には〇来たる","福","運","春","客"],
+    ],
+    science: [
+      ["大人の人の骨の数はおよそ？","約206本","約100本","約300本","約500本"],
+      ["電気を一番通しやすいのは？","銅","ガラス","ゴム","木"],
+      ["1気圧で氷がとけて水になる温度は？","0℃","10℃","−10℃","4℃"],
+      ["日本で虹は何色と言われることが多い？","7色","5色","6色","8色"],
+    ],
+    history: [
+      ["天下統一を果たし「太閤」と呼ばれたのは？","豊臣秀吉","織田信長","徳川家康","明智光秀"],
+      ["アメリカの初代大統領は？","ジョージ・ワシントン","エイブラハム・リンカーン","トーマス・ジェファーソン","フランクリン・ルーズベルト"],
+      ["奴隷解放宣言を出したアメリカの大統領は？","エイブラハム・リンカーン","ジョージ・ワシントン","ジョン・F・ケネディ","セオドア・ルーズベルト"],
+      ["フランスの皇帝になった軍人は？","ナポレオン","ルイ14世","シャルルマーニュ","ジャンヌ・ダルク"],
+      ["『枕草子』を書いたのは？","清少納言","紫式部","和泉式部","小野小町"],
+    ],
+    heritage: [
+      ["万里の長城がある国は？","中国","モンゴル","韓国","インド"],
+      ["コロッセオがある都市は？","ローマ","アテネ","パリ","ミラノ"],
+      ["合掌造りの集落で有名な白川郷がある県は？","岐阜県","富山県","長野県","石川県"],
+    ],
+    kpop: [
+      ["BTSのファンの呼び名は？","ARMY","BLINK","ONCE","CARAT"],
+      ["BLACKPINKのファンの呼び名は？","BLINK","ARMY","ONCE","MY"],
+      ["TWICEのファンの呼び名は？","ONCE","BLINK","ARMY","CARAT"],
+    ],
+    western: [
+      ["ビートルズのメンバーではないのは？","ミック・ジャガー","ジョン・レノン","ポール・マッカートニー","リンゴ・スター"],
+      ["マイケル・ジャクソンのアルバム『スリラー』が出たのは何年代？","1980年代","1960年代","1970年代","1990年代"],
+      ["「bad guy」で大ヒットしたアメリカの歌手は？","ビリー・アイリッシュ","アリアナ・グランデ","オリヴィア・ロドリゴ","デュア・リパ"],
+    ],
+    hiphop: [
+      ["ラップで言葉の終わりの音をそろえることを何という？","韻をふむ","ビートを刻む","サンプリング","スクラッチ"],
+      ["DJがレコードを手で前後に動かして音を出す技は？","スクラッチ","ドロップ","ループ","フェード"],
+    ],
+    enka: [
+      ["「津軽海峡・冬景色」を歌ったのは？","石川さゆり","都はるみ","八代亜紀","坂本冬美"],
+      ["「まつり」を歌ったのは？","北島三郎","細川たかし","五木ひろし","吉幾三"],
+    ],
+    theme: [
+      ["映画『天気の子』の音楽を担当したバンドは？","RADWIMPS","back number","Mr.Children","スピッツ"],
+      ["アニメ『ONE PIECE』の最初の主題歌「ウィーアー！」を歌ったのは？","きただにひろし","影山ヒロノブ","大槻マキ","水木一郎"],
+    ],
+    classic: [
+      ["ベートーヴェンの「運命」は交響曲第何番？","第5番","第9番","第3番","第6番"],
+      ["モーツァルトの「トルコ行進曲」は何の楽器のための曲？","ピアノ","オーケストラ","バイオリン","フルート"],
+    ],
+    soccer: [
+      ["サッカーの試合時間（前後半の合計、延長なし）は？","90分","60分","80分","100分"],
+      ["ペナルティキックの略称は？","PK","FK","CK","GK"],
+      ["2002年のワールドカップを日本と共同で開いた国は？","韓国","中国","オーストラリア","タイ"],
+    ],
+    baseball: [
+      ["ボールが4つで打者が一塁に進むことを何という？","フォアボール（四球）","デッドボール","ストライク","ボーク"],
+      ["ホームランを打った打者が最後に踏むのは？","ホームベース","一塁","二塁","三塁"],
+    ],
+    basketball: [
+      ["バスケットボールの試合は何クォーター？","4クォーター","2クォーター","3クォーター","6クォーター"],
+      ["ボールを持ったまま歩きすぎる反則は？","トラベリング","ダブルドリブル","チャージング","バックコート"],
+    ],
+    football: [
+      ["タッチダウンのあとのキックが成功すると何点？","1点","2点","3点","6点"],
+      ["攻撃を指揮して主にパスを投げるポジションは？","クォーターバック","ランニングバック","ラインバッカー","キッカー"],
+    ],
+    drama: [
+      ["NHKの大河ドラマが主に描くのは？","歴史上の人物や時代","未来の世界","料理の世界","学校の部活"],
+      ["ドラマ『逃げるは恥だが役に立つ』のエンディングで話題になったダンスは？","恋ダンス","パプリカダンス","U.S.A.ダンス","ドラえもん音頭"],
+    ],
+    kdrama: [
+      ["韓国ドラマの時代劇でよく見る、韓国の伝統的な衣装は？","韓服（ハンボク）","アオザイ","チャイナドレス","サリー"],
+      ["『愛の不時着』でユン・セリを演じたのは？","ソン・イェジン","パク・ミニョン","キム・ゴウン","IU"],
+    ],
+  };
+  for(const [g, list] of Object.entries(MORE)) BANK[g] = (BANK[g] || []).concat(list);
+
+
+  // ---------- キャラの強さ（早押し版） ----------
+  const BODY_FX = {
+    round: { hp:1.15, atk:1,    def:1,   d:"まるい体でHPが多い" },
+    drop:  { hp:1,    atk:1.1,  def:.95, d:"しずく型でこうげき高め" },
+    bean:  { hp:1,    atk:.95,  def:1.2, d:"まめ型でぼうぎょが高い" },
+    cloud: { hp:1.3,  atk:.85,  def:1,   d:"くも型でHPがとても多い" },
+    ghost: { hp:.85,  atk:1.25, def:.95, d:"おばけ型でこうげき特化" },
+  };
+  const PFX = {
+    "のんびり":      { d:"考える時間が3秒長い。ぼうぎょ1.3倍", time:3000, def:1.3 },
+    "せっかち":      { d:"早押しボーナスが2倍", speed:2 },
+    "ひとなつっこい":{ d:"コツンした人数が多いほど強い（1人につき+8%）", bond:true },
+    "てれや":        { d:"まちがいの選択肢が1つ消える。こうげき0.85倍", hint:true, atk:.85 },
+    "くいしんぼう":  { d:"正解するとHPが6回復", heal:6 },
+    "ねぼすけ":      { d:"後半の問題はダメージ1.5倍", late:1.5 },
+    "がんばりや":    { d:"連続正解するたびに15%ずつ強くなる", streak:.15 },
+    "きまぐれ":      { d:"ダメージが0.5〜1.8倍でバラバラ", random:true },
+    "おしゃべり":    { d:"まちがえた人には追い打ち+3", chase:3 },
+    "まじめ":        { d:"ダメージ1.3倍。まちがえると自分に5ダメージ", strict:true },
+  };
+  const pfx = c => PFX[c && c.pers] || {};
+  function levelInfo(exp){ let lv = 1, need = 30, e = Math.max(0, exp || 0); while(e >= need && lv < 50){ e -= need; lv++; need += 20; } return { lv, cur: e, need }; }
+  const lvl = c => levelInfo(c && c.exp).lv;
+  const isGood = (c, g) => (AFFINITY[c.type] || []).includes(g);
+  const isWeak = (c, g) => (WEAK[c.type] || []).includes(g);
+  const goodText = c => (AFFINITY[c.type] || []).map(g => GENRES[g]).join("・");
+  const weakText = c => (WEAK[c.type] || []).map(g => GENRES[g]).join("・");
+  // キャラごとの個体差（HP・こうげき・ぼうぎょ）。昔のキャラはIDから決まった値を使う
+  function hashTo(str, salt){ let h = 2166136261; for(const ch of String(str) + salt){ h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return ((h >>> 0) % 1000) / 1000; }
+  function rollStats(c){ if(c && c.hpx == null){ const r = () => Math.round((.85 + Math.random() * .35) * 100) / 100; c.hpx = r(); c.atkx = r(); c.defx = r(); } return c; }
+  function statsOf(c){
+    const b = BODY_FX[c.body] || BODY_FX.round, lv = lvl(c);
+    const hpx = c.hpx || (.85 + hashTo(c.id, "h") * .35), atkx = c.atkx || (.85 + hashTo(c.id, "a") * .35), defx = c.defx || (.85 + hashTo(c.id, "d") * .35);
+    return { hp: Math.round(100 * b.hp * hpx * (1 + .04 * (lv - 1))), atk: b.atk * atkx * (1 + .03 * (lv - 1)), def: b.def * defx * (pfx(c).def || 1) };
+  }
+  function maxHp(c){ return statsOf(c).hp; }
+  const statLine = c => { const s = statsOf(c); return "HP " + s.hp + "　こうげき " + Math.round(s.atk * 50) + "　ぼうぎょ " + Math.round(s.def * 50); };
+  const nameOf = c => (c && (c.nick || c.species)) || "";
+  const RAR = { 1:"ノーマル", 2:"レア", 3:"超レア" };
+  const myFighter = () => S.dex.find(d => d.id === S.fid) || null;
+
+  // ---------- 画面 ----------
+  let screen = "home";
+  function show(n){ screen = n; for(const s of document.querySelectorAll("main > section")) s.hidden = s.id !== "s-" + n; window.scrollTo(0, 0); }
+  let toastT = null;
+  function toast(t){ const e = $("toast"); e.textContent = t; e.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove("on"), 2200); }
+  const buzz = p => { try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
+
+  // ---------- 通信（ホストが全員とつながる。ホストがすべてを決める） ----------
+  let peer = null, role = null, demo = false, myId = null, hostConn = null, roomCode = "";
+  const conns = new Map();
+  let offset = 0, bestRtt = Infinity;
+  let H = null;     // ホストだけが持つ状態
+  let VS = { lobby: null, game: null };   // 全員が持つ見た目の状態
+
+  function peerOptions(){
+    const o = { debug: 0 };
+    if(Q.get("peerhost")){ o.host = Q.get("peerhost"); o.port = +Q.get("peerport") || 9000; o.path = Q.get("peerpath") || "/"; o.secure = Q.get("peersecure") === "1"; }
+    return o;
+  }
+  const hostPeerId = code => "kotsunz-hb-" + code;
+  function homeStatus(t, err){ const s = $("home-status"); s.textContent = t || ""; s.classList.toggle("err", !!err); }
+
+  function sendToHost(m){ if(role === "host") hostHandle(myId, m); else if(hostConn && hostConn.open) try{ hostConn.send(m); }catch(e){} }
+  function sendTo(id, m){ if(id === myId) clientHandle(m); else { const c = conns.get(id); if(c && c.open) try{ c.send(m); }catch(e){} } }
+  function bcast(m){ clientHandle(m); for(const c of conns.values()) if(c.open) try{ c.send(m); }catch(e){} }
+
+  function needName(){
+    const n = $("name").value.trim().slice(0, 10);
+    if(!n){ homeStatus("ニックネームを入れてね。", true); $("name").focus(); return null; }
+    S.name = n; save(); return n;
+  }
+
+  async function enableMotion(){
+    try{
+      if(typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function"){
+        const r = await DeviceMotionEvent.requestPermission(); if(r !== "granted" && !demo) toast("センサーが使えないので「コツンした！」ボタンを使ってね");
+      }
+    }catch(e){}
+    window.removeEventListener("devicemotion", onMotion);
+    window.addEventListener("devicemotion", onMotion);
+    audio();
+  }
+
+  async function createRoom(){
+    if(!needName()) return;
+    if(typeof Peer === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認してください。", true); return; }
+    await enableMotion();
+    homeStatus("部屋を作っています…");
+    role = "host"; myId = "host";
+    const code = String(100000 + (crypto.getRandomValues(new Uint32Array(1))[0] % 900000));
+    peer = new Peer(hostPeerId(code), peerOptions());
+    peer.on("open", () => { homeStatus(""); startHost(code, false); });
+    peer.on("connection", c => {
+      c.on("open", () => { conns.set(c.peer, c); });
+      c.on("data", m => hostHandle(c.peer, m));
+      c.on("close", () => dropPlayer(c.peer));
+      c.on("error", () => {});
+    });
+    peer.on("error", e => {
+      if(e && e.type === "unavailable-id"){ try{ peer.destroy(); }catch(x){} createRoom(); return; }
+      if(e && (e.type === "network" || e.type === "server-error" || e.type === "socket-error")) homeStatus("通信サーバーにつながりません。電波を確認してください。", true);
+    });
+  }
+
+  async function joinRoom(code){
+    if(!needName()) return;
+    if(!/^\d{6}$/.test(code)){ homeStatus("6けたのコードを入れてね。", true); return; }
+    if(typeof Peer === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認してください。", true); return; }
+    await enableMotion();
+    homeStatus("部屋につないでいます…");
+    role = "guest";
+    peer = new Peer(undefined, peerOptions());
+    peer.on("open", id => {
+      myId = id;
+      const c = peer.connect(hostPeerId(code), { reliable: true });
+      hostConn = c;
+      c.on("open", () => {
+        c.send({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter() });
+        syncClock(); startHeartbeat();
+      });
+      c.on("data", clientHandle);
+      c.on("close", () => leave("ホストとの接続が切れました。"));
+      c.on("error", () => {});
+    });
+    peer.on("error", e => {
+      if(e && e.type === "peer-unavailable") leave("その部屋が見つかりません。コードかリンクを確かめてね。");
+      else if(e && (e.type === "network" || e.type === "server-error" || e.type === "socket-error")) leave("通信サーバーにつながりません。電波を確認してください。");
+    });
+  }
+
+  function startDemo(){
+    if(!needName()) return;
+    role = "host"; demo = true; myId = "host";
+    enableMotion();
+    startHost("000000", true);
+  }
+
+  function syncClock(){
+    let n = 0;
+    const tick = () => { if(!hostConn || n++ >= 8) return; sendToHost({ t:"ping", a: performance.now() }); setTimeout(tick, 150); };
+    tick();
+  }
+  let hbTimer = null, lastHost = 0;
+  function startHeartbeat(){
+    clearInterval(hbTimer); lastHost = performance.now();
+    hbTimer = setInterval(() => {
+      if(role === "guest"){ sendToHost({ t:"hb" }); if(performance.now() - lastHost > 9000) leave("ホストとの接続が切れました。"); }
+      if(role === "host" && H && !demo){
+        for(const c of conns.values()) if(c.open) try{ c.send({ t:"hb" }); }catch(e){}
+        for(const p of H.players.values()) if(!p.cpu && p.id !== "host" && performance.now() - p.seen > 9000) dropPlayer(p.id);
+      }
+    }, 2000);
+  }
+  window.addEventListener("pagehide", () => { if(role === "guest") sendToHost({ t:"bye" }); });
+
+  function leave(msg){
+    clearInterval(hbTimer); stopGameTimers();
+    if(H && H.game) clearTimeout(H.game.timer);
+    try{ if(peer) peer.destroy(); }catch(e){}
+    peer = null; role = null; demo = false; myId = null; hostConn = null; H = null; conns.clear();
+    VS = { lobby: null, game: null }; offset = 0; bestRtt = Infinity;
+    $("birth").hidden = true; $("sheet").classList.remove("on"); $("rename").hidden = true; $("ko").hidden = true; document.body.classList.remove("hurt");
+    show("home"); homeStatus(msg || "", !!msg);
+    if(ROOM_Q){ const u = new URL(location.href); u.searchParams.delete("room"); history.replaceState(null, "", u); $("home-join").hidden = true; }
+  }
+
+  // ---------- ホスト ----------
+  function startHost(code, isDemo){
+    roomCode = code;
+    H = { code, players: new Map(), order: [], genres: new Set(["flag","history","science","movie","kpop","soccer"]), count: 10, phase: "lobby", spikes: [], game: null };
+    addPlayer("host", S.name, S.deviceId, myFighter(), false);
+    if(isDemo){
+      const names = ["CPUぽん", "CPUりん", "CPUまる"];
+      names.forEach((n, i) => { const id = "cpu" + (i + 1); place = pick(Object.keys(PLACES)); const [c] = makePair(1, false).map(rollStats); c.exp = rnd(90); addPlayer(id, n, "cpu" + i, c, true); });
+      const cpus = ["cpu1", "cpu2", "cpu3"];
+      for(const a of cpus) for(const b of cpus) if(a !== b) H.players.get(a).bumps.add(b);
+    }
+    startHeartbeat();
+    clientHandle({ t:"welcome", you: "host", code });
+    pushLobby();
+  }
+  function addPlayer(id, name, deviceId, fighter, cpu){
+    H.players.set(id, { id, name, deviceId, fighter: fighter ? sanitize(fighter) : null, bumps: new Set(), cpu: !!cpu, seen: performance.now() });
+    if(!H.order.includes(id)) H.order.push(id);
+  }
+  function dropPlayer(id){
+    if(!H) return;
+    conns.delete(id);
+    const p = H.players.get(id); if(!p) return;
+    if(H.phase === "lobby" || H.phase === "end"){
+      H.players.delete(id); H.order = H.order.filter(x => x !== id);
+      for(const q of H.players.values()) q.bumps.delete(id);
+      pushLobby();
+      toast(p.name + "が抜けました");
+    }else{ p.gone = true; toast(p.name + "の接続が切れました"); }
+  }
+  function lobbyView(){
+    return { t:"lobby", code: H.code, phase: H.phase, count: H.count, genres: [...H.genres], demo,
+      players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, bumps: p.bumps.size, host: id === "host", cpu: p.cpu }; }) };
+  }
+  function pushLobby(){ if(H) bcast(lobbyView()); }
+
+  function hostHandle(from, m){
+    if(!H || !m || typeof m !== "object") return;
+    const p = H.players.get(from);
+    if(p) p.seen = performance.now();
+    switch(m.t){
+      case "hello": {
+        const c = conns.get(from);
+        const name = String(m.name || "").trim().slice(0, 10) || "ゲスト";
+        if(H.phase !== "lobby"){ if(c) c.send({ t:"reject", reason:"いまゲーム中です。終わってから入ってね。" }); setTimeout(() => c && c.close(), 400); return; }
+        if(!p && H.players.size >= MAX_PLAYERS){ if(c) c.send({ t:"reject", reason:"満員です（最大" + MAX_PLAYERS + "人）。" }); setTimeout(() => c && c.close(), 400); return; }
+        addPlayer(from, name, String(m.deviceId || "").slice(0, 16), m.fighter, false);
+        sendTo(from, { t:"welcome", you: from, code: H.code });
+        pushLobby();
+        toast(name + "が入りました");
+        break;
+      }
+      case "ping": sendTo(from, { t:"pong", a: m.a, h: performance.now() }); break;
+      case "hb": break;
+      case "bye": dropPlayer(from); break;
+      case "spike": if(p && typeof m.at === "number") onSpike(from, m.at); break;
+      case "fighter": if(p && H.phase !== "game"){ const c = sanitize(m.c); if(c){ p.fighter = c; pushLobby(); } } break;
+      case "ans": if(p) answer(from, m.r, m.c, m.ms); break;
+    }
+  }
+
+  // コツンの判定。ほぼ同時（0.5秒以内）に揺れた人どうしをペアにする（3人以上同時も可）
+  function onSpike(id, at){
+    if(H.phase !== "lobby") return;
+    const now = performance.now();
+    H.spikes = H.spikes.filter(s => now - s.at < 3000 && s.id !== id);
+    const near = H.spikes.filter(s => Math.abs(s.at - at) <= BUMP_WIN);
+    H.spikes.push({ id, at });
+    if(!near.length) return;
+    // 揺れの記録は3秒残す。あとから届いた人も同じグループに入れる（3人以上の同時コツン）
+    const others = [...new Set(near.map(s => s.id))];
+    for(const o of others) pairUp(id, o);
+    pushLobby();
+  }
+  function pairUp(a, b){
+    const A = H.players.get(a), B = H.players.get(b); if(!A || !B) return;
+    const fresh = !A.bumps.has(b);
+    A.bumps.add(b); B.bumps.add(a);
+    bcast({ t:"bumped", a, b, an: A.name, bn: B.name });
+    if(fresh){
+      place = pick(Object.keys(PLACES));
+      const [ca, cb] = makePair(1, true).map(rollStats);
+      A.fighter = sanitize(ca); B.fighter = sanitize(cb);
+      sendTo(a, { t:"born", c: ca, partner: B.name });
+      if(!B.cpu) sendTo(b, { t:"born", c: cb, partner: A.name });
+    }
+  }
+  function canStart(){
+    const ps = [...H.players.values()];
+    if(ps.length < 2) return "2人以上そろうとスタートできます。";
+    const nb = ps.filter(p => p.bumps.size < 1);
+    if(nb.length) return "まだコツンしていない人がいます（" + nb.map(p => p.name).join("、") + "）";
+    if(ps.some(p => !p.fighter)) return "キャラがいない人がいます。";
+    return "";
+  }
+
+  // ---------- 早押しの進行（ホストだけ） ----------
+  const live = () => H.order.map(id => H.players.get(id)).filter(p => p && p.alive);
+  function startGame(){
+    if(!H || canStart()) return;
+    H.phase = "game";
+    for(const p of H.players.values()){ p.max = maxHp(p.fighter); p.hp = p.max; p.alive = true; p.streak = 0; p.correct = 0; p.totalMs = 0; p.outR = null; }
+    H.game = { r: -1, total: H.count, genres: [...H.genres], used: new Set(), q: null, ans: new Map(), timer: null, limit: {} };
+    bcast({ t:"start", total: H.count, players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, hp: p.hp, max: p.max }; }) });
+    H.game.timer = setTimeout(nextQ, 1500);
+  }
+  function nextQ(){
+    const G = H.game; if(!G) return;
+    G.r++;
+    const alive = live();
+    if(G.r >= G.total || alive.length <= 1) return endGame();
+    const genre = pick(G.genres);
+    const q = makeQuestion(genre, G.used); G.q = q; G.ans = new Map();
+    const limit = {}, hide = {};
+    for(const p of alive){ const fx = pfx(p.fighter); limit[p.id] = BASE_LIMIT + (fx.time || 0); hide[p.id] = fx.hint ? wrongIndex(q) : null; }
+    G.limit = limit;
+    const at = performance.now() + COUNTDOWN;
+    // 正解の番号は送らない（答え合わせで送る）
+    bcast({ t:"q", r: G.r, total: G.total, genre, prompt: q.prompt, choices: q.choices, flag: q.flag, melody: q.melody, at, limit, hide });
+    G.timer = setTimeout(resolveQ, COUNTDOWN + Math.max(...Object.values(limit)) + 1500);
+    for(const p of alive) if(p.cpu){
+      const ms = 1500 + Math.random() * 7000, ok = Math.random() < .55, r = G.r;
+      setTimeout(() => { if(H && H.game === G && G.r === r) answer(p.id, r, ok ? q.answer : wrongIndex(q), ms); }, COUNTDOWN + ms);
+    }
+  }
+  function answer(id, r, c, ms){
+    const G = H && H.game; if(!G || !G.q || r !== G.r) return;
+    const p = H.players.get(id); if(!p || !p.alive || G.ans.has(id)) return;
+    const lim = G.limit[id] || BASE_LIMIT;
+    G.ans.set(id, { c: Number.isInteger(c) && c >= 0 && c < 4 ? c : -1, ms: Math.max(0, Math.min(+ms || lim, lim)) });
+    bcast({ t:"answered", r, ids: [...G.ans.keys()] });
+    if(live().every(x => G.ans.has(x.id) || x.gone)){ clearTimeout(G.timer); G.timer = setTimeout(resolveQ, 600); }
+  }
+
+  // 速い人ほど倍率が高く、「自分より遅い人」全員を攻撃する
+  const RANK_MUL = [0, 1.8, 1.5, 1.25];
+  function attackPower(A, genre, ms, limit, rank, round, total){
+    const c = A.fighter, b = BODY_FX[c.body] || BODY_FX.round, fx = pfx(c), why = [];
+    // 1) 早押し（順位と速さ）
+    let d = 8 * (RANK_MUL[rank] || 1);
+    const quick = Math.max(0, 1 - ms / limit);
+    d *= 1 + .5 * quick * (fx.speed || 1);
+    // 2) キャラの特性。かけ算が重なりすぎないよう、合計は0.6〜1.8倍におさえる
+    let t = 1;
+    if(isGood(c, genre)){ t *= 1.5; why.push("得意ジャンル"); }
+    t *= statsOf(c).atk * ([1, 1, 1.1, 1.2][c.rarity] || 1) * (fx.atk || 1);
+    if(fx.bond){ const k = Math.min(.4, .08 * A.bumps.size); t *= 1 + k; if(k) why.push("コツン" + A.bumps.size + "人"); }
+    if(fx.late && round >= total / 2){ t *= fx.late; why.push("ねぼすけ覚醒"); }
+    if(fx.streak && A.streak > 1){ t *= 1 + fx.streak * (A.streak - 1); why.push(A.streak + "連続正解"); }
+    if(fx.strict) t *= 1.3;
+    if(fx.random){ const k = .5 + Math.random() * 1.3; t *= k; why.push("きまぐれ×" + k.toFixed(1)); }
+    d *= Math.max(.6, Math.min(1.8, t));
+    return { d, why };
+  }
+  function resolveQ(){
+    const G = H.game; if(!G || !G.q) return;
+    clearTimeout(G.timer);
+    const q = G.q; G.q = null;
+    const alive = live();
+    const correct = alive.filter(p => (G.ans.get(p.id) || {}).c === q.answer).sort((a, b) => G.ans.get(a.id).ms - G.ans.get(b.id).ms);
+    const rankOf = new Map(correct.map((p, i) => [p.id, i + 1]));
+    for(const p of alive){ if(rankOf.has(p.id)){ p.streak++; p.correct++; p.totalMs += G.ans.get(p.id).ms; } else p.streak = 0; }
+    const incoming = new Map(alive.map(p => [p.id, []])), dealt = {}, why = {};
+    correct.forEach((A, i) => {
+      const rank = i + 1, a = G.ans.get(A.id);
+      const pw = attackPower(A, q.genre, a.ms, G.limit[A.id] || BASE_LIMIT, rank, G.r, G.total);
+      why[A.id] = pw.why;
+      let n = 0;
+      for(const T of alive){
+        if(T === A) continue;
+        const tr = rankOf.get(T.id); if(tr && tr < rank) continue;          // 自分より速い人には当たらない
+        const c = A.fighter, o = T.fighter;
+        let d = pw.d;
+        if(BEATS[c.type] === o.type) d *= 1.3; else if(BEATS[o.type] === c.type) d *= .85;
+        if(pfx(c).chase && !tr) d += pfx(c).chase;
+        // ぼうぎょ（体の形・個体差・性格）。苦手ジャンルの問題ではぼうぎょ1.4倍
+        d /= statsOf(o).def * (isWeak(o, q.genre) ? 1.4 : 1);
+        incoming.get(T.id).push(Math.min(35, d)); n++;
+      }
+      dealt[A.id] = n;
+    });
+    const taken = {}, heal = {}, self = {}, out = [];
+    for(const T of alive){
+      const list = incoming.get(T.id);
+      // 何人もから攻撃されたときは、平均に「人数×10%」を上乗せする（大人数でもすぐ全滅しないように）
+      const k = list.length, tot = k ? Math.round(list.reduce((x, y) => x + y, 0) / k * (1 + .1 * (k - 1))) : 0;
+      taken[T.id] = tot; T.hp -= tot;
+    }
+    for(const p of alive){
+      const fx = pfx(p.fighter);
+      if(rankOf.has(p.id) && fx.heal && p.hp > 0){ p.hp = Math.min(p.max, p.hp + fx.heal); heal[p.id] = fx.heal; }
+      if(!rankOf.has(p.id) && fx.strict){ p.hp -= 5; self[p.id] = 5; }
+      if(p.hp <= 0){ p.hp = 0; p.alive = false; p.outR = G.r; out.push(p.id); }
+    }
+    const answers = {}; for(const [k, v] of G.ans) answers[k] = v.c;
+    bcast({ t:"res", r: G.r, genre: q.genre, answer: q.answer, ranking: correct.map(p => ({ id: p.id, ms: Math.round(G.ans.get(p.id).ms) })),
+            answers, taken, dealt, why, heal, self, out, hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) });
+    G.timer = setTimeout(nextQ, RESULT_MS);
+  }
+  function endGame(){
+    const G = H.game; if(G) clearTimeout(G.timer);
+    const ps = [...H.players.values()];
+    ps.sort((a, b) => (b.alive - a.alive) || (a.alive ? 0 : (b.outR ?? -1) - (a.outR ?? -1)) || (b.hp - a.hp) || (b.correct - a.correct) || ((a.correct ? a.totalMs / a.correct : 1e9) - (b.correct ? b.totalMs / b.correct : 1e9)));
+    H.phase = "end"; H.game = null;
+    bcast({ t:"end", ranking: ps.map((p, i) => ({ id: p.id, place: i + 1, name: p.name, fighter: p.fighter, hp: p.hp, max: p.max, correct: p.correct, avg: p.correct ? Math.round(p.totalMs / p.correct) : null })) });
+  }
+  function rematch(){ if(!H || H.phase !== "end") return; H.phase = "lobby"; pushLobby(); }
+
+  // ---------- コツン（センサー） ----------
+  let lastSpike = 0;
+  function onMotion(e){
+    let mag = null; const a = e.acceleration;
+    if(a && a.x != null) mag = Math.hypot(a.x, a.y, a.z);
+    else{ const g = e.accelerationIncludingGravity; if(!g || g.x == null) return; mag = Math.abs(Math.hypot(g.x, g.y, g.z) - 9.81); }
+    const now = performance.now();
+    if(mag >= THRESHOLD && now - lastSpike > 350){ lastSpike = now; localSpike(now); }
+  }
+  function localSpike(t){
+    if(screen !== "lobby" || !role) return;
+    const f = $("l-flash"); f.classList.add("on"); setTimeout(() => f.classList.remove("on"), 80);
+    buzz(30);
+    if(demo){
+      // 試作デモ：CPUのだれかと同時にコツンしたことにする
+      const cpu = pick(["cpu1", "cpu2", "cpu3"]);
+      hostHandle("host", { t:"spike", at: t }); hostHandle(cpu, { t:"spike", at: t + 40 });
+      return;
+    }
+    sendToHost({ t:"spike", at: role === "host" ? t : t + offset });
+  }
+
+  // ---------- 全員の画面 ----------
+  function clientHandle(m){
+    if(!m || typeof m !== "object") return;
+    if(role === "guest") lastHost = performance.now();
+    switch(m.t){
+      case "welcome": myId = m.you; roomCode = String(m.code || ""); show("lobby"); break;
+      case "reject": leave(String(m.reason || "入れませんでした。").slice(0, 60)); break;
+      case "pong": { const now = performance.now(), rtt = now - m.a; if(rtt < bestRtt){ bestRtt = rtt; offset = m.h - (m.a + now) / 2; } break; }
+      case "lobby": VS.lobby = m; if(screen === "lobby" || (screen === "end" && m.phase === "lobby")){ show("lobby"); renderLobby(); } break;
+      case "bumped": if(m.a === myId || m.b === myId){ const other = m.a === myId ? m.bn : m.an; toast(String(other).slice(0, 10) + "とコツン！"); buzz([40, 30, 80]); } break;
+      case "born": onBorn(m); break;
+      case "start": onStart(m); break;
+      case "q": onQuestion(m); break;
+      case "answered": onAnswered(m); break;
+      case "res": onResult(m); break;
+      case "end": onEnd(m); break;
+    }
+  }
+
+  // ---------- 効果音（ページ内で合成） ----------
+  function sfx(kind){
+    if(S.sound === false) return;
+    const a = audio(); if(!a) return;
+    const t0 = a.currentTime;
+    const tone = (f, d, type, v, at) => {
+      try{
+        const o = a.createOscillator(), g = a.createGain(); o.type = type || "sine"; o.frequency.setValueAtTime(f, t0 + (at || 0));
+        g.gain.setValueAtTime(v || .08, t0 + (at || 0)); g.gain.exponentialRampToValueAtTime(.0001, t0 + (at || 0) + d);
+        o.connect(g); g.connect(a.destination); o.start(t0 + (at || 0)); o.stop(t0 + (at || 0) + d + .03);
+      }catch(e){}
+    };
+    if(kind === "tick") tone(880, .08, "sine", .05);
+    if(kind === "go") tone(1320, .18, "sine", .07);
+    if(kind === "ok"){ tone(988, .12, "triangle", .1); tone(1319, .22, "triangle", .1, .1); }
+    if(kind === "ng") tone(196, .35, "sawtooth", .05);
+    if(kind === "hit"){ tone(140, .16, "square", .1); tone(70, .25, "sine", .14, .02); }
+    if(kind === "crit"){ tone(660, .08, "square", .07); tone(990, .08, "square", .07, .08); tone(1480, .2, "square", .07, .16); }
+    if(kind === "ko"){ tone(440, .15, "sawtooth", .07); tone(330, .15, "sawtooth", .07, .15); tone(220, .4, "sawtooth", .07, .3); }
+    if(kind === "win") [523, 659, 784, 1047].forEach((f, i) => tone(f, .2, "triangle", .1, i * .13));
+    if(kind === "birth") [784, 988, 1175, 1568].forEach((f, i) => tone(f, .15, "triangle", .08, i * .09));
+  }
+
+  function onBorn(m){
+    const c = sanitize(m.c); if(!c) return;
+    rollStats(c);
+    S.dex.push(c); S.fid = c.id; save();
+    $("bi-from").textContent = String(m.partner || "").slice(0, 10) + "とコツンして生まれた！";
+    $("bi-pic").innerHTML = drawCreature(c);
+    $("bi-name").textContent = c.species + "（" + RAR[c.rarity] + "）";
+    $("bi-desc").textContent = c.type + "タイプ・" + c.pers + "。" + statLine(c) + "。得意は" + goodText(c) + "。" + (PFX[c.pers] || {}).d + "。";
+    $("birth").dataset.id = c.id;
+    $("birth").hidden = false;
+    buzz([60, 40, 140]); sfx("birth");
+    if(screen === "lobby") renderLobby();
+  }
+
+  function creatureLine(c){ return c.type + "タイプ・" + c.pers + "・Lv" + lvl(c); }
+  function charCard(c, box, withButtons){
+    const pic = el("div", "pic"); pic.innerHTML = drawCreature(c);
+    const tx = el("div", "tx");
+    tx.append(el("b", null, nameOf(c)), el("div", "stat", statLine(c)), el("div", null, creatureLine(c)),
+      el("div", null, "得意（こうげきUP）　" + goodText(c)), el("div", null, "苦手（ぼうぎょUP）　" + weakText(c)), el("div", null, (PFX[c.pers] || {}).d || ""));
+    box.append(pic, tx);
+    if(withButtons){
+      const row = el("div", "row"); row.style.flex = "1 1 100%";
+      const rn = el("button", "btn ghost small", "名前を変える"); rn.addEventListener("click", () => openRename(c));
+      const ch = el("button", "btn ghost small", "キャラを変える"); ch.addEventListener("click", openSheet);
+      row.append(rn, ch); box.append(row);
+    }
+  }
+
+  function renderLobby(){
+    const L = VS.lobby; if(!L) return;
+    const me = L.players.find(p => p.id === myId);
+    $("l-code").textContent = L.demo ? "デモ" : L.code;
+    $("l-count").textContent = L.players.length + " / " + MAX_PLAYERS + "人";
+    const u = new URL(location.href); u.search = ""; u.hash = ""; u.searchParams.set("room", L.code);
+    for(const k of ["peerhost","peerport","peerpath","peersecure","debug"]) if(Q.get(k) !== null) u.searchParams.set(k, Q.get(k));
+    const link = u.toString(); $("l-link").textContent = L.demo ? "（デモでは招待できません）" : link;
+    $("b-share").disabled = !!L.demo; $("b-share").dataset.link = link;
+    if(!L.demo && typeof qrcode !== "undefined" && $("l-qr").dataset.link !== link){
+      const qr = qrcode(0, "M"); qr.addData(link); qr.make(); $("l-qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 1, scalable: true }); $("l-qr").dataset.link = link;
+    }
+    $("l-qr").hidden = !!L.demo;
+    const nb = me ? me.bumps : 0;
+    $("l-bumpok").textContent = nb ? "コツンOK ✓ " + nb + "人とコツンしました" : "まだコツンしていません";
+    $("l-bump").classList.toggle("done", nb > 0);
+    const box = $("l-me"); box.textContent = "";
+    const f = myFighter();
+    if(f) charCard(f, box, true);
+    else{
+      const tx = el("div", "tx"); tx.append(el("b", null, "キャラがまだいません"), el("div", null, "近くの人とコツンすると、2人だけのキャラが生まれます。"));
+      box.append(el("div", "egg"), tx);
+    }
+    const list = $("l-players"); list.textContent = "";
+    for(const p of L.players){
+      const row = el("div", "pl");
+      const pic = el("div", "pic"); if(p.fighter) pic.innerHTML = drawCreature(p.fighter); else { const e = el("div", "egg"); e.style.cssText = "width:40px;height:40px"; pic.append(e); }
+      const nm = el("div", "nm", p.name); if(p.id === myId) nm.append(el("small", null, "あなた")); if(p.host) nm.append(el("small", null, "ホスト")); if(p.cpu) nm.append(el("small", null, "CPU"));
+      if(p.fighter) nm.append(el("div", "fname", nameOf(p.fighter) + "　HP" + maxHp(p.fighter)));
+      const kt = el("div", "kt" + (p.bumps ? "" : " no"), p.bumps ? "コツン ✓" + p.bumps : "コツン待ち");
+      row.append(pic, nm, kt); list.appendChild(row);
+    }
+    const isHost = role === "host";
+    $("l-host").hidden = !isHost; $("l-guest").hidden = isHost; $("b-start").hidden = !isHost;
+    if(isHost){
+      const gbox = $("l-genres");
+      if(!gbox.childElementCount){
+        const all = el("div", "row"); all.style.marginBottom = "4px";
+        const bAll = el("button", "btn ghost small", "全部えらぶ"), bNone = el("button", "btn ghost small", "教養だけ");
+        bAll.addEventListener("click", () => { for(const g of Object.keys(GENRES)) H.genres.add(g); pushLobby(); });
+        bNone.addEventListener("click", () => { H.genres = new Set(GENRE_GROUPS[0][1].concat(GENRE_GROUPS[1][1], GENRE_GROUPS[2][1], GENRE_GROUPS[3][1])); pushLobby(); });
+        all.append(bAll, bNone); gbox.append(all);
+        for(const [label, keys] of GENRE_GROUPS){
+          gbox.append(el("div", "cat", label));
+          const row = el("div", "chips");
+          for(const g of keys){ const b = el("button", "chip", GENRES[g]); b.dataset.g = g; b.addEventListener("click", () => { if(H.genres.has(g)){ if(H.genres.size > 1) H.genres.delete(g); } else H.genres.add(g); pushLobby(); }); row.append(b); }
+          gbox.append(row);
+        }
+      }
+      for(const b of gbox.querySelectorAll(".chip")) b.setAttribute("aria-pressed", L.genres.includes(b.dataset.g) ? "true" : "false");
+      for(const b of $("l-count-seg").children) b.setAttribute("aria-pressed", +b.dataset.n === L.count ? "true" : "false");
+      const why = canStart();
+      $("b-start").disabled = !!why;
+      $("l-status").textContent = why || "全員そろいました。スタートできます！";
+    }else{
+      $("l-genre-text").textContent = L.genres.map(g => GENRES[g]).join("・") + "（" + L.count + "問）";
+      $("l-status").textContent = "ホストがスタートするのを待っています…";
+    }
+  }
+
+  // ----- 図鑑と名前変更（どのキャラでも名前を変えられる） -----
+  function openSheet(){
+    const grid = $("sheet-grid"); grid.textContent = "";
+    $("sheet-count").textContent = S.dex.length + "体";
+    if(!S.dex.length) grid.append(el("div", "muted", "まだキャラがいません。部屋に入って、近くの人とコツンしよう。"));
+    for(const c of S.dex.slice().reverse()){
+      const d = el("div", "dx" + (c.id === S.fid ? " sel" : ""));
+      d.innerHTML = drawCreature(c);
+      d.append(el("b", null, nameOf(c)), el("div", null, creatureLine(c)), el("div", "stat", "HP" + maxHp(c)));
+      const rn = el("button", "mini-btn", "名前"); rn.addEventListener("click", e => { e.stopPropagation(); openRename(c); });
+      d.append(rn);
+      d.addEventListener("click", () => {
+        S.fid = c.id; save();
+        if(role && VS.lobby && screen === "lobby") sendToHost({ t:"fighter", c });
+        $("sheet").classList.remove("on");
+        if(screen === "lobby") renderLobby(); else renderHome();
+      });
+      grid.appendChild(d);
+    }
+    $("sheet").classList.add("on");
+  }
+  let renaming = null;
+  function openRename(c){
+    renaming = c.id;
+    $("rn-pic").innerHTML = drawCreature(c);
+    $("rn-input").value = c.nick || "";
+    $("rn-input").placeholder = c.species;
+    $("rename").hidden = false;
+    setTimeout(() => $("rn-input").focus(), 50);
+  }
+  function saveRename(){
+    const c = S.dex.find(d => d.id === renaming); if(!c) return;
+    c.nick = $("rn-input").value.trim().slice(0, 10);
+    save();
+    $("rename").hidden = true;
+    if(c.id === S.fid && role && screen === "lobby") sendToHost({ t:"fighter", c });
+    if($("sheet").classList.contains("on")) openSheet();
+    if(screen === "lobby") renderLobby(); else if(screen === "home") renderHome();
+    toast(c.nick ? "名前を「" + c.nick + "」にしました" : "名前をもとにもどしました");
+  }
+
+  // ----- ゲームの画面 -----
+  let qTimer = null, cdTimer = null, showTimer = null, fxTimers = [];
+  function stopGameTimers(){ clearInterval(qTimer); clearInterval(cdTimer); clearTimeout(showTimer); fxTimers.forEach(clearTimeout); fxTimers = []; stopMelody(); }
+  const later = (fn, ms) => fxTimers.push(setTimeout(fn, ms));
+  function onStart(m){
+    $("birth").hidden = true; $("sheet").classList.remove("on"); $("rename").hidden = true;
+    VS.game = { total: m.total, r: -1, players: new Map(), order: [], myCorrect: 0 };
+    for(const p of m.players){ const c = sanitize(p.fighter); VS.game.players.set(p.id, { id: p.id, name: String(p.name).slice(0, 10), fighter: c, hp: p.hp, max: p.max, alive: true }); VS.game.order.push(p.id); }
+    show("game"); renderRoster(); renderMe();
+    $("g-card").textContent = ""; $("g-card").append(el("div", "count3", "BATTLE"), el("div", "muted", VS.game.order.length + "人で早押しバトル！"));
+    $("g-choices").textContent = ""; $("g-res").hidden = true; $("g-stat").textContent = ""; $("g-round").textContent = ""; $("g-genre").textContent = "";
+    sfx("go");
+  }
+  // 画面下にいつも出す、自分のキャラとHP
+  function renderMe(note){
+    const G = VS.game; if(!G) return;
+    const p = G.players.get(myId); if(!p) return;
+    $("gm-pic").innerHTML = drawCreature(p.fighter);
+    $("gm-name").textContent = nameOf(p.fighter) + "（" + p.name + "）";
+    $("gm-hp").textContent = Math.max(0, p.hp) + " / " + p.max;
+    const r = Math.max(0, p.hp / p.max);
+    $("gm-bar").style.width = (r * 100) + "%";
+    $("g-me").classList.toggle("low", r <= .3 && p.alive);
+    $("g-me").classList.toggle("out", !p.alive);
+    if(note !== undefined) $("gm-note").textContent = note;
+    if(!p.alive) $("gm-note").textContent = "KO…観戦中";
+  }
+  function renderRoster(ans){
+    const G = VS.game; const box = $("g-roster"); box.textContent = "";
+    for(const id of G.order){
+      const p = G.players.get(id);
+      const d = el("div", "rs" + (id === myId ? " me" : "") + (p.alive ? "" : " out") + (ans && ans.includes(id) ? " ans" : ""));
+      d.dataset.id = id;
+      const pic = el("div", "pic"); pic.innerHTML = drawCreature(p.fighter);
+      const hb = el("div", "hpb"); const i = el("i"); i.style.width = Math.max(0, p.hp / p.max * 100) + "%"; hb.append(i);
+      d.append(el("span", "bolt", "押した"), pic, hb, el("div", "n", p.name), el("div", "hpn", p.alive ? String(p.hp) : "KO"), el("div", "dmg"));
+      box.appendChild(d);
+    }
+  }
+  function onQuestion(m){
+    const G = VS.game; if(!G) return;
+    stopGameTimers();
+    G.r = m.r; G.q = m; G.answered = false;
+    const me = G.players.get(myId), alive = me && me.alive;
+    $("g-round").textContent = "第" + (m.r + 1) + "問 / " + m.total;
+    $("g-genre").textContent = GENRES[m.genre] || "";
+    $("g-res").hidden = true; $("g-stat").textContent = ""; $("g-timer").style.width = "100%";
+    renderRoster([]);
+    const f = me && me.fighter;
+    const note = !f ? "" : isGood(f, m.genre) ? "得意ジャンル！ こうげき1.5倍" : isWeak(f, m.genre) ? "苦手ジャンル…でも ぼうぎょ1.4倍" : "";
+    renderMe(note);
+    const card = $("g-card"), ch = $("g-choices"); card.textContent = ""; ch.textContent = "";
+    const showAt = role === "host" ? m.at : m.at - offset;
+    const cd = el("div", "count3"); card.append(el("div", "genre-big", GENRES[m.genre]), cd);
+    if(note) card.append(el("div", "note " + (isGood(f, m.genre) ? "good" : "weak"), note));
+    let lastN = null;
+    const tick = () => { const left = showAt - performance.now(); const n = left > 0 ? Math.ceil(left / 1000) : 0; cd.textContent = n ? String(n) : ""; if(n && n !== lastN){ lastN = n; sfx("tick"); } };
+    tick(); cdTimer = setInterval(tick, 100);
+    showTimer = setTimeout(() => {
+      clearInterval(cdTimer); sfx("go");
+      card.textContent = "";
+      card.append(el("div", "qprompt", m.prompt));
+      if(m.flag){ const md = el("div", "qmedia"); md.innerHTML = flagSVG(m.flag); card.append(md); }
+      if(m.melody){ card.append(el("div", "disc")); const again = el("button", "btn ghost small", "もう一度きく"); again.style.width = "auto"; again.addEventListener("click", () => playMelody(m.melody)); card.append(again); playMelody(m.melody); }
+      ch.className = "choices" + (m.choices.some(x => String(x).length > 9) ? " one" : "");
+      const t0 = performance.now(), limit = (m.limit && m.limit[myId]) || BASE_LIMIT;
+      m.choices.forEach((txt, i) => {
+        const b = el("button", null, txt);
+        if(m.hide && m.hide[myId] === i) b.classList.add("gone");
+        if(!alive) b.disabled = true;
+        b.addEventListener("click", () => {
+          if(G.answered || !alive) return; G.answered = true;
+          const ms = performance.now() - t0;
+          b.classList.add("mine"); for(const x of ch.children) x.disabled = true;
+          buzz(25);
+          $("g-stat").textContent = (ms / 1000).toFixed(2) + "秒で回答！ みんなを待っています…";
+          sendToHost({ t:"ans", r: m.r, c: i, ms });
+        });
+        ch.appendChild(b);
+      });
+      $("g-stat").textContent = alive ? (m.hide && m.hide[myId] != null ? "てれやの力で、まちがいが1つ消えた！" : "") : "KOされたので観戦中";
+      qTimer = setInterval(() => {
+        const left = Math.max(0, limit - (performance.now() - t0));
+        $("g-timer").style.width = (left / limit * 100) + "%";
+        $("g-timer").classList.toggle("hurry", left < 3000);
+        if(left <= 0){ clearInterval(qTimer); if(!G.answered && alive){ G.answered = true; for(const x of ch.children) x.disabled = true; $("g-stat").textContent = "時間切れ…"; sendToHost({ t:"ans", r: m.r, c: -1, ms: limit }); } }
+      }, 80);
+    }, Math.max(0, showAt - performance.now()));
+  }
+  function onAnswered(m){
+    const G = VS.game; if(!G || m.r !== G.r) return;
+    for(const d of $("g-roster").children) d.classList.toggle("ans", m.ids.includes(d.dataset.id));
+  }
+  function banner(text, cls){
+    const b = $("g-banner"); b.textContent = text; b.className = "banner " + (cls || ""); void b.offsetWidth; b.classList.add("on");
+    later(() => b.classList.remove("on"), 1300);
+  }
+  function onResult(m){
+    const G = VS.game; if(!G) return;
+    stopGameTimers();
+    const ch = $("g-choices");
+    const myAns = m.answers[myId];
+    const myRank = m.ranking.findIndex(x => x.id === myId) + 1;
+    [...ch.children].forEach((b, i) => { b.disabled = true; if(i === m.answer) b.classList.add("correct"); else if(i === myAns) b.classList.add("wrong"); });
+    sfx(myRank ? "ok" : "ng");
+    $("g-stat").textContent = myRank ? "正解！" : (myAns == null || myAns < 0 ? "時間切れ…" : "不正解…");
+    // 1) いちばん速かった人の攻撃
+    const top = m.ranking[0];
+    later(() => {
+      if(top){
+        const p = G.players.get(top.id);
+        if(top.id === myId) banner("クリティカル！ あなたの攻撃！", "crit");
+        else banner("⚡ " + (p ? p.name : "") + "の攻撃！", "");
+        sfx("crit");
+      }else banner("だれも正解できなかった！", "none");
+    }, 450);
+    // 2) ダメージとHP
+    later(() => {
+      for(const [id, hp] of Object.entries(m.hp)){ const p = G.players.get(id); if(p){ p.hp = hp; if(hp <= 0) p.alive = false; } }
+      renderRoster();
+      let any = false;
+      for(const d of $("g-roster").children){ const t = m.taken[d.dataset.id]; if(t){ any = true; const x = d.querySelector(".dmg"); x.textContent = "-" + t; x.classList.add("on"); d.classList.add("shake"); } }
+      if(any) sfx("hit");
+      const taken = m.taken[myId] || 0;
+      renderMe();
+      if(taken || m.self[myId]){ document.body.classList.remove("hurt"); void document.body.offsetWidth; document.body.classList.add("hurt"); const hm = $("gm-dmg"); hm.textContent = "-" + (taken + (m.self[myId] || 0)); hm.classList.remove("on"); void hm.offsetWidth; hm.classList.add("on"); buzz([90, 40, 60]); }
+      if(m.out.includes(myId)){ later(() => { $("ko").hidden = false; sfx("ko"); later(() => { $("ko").hidden = true; }, 1600); }, 300); }
+      else if(m.out.length) later(() => sfx("ko"), 250);
+      showResultPanel(m, myRank, myAns);
+    }, 1300);
+  }
+  function showResultPanel(m, myRank, myAns){
+    const G = VS.game;
+    const res = $("g-res"); res.textContent = ""; res.hidden = false;
+    let big, sub = "";
+    const f = (G.players.get(myId) || {}).fighter;
+    if(myRank){
+      const mine = m.ranking[myRank - 1];
+      big = myRank + "位で正解！ " + (mine.ms / 1000).toFixed(2) + "秒";
+      sub = (m.dealt[myId] ? m.dealt[myId] + "人に攻撃" : "自分より遅い人がいなかった") + ((m.why[myId] || []).length ? "（" + m.why[myId].join("・") + "）" : "");
+      G.myCorrect++;
+      const mf = myFighter(); if(mf){ mf.know = mf.know || {}; mf.know[m.genre] = (mf.know[m.genre] || 0) + 1; save(); }
+      buzz(myRank === 1 ? [50, 40, 50] : 30);
+    }else big = myAns == null || myAns < 0 ? "時間切れ…" : "ざんねん、不正解";
+    const taken = m.taken[myId] || 0;
+    if(taken) sub += (sub ? "　" : "") + taken + "ダメージ受けた" + (f && isWeak(f, m.genre) ? "（苦手ジャンルでぼうぎょUP中）" : "");
+    if(m.heal[myId]) sub += "　HP" + m.heal[myId] + "回復";
+    if(m.self[myId]) sub += "　まじめなので自分に" + m.self[myId] + "ダメージ";
+    if(m.out.includes(myId)) sub += "　KO…";
+    res.append(el("div", "big", big), el("div", "sub", sub));
+    const rk = el("div", "rank");
+    m.ranking.slice(0, 5).forEach((x, i) => { const p = G.players.get(x.id); const row = el("div"); const l = el("span"); l.append(el("b", null, (i + 1) + "位"), document.createTextNode(p ? p.name : "")); row.append(l, el("span", null, (x.ms / 1000).toFixed(2) + "秒・" + (m.dealt[x.id] || 0) + "人に攻撃")); rk.append(row); });
+    if(!m.ranking.length) rk.append(el("div", "watch", "だれも正解できなかった！"));
+    if(m.out.length) rk.append(el("div", "watch", "KO　" + m.out.map(id => (G.players.get(id) || {}).name).join("、")));
+    res.append(rk);
+  }
+  function onEnd(m){
+    stopGameTimers();
+    const G = VS.game || { myCorrect: 0 };
+    const win = m.ranking[0]; const mine = m.ranking.find(x => x.id === myId);
+    const w = $("e-win"); w.textContent = "";
+    const pic = el("div", "pic"); pic.innerHTML = drawCreature(sanitize(win.fighter));
+    w.append(pic, el("div", "w", "優勝　" + String(win.name).slice(0, 10)), el("div", "muted", nameOf(sanitize(win.fighter)) + "　" + (mine ? "あなたは " + mine.place + "位 / " + m.ranking.length + "人" : "")));
+    if(mine && mine.place === 1) sfx("win");
+    const lv = $("e-lv"); lv.textContent = ""; lv.className = "lvup";
+    const f = myFighter();
+    if(mine){ S.games = (S.games || 0) + 1; if(mine.place === 1) S.wins = (S.wins || 0) + 1; }
+    if(f && mine){
+      const before = lvl(f), hpBefore = maxHp(f), bonus = [0, 40, 25, 15][mine.place] || 8, gain = G.myCorrect * 10 + bonus;
+      f.exp = (f.exp || 0) + gain; f.battles = (f.battles || 0) + 1; if(mine.place === 1) f.wins = (f.wins || 0) + 1;
+      const info = levelInfo(f.exp), after = info.lv;
+      const p2 = el("div", "pic"); p2.innerHTML = drawCreature(f);
+      const tx = el("div"); tx.style.flex = "1";
+      tx.append(el("b", null, nameOf(f) + (after > before ? "　Lv" + before + " → Lv" + after + " レベルアップ！" : "　Lv" + after)),
+        el("div", "muted", "EXP +" + gain + "（正解" + G.myCorrect + "問・" + mine.place + "位ボーナス）" + (after > before ? "　HP " + hpBefore + "→" + maxHp(f) : "")));
+      const bar = el("div", "expbar"), bi = el("i"); bi.style.width = "0%"; bar.append(bi); tx.append(bar);
+      lv.append(p2, tx); if(after > before){ lv.classList.add("up"); buzz([80, 60, 80, 60, 200]); }
+      setTimeout(() => { bi.style.width = (info.cur / info.need * 100) + "%"; }, 300);
+    }
+    save();
+    $("e-save").textContent = fbUser ? "成果はクラウドに保存されます" : "成果はこの端末に保存されています（ログインするとクラウドに残せます）";
+    const list = $("e-rank"); list.textContent = "";
+    for(const x of m.ranking){
+      const row = el("div", "rk" + (x.id === myId ? " me" : ""));
+      const p = el("div", "pic"); p.innerHTML = drawCreature(sanitize(x.fighter));
+      row.append(el("div", "no", String(x.place)), p, el("div", "nm", String(x.name).slice(0, 10)), el("div", "st", "HP " + x.hp + "/" + x.max + "\n正解" + x.correct + (x.avg != null ? "・平均" + (x.avg / 1000).toFixed(1) + "秒" : "")));
+      row.lastChild.style.whiteSpace = "pre-line";
+      list.append(row);
+    }
+    const last = m.ranking[m.ranking.length - 1];
+    $("e-rule").textContent = mine && mine.place === m.ranking.length ? "最下位なので、スマホを30分しまって話そう。" : String(last.name).slice(0, 10) + "は最下位。スマホを30分しまって、みんなで話そう。";
+    $("b-again").hidden = role !== "host";
+    $("e-status").textContent = role === "host" ? "" : "ホストが「もう1回」を押すと、ロビーにもどります。";
+    show("end");
+  }
+
+  // ---------- ログイン（Firebase の Google ログイン）と保存 ----------
+  function initFirebase(){
+    if(!FIREBASE_CONFIG || !FIREBASE_CONFIG.apiKey || typeof firebase === "undefined"){ renderAccount(); return; }
+    try{
+      if(!firebase.apps || !firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+      fb = { auth: firebase.auth(), db: firebase.firestore() };
+      fb.auth.getRedirectResult().catch(() => {});
+      fb.auth.onAuthStateChanged(async u => {
+        fbUser = u || null;
+        renderAccount("同期しています…");
+        if(fbUser){ try{ await pullCloud(); renderAccount("クラウドと同期しました"); }catch(e){ renderAccount("同期できませんでした。電波を確認してね"); } }
+        renderHome();
+      });
+    }catch(e){ fb = null; renderAccount(); }
+  }
+  async function login(){
+    if(!fb) return;
+    const p = new firebase.auth.GoogleAuthProvider();
+    try{ await fb.auth.signInWithPopup(p); }
+    catch(e){
+      const code = e && e.code;
+      if(code === "auth/popup-blocked" || code === "auth/operation-not-supported-in-this-environment" || code === "auth/cancelled-popup-request") { try{ await fb.auth.signInWithRedirect(p); }catch(x){ toast("ログインできませんでした"); } }
+      else if(code !== "auth/popup-closed-by-user") toast("ログインできませんでした");
+    }
+  }
+  async function logout(){
+    if(!fb) return;
+    try{ await pushNow(); }catch(e){}
+    await fb.auth.signOut();
+    // ほかの人が同じスマホを使っても混ざらないように、端末のデータを空にする（クラウドには残る）
+    S = { deviceId: S.deviceId, name: "", dex: [], fid: null, sound: S.sound };
+    saveLocal(); $("name").value = ""; renderHome();
+    toast("ログアウトしました。キャラはクラウドに残っています");
+  }
+  const userRef = () => fb.db.collection("users").doc(fbUser.uid);
+  async function pullCloud(){
+    const snap = await userRef().get();
+    if(snap.exists){
+      const d = snap.data() || {};
+      const map = new Map();
+      for(const c of (Array.isArray(d.dex) ? d.dex : [])){ const s = sanitize(c); if(s){ if(c.know) s.know = s.know || {}; s.battles = +c.battles || 0; s.wins = +c.wins || 0; map.set(s.id, s); } }
+      // この端末にしかないキャラもクラウドに合わせて残す。同じキャラなら経験値が多いほう
+      for(const c of S.dex){ const o = map.get(c.id); if(!o || (c.exp || 0) > (o.exp || 0)) map.set(c.id, c); else if(c.nick && !o.nick) o.nick = c.nick; }
+      S.dex = [...map.values()].sort((a, b) => String(a.bornAt).localeCompare(String(b.bornAt)));
+      if(d.name) S.name = String(d.name).slice(0, 10);
+      if(!S.dex.some(x => x.id === S.fid)) S.fid = (d.fid && S.dex.some(x => x.id === d.fid)) ? d.fid : ((S.dex[S.dex.length - 1] || {}).id || null);
+      S.games = Math.max(S.games || 0, +d.games || 0); S.wins = Math.max(S.wins || 0, +d.wins || 0);
+      if(d.sound === false) S.sound = false;
+    }
+    saveLocal(); $("name").value = S.name || "";
+    await pushNow();
+  }
+  async function pushNow(){
+    if(!fb || !fbUser) return;
+    clearTimeout(pushT);
+    // 保存するのはニックネーム・キャラ・戦績だけ（メールや本名は保存しない）
+    const data = JSON.parse(JSON.stringify({ name: S.name || "", dex: S.dex.slice(-300), fid: S.fid || null, games: S.games || 0, wins: S.wins || 0, sound: S.sound !== false }));
+    data.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+    await userRef().set(data, { merge: true });
+  }
+  function schedulePush(){
+    if(!fb || !fbUser) return;
+    clearTimeout(pushT);
+    pushT = setTimeout(() => { pushNow().then(() => renderAccount("クラウドに保存しました")).catch(() => renderAccount("保存できませんでした。電波を確認してね")); }, 1200);
+  }
+  function renderAccount(msg){
+    const ready = !!fb;
+    $("acct-none").hidden = ready;
+    $("acct-out").hidden = !ready || !!fbUser;
+    $("acct-in").hidden = !ready || !fbUser;
+    if(msg) $("acct-sync").textContent = msg;
+  }
+  function renderHome(){
+    $("home-dex").textContent = "図鑑（" + S.dex.length + "体）";
+    $("home-rec").textContent = "通算 " + (S.games || 0) + "戦 " + (S.wins || 0) + "勝";
+    $("b-sound").textContent = S.sound === false ? "効果音 OFF" : "効果音 ON";
+    const f = myFighter(); const box = $("home-me"); box.textContent = "";
+    if(f){ box.hidden = false; charCard(f, box, false); const rn = el("button", "btn ghost small", "名前を変える"); rn.style.flex = "1 1 100%"; rn.addEventListener("click", () => openRename(f)); box.append(rn); }
+    else box.hidden = true;
+  }
+
+  // ---------- ボタン ----------
+  $("name").value = S.name || "";
+  $("name").addEventListener("change", () => { const n = $("name").value.trim().slice(0, 10); if(n){ S.name = n; save(); } });
+  if(ROOM_Q){ $("home-join").hidden = false; $("b-join-link").textContent = "部屋 " + ROOM_Q + " に入る"; $("code").value = ROOM_Q; }
+  $("b-create").addEventListener("click", createRoom);
+  $("b-join").addEventListener("click", () => joinRoom($("code").value.replace(/\D/g, "")));
+  $("b-join-link").addEventListener("click", () => joinRoom(ROOM_Q));
+  $("code").addEventListener("keydown", e => { if(e.key === "Enter") joinRoom($("code").value.replace(/\D/g, "")); });
+  $("b-demo").addEventListener("click", startDemo);
+  $("b-bump").addEventListener("click", () => { audio(); localSpike(performance.now()); });
+  $("b-start").addEventListener("click", startGame);
+  $("b-again").addEventListener("click", rematch);
+  $("b-leave").addEventListener("click", () => { if(role === "guest") sendToHost({ t:"bye" }); leave(); renderHome(); });
+  $("b-leave2").addEventListener("click", () => { if(role === "guest") sendToHost({ t:"bye" }); leave(); renderHome(); });
+  $("birth").addEventListener("click", e => { if(e.target.id === "b-birth-name"){ const c = S.dex.find(d => d.id === $("birth").dataset.id); $("birth").hidden = true; if(c) openRename(c); return; } $("birth").hidden = true; });
+  $("b-sheet-close").addEventListener("click", () => $("sheet").classList.remove("on"));
+  $("home-dex").addEventListener("click", openSheet);
+  $("b-rn-ok").addEventListener("click", saveRename);
+  $("rn-input").addEventListener("keydown", e => { if(e.key === "Enter") saveRename(); });
+  $("b-rn-cancel").addEventListener("click", () => { $("rename").hidden = true; });
+  $("b-login").addEventListener("click", login);
+  $("b-logout").addEventListener("click", logout);
+  $("b-sound").addEventListener("click", () => { S.sound = S.sound === false; save(); renderHome(); if(S.sound !== false){ audio(); sfx("ok"); } });
+  $("l-count-seg").addEventListener("click", e => { const b = e.target.closest("button"); if(b && H){ H.count = +b.dataset.n; pushLobby(); } });
+  $("b-share").addEventListener("click", async () => {
+    const link = $("b-share").dataset.link; if(!link) return;
+    const text = "コツンズ 早押しバトルの部屋に入ってね（コード " + roomCode + "）";
+    try{ if(navigator.share){ await navigator.share({ title: "コツンズ", text, url: link }); return; } }catch(e){ if(e && e.name === "AbortError") return; }
+    try{ await navigator.clipboard.writeText(text + " " + link); toast("リンクをコピーしました"); }catch(e){ toast("リンクを長押ししてコピーしてね"); }
+  });
+  document.addEventListener("touchstart", () => audio(), { once: true, passive: true });
+  renderHome(); initFirebase();
+  if(DEBUG) window.__hb = { host: () => H, view: () => VS, me: () => myId, spike: () => localSpike(performance.now()), state: () => S, user: () => fbUser };
+})();
+</script>
+</body>
+</html>
