@@ -1,0 +1,118 @@
+{
+  "version": "1.0.0",
+  "catalogCount": 150,
+  "baseCharacterCount": 50,
+  "formsPerCharacter": 3,
+  "attributes": [
+    "論理派",
+    "直感派",
+    "記憶派",
+    "スピード派",
+    "逆転派",
+    "ひらめき派"
+  ],
+  "attributeAdvantages": {
+    "論理派": [
+      "直感派",
+      "記憶派"
+    ],
+    "直感派": [
+      "記憶派",
+      "スピード派"
+    ],
+    "記憶派": [
+      "スピード派",
+      "逆転派"
+    ],
+    "スピード派": [
+      "逆転派",
+      "ひらめき派"
+    ],
+    "逆転派": [
+      "ひらめき派",
+      "論理派"
+    ],
+    "ひらめき派": [
+      "論理派",
+      "直感派"
+    ]
+  },
+  "advantageDamageMultiplier": 1.05,
+  "rarityProbabilities": {
+    "おつ": 0.45,
+    "普通": 0.35,
+    "レア": 0.15,
+    "スーパーレア": 0.045,
+    "レジェンド": 0.005
+  },
+  "evolution": {
+    "stage1to2": {
+      "requiredOwnedCopies": 3,
+      "consumedCopies": 2,
+      "result": "retain one evolved instance",
+      "minLevel": 1
+    },
+    "stage2to3": {
+      "minLevel": 20,
+      "materials": {
+        "awakeningStone": 10
+      },
+      "requireQuestClear": true,
+      "duplicateRequired": false
+    }
+  },
+  "growth": {
+    "maxLevel": 30,
+    "expToNextLevelFormula": "floor(50 * pow(level, 1.4))",
+    "statCapMode": "cosmetic-first; pvp normalized",
+    "dailyExpCap": 1000
+  },
+  "gacha": {
+    "drawPriceSoftCurrency": 100,
+    "tenDrawPriceSoftCurrency": 1000,
+    "hardCurrencyPaymentEnabled": false,
+    "pity": {
+      "rareOrAboveWithin": 10,
+      "legendarySelectableWithin": 200
+    },
+    "drawOnlyStage1": true,
+    "guaranteeMechanics": "configurable before release"
+  },
+  "kotsunzApp": {
+    "coins": {
+      "start": 300,
+      "play": 20,
+      "perCorrect": 5,
+      "placeBonus": [
+        0,
+        60,
+        30,
+        15
+      ],
+      "cpuRate": 0.5,
+      "dailyCap": 1500,
+      "dailyLogin": 50
+    },
+    "awakeningStones": {
+      "win": 2,
+      "play": 1
+    },
+    "battle": {
+      "hp": 110,
+      "attack": 1,
+      "defense": 1,
+      "levelAffectsBattle": false
+    },
+    "s3Quest": {
+      "correctWithThisCharacter": 30
+    },
+    "bumpBirthPerPartnerPerDay": 1,
+    "rarityExpBonus": {
+      "おつ": 1.5,
+      "普通": 1,
+      "レア": 1,
+      "スーパーレア": 1,
+      "レジェンド": 1
+    }
+  }
+}

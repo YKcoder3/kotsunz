@@ -550,6 +550,215 @@
   .winner .w{font-family:var(--round)}
   .dock .status{flex:1 1 100%;min-height:18px;font-weight:700}
   .mine{cursor:pointer}
+
+  /* =================================================================
+     v5 キャラクター・ガチャ・進化・図鑑・オンライン
+     ================================================================= */
+  .center{text-align:center}
+  .small{font-size:12px}
+  /* スタート画面（脳速クイズバトル） */
+  .t-sub{background:#E9A0D0;color:#2E2169;letter-spacing:.06em;padding:10px 22px;font-size:20px;box-shadow:0 4px 0 rgba(0,0,0,.3)}
+  .t-copy{margin-top:16px;font-family:var(--round);font-weight:800;font-size:19px;letter-spacing:.04em;animation:pop .5s cubic-bezier(.3,1.8,.5,1) 1.95s both}
+  .t-keys{margin-top:8px;font-size:13px;color:rgba(255,255,255,.72);letter-spacing:.06em;animation:fadein0 .6s 2.1s both}
+  .t-tap{margin-top:34px}
+  .title{background:radial-gradient(circle at 50% 36%,#4A36A0 0%,#2E2169 45%,#140E35 100%)}
+  /* ヘッダー */
+  .hright{display:flex;align-items:center;gap:6px;min-width:0}
+  .coinbtn{appearance:none;border:0;background:#fff;box-shadow:var(--shadow);border-radius:999px;padding:4px 10px 4px 4px;font:inherit;font-weight:900;color:var(--ink);font-size:14px}
+  .coin,.stonechip{display:inline-flex;align-items:center;gap:4px;font-weight:900;font-size:14px;white-space:nowrap}
+  .stonechip{background:#fff;border-radius:999px;padding:4px 10px 4px 4px;box-shadow:var(--shadow);font-size:12px}
+  .ci{width:24px;height:24px;flex:none}
+  .back{appearance:none;border:0;background:#fff;border-radius:999px;box-shadow:var(--shadow);font:inherit;font-weight:800;font-size:14px;padding:8px 14px;color:var(--ink)}
+  /* バッジ */
+  .badges{display:flex;flex-wrap:wrap;gap:4px;margin:3px 0}
+  .gbadge.g5{color:#fff;border-color:transparent;background:linear-gradient(90deg,#1E1B3A,#7B5CFF 40%,#FF4D8D 70%,#FFC531);box-shadow:0 0 0 1.5px #FFC531}
+  .abadge{display:inline-block;font-size:10px;font-weight:900;padding:2px 8px;border-radius:999px;color:#fff;background:var(--ac)}
+  .sbadge{display:inline-block;font-size:10px;font-weight:900;padding:2px 7px;border-radius:999px;background:#1E1B3A;color:#fff}
+  /* 経験値 */
+  .xp{margin-top:4px}
+  .xpt{display:flex;justify-content:space-between;font-size:11px;color:var(--sub)}
+  .xpt b{color:var(--ink);font-size:13px}
+  .xpbar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:2px}
+  .xpbar i{display:block;height:100%;background:linear-gradient(90deg,#2BB8FF,#7B5CFF);border-radius:4px;transition:width .8s ease-out}
+  /* ホーム */
+  .partner{cursor:pointer}
+  .partner.g5{border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#1E1B3A,#7B5CFF,#FF4D8D,#FFC531) border-box}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .tile{position:relative;appearance:none;border:0;border-radius:20px;background:#fff;box-shadow:0 5px 0 #DDD8E8;padding:10px 6px 8px;font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:1px}
+  .tile:active{transform:translateY(4px);box-shadow:0 1px 0 #DDD8E8}
+  .tile .tic{font-size:26px;line-height:1.1}
+  .tile b{font-family:var(--round);font-size:15px}
+  .tile small{font-size:11px;color:var(--sub);font-weight:700}
+  .tile.gacha{background:linear-gradient(180deg,#FFF3C4,#fff)}
+  .tile .badge{position:absolute;top:-6px;right:-4px;background:var(--bad);color:#fff;font-size:10px;font-weight:900;border-radius:999px;padding:2px 7px;animation:pulse 1.2s ease-in-out infinite}
+  @keyframes pulse{50%{transform:scale(1.12)}}
+  .homefoot{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--sub)}
+  .act{min-height:64px;padding:11px 14px}
+  .act b{font-size:18px}
+  /* ガチャ */
+  .gbanner{position:relative;border-radius:26px;padding:16px;text-align:center;color:#fff;overflow:hidden;background:radial-gradient(circle at 50% 30%,#5B3FD0,#2E2169 60%,#170F3D);box-shadow:var(--shadow)}
+  .gm-top{font-size:11px;letter-spacing:.3em;opacity:.7;font-weight:800}
+  .gmachine{width:150px;margin:6px auto 0;position:relative}
+  .gglobe{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),rgba(255,255,255,.12) 45%,rgba(255,255,255,.06));border:4px solid rgba(255,255,255,.7);position:relative;overflow:hidden}
+  .gglobe i{position:absolute;width:38px;height:38px;border-radius:50%;border:3px solid #1E1B3A;background:linear-gradient(180deg,var(--c1) 50%,#fff 50%)}
+  .gglobe i:nth-child(1){--c1:#FF4D6D;left:18px;top:70px}.gglobe i:nth-child(2){--c1:#FFC531;left:56px;top:84px}.gglobe i:nth-child(3){--c1:#3D7BFF;left:92px;top:66px}
+  .gglobe i:nth-child(4){--c1:#22C38A;left:36px;top:34px}.gglobe i:nth-child(5){--c1:#A855F7;left:78px;top:30px}.gglobe i:nth-child(6){--c1:#14B8D4;left:60px;top:104px}
+  .gbody{width:120px;height:56px;margin:-8px auto 0;background:#FF4D8D;border-radius:10px 10px 18px 18px;border:4px solid #1E1B3A;position:relative}
+  .gknob{position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:#FFC531;border:3px solid #1E1B3A}
+  .gslot{position:absolute;right:14px;top:16px;width:40px;height:22px;border-radius:6px;background:#1E1B3A}
+  .gtitle{font-family:var(--round);font-weight:900;font-size:24px;margin-top:10px}
+  .gsub{font-size:12px;opacity:.8}
+  .gbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .gbtn{appearance:none;border:0;border-radius:20px;padding:12px 8px;font:inherit;color:var(--ink);background:linear-gradient(180deg,#FFD866,#FFB800);box-shadow:0 5px 0 #D69200;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .gbtn.ten{background:linear-gradient(180deg,#FF7AAE,#FF4D8D);color:#fff;box-shadow:0 5px 0 #C42A66}
+  .gbtn b{font-family:var(--round);font-size:20px}
+  .gbtn .cost{display:inline-flex;align-items:center;gap:3px;font-weight:900;font-size:14px}
+  .gbtn .cost .ci{width:18px;height:18px}
+  .gbtn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
+  .gbtn:disabled{filter:grayscale(.8);opacity:.5}
+  .ratetab{display:flex;flex-direction:column;gap:6px;background:#fff;border-radius:16px;padding:10px 12px;box-shadow:var(--shadow)}
+  .rr{display:grid;grid-template-columns:96px 38px 56px 1fr;align-items:center;gap:6px;font-size:13px}
+  .rr b{text-align:right}
+  .rr small{color:var(--sub);font-size:11px;text-align:right}
+  p.about{font-size:12.5px;line-height:1.7;margin-top:10px}
+  /* ガチャ結果 */
+  .gov{position:fixed;inset:0;z-index:45;background:radial-gradient(circle at 50% 40%,#3B2A8F,#140E35 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:calc(18px + var(--st)) 14px calc(18px + var(--sb));overflow-y:auto}
+  .gov[hidden]{display:none}
+  .gov .go-res{display:none;width:100%;max-width:480px;flex-direction:column;align-items:center;gap:12px}
+  .gov.show .go-res{display:flex}
+  .gov.show .go-machine{display:none}
+  .go-machine{position:relative}
+  .gglobe.big{width:220px;height:220px}
+  .gglobe.big i{transform:scale(1.4)}
+  .gov.spin .gglobe.big{animation:gshake .35s ease-in-out infinite}
+  .gov.spin .gglobe.big i{animation:gtumble .6s linear infinite}
+  @keyframes gshake{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+  @keyframes gtumble{to{transform:scale(1.4) rotate(360deg) translateY(-8px)}}
+  .gcap{position:absolute;left:50%;bottom:-60px;width:64px;height:64px;margin-left:-32px;border-radius:50%;border:4px solid #fff;background:linear-gradient(180deg,#bbb 50%,#fff 50%);animation:capdrop 1.2s cubic-bezier(.3,1.5,.5,1) .6s both}
+  .gov.g3 .gcap{background:linear-gradient(180deg,#FFC531 50%,#fff 50%);box-shadow:0 0 30px 10px rgba(255,197,49,.6)}
+  .gov.g4 .gcap,.gov.g5 .gcap{background:conic-gradient(#ff5a5a,#ffb03b,#ffd84d,#5fd36a,#4fb3ff,#9b7bff,#ff5a5a);box-shadow:0 0 50px 18px rgba(155,123,255,.7);animation:capdrop 1.2s cubic-bezier(.3,1.5,.5,1) .6s both,hue 1s linear infinite}
+  .gov.g5{background:radial-gradient(circle at 50% 40%,#7B2A8F,#140E35 70%)}
+  @keyframes capdrop{0%{transform:translateY(-140px) scale(.4);opacity:0}100%{transform:none;opacity:1}}
+  .gov h2{color:#fff;font-size:26px}
+  .gogrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:100%}
+  .gogrid.one{grid-template-columns:minmax(0,220px);justify-content:center}
+  .gcard{position:relative;background:#fff;color:var(--ink);border-radius:14px;padding:4px 3px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;animation:pop .45s cubic-bezier(.3,1.6,.5,1) both;border:3px solid #E4E1EC}
+  .gcard .pic{width:100%;aspect-ratio:1}
+  .gcard .pic svg{width:100%;height:100%}
+  .gcard b{font-size:10px;line-height:1.2}
+  .gcard .gbadge,.gcard .abadge{font-size:8.5px;padding:1px 5px}
+  .gogrid.one .gcard b{font-size:18px}
+  .gogrid.one .gcard .gbadge,.gogrid.one .gcard .abadge{font-size:11px;padding:2px 8px}
+  .gcard.g3{border-color:#F2C230;box-shadow:0 0 16px rgba(242,194,48,.7)}
+  .gcard.g4,.gcard.g5{border-color:#9B7BFF;box-shadow:0 0 20px rgba(155,123,255,.9)}
+  .gcard .nd{position:absolute;top:-6px;left:-4px;font-size:9px;font-weight:900;border-radius:999px;padding:1px 6px}
+  .gcard .nd.new{background:var(--bad);color:#fff}
+  .gcard .nd.dup{background:#1E1B3A;color:#fff}
+  .gcard .evo-hint{font-size:8.5px;font-weight:900;color:var(--mint)}
+  .gov .btn{max-width:320px}
+  /* キャラ一覧 */
+  .seg.small button{padding:6px 10px;min-height:34px;font-size:12px}
+  .kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .kc{position:relative;appearance:none;border:2.5px solid transparent;background:#fff;border-radius:18px;padding:6px 4px 8px;font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:1px;box-shadow:var(--shadow)}
+  .kc .pic{width:100%;aspect-ratio:1}
+  .kc .pic svg{width:100%;height:100%}
+  .kc b{font-size:12px;line-height:1.25}
+  .kc small{font-size:10.5px;color:var(--sub);font-weight:700}
+  .kc.g3{border-color:#F2C230}
+  .kc.g4{border-color:#9B7BFF}
+  .kc.g5{border:2.5px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#1E1B3A,#7B5CFF,#FF4D8D,#FFC531) border-box}
+  .kc.sel{box-shadow:0 0 0 3px var(--hot),var(--shadow)}
+  .kc .kfav{position:absolute;left:6px;top:4px;color:#FFB800;font-size:15px}
+  .kc .klock{position:absolute;left:24px;top:4px;font-size:12px}
+  .kc .kevo{position:absolute;right:-3px;top:-6px;background:var(--mint);color:#fff;font-size:9.5px;font-weight:900;border-radius:999px;padding:2px 7px;animation:pulse 1.2s ease-in-out infinite}
+  .kc .kuse{position:absolute;right:4px;top:30%;background:var(--hot);font-size:9px;font-weight:900;border-radius:999px;padding:1px 6px}
+  .kct{display:flex;gap:3px}
+  .kct .abadge{font-size:9px;padding:1px 6px}
+  /* キャラ詳細 */
+  .kdtop{display:flex;gap:12px;align-items:center;background:#fff;border-radius:22px;padding:12px;box-shadow:var(--shadow);border:2.5px solid transparent}
+  .kdtop.g3{border-color:#F2C230}.kdtop.g4{border-color:#9B7BFF}
+  .kdtop.g5{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(90deg,#1E1B3A,#7B5CFF,#FF4D8D,#FFC531) border-box}
+  .kdtop .pic{width:120px;height:120px;flex:none}
+  .kdtop .pic svg{width:100%;height:100%}
+  .kdtop .tx{flex:1;min-width:0}
+  .kdtop b{font-family:var(--round);font-size:20px}
+  .kdtop .muted{font-size:12px;line-height:1.5}
+  .unk .pic svg{filter:brightness(0) opacity(.18)}
+  .evoline{display:flex;align-items:center;justify-content:center;gap:4px;background:#fff;border-radius:18px;padding:8px;box-shadow:var(--shadow)}
+  .evoline .el{display:flex;flex-direction:column;align-items:center;width:30%;text-align:center;opacity:.75}
+  .evoline .el.cur{opacity:1}
+  .evoline .el.cur .pic{background:#FFF3C4;border-radius:14px}
+  .evoline .el .pic{width:70px;height:70px}
+  .evoline .el .pic svg{width:100%;height:100%}
+  .evoline .el.unk .pic svg{filter:brightness(0) opacity(.18)}
+  .evoline small{font-size:10px;font-weight:700;line-height:1.3}
+  .evoline .arr{font-size:22px;color:var(--sub)}
+  .evobox{background:#fff;border-radius:18px;padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+  .evobox .chk{font-size:12.5px;color:var(--sub)}
+  .evobox .chk.ok{color:var(--mint);font-weight:800}
+  #kd-body > * + *, #evo-body > * + *, #rates-body > * + *{margin-top:10px}
+  /* 進化の素材えらび */
+  .evopv{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border-radius:20px;padding:10px;box-shadow:var(--shadow)}
+  .evopv .pic{width:110px;height:110px}
+  .evopv .pic svg{width:100%;height:100%}
+  .evopv .arr{font-size:30px;font-weight:900;color:var(--purple)}
+  .matlist{display:flex;flex-direction:column;gap:6px}
+  .mat{appearance:none;border:2px solid var(--line);background:#fff;border-radius:16px;padding:6px 10px;font:inherit;display:flex;align-items:center;gap:10px;text-align:left;color:var(--ink)}
+  .mat .pic{width:44px;height:44px}
+  .mat .pic svg{width:100%;height:100%}
+  .mat span{flex:1;font-weight:700;font-size:14px}
+  .mat b{color:var(--bad);font-size:12px}
+  .mat.on{border-color:var(--bad);background:#FFF0F3}
+  /* 進化の演出 */
+  .evov{position:fixed;inset:0;z-index:46;background:radial-gradient(circle,#3B2A8F,#140E35 70%);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .evov[hidden]{display:none}
+  .evov.stage3{background:radial-gradient(circle,#8A5A00,#2A1B00 70%)}
+  .ev-stage{position:relative;width:230px;height:230px}
+  .ev-stage .pic{position:absolute;inset:0}
+  .ev-stage .pic svg{width:100%;height:100%}
+  .evov.run .a{animation:evflash 2.2s ease-in forwards}
+  .evov .b{opacity:0}
+  .evov.done .b{animation:pop .7s cubic-bezier(.3,1.6,.5,1) forwards;opacity:1}
+  .evov.done .a{display:none}
+  @keyframes evflash{0%{filter:none}30%{filter:brightness(1.6)}60%,75%{filter:brightness(4) saturate(0);transform:scale(1.05)}90%{filter:brightness(8) saturate(0);transform:scale(.9)}100%{filter:brightness(10);opacity:0}}
+  .ev-flash{position:absolute;left:50%;top:50%;width:30px;height:30px;margin:-15px;border-radius:50%;background:#fff;opacity:0}
+  .evov.done .ev-flash{animation:ring .8s ease-out}
+  .evov h2,.evov .ev-name,.evov .ev-tap{opacity:0}
+  .evov.done h2{opacity:1;color:#FFC531;font-size:40px;animation:stamp .6s cubic-bezier(.2,1.7,.5,1) both}
+  .evov.done .ev-name{opacity:1;font-family:var(--round);font-weight:900;font-size:22px;margin-top:6px}
+  .evov.done .ev-tap{opacity:.6;margin-top:20px;font-size:12px}
+  /* 図鑑 */
+  .dxprog{display:flex;flex-direction:column;gap:4px;font-weight:900;font-size:14px}
+  .chips.small{gap:4px;margin-top:6px;align-items:center}
+  .chips.small .chip{font-size:11.5px;padding:5px 9px;min-height:30px}
+  .chips .fl{font-size:11px;font-weight:800;color:var(--sub);width:3.6em}
+  .dxgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .dxc{position:relative;appearance:none;border:2px solid transparent;background:#fff;border-radius:14px;padding:3px 2px 5px;font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center}
+  .dxc .pic{width:100%;aspect-ratio:1}
+  .dxc .pic svg{width:100%;height:100%}
+  .dxc small{font-size:9.5px;font-weight:700;line-height:1.2;min-height:2.4em}
+  .dxc .no{position:absolute;left:5px;top:3px;font-style:normal;font-size:8.5px;color:var(--sub);font-weight:800}
+  .dxc.g3{border-color:#F2C230}.dxc.g4{border-color:#9B7BFF}.dxc.g5{border-color:#FF4D8D}
+  .dxc.unk{background:#EEEBF4;border-color:transparent}
+  .dxc.unk small{color:var(--sub)}
+  /* オンライン */
+  .mm{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px}
+  .mm-ring{width:170px;height:170px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle,#fff 55%,transparent 56%),conic-gradient(#3D7BFF,#7B5CFF,#FF4D8D,#3D7BFF);animation:spin 2.4s linear infinite}
+  .mm-pic{width:120px;height:120px;animation:spinback 2.4s linear infinite}
+  .mm-pic svg{width:100%;height:100%}
+  @keyframes spinback{to{transform:rotate(-360deg)}}
+  .mm-st{font-family:var(--round);font-weight:900;font-size:17px}
+  .onlinebn{display:flex;flex-direction:column;align-items:center;gap:2px;background:linear-gradient(90deg,#5C93FF,#7B5CFF);color:#fff;border-radius:20px;padding:14px;text-align:center}
+  .onlinebn b{font-family:var(--round);font-size:20px}
+  .onlinebn span{font-size:12.5px;opacity:.9}
+  /* 結果の報酬 */
+  .rewards{display:flex;gap:8px;justify-content:center}
+  .rewards:empty{display:none}
+  .rw{display:flex;align-items:center;gap:4px;background:#fff;border-radius:999px;padding:6px 12px 6px 6px;box-shadow:var(--shadow);animation:pop .5s cubic-bezier(.3,1.6,.5,1) both}
+  .rw b{font-size:17px;font-family:var(--round)}
+  .rw small{font-size:11px;color:var(--sub);font-weight:700}
+  .rw:nth-child(2){animation-delay:.15s}.rw:nth-child(3){animation-delay:.3s}
+  .birth .btn.ghost{background:transparent;box-shadow:none}
 </style>
 </head>
 <body>
@@ -564,7 +773,9 @@
     <div class="t-flash"></div>
   </div>
   <h1 class="logo" aria-label="コツンズ"><span>コ</span><span>ツ</span><span>ン</span><span>ズ</span></h1>
-  <div class="t-sub">早押しバトル</div>
+  <div class="t-sub">脳速クイズバトル</div>
+  <div class="t-copy">知ってるだけじゃ、勝てない。</div>
+  <div class="t-keys">知識 × ひらめき × 反射神経</div>
   <div class="t-tap" id="t-tap">タップしてスタート</div>
   <div class="t-foot">スマホをコツンしてキャラを生み、最大10人で早押しクイズバトル</div>
 </div>
@@ -593,22 +804,77 @@
   <section id="s-home" hidden>
     <div class="hbar">
       <div class="hlogo">コツンズ</div>
-      <button class="achip" id="b-acct"><span class="av" id="h-av"></span><span class="nm" id="h-name"></span><span class="chev">▾</span></button>
+      <div class="hright"><button class="coinbtn" id="h-coin"></button><button class="achip" id="b-acct"><span class="av" id="h-av"></span><span class="nm" id="h-name"></span><span class="chev">▾</span></button></div>
     </div>
     <div class="invite-bn" id="home-join" hidden>
       <div class="tx"><b>招待が届いています</b><span id="hj-code"></span></div>
       <button class="btn hot small" id="b-join-link">入る</button>
     </div>
     <div class="partner" id="home-me"></div>
+    <div class="cap" style="margin-top:2px">バトル</div>
     <div class="actions">
-      <button class="act primary" id="b-create"><span class="ai"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z"/></svg></span><span class="at"><b>部屋を作る</b><small>ホストになって友だちを呼ぶ</small></span></button>
-      <button class="act blue" id="b-joinopen"><span class="ai"><svg viewBox="0 0 24 24"><path d="M14 3a7 7 0 0 0-6.7 9L2 17.3V21h3.7l1-1v-2h2v-2h2l1.3-1.3A7 7 0 1 0 14 3zm2.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></span><span class="at"><b>コードで入る</b><small>6けたの部屋コード</small></span></button>
-      <button class="act ghost" id="b-demo"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 1 3.7V7h4a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3h4V5.7A2 2 0 0 1 12 2zM9 11.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></span><span class="at"><b>1人で練習</b><small>CPU 3人と対戦</small></span></button>
+      <button class="act primary" id="b-friend"><span class="ai"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm8 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zM1 20c0-3.9 3.1-7 7-7s7 3.1 7 7v1H1zm15.5-6.9c3.6.3 6.5 2.9 6.5 6.4V21h-6v-1c0-2.6-1-5-2.6-6.6.7-.2 1.4-.3 2.1-.3z"/></svg></span><span class="at"><b>友達と対戦</b><small>部屋を作る・コードで入る（最大10人）</small></span></button>
+      <button class="act blue" id="b-online"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.9 1.2 1.6 2.6 2 4h-4c.4-1.4 1.1-2.8 2-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.9-1.2-1.6-2.6-2-4h4c-.4 1.4-1.1 2.8-2 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4z"/></svg></span><span class="at"><b>オンライン対戦</b><small>全国のだれかと自動でマッチング</small></span></button>
+      <button class="act ghost" id="b-demo"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 1 3.7V7h4a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3h4V5.7A2 2 0 0 1 12 2zM9 11.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></span><span class="at"><b>コンピューター対戦</b><small>CPU 3人と練習（コインは半分）</small></span></button>
     </div>
-    <div class="stats" id="home-rec"></div>
+    <div class="tiles">
+      <button class="tile gacha" id="b-gacha"><span class="tic">🎁</span><b>ガチャ</b><small id="t-gacha"></small></button>
+      <button class="tile chars" id="b-chars"><span class="tic">🧸</span><b>キャラ</b><small id="t-chars"></small><span class="badge" id="t-evo" hidden></span></button>
+      <button class="tile dex" id="b-dex"><span class="tic">📖</span><b>図鑑</b><small id="t-dex"></small></button>
+    </div>
     <div class="status" id="home-status"></div>
-    <div class="spacer"></div>
-    <button class="linkbtn" id="b-about">このアプリについて・使っているもの</button>
+    <div class="homefoot"><span id="home-rec"></span><button class="linkbtn" id="b-about">このアプリについて</button></div>
+  </section>
+
+  <!-- ガチャ -->
+  <section id="s-gacha" hidden>
+    <div class="hbar"><button class="back" data-home>‹ ホーム</button><div id="ga-coin"></div></div>
+    <div class="gbanner">
+      <div class="gm-top">KOTSUNZ</div>
+      <div class="gmachine"><div class="gglobe"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gbody"><div class="gknob"></div><div class="gslot"></div></div></div>
+      <div class="gtitle">コツンズ ガチャ</div>
+      <div class="gsub">50種のキャラから、S1（はじめの形）が出るよ</div>
+    </div>
+    <div class="muted center" id="ga-own"></div>
+    <div class="gbtns">
+      <button class="gbtn" id="b-ga1"><b>1回ひく</b><span class="cost" id="ga-cost1"></span></button>
+      <button class="gbtn ten" id="b-ga10"><b>10回ひく</b><span class="cost" id="ga-cost10"></span></button>
+    </div>
+    <div class="muted center small" id="ga-pity"></div>
+    <button class="linkbtn" id="b-rates">排出率・天井・注意事項</button>
+    <p class="note">このバージョンは無料の体験版です。コツcoinは対戦の参加・正解・順位でもらえます。レア度で対戦の強さは変わりません。</p>
+  </section>
+
+  <!-- 持っているキャラ -->
+  <section id="s-chars" hidden>
+    <div class="hbar"><button class="back" data-home>‹ ホーム</button><div class="hright"><span class="stonechip" id="ch-stone"></span><span id="ch-coin"></span></div></div>
+    <h2>キャラ <small class="muted" id="ch-count"></small></h2>
+    <div class="seg small" id="ch-sort"><button data-s="rarity">レア度順</button><button data-s="level">Lv順</button><button data-s="new">新しい順</button></div>
+    <p class="muted small">同じキャラのS1が3体そろうと進化できます。タップでくわしく。</p>
+    <div class="kgrid" id="ch-grid"></div>
+    <button class="linkbtn" id="ch-legacy" hidden></button>
+  </section>
+
+  <!-- 図鑑 -->
+  <section id="s-dex" hidden>
+    <div class="hbar"><button class="back" data-home>‹ ホーム</button></div>
+    <h2>図鑑</h2>
+    <div class="dxprog"><span id="dx-prog"></span><div class="xpbar"><i id="dx-bar"></i></div></div>
+    <div id="dx-filter"></div>
+    <div class="dxgrid" id="dx-grid"></div>
+  </section>
+
+  <!-- オンライン対戦のマッチング -->
+  <section id="s-match" hidden>
+    <div class="mm">
+      <div class="mm-ring"><div class="mm-pic" id="mm-pic"></div></div>
+      <h2>オンライン対戦</h2>
+      <p class="mm-st" id="mm-status"></p>
+      <p class="muted" id="mm-count"></p>
+      <button class="btn ghost small" id="b-mm-cancel">やめる</button>
+      <button class="btn small" id="b-mm-cpu" hidden>待っている間、コンピューターと練習する</button>
+      <p class="note">見知らぬ人と対戦します。相手に見えるのはニックネームとキャラだけです。本名はニックネームに入れないでね。</p>
+    </div>
   </section>
 
   <!-- ロビー -->
@@ -617,6 +883,7 @@
       <div><div class="cap">部屋コード</div><div class="roomcode" id="l-code"></div></div>
       <div class="lhead-r"><div class="count" id="l-count"></div><button class="pillbtn" id="b-invite">＋ 招待する</button></div>
     </div>
+    <div class="onlinebn" id="l-online" hidden><b>オンライン対戦</b><span>人数がそろったら自動で始まります</span></div>
     <div class="bump" id="l-bump">
       <div class="flash" id="l-flash"></div>
       <h3>近くの人とスマホをコツン！</h3>
@@ -660,6 +927,7 @@
   <section id="s-end" hidden>
     <span class="tag">結果</span>
     <div class="winner" id="e-win"></div>
+    <div class="rewards" id="e-rw"></div>
     <div class="lvup" id="e-lv"></div>
     <div class="plist" id="e-rank"></div>
     <p style="text-align:center;font-weight:900" id="e-rule"></p>
@@ -700,8 +968,8 @@
 
 <!-- 図鑑 -->
 <div class="sheet" id="sheet">
-  <div class="shhead"><h2>図鑑 <small class="muted" id="sheet-count"></small></h2><button class="xbtn" data-close>閉じる</button></div>
-  <p class="muted">タップすると、そのキャラで戦います。</p>
+  <div class="shhead"><h2>コツン生まれ <small class="muted" id="sheet-count"></small></h2><button class="xbtn" data-close>閉じる</button></div>
+  <p class="muted">前のバージョンでコツンして生まれたキャラです。タップすると、そのキャラで戦います。</p>
   <div class="dexgrid" id="sheet-grid"></div>
 </div>
 
@@ -709,14 +977,6 @@
 <div class="sheet" id="sh-detail">
   <div class="shhead"><h2>キャラのくわしい説明</h2><button class="xbtn" data-close>閉じる</button></div>
   <div id="detail-body"></div>
-</div>
-
-<!-- コードで入る -->
-<div class="sheet" id="sh-join">
-  <div class="shhead"><h2>コードで入る</h2><button class="xbtn" data-close>閉じる</button></div>
-  <p class="muted">ホストのスマホに出ている、6けたの部屋コードを入れてね。</p>
-  <input class="text codein" id="code" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" autocomplete="off">
-  <button class="btn primary" id="b-join">入る</button>
 </div>
 
 <!-- 招待 -->
@@ -816,6 +1076,52 @@
   </div>
 </div>
 
+<!-- 友達と対戦 -->
+<div class="sheet" id="sh-friend">
+  <div class="shhead"><h2>友達と対戦</h2><button class="xbtn" data-close>閉じる</button></div>
+  <button class="btn primary" id="b-create">部屋を作る（ホスト）</button>
+  <p class="muted center">または、友達の部屋コードを入れる</p>
+  <input class="text codein" id="code" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" autocomplete="off">
+  <button class="btn" id="b-join">コードで入る</button>
+  <p class="note">ゲームを始めるには、近くの人とスマホをコツンしてね。同じ相手とは1日1回、2人にキャラが生まれます。</p>
+</div>
+
+<!-- キャラ詳細 -->
+<div class="sheet tall" id="sh-kdetail">
+  <div class="shhead"><h2>キャラ</h2><button class="xbtn" data-close>閉じる</button></div>
+  <div id="kd-body"></div>
+</div>
+
+<!-- 進化（素材えらび） -->
+<div class="sheet tall" id="sh-evo">
+  <div class="shhead"><h2>進化</h2><button class="xbtn" data-close>やめる</button></div>
+  <div id="evo-body"></div>
+</div>
+
+<!-- 排出率 -->
+<div class="sheet tall" id="sh-rates">
+  <div class="shhead"><h2>排出率・天井</h2><button class="xbtn" data-close>閉じる</button></div>
+  <div id="rates-body"></div>
+</div>
+
+<!-- ガチャの結果 -->
+<div class="gov" id="gacha-ov" hidden>
+  <div class="go-machine"><div class="gglobe big"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gcap"></div></div>
+  <div class="go-res">
+    <h2 id="go-title"></h2>
+    <div class="gogrid" id="go-grid"></div>
+    <button class="btn primary" id="b-go-ok">OK</button>
+  </div>
+</div>
+
+<!-- 進化の演出 -->
+<div class="evov" id="evo-ov" hidden>
+  <div class="ev-stage"><div class="pic a" id="ev-a"></div><div class="pic b" id="ev-b"></div><div class="ev-flash"></div></div>
+  <h2 id="ev-title"></h2>
+  <div class="ev-name" id="ev-name"></div>
+  <p class="ev-tap">タップで閉じる</p>
+</div>
+
 <script src="https://unpkg.com/mqtt@5.16.1/dist/mqtt.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
@@ -909,6 +1215,7 @@
 
   function sanitize(c){
     if(!c || typeof c !== "object") return null;
+    if(c.kind === "k") return sanitizeK(c);        // 新しいキャラ（K001〜K050）
     const hex = v => /^#[0-9a-f]{6}$/i.test(v) ? v : "#999999";
     const one = (v, list, d) => list.includes(v) ? v : d;
     const str = (v, n) => String(v == null ? "" : v).slice(0, n);
@@ -926,7 +1233,8 @@
 
   // ---------- 絵（SVG）。中身はすべてこのページが決めた値だけで作る ----------
   let svgSeq = 0;
-  function drawCreature(c){
+  function drawCreature(c, mood){
+    if(c && c.kind === "k") return kArt(c, mood);
     const k = "c" + (++svgSeq);
     const bodyShape = {
       round: `<ellipse cx="100" cy="118" rx="62" ry="56"/>`,
@@ -2926,6 +3234,270 @@
     cr:["コスタリカ","hw",["#002B7F","#ffffff","#CE1126","#ffffff","#002B7F"],[1,1,2,1,1]],
     is:["アイスランド","nordic2","#02529C","#ffffff","#DC1E35"], pw:["パラオ","circle","#4AADD6","#FFDE00",65],
   });
+  // =====================================================================
+  // キャラクターのマスター・設定・絵（正式な画像ができるまでのSVG）
+  // =====================================================================
+  // マスターは data/ の JSON（characters_50.json・forms_150.json・game_config.json）をビルド時に埋めこむ
+  const GCFG = {"version": "1.0.0", "catalogCount": 150, "baseCharacterCount": 50, "formsPerCharacter": 3, "attributes": ["論理派", "直感派", "記憶派", "スピード派", "逆転派", "ひらめき派"], "attributeAdvantages": {"論理派": ["直感派", "記憶派"], "直感派": ["記憶派", "スピード派"], "記憶派": ["スピード派", "逆転派"], "スピード派": ["逆転派", "ひらめき派"], "逆転派": ["ひらめき派", "論理派"], "ひらめき派": ["論理派", "直感派"]}, "advantageDamageMultiplier": 1.05, "rarityProbabilities": {"おつ": 0.45, "普通": 0.35, "レア": 0.15, "スーパーレア": 0.045, "レジェンド": 0.005}, "evolution": {"stage1to2": {"requiredOwnedCopies": 3, "consumedCopies": 2, "result": "retain one evolved instance", "minLevel": 1}, "stage2to3": {"minLevel": 20, "materials": {"awakeningStone": 10}, "requireQuestClear": true, "duplicateRequired": false}}, "growth": {"maxLevel": 30, "expToNextLevelFormula": "floor(50 * pow(level, 1.4))", "statCapMode": "cosmetic-first; pvp normalized", "dailyExpCap": 1000}, "gacha": {"drawPriceSoftCurrency": 100, "tenDrawPriceSoftCurrency": 1000, "hardCurrencyPaymentEnabled": false, "pity": {"rareOrAboveWithin": 10, "legendarySelectableWithin": 200}, "drawOnlyStage1": true, "guaranteeMechanics": "configurable before release"}, "kotsunzApp": {"coins": {"start": 300, "play": 20, "perCorrect": 5, "placeBonus": [0, 60, 30, 15], "cpuRate": 0.5, "dailyCap": 1500, "dailyLogin": 50}, "awakeningStones": {"win": 2, "play": 1}, "battle": {"hp": 110, "attack": 1, "defense": 1, "levelAffectsBattle": false}, "s3Quest": {"correctWithThisCharacter": 30}, "bumpBirthPerPartnerPerDay": 1, "rarityExpBonus": {"おつ": 1.5, "普通": 1, "レア": 1, "スーパーレア": 1, "レジェンド": 1}}};
+  const K_RARITIES = Object.keys(GCFG.rarityProbabilities);
+  const K_ATTRS = GCFG.attributes.slice();
+  const K_BEATS = GCFG.attributeAdvantages;
+  const APP = GCFG.kotsunzApp;
+  const KCFG = {
+    gacha: { single: GCFG.gacha.drawPriceSoftCurrency, ten: GCFG.gacha.tenDrawPriceSoftCurrency, probs: GCFG.rarityProbabilities,
+             pityRare: GCFG.gacha.pity.rareOrAboveWithin, pityLegend: GCFG.gacha.pity.legendarySelectableWithin, paid: GCFG.gacha.hardCurrencyPaymentEnabled },
+    coins: APP.coins, stones: APP.awakeningStones, battle: APP.battle,
+    level: { max: GCFG.growth.maxLevel, dailyExpCap: GCFG.growth.dailyExpCap, need: lv => Math.floor(50 * Math.pow(lv, 1.4)) },
+    evolve: { s2Count: GCFG.evolution.stage1to2.requiredOwnedCopies, s2Consume: GCFG.evolution.stage1to2.consumedCopies,
+              s3Level: GCFG.evolution.stage2to3.minLevel, s3Stones: GCFG.evolution.stage2to3.materials.awakeningStone, s3Correct: APP.s3Quest.correctWithThisCharacter },
+    attrBonus: GCFG.advantageDamageMultiplier,
+  };
+  // 属性ごとの特技。レア度に関係なく、同じ属性なら同じ強さ
+  const K_ATTR_FX = {
+    "論理派":   { tag:"3択になる",         d:"まちがいの選択肢が1つ消えて3択になる。そのぶん、こうげきは0.9倍", hint:true, atk:.9 },
+    "直感派":   { tag:"まちがいに追い打ち", d:"まちがえた人や時間切れの人に、さらに+3ダメージ", chase:3 },
+    "記憶派":   { tag:"連続正解で強化",     d:"連続で正解するほど強くなる（2連続+12%、3連続+24%…）", streak:.12 },
+    "スピード派": { tag:"速いほど強い",      d:"速く答えるほど、ダメージがぐんと上がる（早押しボーナス2倍）", speed:2 },
+    "逆転派":   { tag:"ピンチで逆転",       d:"自分のHPが4割以下になると、こうげき1.5倍", rally:1.5 },
+    "ひらめき派": { tag:"正解でHP回復",      d:"正解するたびにHPが6回復する", heal:6 },
+  };
+  const K_ATTR_COLOR = { "論理派":"#3D7BFF", "直感派":"#A855F7", "記憶派":"#22C38A", "スピード派":"#FF9F1C", "逆転派":"#FF4D6D", "ひらめき派":"#14B8D4" };
+  const K_RARITY_K = { "おつ":"g1", "普通":"g2", "レア":"g3", "スーパーレア":"g4", "レジェンド":"g5" };
+  const STAGE_LABEL = ["", "S1", "S2", "S3"];
+
+  // 正式な画像を置いたら、forms_150.json の assetStatus を "ready" にする（ない画像は読みにいかない＝リンク切れにならない）
+  const KMASTER = {}, KFORMS = {};
+  for(const c of [{"id": "K001", "name": "ぬけもん", "attribute": "逆転派", "rarity": "おつ", "personality": "無気力でいつもあと1問で本気になる", "visualSignature": "ゆがんだ三角耳と片頬ばんそうこう", "stageNames": ["ぬけもん", "ぬけもん・ちょい本気", "ぬけもん・本気のふり"], "imageKey": "characters/k001", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K002", "name": "めだまる", "attribute": "記憶派", "rarity": "普通", "personality": "目玉焼きを頭に載せた忘れんぼ", "visualSignature": "頭の黄身とつぶらな上目", "stageNames": ["めだまる", "ものしりめだまる", "ぜんちめだまる"], "imageKey": "characters/k002", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K003", "name": "ロジポン", "attribute": "論理派", "rarity": "レア", "personality": "理屈っぽい丸メガネ", "visualSignature": "片方だけ大きい眼鏡", "stageNames": ["ロジポン", "ロジポン・研究員", "ロジポン・賢者"], "imageKey": "characters/k003", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K004", "name": "ピピット", "attribute": "スピード派", "rarity": "スーパーレア", "personality": "早すぎて自分の答えを聞けない", "visualSignature": "片耳が稲妻の形", "stageNames": ["ピピット", "ピピット・疾走", "ピピット・閃光"], "imageKey": "characters/k004", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K005", "name": "ルミュ", "attribute": "ひらめき派", "rarity": "レジェンド", "personality": "夢で正解を拾ってくる", "visualSignature": "星型の前髪と眠たい目", "stageNames": ["ルミュ", "ルミュ・星詠み", "ルミュ・天球"], "imageKey": "characters/k005", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K006", "name": "ムキッツ", "attribute": "逆転派", "rarity": "普通", "personality": "見た目だけ筋肉質だが気が小さい", "visualSignature": "ふるえる緑の力こぶ", "stageNames": ["ムキッツ", "ムキッツ・奮起", "ムキッツ・無敵顔"], "imageKey": "characters/k006", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K007", "name": "ウロット", "attribute": "直感派", "rarity": "レア", "personality": "頭の金魚に答えを相談", "visualSignature": "透明な頭と泳ぐ魚", "stageNames": ["ウロット", "ウロット・水読み", "ウロット・深海"], "imageKey": "characters/k007", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K008", "name": "クエス", "attribute": "ひらめき派", "rarity": "レア", "personality": "質問ばかりして答えを忘れる", "visualSignature": "？が浮くフード", "stageNames": ["クエス", "クエス・なぞ解き", "クエス・大予言"], "imageKey": "characters/k008", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K009", "name": "ホコリィ", "attribute": "逆転派", "rarity": "おつ", "personality": "掃除すると消えそうなほこり玉", "visualSignature": "左右非対称の綿毛", "stageNames": ["ホコリィ", "ホコリィ・ふわもこ", "ホコリィ・雲王"], "imageKey": "characters/k009", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K010", "name": "カンペン", "attribute": "記憶派", "rarity": "普通", "personality": "カンペを見ても字が読めない", "visualSignature": "鉛筆みたいな短い耳", "stageNames": ["カンペン", "カンペン・書記", "カンペン・大教授"], "imageKey": "characters/k010", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K011", "name": "ガチャロン", "attribute": "ひらめき派", "rarity": "普通", "personality": "お腹から自分のカプセルが出る", "visualSignature": "お腹の透明な窓", "stageNames": ["ガチャロン", "ガチャロン・回転", "ガチャロン・超回転"], "imageKey": "characters/k011", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K012", "name": "ミテミ", "attribute": "論理派", "rarity": "普通", "personality": "虫眼鏡で何でも大げさに見る", "visualSignature": "巨大な片目レンズ", "stageNames": ["ミテミ", "ミテミ・観測員", "ミテミ・千里眼"], "imageKey": "characters/k012", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K013", "name": "ネムリィ", "attribute": "逆転派", "rarity": "おつ", "personality": "寝言だけ正しい", "visualSignature": "寝袋のような胴体", "stageNames": ["ネムリィ", "ネムリィ・寝返り", "ネムリィ・夢覚醒"], "imageKey": "characters/k013", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K014", "name": "ポコロ", "attribute": "スピード派", "rarity": "おつ", "personality": "急いで転ぶと一番速い", "visualSignature": "片足だけローラースケート", "stageNames": ["ポコロ", "ポコロ・早歩き", "ポコロ・流星"], "imageKey": "characters/k014", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K015", "name": "モニョン", "attribute": "直感派", "rarity": "おつ", "personality": "形がいつも一歩遅れて変わる", "visualSignature": "片方だけ長い触角", "stageNames": ["モニョン", "モニョン・変形", "モニョン・無限体"], "imageKey": "characters/k015", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K016", "name": "シラベェ", "attribute": "論理派", "rarity": "普通", "personality": "何でもノートに記録する", "visualSignature": "胸に小さな四角いメモ", "stageNames": ["シラベェ", "シラベェ・調査員", "シラベェ・博士"], "imageKey": "characters/k016", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K017", "name": "オモチュ", "attribute": "記憶派", "rarity": "おつ", "personality": "もちのように伸びて知識をくっつける", "visualSignature": "角ばったおもち耳", "stageNames": ["オモチュ", "オモチュ・のびもち", "オモチュ・満月もち"], "imageKey": "characters/k017", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K018", "name": "チカチカ", "attribute": "スピード派", "rarity": "普通", "personality": "考えると頬のライトが点滅", "visualSignature": "片頬に豆電球", "stageNames": ["チカチカ", "チカチカ・点灯", "チカチカ・閃雷"], "imageKey": "characters/k018", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K019", "name": "ワスレル", "attribute": "記憶派", "rarity": "おつ", "personality": "覚えた瞬間に全部忘れる", "visualSignature": "背中に結び目のリボン", "stageNames": ["ワスレル", "ワスレル・復習", "ワスレル・忘却王"], "imageKey": "characters/k019", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K020", "name": "モクモク", "attribute": "逆転派", "rarity": "おつ", "personality": "プレッシャーで煙が出る", "visualSignature": "頭から細い煙が一本", "stageNames": ["モクモク", "モクモク・白煙", "モクモク・雷雲"], "imageKey": "characters/k020", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K021", "name": "コロッピ", "attribute": "直感派", "rarity": "普通", "personality": "転がって決める勝負師", "visualSignature": "サイコロのようなほっぺ", "stageNames": ["コロッピ", "コロッピ・回転王", "コロッピ・黄金比"], "imageKey": "characters/k021", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K022", "name": "ハテナコ", "attribute": "ひらめき派", "rarity": "普通", "personality": "疑問が増えると丸くなる", "visualSignature": "逆さまの？型の耳", "stageNames": ["ハテナコ", "ハテナコ・発見", "ハテナコ・大発見"], "imageKey": "characters/k022", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K023", "name": "パチパチ", "attribute": "スピード派", "rarity": "普通", "personality": "拍手で問題を飛ばしそう", "visualSignature": "手がほぼ拍手の形", "stageNames": ["パチパチ", "パチパチ・連打", "パチパチ・音速"], "imageKey": "characters/k023", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K024", "name": "ドロリン", "attribute": "直感派", "rarity": "おつ", "personality": "いつも半透明で存在感が薄い", "visualSignature": "半透明のしずく尾", "stageNames": ["ドロリン", "ドロリン・ゆらり", "ドロリン・幻影"], "imageKey": "characters/k024", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K025", "name": "ベンチョ", "attribute": "論理派", "rarity": "普通", "personality": "解説は長いのに結論がない", "visualSignature": "口の横に小さなチョーク", "stageNames": ["ベンチョ", "ベンチョ・演説", "ベンチョ・大賢者"], "imageKey": "characters/k025", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K026", "name": "コツコツ", "attribute": "記憶派", "rarity": "普通", "personality": "毎日一問ずつこつこつ貯める", "visualSignature": "丸い石のような背中", "stageNames": ["コツコツ", "コツコツ・努力家", "コツコツ・達人"], "imageKey": "characters/k026", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K027", "name": "ズバッピ", "attribute": "スピード派", "rarity": "レア", "personality": "切れ味のよいツッコミ担当", "visualSignature": "横一直線の眉毛", "stageNames": ["ズバッピ", "ズバッピ・瞬断", "ズバッピ・超音速"], "imageKey": "characters/k027", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K028", "name": "ユルリカ", "attribute": "ひらめき派", "rarity": "普通", "personality": "ひらめくまで寝転ぶ", "visualSignature": "片耳だけ電球状", "stageNames": ["ユルリカ", "ユルリカ・ひらめき", "ユルリカ・大天才"], "imageKey": "characters/k028", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K029", "name": "マグレオ", "attribute": "直感派", "rarity": "おつ", "personality": "当たると全部まぐれと言う", "visualSignature": "星型に欠けた耳", "stageNames": ["マグレオ", "マグレオ・連勝", "マグレオ・奇跡"], "imageKey": "characters/k029", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K030", "name": "キオクン", "attribute": "記憶派", "rarity": "レア", "personality": "見た景色を引き出しにしまう", "visualSignature": "腹部の小さな引き出し", "stageNames": ["キオクン", "キオクン・整理", "キオクン・記録神"], "imageKey": "characters/k030", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K031", "name": "ヒラメェ", "attribute": "ひらめき派", "rarity": "普通", "personality": "魚じゃないのに横に跳ねる", "visualSignature": "平たい頭と丸い尾", "stageNames": ["ヒラメェ", "ヒラメェ・着想", "ヒラメェ・超着想"], "imageKey": "characters/k031", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K032", "name": "ナゾミン", "attribute": "論理派", "rarity": "普通", "personality": "謎を解くほど眉毛が増える", "visualSignature": "左右で本数が違う眉", "stageNames": ["ナゾミン", "ナゾミン・推理", "ナゾミン・真理"], "imageKey": "characters/k032", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K033", "name": "ダッシュン", "attribute": "スピード派", "rarity": "普通", "personality": "止まると眠くなる", "visualSignature": "背中の小さな風車", "stageNames": ["ダッシュン", "ダッシュン・加速", "ダッシュン・光速"], "imageKey": "characters/k033", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K034", "name": "モフタ", "attribute": "逆転派", "rarity": "おつ", "personality": "逆境で毛量が増える", "visualSignature": "三本だけ飛び出る毛", "stageNames": ["モフタ", "モフタ・もふ増し", "モフタ・大もふ"], "imageKey": "characters/k034", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K035", "name": "ピンポン", "attribute": "直感派", "rarity": "普通", "personality": "勘で答えてベルが鳴る", "visualSignature": "頭頂部の押しボタン", "stageNames": ["ピンポン", "ピンポン・早押し", "ピンポン・大正解"], "imageKey": "characters/k035", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K036", "name": "ギモンヌ", "attribute": "論理派", "rarity": "レア", "personality": "質問が鋭すぎる貴族", "visualSignature": "片方だけ巻いた口ひげ", "stageNames": ["ギモンヌ", "ギモンヌ・分析", "ギモンヌ・真眼"], "imageKey": "characters/k036", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K037", "name": "ホシポン", "attribute": "ひらめき派", "rarity": "普通", "personality": "流れ星を数えて眠れない", "visualSignature": "額の小さな穴あき星", "stageNames": ["ホシポン", "ホシポン・星集め", "ホシポン・銀河"], "imageKey": "characters/k037", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K038", "name": "パニモ", "attribute": "逆転派", "rarity": "おつ", "personality": "焦ると逆に集中する", "visualSignature": "片目だけぐるぐる", "stageNames": ["パニモ", "パニモ・耐久", "パニモ・逆転王"], "imageKey": "characters/k038", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K039", "name": "ペラコ", "attribute": "記憶派", "rarity": "おつ", "personality": "ページが風に飛ぶ本の子", "visualSignature": "背中の一枚ページ", "stageNames": ["ペラコ", "ペラコ・しおり", "ペラコ・百科"], "imageKey": "characters/k039", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K040", "name": "トキメキ", "attribute": "スピード派", "rarity": "普通", "personality": "心拍と同じ速さで答える", "visualSignature": "ハート形の耳が片方", "stageNames": ["トキメキ", "トキメキ・鼓動", "トキメキ・超鼓動"], "imageKey": "characters/k040", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K041", "name": "チョッカン", "attribute": "直感派", "rarity": "レア", "personality": "未来が一瞬だけ見える", "visualSignature": "目元に一本の三日月", "stageNames": ["チョッカン", "チョッカン・予感", "チョッカン・予知"], "imageKey": "characters/k041", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K042", "name": "プチメモ", "attribute": "記憶派", "rarity": "おつ", "personality": "メモが小さすぎて読めない", "visualSignature": "耳に貼りつく小付箋", "stageNames": ["プチメモ", "プチメモ・暗記", "プチメモ・大図鑑"], "imageKey": "characters/k042", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K043", "name": "ロンロン", "attribute": "論理派", "rarity": "普通", "personality": "考えすぎて自分に反論", "visualSignature": "左右逆向きの眉", "stageNames": ["ロンロン", "ロンロン・証明", "ロンロン・大論証"], "imageKey": "characters/k043", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K044", "name": "カッとん", "attribute": "スピード派", "rarity": "おつ", "personality": "一秒で怒って二秒で忘れる", "visualSignature": "片頬の小さな火花", "stageNames": ["カッとん", "カッとん・瞬発", "カッとん・熱風"], "imageKey": "characters/k044", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K045", "name": "アタルン", "attribute": "直感派", "rarity": "普通", "personality": "答えより先に笑顔が出る", "visualSignature": "お腹の小さな的マーク", "stageNames": ["アタルン", "アタルン・的中", "アタルン・神勘"], "imageKey": "characters/k045", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K046", "name": "ソウゾウ", "attribute": "ひらめき派", "rarity": "レア", "personality": "頭に架空の街を建てる", "visualSignature": "頭上の小さな家型突起", "stageNames": ["ソウゾウ", "ソウゾウ・設計", "ソウゾウ・創世"], "imageKey": "characters/k046", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K047", "name": "クルミン", "attribute": "論理派", "rarity": "おつ", "personality": "難問を殻にしまいこむ", "visualSignature": "殻の渦模様と一文字口", "stageNames": ["クルミン", "クルミン・熟考", "クルミン・叡智"], "imageKey": "characters/k047", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K048", "name": "オチツキ", "attribute": "逆転派", "rarity": "普通", "personality": "最後の一秒だけ落ち着く", "visualSignature": "片足だけ座禅ポーズ", "stageNames": ["オチツキ", "オチツキ・集中", "オチツキ・不動"], "imageKey": "characters/k048", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K049", "name": "ハヤオシ", "attribute": "スピード派", "rarity": "スーパーレア", "personality": "早押しボタンから生まれた", "visualSignature": "額の丸い赤いボタン", "stageNames": ["ハヤオシ", "ハヤオシ・迅雷", "ハヤオシ・雷帝"], "imageKey": "characters/k049", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}, {"id": "K050", "name": "セイカイ", "attribute": "ひらめき派", "rarity": "レア", "personality": "正解を聞くと初めて驚く", "visualSignature": "片側だけ開いた王冠耳", "stageNames": ["セイカイ", "セイカイ・開眼", "セイカイ・星冠"], "imageKey": "characters/k050", "baseStats": {"hp": 100, "attack": 20, "defense": 20, "speed": 20}, "isCollaboration": false}]){
+    KMASTER[c.id] = { cid: c.id, attr: c.attribute, rarity: c.rarity, personality: c.personality, signature: c.visualSignature, names: c.stageNames.slice(0, 3), base: c.baseStats, collab: !!c.isCollaboration, forms: [] };
+  }
+  for(const f of [{"formId": "K001-S1", "characterId": "K001", "name": "ぬけもん", "stage": 1, "imagePath": "/assets/characters/k001/stage-1.webp", "animationKey": "k001_s1", "assetStatus": "placeholder"}, {"formId": "K001-S2", "characterId": "K001", "name": "ぬけもん・ちょい本気", "stage": 2, "imagePath": "/assets/characters/k001/stage-2.webp", "animationKey": "k001_s2", "assetStatus": "placeholder"}, {"formId": "K001-S3", "characterId": "K001", "name": "ぬけもん・本気のふり", "stage": 3, "imagePath": "/assets/characters/k001/stage-3.webp", "animationKey": "k001_s3", "assetStatus": "placeholder"}, {"formId": "K002-S1", "characterId": "K002", "name": "めだまる", "stage": 1, "imagePath": "/assets/characters/k002/stage-1.webp", "animationKey": "k002_s1", "assetStatus": "placeholder"}, {"formId": "K002-S2", "characterId": "K002", "name": "ものしりめだまる", "stage": 2, "imagePath": "/assets/characters/k002/stage-2.webp", "animationKey": "k002_s2", "assetStatus": "placeholder"}, {"formId": "K002-S3", "characterId": "K002", "name": "ぜんちめだまる", "stage": 3, "imagePath": "/assets/characters/k002/stage-3.webp", "animationKey": "k002_s3", "assetStatus": "placeholder"}, {"formId": "K003-S1", "characterId": "K003", "name": "ロジポン", "stage": 1, "imagePath": "/assets/characters/k003/stage-1.webp", "animationKey": "k003_s1", "assetStatus": "placeholder"}, {"formId": "K003-S2", "characterId": "K003", "name": "ロジポン・研究員", "stage": 2, "imagePath": "/assets/characters/k003/stage-2.webp", "animationKey": "k003_s2", "assetStatus": "placeholder"}, {"formId": "K003-S3", "characterId": "K003", "name": "ロジポン・賢者", "stage": 3, "imagePath": "/assets/characters/k003/stage-3.webp", "animationKey": "k003_s3", "assetStatus": "placeholder"}, {"formId": "K004-S1", "characterId": "K004", "name": "ピピット", "stage": 1, "imagePath": "/assets/characters/k004/stage-1.webp", "animationKey": "k004_s1", "assetStatus": "placeholder"}, {"formId": "K004-S2", "characterId": "K004", "name": "ピピット・疾走", "stage": 2, "imagePath": "/assets/characters/k004/stage-2.webp", "animationKey": "k004_s2", "assetStatus": "placeholder"}, {"formId": "K004-S3", "characterId": "K004", "name": "ピピット・閃光", "stage": 3, "imagePath": "/assets/characters/k004/stage-3.webp", "animationKey": "k004_s3", "assetStatus": "placeholder"}, {"formId": "K005-S1", "characterId": "K005", "name": "ルミュ", "stage": 1, "imagePath": "/assets/characters/k005/stage-1.webp", "animationKey": "k005_s1", "assetStatus": "placeholder"}, {"formId": "K005-S2", "characterId": "K005", "name": "ルミュ・星詠み", "stage": 2, "imagePath": "/assets/characters/k005/stage-2.webp", "animationKey": "k005_s2", "assetStatus": "placeholder"}, {"formId": "K005-S3", "characterId": "K005", "name": "ルミュ・天球", "stage": 3, "imagePath": "/assets/characters/k005/stage-3.webp", "animationKey": "k005_s3", "assetStatus": "placeholder"}, {"formId": "K006-S1", "characterId": "K006", "name": "ムキッツ", "stage": 1, "imagePath": "/assets/characters/k006/stage-1.webp", "animationKey": "k006_s1", "assetStatus": "placeholder"}, {"formId": "K006-S2", "characterId": "K006", "name": "ムキッツ・奮起", "stage": 2, "imagePath": "/assets/characters/k006/stage-2.webp", "animationKey": "k006_s2", "assetStatus": "placeholder"}, {"formId": "K006-S3", "characterId": "K006", "name": "ムキッツ・無敵顔", "stage": 3, "imagePath": "/assets/characters/k006/stage-3.webp", "animationKey": "k006_s3", "assetStatus": "placeholder"}, {"formId": "K007-S1", "characterId": "K007", "name": "ウロット", "stage": 1, "imagePath": "/assets/characters/k007/stage-1.webp", "animationKey": "k007_s1", "assetStatus": "placeholder"}, {"formId": "K007-S2", "characterId": "K007", "name": "ウロット・水読み", "stage": 2, "imagePath": "/assets/characters/k007/stage-2.webp", "animationKey": "k007_s2", "assetStatus": "placeholder"}, {"formId": "K007-S3", "characterId": "K007", "name": "ウロット・深海", "stage": 3, "imagePath": "/assets/characters/k007/stage-3.webp", "animationKey": "k007_s3", "assetStatus": "placeholder"}, {"formId": "K008-S1", "characterId": "K008", "name": "クエス", "stage": 1, "imagePath": "/assets/characters/k008/stage-1.webp", "animationKey": "k008_s1", "assetStatus": "placeholder"}, {"formId": "K008-S2", "characterId": "K008", "name": "クエス・なぞ解き", "stage": 2, "imagePath": "/assets/characters/k008/stage-2.webp", "animationKey": "k008_s2", "assetStatus": "placeholder"}, {"formId": "K008-S3", "characterId": "K008", "name": "クエス・大予言", "stage": 3, "imagePath": "/assets/characters/k008/stage-3.webp", "animationKey": "k008_s3", "assetStatus": "placeholder"}, {"formId": "K009-S1", "characterId": "K009", "name": "ホコリィ", "stage": 1, "imagePath": "/assets/characters/k009/stage-1.webp", "animationKey": "k009_s1", "assetStatus": "placeholder"}, {"formId": "K009-S2", "characterId": "K009", "name": "ホコリィ・ふわもこ", "stage": 2, "imagePath": "/assets/characters/k009/stage-2.webp", "animationKey": "k009_s2", "assetStatus": "placeholder"}, {"formId": "K009-S3", "characterId": "K009", "name": "ホコリィ・雲王", "stage": 3, "imagePath": "/assets/characters/k009/stage-3.webp", "animationKey": "k009_s3", "assetStatus": "placeholder"}, {"formId": "K010-S1", "characterId": "K010", "name": "カンペン", "stage": 1, "imagePath": "/assets/characters/k010/stage-1.webp", "animationKey": "k010_s1", "assetStatus": "placeholder"}, {"formId": "K010-S2", "characterId": "K010", "name": "カンペン・書記", "stage": 2, "imagePath": "/assets/characters/k010/stage-2.webp", "animationKey": "k010_s2", "assetStatus": "placeholder"}, {"formId": "K010-S3", "characterId": "K010", "name": "カンペン・大教授", "stage": 3, "imagePath": "/assets/characters/k010/stage-3.webp", "animationKey": "k010_s3", "assetStatus": "placeholder"}, {"formId": "K011-S1", "characterId": "K011", "name": "ガチャロン", "stage": 1, "imagePath": "/assets/characters/k011/stage-1.webp", "animationKey": "k011_s1", "assetStatus": "placeholder"}, {"formId": "K011-S2", "characterId": "K011", "name": "ガチャロン・回転", "stage": 2, "imagePath": "/assets/characters/k011/stage-2.webp", "animationKey": "k011_s2", "assetStatus": "placeholder"}, {"formId": "K011-S3", "characterId": "K011", "name": "ガチャロン・超回転", "stage": 3, "imagePath": "/assets/characters/k011/stage-3.webp", "animationKey": "k011_s3", "assetStatus": "placeholder"}, {"formId": "K012-S1", "characterId": "K012", "name": "ミテミ", "stage": 1, "imagePath": "/assets/characters/k012/stage-1.webp", "animationKey": "k012_s1", "assetStatus": "placeholder"}, {"formId": "K012-S2", "characterId": "K012", "name": "ミテミ・観測員", "stage": 2, "imagePath": "/assets/characters/k012/stage-2.webp", "animationKey": "k012_s2", "assetStatus": "placeholder"}, {"formId": "K012-S3", "characterId": "K012", "name": "ミテミ・千里眼", "stage": 3, "imagePath": "/assets/characters/k012/stage-3.webp", "animationKey": "k012_s3", "assetStatus": "placeholder"}, {"formId": "K013-S1", "characterId": "K013", "name": "ネムリィ", "stage": 1, "imagePath": "/assets/characters/k013/stage-1.webp", "animationKey": "k013_s1", "assetStatus": "placeholder"}, {"formId": "K013-S2", "characterId": "K013", "name": "ネムリィ・寝返り", "stage": 2, "imagePath": "/assets/characters/k013/stage-2.webp", "animationKey": "k013_s2", "assetStatus": "placeholder"}, {"formId": "K013-S3", "characterId": "K013", "name": "ネムリィ・夢覚醒", "stage": 3, "imagePath": "/assets/characters/k013/stage-3.webp", "animationKey": "k013_s3", "assetStatus": "placeholder"}, {"formId": "K014-S1", "characterId": "K014", "name": "ポコロ", "stage": 1, "imagePath": "/assets/characters/k014/stage-1.webp", "animationKey": "k014_s1", "assetStatus": "placeholder"}, {"formId": "K014-S2", "characterId": "K014", "name": "ポコロ・早歩き", "stage": 2, "imagePath": "/assets/characters/k014/stage-2.webp", "animationKey": "k014_s2", "assetStatus": "placeholder"}, {"formId": "K014-S3", "characterId": "K014", "name": "ポコロ・流星", "stage": 3, "imagePath": "/assets/characters/k014/stage-3.webp", "animationKey": "k014_s3", "assetStatus": "placeholder"}, {"formId": "K015-S1", "characterId": "K015", "name": "モニョン", "stage": 1, "imagePath": "/assets/characters/k015/stage-1.webp", "animationKey": "k015_s1", "assetStatus": "placeholder"}, {"formId": "K015-S2", "characterId": "K015", "name": "モニョン・変形", "stage": 2, "imagePath": "/assets/characters/k015/stage-2.webp", "animationKey": "k015_s2", "assetStatus": "placeholder"}, {"formId": "K015-S3", "characterId": "K015", "name": "モニョン・無限体", "stage": 3, "imagePath": "/assets/characters/k015/stage-3.webp", "animationKey": "k015_s3", "assetStatus": "placeholder"}, {"formId": "K016-S1", "characterId": "K016", "name": "シラベェ", "stage": 1, "imagePath": "/assets/characters/k016/stage-1.webp", "animationKey": "k016_s1", "assetStatus": "placeholder"}, {"formId": "K016-S2", "characterId": "K016", "name": "シラベェ・調査員", "stage": 2, "imagePath": "/assets/characters/k016/stage-2.webp", "animationKey": "k016_s2", "assetStatus": "placeholder"}, {"formId": "K016-S3", "characterId": "K016", "name": "シラベェ・博士", "stage": 3, "imagePath": "/assets/characters/k016/stage-3.webp", "animationKey": "k016_s3", "assetStatus": "placeholder"}, {"formId": "K017-S1", "characterId": "K017", "name": "オモチュ", "stage": 1, "imagePath": "/assets/characters/k017/stage-1.webp", "animationKey": "k017_s1", "assetStatus": "placeholder"}, {"formId": "K017-S2", "characterId": "K017", "name": "オモチュ・のびもち", "stage": 2, "imagePath": "/assets/characters/k017/stage-2.webp", "animationKey": "k017_s2", "assetStatus": "placeholder"}, {"formId": "K017-S3", "characterId": "K017", "name": "オモチュ・満月もち", "stage": 3, "imagePath": "/assets/characters/k017/stage-3.webp", "animationKey": "k017_s3", "assetStatus": "placeholder"}, {"formId": "K018-S1", "characterId": "K018", "name": "チカチカ", "stage": 1, "imagePath": "/assets/characters/k018/stage-1.webp", "animationKey": "k018_s1", "assetStatus": "placeholder"}, {"formId": "K018-S2", "characterId": "K018", "name": "チカチカ・点灯", "stage": 2, "imagePath": "/assets/characters/k018/stage-2.webp", "animationKey": "k018_s2", "assetStatus": "placeholder"}, {"formId": "K018-S3", "characterId": "K018", "name": "チカチカ・閃雷", "stage": 3, "imagePath": "/assets/characters/k018/stage-3.webp", "animationKey": "k018_s3", "assetStatus": "placeholder"}, {"formId": "K019-S1", "characterId": "K019", "name": "ワスレル", "stage": 1, "imagePath": "/assets/characters/k019/stage-1.webp", "animationKey": "k019_s1", "assetStatus": "placeholder"}, {"formId": "K019-S2", "characterId": "K019", "name": "ワスレル・復習", "stage": 2, "imagePath": "/assets/characters/k019/stage-2.webp", "animationKey": "k019_s2", "assetStatus": "placeholder"}, {"formId": "K019-S3", "characterId": "K019", "name": "ワスレル・忘却王", "stage": 3, "imagePath": "/assets/characters/k019/stage-3.webp", "animationKey": "k019_s3", "assetStatus": "placeholder"}, {"formId": "K020-S1", "characterId": "K020", "name": "モクモク", "stage": 1, "imagePath": "/assets/characters/k020/stage-1.webp", "animationKey": "k020_s1", "assetStatus": "placeholder"}, {"formId": "K020-S2", "characterId": "K020", "name": "モクモク・白煙", "stage": 2, "imagePath": "/assets/characters/k020/stage-2.webp", "animationKey": "k020_s2", "assetStatus": "placeholder"}, {"formId": "K020-S3", "characterId": "K020", "name": "モクモク・雷雲", "stage": 3, "imagePath": "/assets/characters/k020/stage-3.webp", "animationKey": "k020_s3", "assetStatus": "placeholder"}, {"formId": "K021-S1", "characterId": "K021", "name": "コロッピ", "stage": 1, "imagePath": "/assets/characters/k021/stage-1.webp", "animationKey": "k021_s1", "assetStatus": "placeholder"}, {"formId": "K021-S2", "characterId": "K021", "name": "コロッピ・回転王", "stage": 2, "imagePath": "/assets/characters/k021/stage-2.webp", "animationKey": "k021_s2", "assetStatus": "placeholder"}, {"formId": "K021-S3", "characterId": "K021", "name": "コロッピ・黄金比", "stage": 3, "imagePath": "/assets/characters/k021/stage-3.webp", "animationKey": "k021_s3", "assetStatus": "placeholder"}, {"formId": "K022-S1", "characterId": "K022", "name": "ハテナコ", "stage": 1, "imagePath": "/assets/characters/k022/stage-1.webp", "animationKey": "k022_s1", "assetStatus": "placeholder"}, {"formId": "K022-S2", "characterId": "K022", "name": "ハテナコ・発見", "stage": 2, "imagePath": "/assets/characters/k022/stage-2.webp", "animationKey": "k022_s2", "assetStatus": "placeholder"}, {"formId": "K022-S3", "characterId": "K022", "name": "ハテナコ・大発見", "stage": 3, "imagePath": "/assets/characters/k022/stage-3.webp", "animationKey": "k022_s3", "assetStatus": "placeholder"}, {"formId": "K023-S1", "characterId": "K023", "name": "パチパチ", "stage": 1, "imagePath": "/assets/characters/k023/stage-1.webp", "animationKey": "k023_s1", "assetStatus": "placeholder"}, {"formId": "K023-S2", "characterId": "K023", "name": "パチパチ・連打", "stage": 2, "imagePath": "/assets/characters/k023/stage-2.webp", "animationKey": "k023_s2", "assetStatus": "placeholder"}, {"formId": "K023-S3", "characterId": "K023", "name": "パチパチ・音速", "stage": 3, "imagePath": "/assets/characters/k023/stage-3.webp", "animationKey": "k023_s3", "assetStatus": "placeholder"}, {"formId": "K024-S1", "characterId": "K024", "name": "ドロリン", "stage": 1, "imagePath": "/assets/characters/k024/stage-1.webp", "animationKey": "k024_s1", "assetStatus": "placeholder"}, {"formId": "K024-S2", "characterId": "K024", "name": "ドロリン・ゆらり", "stage": 2, "imagePath": "/assets/characters/k024/stage-2.webp", "animationKey": "k024_s2", "assetStatus": "placeholder"}, {"formId": "K024-S3", "characterId": "K024", "name": "ドロリン・幻影", "stage": 3, "imagePath": "/assets/characters/k024/stage-3.webp", "animationKey": "k024_s3", "assetStatus": "placeholder"}, {"formId": "K025-S1", "characterId": "K025", "name": "ベンチョ", "stage": 1, "imagePath": "/assets/characters/k025/stage-1.webp", "animationKey": "k025_s1", "assetStatus": "placeholder"}, {"formId": "K025-S2", "characterId": "K025", "name": "ベンチョ・演説", "stage": 2, "imagePath": "/assets/characters/k025/stage-2.webp", "animationKey": "k025_s2", "assetStatus": "placeholder"}, {"formId": "K025-S3", "characterId": "K025", "name": "ベンチョ・大賢者", "stage": 3, "imagePath": "/assets/characters/k025/stage-3.webp", "animationKey": "k025_s3", "assetStatus": "placeholder"}, {"formId": "K026-S1", "characterId": "K026", "name": "コツコツ", "stage": 1, "imagePath": "/assets/characters/k026/stage-1.webp", "animationKey": "k026_s1", "assetStatus": "placeholder"}, {"formId": "K026-S2", "characterId": "K026", "name": "コツコツ・努力家", "stage": 2, "imagePath": "/assets/characters/k026/stage-2.webp", "animationKey": "k026_s2", "assetStatus": "placeholder"}, {"formId": "K026-S3", "characterId": "K026", "name": "コツコツ・達人", "stage": 3, "imagePath": "/assets/characters/k026/stage-3.webp", "animationKey": "k026_s3", "assetStatus": "placeholder"}, {"formId": "K027-S1", "characterId": "K027", "name": "ズバッピ", "stage": 1, "imagePath": "/assets/characters/k027/stage-1.webp", "animationKey": "k027_s1", "assetStatus": "placeholder"}, {"formId": "K027-S2", "characterId": "K027", "name": "ズバッピ・瞬断", "stage": 2, "imagePath": "/assets/characters/k027/stage-2.webp", "animationKey": "k027_s2", "assetStatus": "placeholder"}, {"formId": "K027-S3", "characterId": "K027", "name": "ズバッピ・超音速", "stage": 3, "imagePath": "/assets/characters/k027/stage-3.webp", "animationKey": "k027_s3", "assetStatus": "placeholder"}, {"formId": "K028-S1", "characterId": "K028", "name": "ユルリカ", "stage": 1, "imagePath": "/assets/characters/k028/stage-1.webp", "animationKey": "k028_s1", "assetStatus": "placeholder"}, {"formId": "K028-S2", "characterId": "K028", "name": "ユルリカ・ひらめき", "stage": 2, "imagePath": "/assets/characters/k028/stage-2.webp", "animationKey": "k028_s2", "assetStatus": "placeholder"}, {"formId": "K028-S3", "characterId": "K028", "name": "ユルリカ・大天才", "stage": 3, "imagePath": "/assets/characters/k028/stage-3.webp", "animationKey": "k028_s3", "assetStatus": "placeholder"}, {"formId": "K029-S1", "characterId": "K029", "name": "マグレオ", "stage": 1, "imagePath": "/assets/characters/k029/stage-1.webp", "animationKey": "k029_s1", "assetStatus": "placeholder"}, {"formId": "K029-S2", "characterId": "K029", "name": "マグレオ・連勝", "stage": 2, "imagePath": "/assets/characters/k029/stage-2.webp", "animationKey": "k029_s2", "assetStatus": "placeholder"}, {"formId": "K029-S3", "characterId": "K029", "name": "マグレオ・奇跡", "stage": 3, "imagePath": "/assets/characters/k029/stage-3.webp", "animationKey": "k029_s3", "assetStatus": "placeholder"}, {"formId": "K030-S1", "characterId": "K030", "name": "キオクン", "stage": 1, "imagePath": "/assets/characters/k030/stage-1.webp", "animationKey": "k030_s1", "assetStatus": "placeholder"}, {"formId": "K030-S2", "characterId": "K030", "name": "キオクン・整理", "stage": 2, "imagePath": "/assets/characters/k030/stage-2.webp", "animationKey": "k030_s2", "assetStatus": "placeholder"}, {"formId": "K030-S3", "characterId": "K030", "name": "キオクン・記録神", "stage": 3, "imagePath": "/assets/characters/k030/stage-3.webp", "animationKey": "k030_s3", "assetStatus": "placeholder"}, {"formId": "K031-S1", "characterId": "K031", "name": "ヒラメェ", "stage": 1, "imagePath": "/assets/characters/k031/stage-1.webp", "animationKey": "k031_s1", "assetStatus": "placeholder"}, {"formId": "K031-S2", "characterId": "K031", "name": "ヒラメェ・着想", "stage": 2, "imagePath": "/assets/characters/k031/stage-2.webp", "animationKey": "k031_s2", "assetStatus": "placeholder"}, {"formId": "K031-S3", "characterId": "K031", "name": "ヒラメェ・超着想", "stage": 3, "imagePath": "/assets/characters/k031/stage-3.webp", "animationKey": "k031_s3", "assetStatus": "placeholder"}, {"formId": "K032-S1", "characterId": "K032", "name": "ナゾミン", "stage": 1, "imagePath": "/assets/characters/k032/stage-1.webp", "animationKey": "k032_s1", "assetStatus": "placeholder"}, {"formId": "K032-S2", "characterId": "K032", "name": "ナゾミン・推理", "stage": 2, "imagePath": "/assets/characters/k032/stage-2.webp", "animationKey": "k032_s2", "assetStatus": "placeholder"}, {"formId": "K032-S3", "characterId": "K032", "name": "ナゾミン・真理", "stage": 3, "imagePath": "/assets/characters/k032/stage-3.webp", "animationKey": "k032_s3", "assetStatus": "placeholder"}, {"formId": "K033-S1", "characterId": "K033", "name": "ダッシュン", "stage": 1, "imagePath": "/assets/characters/k033/stage-1.webp", "animationKey": "k033_s1", "assetStatus": "placeholder"}, {"formId": "K033-S2", "characterId": "K033", "name": "ダッシュン・加速", "stage": 2, "imagePath": "/assets/characters/k033/stage-2.webp", "animationKey": "k033_s2", "assetStatus": "placeholder"}, {"formId": "K033-S3", "characterId": "K033", "name": "ダッシュン・光速", "stage": 3, "imagePath": "/assets/characters/k033/stage-3.webp", "animationKey": "k033_s3", "assetStatus": "placeholder"}, {"formId": "K034-S1", "characterId": "K034", "name": "モフタ", "stage": 1, "imagePath": "/assets/characters/k034/stage-1.webp", "animationKey": "k034_s1", "assetStatus": "placeholder"}, {"formId": "K034-S2", "characterId": "K034", "name": "モフタ・もふ増し", "stage": 2, "imagePath": "/assets/characters/k034/stage-2.webp", "animationKey": "k034_s2", "assetStatus": "placeholder"}, {"formId": "K034-S3", "characterId": "K034", "name": "モフタ・大もふ", "stage": 3, "imagePath": "/assets/characters/k034/stage-3.webp", "animationKey": "k034_s3", "assetStatus": "placeholder"}, {"formId": "K035-S1", "characterId": "K035", "name": "ピンポン", "stage": 1, "imagePath": "/assets/characters/k035/stage-1.webp", "animationKey": "k035_s1", "assetStatus": "placeholder"}, {"formId": "K035-S2", "characterId": "K035", "name": "ピンポン・早押し", "stage": 2, "imagePath": "/assets/characters/k035/stage-2.webp", "animationKey": "k035_s2", "assetStatus": "placeholder"}, {"formId": "K035-S3", "characterId": "K035", "name": "ピンポン・大正解", "stage": 3, "imagePath": "/assets/characters/k035/stage-3.webp", "animationKey": "k035_s3", "assetStatus": "placeholder"}, {"formId": "K036-S1", "characterId": "K036", "name": "ギモンヌ", "stage": 1, "imagePath": "/assets/characters/k036/stage-1.webp", "animationKey": "k036_s1", "assetStatus": "placeholder"}, {"formId": "K036-S2", "characterId": "K036", "name": "ギモンヌ・分析", "stage": 2, "imagePath": "/assets/characters/k036/stage-2.webp", "animationKey": "k036_s2", "assetStatus": "placeholder"}, {"formId": "K036-S3", "characterId": "K036", "name": "ギモンヌ・真眼", "stage": 3, "imagePath": "/assets/characters/k036/stage-3.webp", "animationKey": "k036_s3", "assetStatus": "placeholder"}, {"formId": "K037-S1", "characterId": "K037", "name": "ホシポン", "stage": 1, "imagePath": "/assets/characters/k037/stage-1.webp", "animationKey": "k037_s1", "assetStatus": "placeholder"}, {"formId": "K037-S2", "characterId": "K037", "name": "ホシポン・星集め", "stage": 2, "imagePath": "/assets/characters/k037/stage-2.webp", "animationKey": "k037_s2", "assetStatus": "placeholder"}, {"formId": "K037-S3", "characterId": "K037", "name": "ホシポン・銀河", "stage": 3, "imagePath": "/assets/characters/k037/stage-3.webp", "animationKey": "k037_s3", "assetStatus": "placeholder"}, {"formId": "K038-S1", "characterId": "K038", "name": "パニモ", "stage": 1, "imagePath": "/assets/characters/k038/stage-1.webp", "animationKey": "k038_s1", "assetStatus": "placeholder"}, {"formId": "K038-S2", "characterId": "K038", "name": "パニモ・耐久", "stage": 2, "imagePath": "/assets/characters/k038/stage-2.webp", "animationKey": "k038_s2", "assetStatus": "placeholder"}, {"formId": "K038-S3", "characterId": "K038", "name": "パニモ・逆転王", "stage": 3, "imagePath": "/assets/characters/k038/stage-3.webp", "animationKey": "k038_s3", "assetStatus": "placeholder"}, {"formId": "K039-S1", "characterId": "K039", "name": "ペラコ", "stage": 1, "imagePath": "/assets/characters/k039/stage-1.webp", "animationKey": "k039_s1", "assetStatus": "placeholder"}, {"formId": "K039-S2", "characterId": "K039", "name": "ペラコ・しおり", "stage": 2, "imagePath": "/assets/characters/k039/stage-2.webp", "animationKey": "k039_s2", "assetStatus": "placeholder"}, {"formId": "K039-S3", "characterId": "K039", "name": "ペラコ・百科", "stage": 3, "imagePath": "/assets/characters/k039/stage-3.webp", "animationKey": "k039_s3", "assetStatus": "placeholder"}, {"formId": "K040-S1", "characterId": "K040", "name": "トキメキ", "stage": 1, "imagePath": "/assets/characters/k040/stage-1.webp", "animationKey": "k040_s1", "assetStatus": "placeholder"}, {"formId": "K040-S2", "characterId": "K040", "name": "トキメキ・鼓動", "stage": 2, "imagePath": "/assets/characters/k040/stage-2.webp", "animationKey": "k040_s2", "assetStatus": "placeholder"}, {"formId": "K040-S3", "characterId": "K040", "name": "トキメキ・超鼓動", "stage": 3, "imagePath": "/assets/characters/k040/stage-3.webp", "animationKey": "k040_s3", "assetStatus": "placeholder"}, {"formId": "K041-S1", "characterId": "K041", "name": "チョッカン", "stage": 1, "imagePath": "/assets/characters/k041/stage-1.webp", "animationKey": "k041_s1", "assetStatus": "placeholder"}, {"formId": "K041-S2", "characterId": "K041", "name": "チョッカン・予感", "stage": 2, "imagePath": "/assets/characters/k041/stage-2.webp", "animationKey": "k041_s2", "assetStatus": "placeholder"}, {"formId": "K041-S3", "characterId": "K041", "name": "チョッカン・予知", "stage": 3, "imagePath": "/assets/characters/k041/stage-3.webp", "animationKey": "k041_s3", "assetStatus": "placeholder"}, {"formId": "K042-S1", "characterId": "K042", "name": "プチメモ", "stage": 1, "imagePath": "/assets/characters/k042/stage-1.webp", "animationKey": "k042_s1", "assetStatus": "placeholder"}, {"formId": "K042-S2", "characterId": "K042", "name": "プチメモ・暗記", "stage": 2, "imagePath": "/assets/characters/k042/stage-2.webp", "animationKey": "k042_s2", "assetStatus": "placeholder"}, {"formId": "K042-S3", "characterId": "K042", "name": "プチメモ・大図鑑", "stage": 3, "imagePath": "/assets/characters/k042/stage-3.webp", "animationKey": "k042_s3", "assetStatus": "placeholder"}, {"formId": "K043-S1", "characterId": "K043", "name": "ロンロン", "stage": 1, "imagePath": "/assets/characters/k043/stage-1.webp", "animationKey": "k043_s1", "assetStatus": "placeholder"}, {"formId": "K043-S2", "characterId": "K043", "name": "ロンロン・証明", "stage": 2, "imagePath": "/assets/characters/k043/stage-2.webp", "animationKey": "k043_s2", "assetStatus": "placeholder"}, {"formId": "K043-S3", "characterId": "K043", "name": "ロンロン・大論証", "stage": 3, "imagePath": "/assets/characters/k043/stage-3.webp", "animationKey": "k043_s3", "assetStatus": "placeholder"}, {"formId": "K044-S1", "characterId": "K044", "name": "カッとん", "stage": 1, "imagePath": "/assets/characters/k044/stage-1.webp", "animationKey": "k044_s1", "assetStatus": "placeholder"}, {"formId": "K044-S2", "characterId": "K044", "name": "カッとん・瞬発", "stage": 2, "imagePath": "/assets/characters/k044/stage-2.webp", "animationKey": "k044_s2", "assetStatus": "placeholder"}, {"formId": "K044-S3", "characterId": "K044", "name": "カッとん・熱風", "stage": 3, "imagePath": "/assets/characters/k044/stage-3.webp", "animationKey": "k044_s3", "assetStatus": "placeholder"}, {"formId": "K045-S1", "characterId": "K045", "name": "アタルン", "stage": 1, "imagePath": "/assets/characters/k045/stage-1.webp", "animationKey": "k045_s1", "assetStatus": "placeholder"}, {"formId": "K045-S2", "characterId": "K045", "name": "アタルン・的中", "stage": 2, "imagePath": "/assets/characters/k045/stage-2.webp", "animationKey": "k045_s2", "assetStatus": "placeholder"}, {"formId": "K045-S3", "characterId": "K045", "name": "アタルン・神勘", "stage": 3, "imagePath": "/assets/characters/k045/stage-3.webp", "animationKey": "k045_s3", "assetStatus": "placeholder"}, {"formId": "K046-S1", "characterId": "K046", "name": "ソウゾウ", "stage": 1, "imagePath": "/assets/characters/k046/stage-1.webp", "animationKey": "k046_s1", "assetStatus": "placeholder"}, {"formId": "K046-S2", "characterId": "K046", "name": "ソウゾウ・設計", "stage": 2, "imagePath": "/assets/characters/k046/stage-2.webp", "animationKey": "k046_s2", "assetStatus": "placeholder"}, {"formId": "K046-S3", "characterId": "K046", "name": "ソウゾウ・創世", "stage": 3, "imagePath": "/assets/characters/k046/stage-3.webp", "animationKey": "k046_s3", "assetStatus": "placeholder"}, {"formId": "K047-S1", "characterId": "K047", "name": "クルミン", "stage": 1, "imagePath": "/assets/characters/k047/stage-1.webp", "animationKey": "k047_s1", "assetStatus": "placeholder"}, {"formId": "K047-S2", "characterId": "K047", "name": "クルミン・熟考", "stage": 2, "imagePath": "/assets/characters/k047/stage-2.webp", "animationKey": "k047_s2", "assetStatus": "placeholder"}, {"formId": "K047-S3", "characterId": "K047", "name": "クルミン・叡智", "stage": 3, "imagePath": "/assets/characters/k047/stage-3.webp", "animationKey": "k047_s3", "assetStatus": "placeholder"}, {"formId": "K048-S1", "characterId": "K048", "name": "オチツキ", "stage": 1, "imagePath": "/assets/characters/k048/stage-1.webp", "animationKey": "k048_s1", "assetStatus": "placeholder"}, {"formId": "K048-S2", "characterId": "K048", "name": "オチツキ・集中", "stage": 2, "imagePath": "/assets/characters/k048/stage-2.webp", "animationKey": "k048_s2", "assetStatus": "placeholder"}, {"formId": "K048-S3", "characterId": "K048", "name": "オチツキ・不動", "stage": 3, "imagePath": "/assets/characters/k048/stage-3.webp", "animationKey": "k048_s3", "assetStatus": "placeholder"}, {"formId": "K049-S1", "characterId": "K049", "name": "ハヤオシ", "stage": 1, "imagePath": "/assets/characters/k049/stage-1.webp", "animationKey": "k049_s1", "assetStatus": "placeholder"}, {"formId": "K049-S2", "characterId": "K049", "name": "ハヤオシ・迅雷", "stage": 2, "imagePath": "/assets/characters/k049/stage-2.webp", "animationKey": "k049_s2", "assetStatus": "placeholder"}, {"formId": "K049-S3", "characterId": "K049", "name": "ハヤオシ・雷帝", "stage": 3, "imagePath": "/assets/characters/k049/stage-3.webp", "animationKey": "k049_s3", "assetStatus": "placeholder"}, {"formId": "K050-S1", "characterId": "K050", "name": "セイカイ", "stage": 1, "imagePath": "/assets/characters/k050/stage-1.webp", "animationKey": "k050_s1", "assetStatus": "placeholder"}, {"formId": "K050-S2", "characterId": "K050", "name": "セイカイ・開眼", "stage": 2, "imagePath": "/assets/characters/k050/stage-2.webp", "animationKey": "k050_s2", "assetStatus": "placeholder"}, {"formId": "K050-S3", "characterId": "K050", "name": "セイカイ・星冠", "stage": 3, "imagePath": "/assets/characters/k050/stage-3.webp", "animationKey": "k050_s3", "assetStatus": "placeholder"}]){
+    if(!KMASTER[f.characterId]) continue;
+    KFORMS[f.formId] = { fid: f.formId, cid: f.characterId, stage: f.stage, name: f.name, imagePath: String(f.imagePath || "").replace(/^\//, ""), ready: f.assetStatus === "ready" };
+    KMASTER[f.characterId].forms[f.stage - 1] = f.formId;
+  }
+  const KIDS = Object.keys(KMASTER).sort();
+  // マスターの検査。問題があれば一覧を返す（テストと起動時に使う）
+  function validateMaster(){
+    const bad = [];
+    if(KIDS.length !== GCFG.baseCharacterCount) bad.push("キャラ数: " + KIDS.length);
+    if(Object.keys(KFORMS).length !== GCFG.catalogCount) bad.push("形態数: " + Object.keys(KFORMS).length);
+    for(const m of Object.values(KMASTER)){
+      if(!K_ATTRS.includes(m.attr)) bad.push(m.cid + " 属性");
+      if(!K_RARITIES.includes(m.rarity)) bad.push(m.cid + " レア度");
+      if(m.collab) bad.push(m.cid + " コラボは公開しない");
+      for(let s = 1; s <= 3; s++){ const f = KFORMS[m.cid + "-S" + s]; if(!f || f.stage !== s || f.cid !== m.cid) bad.push(m.cid + " S" + s); }
+      if(!KART[m.cid]) bad.push(m.cid + " 絵の設定");
+    }
+    const sum = Object.values(KCFG.gacha.probs).reduce((a, b) => a + b, 0);
+    if(Math.abs(sum - 1) > 1e-9) bad.push("排出率の合計: " + sum);
+    for(const r of K_RARITIES) if(!KIDS.some(c => KMASTER[c].rarity === r)) bad.push(r + " のキャラがいない");
+    for(const a of K_ATTRS){
+      const w = K_BEATS[a] || []; if(w.length !== 2 || w.includes(a)) bad.push(a + " 相性");
+      const lose = K_ATTRS.filter(b => (K_BEATS[b] || []).includes(a)); if(lose.length !== 2) bad.push(a + " 負け数");
+    }
+    return bad;
+  }
+
+  // ----- 絵の設定（体の色・形・耳・目・口・ワンポイント） -----
+  // body: round / wide / tall / square / drop / flat
+  const KART = {
+    K001:{ c:"#A9A3C9", body:"round", ears:["tri-bent","tri"], eyes:"sleepy", mouth:"flat", sig:"bandage" },
+    K002:{ c:"#F7F2E6", body:"round", ears:[null,null], eyes:"uwame", mouth:"o", sig:"egg" },
+    K003:{ c:"#6C9BFF", body:"round", ears:["round","round"], eyes:"dot", mouth:"smile", sig:"glasses" },
+    K004:{ c:"#FFC93C", body:"drop", ears:["tri",null], eyes:"big", mouth:"grin", sig:"bolt-ear" },
+    K005:{ c:"#B99CFF", body:"round", ears:["round","tri"], eyes:"sleepy", mouth:"w", sig:"star-bangs" },
+    K006:{ c:"#7CCB6B", body:"square", ears:["round",null], eyes:"worry", mouth:"wave", sig:"muscle" },
+    K007:{ c:"#5CC9D6", body:"round", ears:[null,null], eyes:"dot", mouth:"o", sig:"fishbowl" },
+    K008:{ c:"#FF9F5A", body:"round", ears:[null,null], eyes:"big", mouth:"o", sig:"hood-q" },
+    K009:{ c:"#D8D4E0", body:"round", ears:[null,null], eyes:"dot", mouth:"w", sig:"fluff" },
+    K010:{ c:"#FFE08A", body:"round", ears:["pencil","pencil"], eyes:"worry", mouth:"wave", sig:null },
+    K011:{ c:"#FF6B6B", body:"round", ears:["round","round"], eyes:"big", mouth:"grin", sig:"window" },
+    K012:{ c:"#5B7BD9", body:"round", ears:["tri",null], eyes:"dot", mouth:"o", sig:"lens" },
+    K013:{ c:"#FF9EB5", body:"tall", ears:["round","round"], eyes:"sleepy", mouth:"w", sig:"sleepbag" },
+    K014:{ c:"#FFB25B", body:"round", ears:["tri","tri-bent"], eyes:"big", mouth:"grin", sig:"skate" },
+    K015:{ c:"#C9A2F2", body:"drop", ears:["antenna-long","antenna"], eyes:"dot", mouth:"wave", sig:null },
+    K016:{ c:"#7EC8FF", body:"round", ears:["round","tri"], eyes:"dot", mouth:"smile", sig:"memo" },
+    K017:{ c:"#FFF0F3", body:"square", ears:["mochi","mochi"], eyes:"dot", mouth:"w", sig:null },
+    K018:{ c:"#C8E86B", body:"round", ears:["tri","tri"], eyes:"big", mouth:"grin", sig:"bulb-cheek" },
+    K019:{ c:"#8EE3C8", body:"round", ears:["round",null], eyes:"blank", mouth:"o", sig:"ribbon" },
+    K020:{ c:"#9FB3C8", body:"round", ears:["round","round"], eyes:"worry", mouth:"wave", sig:"smoke" },
+    K021:{ c:"#FFF6E5", body:"square", ears:[null,null], eyes:"big", mouth:"grin", sig:"dice" },
+    K022:{ c:"#6FD3E8", body:"round", ears:["q","q-flip"], eyes:"big", mouth:"o", sig:null },
+    K023:{ c:"#FFB59E", body:"round", ears:["tri","round"], eyes:"happy", mouth:"grin", sig:"clap" },
+    K024:{ c:"#A88BE8", body:"drop", ears:[null,null], eyes:"dot", mouth:"w", sig:"drip", alpha:.82 },
+    K025:{ c:"#4FAE8A", body:"round", ears:["round","round"], eyes:"dot", mouth:"open", sig:"chalk" },
+    K026:{ c:"#D9B98C", body:"wide", ears:["round",null], eyes:"dot", mouth:"smile", sig:"stone" },
+    K027:{ c:"#FF7A45", body:"drop", ears:["tri","tri"], eyes:"sharp", mouth:"grin", sig:"unibrow" },
+    K028:{ c:"#FFE27A", body:"wide", ears:["round","bulb"], eyes:"sleepy", mouth:"w", sig:null },
+    K029:{ c:"#E8B86B", body:"round", ears:["star-notch","tri"], eyes:"dot", mouth:"grin", sig:null },
+    K030:{ c:"#B98A5E", body:"square", ears:["round","round"], eyes:"dot", mouth:"smile", sig:"drawer" },
+    K031:{ c:"#FF8C7A", body:"flat", ears:[null,null], eyes:"big", mouth:"o", sig:"tail" },
+    K032:{ c:"#7D7BE6", body:"round", ears:["tri","round"], eyes:"dot", mouth:"flat", sig:"brows-count" },
+    K033:{ c:"#FFA94D", body:"round", ears:["tri","tri"], eyes:"sleepy", mouth:"o", sig:"pinwheel" },
+    K034:{ c:"#C49A7A", body:"round", ears:["round","round"], eyes:"worry", mouth:"wave", sig:"three-hairs" },
+    K035:{ c:"#F4F1FF", body:"round", ears:[null,null], eyes:"big", mouth:"grin", sig:"buzzer" },
+    K036:{ c:"#9C8CE0", body:"tall", ears:["tri","round"], eyes:"sharp", mouth:"flat", sig:"mustache" },
+    K037:{ c:"#4C5BD4", body:"round", ears:["tri","tri"], eyes:"sleepy", mouth:"o", sig:"star-hole" },
+    K038:{ c:"#FF8FA3", body:"round", ears:["round","tri-bent"], eyes:"spiral", mouth:"wave", sig:null },
+    K039:{ c:"#FFFDF5", body:"square", ears:["round",null], eyes:"dot", mouth:"smile", sig:"page" },
+    K040:{ c:"#FF6FA8", body:"round", ears:["heart","round"], eyes:"big", mouth:"grin", sig:null },
+    K041:{ c:"#7B5CFF", body:"drop", ears:["tri","tri"], eyes:"sharp", mouth:"flat", sig:"crescent" },
+    K042:{ c:"#B5E48C", body:"round", ears:["round","round"], eyes:"dot", mouth:"o", sig:"sticky" },
+    K043:{ c:"#6E9CC9", body:"round", ears:["tri","tri"], eyes:"dot", mouth:"wave", sig:"brows-flip" },
+    K044:{ c:"#FF7B54", body:"round", ears:["tri","tri"], eyes:"sharp", mouth:"open", sig:"spark" },
+    K045:{ c:"#FFE3E3", body:"round", ears:["round","round"], eyes:"happy", mouth:"grin", sig:"target" },
+    K046:{ c:"#8AD1FF", body:"round", ears:[null,"round"], eyes:"big", mouth:"smile", sig:"house" },
+    K047:{ c:"#B58A5A", body:"round", ears:[null,null], eyes:"dot", mouth:"line", sig:"swirl" },
+    K048:{ c:"#9CC7A4", body:"round", ears:["round","round"], eyes:"calm", mouth:"smile", sig:"zen" },
+    K049:{ c:"#FFD23F", body:"round", ears:["bolt","tri"], eyes:"sharp", mouth:"grin", sig:"button" },
+    K050:{ c:"#4FD1C5", body:"round", ears:["crown","round"], eyes:"big", mouth:"o", sig:null },
+  };
+
+  function kmix(a, b, t){
+    const p = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+    const x = p(a), y = p(b);
+    return "#" + x.map((v, i) => Math.round(v + (y[i] - v) * t).toString(16).padStart(2, "0")).join("");
+  }
+  let ksvgSeq = 0;
+  // cid: K001 など、st: 1〜3、mood: "" / "win" / "hurt"
+  function drawK(cid, st, mood){
+    const A = KART[cid], M = KMASTER[cid]; if(!A || !M) return "";
+    st = Math.max(1, Math.min(3, st | 0 || 1));
+    const u = "k" + (++ksvgSeq);
+    const m = A.c, d = kmix(m, "#1E1B3A", .55), l = kmix(m, "#ffffff", .55), ac = K_ATTR_COLOR[M.attr];
+    const gold = "#FFC531";
+    const C = { m, d, l, ac };
+    const sw = 4;   // 線の太さ
+    // 体
+    const bodies = {
+      round:`<path d="M100 60 C146 58 164 92 162 124 C160 160 134 178 100 178 C64 178 38 160 38 126 C38 90 58 61 100 60Z"/>`,
+      wide:`<path d="M100 72 C154 70 176 100 172 132 C168 166 138 178 100 178 C62 178 30 166 28 132 C26 98 48 73 100 72Z"/>`,
+      tall:`<path d="M100 48 C140 48 156 84 154 124 C152 162 132 180 100 180 C68 180 46 162 46 124 C46 84 60 48 100 48Z"/>`,
+      square:`<rect x="40" y="64" width="120" height="114" rx="44"/>`,
+      drop:`<path d="M100 48 C128 80 164 104 162 136 C160 166 134 180 100 180 C66 180 40 166 38 136 C36 104 72 80 100 48Z"/>`,
+      flat:`<path d="M100 84 C156 82 178 108 174 138 C170 168 138 178 100 178 C62 178 30 168 26 138 C22 108 44 85 100 84Z"/>`,
+    };
+    const eyeY = A.body === "flat" ? 122 : A.body === "wide" ? 118 : 112, eyeL = 80, eyeR = 120, mouthY = eyeY + 22;
+    // 耳（左右で形がちがう）
+    const ear = (type, side) => {
+      if(!type) return "";
+      const s = side, X = x => 100 + s * (x - 100);
+      const f = `fill="${m}" stroke="${d}" stroke-width="${sw}" stroke-linejoin="round"`;
+      switch(type){
+        case "tri": return `<path d="M${X(66)} 74 L${X(56)} 34 L${X(90)} 62Z" ${f}/>`;
+        case "tri-bent": return `<path d="M${X(64)} 76 L${X(44)} 44 L${X(70)} 48 L${X(90)} 64Z" ${f}/>`;
+        case "round": return `<circle cx="${X(62)}" cy="70" r="16" ${f}/><circle cx="${X(62)}" cy="70" r="7" fill="${l}"/>`;
+        case "pencil": return `<path d="M${X(62)} 72 L${X(56)} 44 L${X(72)} 44 L${X(78)} 66Z" fill="#FFD166" stroke="${d}" stroke-width="3"/><path d="M${X(56)} 44 L${X(64)} 26 L${X(72)} 44Z" fill="#F4D7B0" stroke="${d}" stroke-width="3"/><path d="M${X(61)} 34 L${X(64)} 26 L${X(67)} 34Z" fill="#333"/>`;
+        case "mochi": return `<rect x="${s < 0 ? X(50) - 26 : X(50)}" y="46" width="26" height="30" rx="7" ${f}/>`;
+        case "antenna": return `<path d="M${X(80)} 66 Q${X(74)} 46 ${X(80)} 36" fill="none" stroke="${d}" stroke-width="4" stroke-linecap="round"/><circle cx="${X(80)}" cy="34" r="6" fill="${ac}"/>`;
+        case "antenna-long": return `<path d="M${X(78)} 66 Q${X(56)} 30 ${X(36)} 34 Q${X(22)} 38 ${X(30)} 50" fill="none" stroke="${d}" stroke-width="4" stroke-linecap="round"/><circle cx="${X(30)}" cy="52" r="6" fill="${ac}"/>`;
+        case "q": return `<path d="M${X(70)} 70 Q${X(66)} 54 ${X(72)} 50 Q${X(56)} 48 ${X(54)} 34 Q${X(56)} 20 ${X(70)} 22 Q${X(82)} 24 ${X(80)} 36" fill="none" stroke="${d}" stroke-width="7" stroke-linecap="round"/><circle cx="${X(81)}" cy="46" r="0" />`;
+        case "q-flip": return `<path d="M${X(70)} 64 Q${X(76)} 50 ${X(68)} 42 Q${X(56)} 32 ${X(64)} 24 Q${X(74)} 16 ${X(84)} 26" fill="none" stroke="${d}" stroke-width="7" stroke-linecap="round"/><circle cx="${X(68)}" cy="76" r="5" fill="${d}"/>`;
+        case "bulb": return `<circle cx="${X(62)}" cy="50" r="18" fill="#FFF6B0" stroke="${d}" stroke-width="3"/><rect x="${X(62) - 8}" y="66" width="16" height="10" rx="2" fill="#B8B8C8" stroke="${d}" stroke-width="3"/><path d="M${X(56)} 50 Q${X(62)} 42 ${X(68)} 50" fill="none" stroke="#FFB800" stroke-width="3"/>`;
+        case "star-notch": return `<path d="M${X(64)} 76 L${X(52)} 34 L${X(92)} 62Z" ${f}/><path d="M${X(62)} 52 l3 6 6 1 -5 4 1 6 -5 -3 -5 3 1 -6 -5 -4 6 -1z" fill="#fff" stroke="${d}" stroke-width="2"/>`;
+        case "heart": return `<path d="M${X(64)} 74 C${X(40)} 58 ${X(44)} 30 ${X(62)} 40 C${X(78)} 28 ${X(90)} 52 ${X(78)} 70Z" fill="#FF4D8D" stroke="${d}" stroke-width="${sw}" stroke-linejoin="round"/>`;
+        case "bolt": return `<path d="M${X(70)} 70 L${X(54)} 46 L${X(66)} 46 L${X(56)} 20 L${X(84)} 52 L${X(72)} 52 L${X(84)} 68Z" fill="${gold}" stroke="${d}" stroke-width="3" stroke-linejoin="round"/>`;
+        case "crown": return `<path d="M${X(54)} 76 L${X(46)} 36 L${X(60)} 52 L${X(66)} 28 L${X(76)} 50 L${X(88)} 34 L${X(86)} 70Z" fill="${gold}" stroke="${d}" stroke-width="3" stroke-linejoin="round"/><circle cx="${X(66)}" cy="28" r="4" fill="#FF4D6D"/>`;
+      }
+      return "";
+    };
+    // 目
+    const eye = (x, side) => {
+      const mo = mood === "win" ? "happy" : mood === "hurt" ? "hurt" : A.eyes;
+      switch(mo){
+        case "happy": return `<path d="M${x - 8} ${eyeY + 2} Q${x} ${eyeY - 8} ${x + 8} ${eyeY + 2}" fill="none" stroke="#2A2340" stroke-width="4.5" stroke-linecap="round"/>`;
+        case "hurt": return `<path d="M${x - 7} ${eyeY - 6} L${x + 5 * side} ${eyeY} L${x - 7} ${eyeY + 6}" fill="none" stroke="#2A2340" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="${side < 0 ? "" : `translate(${2 * x},0) scale(-1,1)`}"/>`;
+        case "sleepy": return `<path d="M${x - 8} ${eyeY} Q${x} ${eyeY + 6} ${x + 8} ${eyeY}" fill="none" stroke="#2A2340" stroke-width="4" stroke-linecap="round"/><path d="M${x - 9} ${eyeY - 4} L${x + 9} ${eyeY - 4}" stroke="${d}" stroke-width="3" stroke-linecap="round" opacity=".5"/>`;
+        case "calm": return `<path d="M${x - 8} ${eyeY} Q${x} ${eyeY + 5} ${x + 8} ${eyeY}" fill="none" stroke="#2A2340" stroke-width="4" stroke-linecap="round"/>`;
+        case "uwame": return `<ellipse cx="${x}" cy="${eyeY}" rx="7" ry="9" fill="#fff" stroke="#2A2340" stroke-width="2.5"/><circle cx="${x}" cy="${eyeY - 4}" r="4.5" fill="#2A2340"/>`;
+        case "big": return `<ellipse cx="${x}" cy="${eyeY}" rx="8" ry="10" fill="#2A2340"/><circle cx="${x + 2.5}" cy="${eyeY - 3.5}" r="3.2" fill="#fff"/><circle cx="${x - 2.5}" cy="${eyeY + 4}" r="1.5" fill="#fff"/>`;
+        case "sharp": return `<path d="M${x - 9} ${eyeY - 2} L${x + 9} ${eyeY - 5} L${x + 7} ${eyeY + 5} L${x - 7} ${eyeY + 5}Z" fill="#2A2340"/><circle cx="${x + 2}" cy="${eyeY - 1}" r="2" fill="#fff"/>`;
+        case "worry": return `<circle cx="${x}" cy="${eyeY + 1}" r="5.5" fill="#2A2340"/><circle cx="${x + 1.5}" cy="${eyeY - 1}" r="1.8" fill="#fff"/><path d="M${x - 9} ${eyeY - 9 + (side < 0 ? 4 : 0)} L${x + 8} ${eyeY - 9 + (side < 0 ? 0 : 4)}" stroke="#2A2340" stroke-width="3" stroke-linecap="round"/>`;
+        case "blank": return `<circle cx="${x}" cy="${eyeY}" r="7" fill="#fff" stroke="#2A2340" stroke-width="2.5"/><circle cx="${x}" cy="${eyeY}" r="2" fill="#2A2340"/>`;
+        case "spiral": return side < 0 ? `<path d="M${x} ${eyeY} m-1 0 a1 1 0 1 1 2 0 a3 3 0 1 1 -6 0 a5 5 0 1 1 10 0 a7 7 0 1 1 -14 0" fill="none" stroke="#2A2340" stroke-width="2.5"/>` : `<circle cx="${x}" cy="${eyeY}" r="5.5" fill="#2A2340"/><circle cx="${x + 1.5}" cy="${eyeY - 1.5}" r="1.8" fill="#fff"/>`;
+        default: return `<circle cx="${x}" cy="${eyeY}" r="5.5" fill="#2A2340"/><circle cx="${x + 1.6}" cy="${eyeY - 1.8}" r="1.9" fill="#fff"/>`;
+      }
+    };
+    const mouth = () => {
+      const mo = mood === "win" ? "grin" : mood === "hurt" ? "wave" : A.mouth, y = mouthY;
+      const s = `fill="none" stroke="#2A2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"`;
+      switch(mo){
+        case "smile": return `<path d="M92 ${y} Q100 ${y + 7} 108 ${y}" ${s}/>`;
+        case "w": return `<path d="M90 ${y} Q95 ${y + 6} 100 ${y} Q105 ${y + 6} 110 ${y}" ${s}/>`;
+        case "o": return `<ellipse cx="100" cy="${y + 2}" rx="4.5" ry="5" fill="#7A2E3A"/>`;
+        case "grin": return `<path d="M89 ${y - 2} Q100 ${y - 2} 111 ${y - 2} Q109 ${y + 11} 100 ${y + 11} Q91 ${y + 11} 89 ${y - 2}Z" fill="#7A2E3A" stroke="#2A2340" stroke-width="2.5" stroke-linejoin="round"/><path d="M93 ${y + 6} Q100 ${y + 2} 107 ${y + 6}" fill="#FF8FA3"/>`;
+        case "open": return `<path d="M92 ${y - 1} Q100 ${y + 12} 108 ${y - 1}Z" fill="#7A2E3A" stroke="#2A2340" stroke-width="2.5" stroke-linejoin="round"/>`;
+        case "wave": return `<path d="M88 ${y + 2} q4 -5 8 0 q4 5 8 0 q4 -5 8 0" ${s}/>`;
+        case "line": return `<path d="M90 ${y + 1} L110 ${y + 1}" ${s}/>`;
+        default: return `<path d="M93 ${y + 1} L107 ${y + 1}" ${s}/>`;
+      }
+    };
+    const cheeks = `<ellipse cx="66" cy="${eyeY + 16}" rx="9" ry="5.5" fill="#FF7A9A" opacity=".35"/><ellipse cx="134" cy="${eyeY + 16}" rx="9" ry="5.5" fill="#FF7A9A" opacity=".35"/>`;
+    // ワンポイント（体の前に描くもの front と、後ろに描くもの back）
+    const ink = "#2A2340";
+    const SIG = {
+      bandage:{ front:`<g transform="rotate(-18 136 ${eyeY + 16})"><rect x="122" y="${eyeY + 10}" width="28" height="12" rx="5" fill="#FFE3C2" stroke="${ink}" stroke-width="2.5"/><circle cx="133" cy="${eyeY + 16}" r="1.3" fill="${ink}"/><circle cx="139" cy="${eyeY + 16}" r="1.3" fill="${ink}"/></g>` },
+      egg:{ front:`<path d="M66 70 C58 54 78 44 92 52 C102 40 128 42 132 58 C146 60 144 78 128 78 L74 80 C62 80 60 74 66 70Z" fill="#fff" stroke="${ink}" stroke-width="3"/><circle cx="101" cy="62" r="13" fill="#FFB800" stroke="${ink}" stroke-width="3"/><circle cx="97" cy="58" r="4" fill="#FFE07A"/>` },
+      glasses:{ front:`<circle cx="${eyeL}" cy="${eyeY}" r="17" fill="rgba(255,255,255,.25)" stroke="${ink}" stroke-width="4"/><circle cx="${eyeR}" cy="${eyeY}" r="10" fill="rgba(255,255,255,.25)" stroke="${ink}" stroke-width="4"/><path d="M97 ${eyeY - 2} L110 ${eyeY - 2}" stroke="${ink}" stroke-width="4"/>` },
+      "bolt-ear":{ back:ear("bolt", 1), front:`<path d="M156 128 l14 -2 M158 140 l16 0 M156 152 l12 2" stroke="${d}" stroke-width="3" stroke-linecap="round" opacity=".6"/>` },
+      "star-bangs":{ front:`<path d="M100 62 l7 14 15 2 -11 10 3 15 -14 -7 -14 7 3 -15 -11 -10 15 -2z" fill="#FFE066" stroke="${ink}" stroke-width="3" stroke-linejoin="round"/><path d="M150 52 a10 10 0 1 1 -8 -16 a8 8 0 1 0 8 16z" fill="#FFE066" stroke="${ink}" stroke-width="2.5"/>` },
+      muscle:{ front:`<path d="M38 140 C26 136 22 118 32 108 C38 100 50 104 52 112 C60 108 66 116 62 124 C60 134 50 142 38 140Z" fill="${m}" stroke="${d}" stroke-width="${sw}" stroke-linejoin="round"/><path d="M22 110 l-6 -3 M20 122 l-7 0 M24 134 l-6 3" stroke="${d}" stroke-width="2.5" stroke-linecap="round"/>` },
+      fishbowl:{ front:`<path d="M54 92 C54 54 146 54 146 92Z" fill="rgba(190,240,255,.55)" stroke="${ink}" stroke-width="3"/><path d="M92 76 q10 -8 18 0 q-8 8 -18 0z M90 76 l-7 -5 0 10z" fill="#FF8A3D" stroke="${ink}" stroke-width="2"/><circle cx="112" cy="62" r="3" fill="none" stroke="#fff" stroke-width="2"/><circle cx="120" cy="54" r="2" fill="none" stroke="#fff" stroke-width="2"/>` },
+      "hood-q":{ back:`<path d="M42 118 C34 64 66 40 100 40 C134 40 166 64 158 118" fill="${d}" opacity=".85"/>`, front:`<text x="100" y="34" font-size="34" font-weight="900" text-anchor="middle" fill="${ac}" stroke="${ink}" stroke-width="2">?</text>` },
+      fluff:{ back:`<g fill="${m}" stroke="${d}" stroke-width="3"><circle cx="46" cy="96" r="16"/><circle cx="40" cy="128" r="14"/><circle cx="158" cy="108" r="11"/><circle cx="74" cy="62" r="14"/><circle cx="136" cy="70" r="10"/></g>` },
+      window:{ front:`<circle cx="100" cy="152" r="17" fill="rgba(220,245,255,.9)" stroke="${ink}" stroke-width="3"/><path d="M89 152 a11 11 0 0 1 22 0z" fill="#FFC531"/><path d="M89 152 a11 11 0 0 0 22 0z" fill="#3D7BFF"/>` },
+      lens:{ front:`<circle cx="${eyeR + 2}" cy="${eyeY}" r="19" fill="rgba(200,235,255,.35)" stroke="${ink}" stroke-width="5"/><path d="M134 126 L156 150" stroke="#8A5A2B" stroke-width="8" stroke-linecap="round"/><path d="M${eyeR - 8} ${eyeY - 10} q6 -4 12 0" stroke="#fff" stroke-width="3" fill="none"/>` },
+      sleepbag:{ front:`<path d="M42 138 C42 128 158 128 158 138 L158 160 C158 178 42 178 42 160Z" fill="#5C7CFA" stroke="${ink}" stroke-width="3"/><path d="M100 132 L100 176" stroke="#FFC531" stroke-width="3" stroke-dasharray="4 3"/><text x="150" y="58" font-size="16" font-weight="900" fill="${ac}">z</text><text x="162" y="42" font-size="12" font-weight="900" fill="${ac}">z</text>` },
+      skate:{ front:`<rect x="112" y="170" width="38" height="10" rx="5" fill="#3D7BFF" stroke="${ink}" stroke-width="2.5"/><circle cx="120" cy="185" r="5" fill="#FFC531" stroke="${ink}" stroke-width="2"/><circle cx="142" cy="185" r="5" fill="#FFC531" stroke="${ink}" stroke-width="2"/>` },
+      memo:{ front:`<rect x="86" y="140" width="28" height="30" rx="3" fill="#fff" stroke="${ink}" stroke-width="2.5"/><path d="M91 150 h18 M91 157 h18 M91 164 h11" stroke="${ac}" stroke-width="2"/><path d="M148 64 L162 46" stroke="#FFC531" stroke-width="5" stroke-linecap="round"/>` },
+      "bulb-cheek":{ front:`<circle cx="138" cy="${eyeY + 16}" r="8" fill="#FFF3A0" stroke="${ink}" stroke-width="2"/><path d="M146 ${eyeY + 6} l6 -4 M150 ${eyeY + 16} l7 0 M146 ${eyeY + 26} l6 4" stroke="#FFB800" stroke-width="2.5" stroke-linecap="round"/>` },
+      ribbon:{ back:`<path d="M150 104 L176 92 L172 116Z M150 104 L174 128 L156 128Z" fill="#FF6FA8" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/>`, front:`<circle cx="152" cy="106" r="6" fill="#FF6FA8" stroke="${ink}" stroke-width="2.5"/>` },
+      smoke:{ front:`<path d="M104 60 C96 48 112 42 104 30 C98 22 108 14 112 10" fill="none" stroke="#B9C2D0" stroke-width="5" stroke-linecap="round"/><path d="M146 92 q4 6 0 10" stroke="#7EC8FF" stroke-width="3" fill="none"/>` },
+      dice:{ front:`<g fill="${ink}"><circle cx="62" cy="${eyeY + 12}" r="2.3"/><circle cx="70" cy="${eyeY + 20}" r="2.3"/><circle cx="130" cy="${eyeY + 12}" r="2.3"/><circle cx="138" cy="${eyeY + 12}" r="2.3"/><circle cx="130" cy="${eyeY + 20}" r="2.3"/><circle cx="138" cy="${eyeY + 20}" r="2.3"/></g>` },
+      clap:{ front:`<path d="M84 160 C78 146 90 140 96 150 L100 158 L104 150 C110 140 122 146 116 160 C112 170 88 170 84 160Z" fill="${l}" stroke="${ink}" stroke-width="2.5"/><path d="M76 146 l-6 -6 M100 136 l0 -8 M124 146 l6 -6" stroke="${ac}" stroke-width="3" stroke-linecap="round"/>` },
+      drip:{ back:`<path d="M140 160 C156 170 160 186 150 192 C140 196 134 184 142 176" fill="${m}" opacity=".6" stroke="${d}" stroke-width="2.5"/>` },
+      chalk:{ front:`<rect x="112" y="${mouthY - 4}" width="18" height="6" rx="2" fill="#fff" stroke="${ink}" stroke-width="2" transform="rotate(-12 121 ${mouthY})"/><circle cx="134" cy="${mouthY - 8}" r="1.5" fill="#fff"/><circle cx="138" cy="${mouthY - 2}" r="1.2" fill="#fff"/>` },
+      stone:{ back:`<path d="M112 70 C150 60 180 90 172 126 C164 150 140 150 126 140Z" fill="#A6A3B4" stroke="${ink}" stroke-width="3"/><path d="M146 86 l-6 14 8 8 M158 114 l-10 4" stroke="#7E7A90" stroke-width="2.5" fill="none"/>` },
+      unibrow:{ front:`<rect x="70" y="${eyeY - 17}" width="60" height="7" rx="3" fill="${ink}"/>` },
+      drawer:{ front:`<rect x="76" y="142" width="48" height="24" rx="4" fill="${l}" stroke="${ink}" stroke-width="2.5"/><path d="M76 154 h48" stroke="${ink}" stroke-width="1.5" opacity=".4"/><circle cx="100" cy="149" r="3" fill="#FFC531" stroke="${ink}" stroke-width="1.5"/><circle cx="100" cy="160" r="3" fill="#FFC531" stroke="${ink}" stroke-width="1.5"/>` },
+      tail:{ back:`<circle cx="178" cy="150" r="13" fill="${m}" stroke="${d}" stroke-width="${sw}"/><circle cx="178" cy="150" r="5" fill="${l}"/>` },
+      "brows-count":{ front:`<path d="M72 ${eyeY - 14} L88 ${eyeY - 14}" stroke="${ink}" stroke-width="3.5" stroke-linecap="round"/><path d="M112 ${eyeY - 20} L128 ${eyeY - 20} M112 ${eyeY - 15} L128 ${eyeY - 15} M112 ${eyeY - 10} L128 ${eyeY - 10}" stroke="${ink}" stroke-width="3" stroke-linecap="round"/>` },
+      pinwheel:{ back:`<path d="M162 96 L150 150" stroke="${ink}" stroke-width="3"/><g transform="translate(162 92)"><path d="M0 0 L0 -18 L12 -6Z" fill="#FF4D6D"/><path d="M0 0 L18 0 L6 12Z" fill="#FFC531"/><path d="M0 0 L0 18 L-12 6Z" fill="#3D7BFF"/><path d="M0 0 L-18 0 L-6 -12Z" fill="#22C38A"/><circle r="3" fill="#fff" stroke="${ink}" stroke-width="1.5"/></g>` },
+      "three-hairs":{ front:`<path d="M90 62 Q84 44 92 34 M100 60 Q102 40 98 28 M110 62 Q118 46 112 36" fill="none" stroke="${d}" stroke-width="4" stroke-linecap="round"/>` },
+      buzzer:{ front:`<rect x="78" y="54" width="44" height="10" rx="4" fill="#B8B4C8" stroke="${ink}" stroke-width="2.5"/><path d="M84 54 C84 36 116 36 116 54Z" fill="#FF3B5C" stroke="${ink}" stroke-width="2.5"/><path d="M92 44 q6 -4 12 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/>` },
+      mustache:{ front:`<path d="M100 ${mouthY - 6} C92 ${mouthY - 12} 80 ${mouthY - 8} 78 ${mouthY - 2} C84 ${mouthY - 4} 92 ${mouthY - 2} 100 ${mouthY - 4} C108 ${mouthY - 2} 118 ${mouthY - 4} 122 ${mouthY - 2} C128 ${mouthY - 4} 132 ${mouthY - 12} 126 ${mouthY - 16} C124 ${mouthY - 8} 116 ${mouthY - 10} 100 ${mouthY - 6}Z" fill="${ink}"/>` },
+      "star-hole":{ front:`<path d="M100 72 l4 9 10 1 -8 7 2 10 -8 -5 -8 5 2 -10 -8 -7 10 -1z" fill="#130C33" stroke="#FFE066" stroke-width="2.5" stroke-linejoin="round"/>` },
+      page:{ back:`<path d="M138 70 L176 58 L182 112 L146 122Z" fill="#fff" stroke="${ink}" stroke-width="2.5"/><path d="M148 78 l24 -7 M150 88 l24 -7 M152 98 l22 -6" stroke="#B8B4C8" stroke-width="2"/>` },
+      crescent:{ front:`<path d="M${eyeR - 9} ${eyeY + 13} q9 7 18 0 q-9 3 -18 0z" fill="#FFE066" stroke="${ink}" stroke-width="1.8"/>` },
+      sticky:{ front:`<rect x="128" y="56" width="20" height="20" fill="#FFE066" stroke="${ink}" stroke-width="2" transform="rotate(12 138 66)"/><path d="M131 64 h12 M131 69 h8" stroke="#C9A400" stroke-width="1.5" transform="rotate(12 138 66)"/>` },
+      "brows-flip":{ front:`<path d="M70 ${eyeY - 18} L90 ${eyeY - 10}" stroke="${ink}" stroke-width="4" stroke-linecap="round"/><path d="M110 ${eyeY - 18} L130 ${eyeY - 10}" stroke="${ink}" stroke-width="4" stroke-linecap="round"/>` },
+      spark:{ front:`<path d="M138 ${eyeY + 6} l3 7 7 -3 -4 7 7 3 -7 2 2 7 -6 -4 -4 6 -1 -7 -7 -1 6 -4 -4 -6z" fill="#FFC531" stroke="${ink}" stroke-width="1.8" stroke-linejoin="round"/>` },
+      target:{ front:`<circle cx="100" cy="154" r="16" fill="#fff" stroke="${ink}" stroke-width="2.5"/><circle cx="100" cy="154" r="10" fill="#FF4D6D"/><circle cx="100" cy="154" r="5" fill="#fff"/><circle cx="100" cy="154" r="2" fill="#FF4D6D"/>` },
+      house:{ front:`<path d="M84 64 L84 46 L100 32 L116 46 L116 64Z" fill="#fff" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/><path d="M80 48 L100 30 L120 48" fill="none" stroke="#FF4D6D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="95" y="52" width="10" height="12" fill="#FFC531" stroke="${ink}" stroke-width="2"/>` },
+      swirl:{ front:`<path d="M100 150 m0 -4 a4 4 0 1 1 -4 4 a8 8 0 1 1 8 8 a12 12 0 1 1 -12 -12" fill="none" stroke="${d}" stroke-width="3"/><path d="M56 92 q10 -10 20 -4 M124 88 q10 -6 20 4" stroke="${d}" stroke-width="3" fill="none"/>` },
+      zen:{ front:`<path d="M70 172 C80 160 120 160 130 172" fill="none" stroke="${d}" stroke-width="5" stroke-linecap="round"/><ellipse cx="100" cy="176" rx="36" ry="6" fill="${d}" opacity=".18"/><path d="M146 116 q8 -8 0 -16" stroke="${ac}" stroke-width="3" fill="none"/>` },
+      button:{ front:`<circle cx="100" cy="84" r="12" fill="#FF3B5C" stroke="${ink}" stroke-width="3"/><circle cx="96" cy="80" r="3.5" fill="#fff" opacity=".8"/>` },
+    };
+    const sig = SIG[A.sig] || {};
+    // 進化の演出（S2：オーラとスカーフ、S3：光・王冠・星）
+    let behind = "", over = "", body = bodies[A.body] || bodies.round;
+    if(st >= 2) behind += `<circle cx="100" cy="118" r="${st === 3 ? 92 : 84}" fill="url(#${u}a)"/>`;
+    if(st === 3) behind += `<g opacity=".55" stroke="${gold}" stroke-width="5" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map(a => { const r = a * Math.PI / 180; return `<path d="M${100 + Math.cos(r) * 84} ${118 + Math.sin(r) * 84} L${100 + Math.cos(r) * 96} ${118 + Math.sin(r) * 96}"/>`; }).join("")}</g>`;
+    if(st >= 2) over += `<path d="M50 150 C76 162 124 162 150 150 L148 160 C122 172 78 172 52 160Z" fill="${st === 3 ? gold : ac}" stroke="${ink}" stroke-width="2.5"/><circle cx="100" cy="164" r="6" fill="${st === 3 ? "#FF4D6D" : "#fff"}" stroke="${ink}" stroke-width="2"/>`;
+    if(st === 3) over += `<g transform="translate(46 4) rotate(16 100 40) scale(.8)"><path d="M78 46 L74 26 L88 36 L100 20 L112 36 L126 26 L122 46Z" fill="${gold}" stroke="${ink}" stroke-width="2.5" stroke-linejoin="round"/><circle cx="100" cy="20" r="3.5" fill="#FF4D6D"/></g>`;
+    const sparkle = (x, y, s2, c2) => `<path d="M${x} ${y - s2} Q${x} ${y} ${x + s2} ${y} Q${x} ${y} ${x} ${y + s2} Q${x} ${y} ${x - s2} ${y} Q${x} ${y} ${x} ${y - s2}Z" fill="${c2}"/>`;
+    if(st >= 2) over += sparkle(30, 70, 7, st === 3 ? gold : "#fff") + sparkle(172, 84, 5, st === 3 ? gold : "#fff");
+    if(st === 3) over += sparkle(166, 168, 6, "#fff") + sparkle(26, 150, 5, gold);
+    const fillBody = st === 3 ? `url(#${u}b)` : m;
+    const alpha = A.alpha || 1;
+    return `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${KFORMS[cid + "-S" + st].name}">
+<defs><radialGradient id="${u}a"><stop offset="0" stop-color="${st === 3 ? gold : ac}" stop-opacity=".55"/><stop offset="1" stop-color="${st === 3 ? gold : ac}" stop-opacity="0"/></radialGradient>
+<linearGradient id="${u}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${kmix(m, "#ffffff", .25)}"/><stop offset="1" stop-color="${kmix(m, ac, .25)}"/></linearGradient></defs>
+${behind}${sig.back || ""}${ear(A.ears[0], -1)}${ear(A.ears[1], 1)}
+<g fill="${fillBody}" stroke="${d}" stroke-width="${sw}" stroke-linejoin="round" opacity="${alpha}">${body}</g>
+<ellipse cx="100" cy="${A.body === "flat" ? 150 : 148}" rx="34" ry="22" fill="${l}" opacity=".55"/>
+${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg>`;
+  }
 
 
   // ---------- キャラの強さ（早押し版） ----------
@@ -2956,18 +3528,22 @@
     3: { n:"レア",         k:"g3", hp:1.1, atk:1.1, exp:1, d:"HPとこうげきが1.1倍" },
     4: { n:"スーパーレア", k:"g4", hp:1.2, atk:1.2, exp:1, d:"HPとこうげきが1.2倍" },
   };
-  const gradeOf = c => GRADE[(c && c.grade) || 2] || GRADE[2];
-  const pfx = c => PFX[c && c.pers] || {};
+  const gradeOf = c => { if(isK(c)){ const r = KMASTER[c.cid].rarity; return { n: r, k: K_RARITY_K[r], hp: 1, atk: 1, exp: 1 }; } return GRADE[(c && c.grade) || 2] || GRADE[2]; };
+  const pfx = c => isK(c) ? (K_ATTR_FX[kAttrOf(c)] || {}) : (PFX[c && c.pers] || {});
   function levelInfo(exp){ let lv = 1, need = 30, e = Math.max(0, exp || 0); while(e >= need && lv < 50){ e -= need; lv++; need += 20; } return { lv, cur: e, need }; }
-  const lvl = c => levelInfo(c && c.exp).lv;
-  const isGood = (c, g) => (AFFINITY[c.type] || []).includes(g);
-  const isWeak = (c, g) => (WEAK[c.type] || []).includes(g);
-  const goodText = c => (AFFINITY[c.type] || []).map(g => GENRES[g]).join("・");
-  const weakText = c => (WEAK[c.type] || []).map(g => GENRES[g]).join("・");
+  const lvl = c => isK(c) ? (c.lv || 1) : levelInfo(c && c.exp).lv;
+  const goodList = c => isK(c) ? (K_GOOD[kAttrOf(c)] || []) : (AFFINITY[c.type] || []);
+  const weakList = c => isK(c) ? (K_WEAK[kAttrOf(c)] || []) : (WEAK[c.type] || []);
+  const isGood = (c, g) => goodList(c).includes(g);
+  const isWeak = (c, g) => weakList(c).includes(g);
+  const goodText = c => goodList(c).map(g => GENRES[g]).join("・");
+  const weakText = c => weakList(c).map(g => GENRES[g]).join("・");
   // キャラごとの個体差（HP・こうげき・ぼうぎょ）。昔のキャラはIDから決まった値を使う
   function hashTo(str, salt){ let h = 2166136261; for(const ch of String(str) + salt){ h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return ((h >>> 0) % 1000) / 1000; }
   function rollStats(c){ if(c && c.hpx == null){ const r = () => Math.round((.85 + Math.random() * .35) * 100) / 100; c.hpx = r(); c.atkx = r(); c.defx = r(); } return c; }
   function statsOf(c){
+    // 新しいキャラは全員同じ（レア度・進化・レベルで対戦の強さは変わらない）
+    if(isK(c)) return { hp: KCFG.battle.hp, atk: KCFG.battle.attack, def: KCFG.battle.defense };
     const b = BODY_FX[c.body] || BODY_FX.round, lv = lvl(c);
     const hpx = c.hpx || (.85 + hashTo(c.id, "h") * .35), atkx = c.atkx || (.85 + hashTo(c.id, "a") * .35), defx = c.defx || (.85 + hashTo(c.id, "d") * .35);
     const g = gradeOf(c);
@@ -2975,8 +3551,8 @@
   }
   function maxHp(c){ return statsOf(c).hp; }
   const statLine = c => { const s = statsOf(c); return "HP " + s.hp + "　こうげき " + Math.round(s.atk * 50) + "　ぼうぎょ " + Math.round(s.def * 50); };
-  const nameOf = c => (c && (c.nick || c.species)) || "";
-  const myFighter = () => S.dex.find(d => d.id === S.fid) || null;
+  const nameOf = c => isK(c) ? (c.nick || (kForm(c) || {}).name || "") : ((c && (c.nick || c.species)) || "");
+  const myFighter = () => { const i = myInst(); if(i) return kFighter(i); return (S.dex || []).find(d => d.id === S.fid) || null; };
 
   // ---------- 画面 ----------
   let screen = "home";
@@ -3052,21 +3628,24 @@
   }
 
   let busy = false;
-  async function createRoom(){
-    if(busy || !needName()) return;
-    if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認して、ページを開き直してね。", true); return; }
+  async function createRoom(opts){
+    opts = opts && opts.online ? opts : {};
+    if(busy || !needName()) return null;
+    if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認して、ページを開き直してね。", true); return null; }
     busy = true;
     await enableMotion();
     homeStatus("部屋を作っています…");
     const code = String(100000 + (crypto.getRandomValues(new Uint32Array(1))[0] % 900000));
-    const list = brokers();
+    const list = brokers(), order = [...list.keys()];
+    if(opts.broker != null && opts.broker < list.length){ order.splice(order.indexOf(opts.broker), 1); order.unshift(opts.broker); }
     let c = null;
-    for(let i = 0; i < list.length && !c; i++){
+    for(const i of order){
+      if(c) break;
       c = await mqOpen(list[i], { topic: tRoom(code), payload: "", retain: true, qos: 1 });
       if(c) brokerIx = i;
     }
     busy = false;
-    if(!c){ homeStatus("通信サーバーにつながりません。電波を確認して、もう一度ためしてね。", true); return; }
+    if(!c){ homeStatus("通信サーバーにつながりません。電波を確認して、もう一度ためしてね。", true); if(opts.online) leave("通信サーバーにつながりません。"); return null; }
     mq = c; role = "host"; myId = "host";
     const announce = () => pub(tRoom(code), { v: 1, at: Date.now() }, true);
     mq.on("message", (topic, buf) => {
@@ -3080,7 +3659,8 @@
     mq.on("connect", announce);   // つなぎ直したら、部屋があることを知らせ直す
     mq.subscribe(tHost(code), { qos: 1 });
     announce();
-    homeStatus(""); startHost(code, false);
+    homeStatus(""); startHost(code, false, opts);
+    return code;
   }
 
   function guestId(code){
@@ -3088,7 +3668,8 @@
     try{ let v = sessionStorage.getItem(k); if(!v){ v = "g" + randId(9); sessionStorage.setItem(k, v); } return v; }
     catch(e){ return "g" + randId(9); }
   }
-  async function joinRoom(code){
+  async function joinRoom(code, opts){
+    opts = opts && opts.online ? opts : {};
     if(busy || !needName()) return;
     if(!/^\d{6}$/.test(code)){ homeStatus("6けたのコードを入れてね。", true); return; }
     if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認して、ページを開き直してね。", true); return; }
@@ -3096,8 +3677,8 @@
     await enableMotion();
     homeStatus("部屋をさがしています…");
     const list = brokers(), order = [...list.keys()];
-    const bq = parseInt(Q.get("b"), 10);
-    if(code === ROOM_Q && bq >= 0 && bq < list.length){ order.splice(order.indexOf(bq), 1); order.unshift(bq); }
+    const bq = opts.online ? opts.b : parseInt(Q.get("b"), 10);
+    if((code === ROOM_Q || opts.online) && bq >= 0 && bq < list.length){ order.splice(order.indexOf(bq), 1); order.unshift(bq); }
     let found = null, reached = false;
     for(const i of order){
       const c = await mqOpen(list[i]);
@@ -3113,6 +3694,7 @@
     }
     busy = false;
     if(!found){
+      if(opts.online){ leave("相手の部屋に入れませんでした。もう一度さがしてね"); return; }
       homeStatus(reached ? "その部屋が見つかりません。コードかリンクを確かめてね。ホストの人は、部屋の画面を開いたままにしてね。" : "通信サーバーにつながりません。電波を確認して、もう一度ためしてね。", true);
       return;
     }
@@ -3120,7 +3702,7 @@
     mq.removeAllListeners("message");
     mq.unsubscribe(tRoom(code));
     hostConn = { open: true, send: m => pub(tHost(code), { f: myId, m }) };
-    const hello = () => sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter() });
+    const hello = () => sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter(), today: todayBumps() });
     mq.on("message", (topic, buf) => { if(topic !== tCli(code, myId)) return; const d = parse(buf); if(d) clientHandle(d); });
     mq.on("connect", () => { if(role === "guest") hello(); });   // つなぎ直したら名のり直す
     mq.subscribe(tCli(code, myId), { qos: 1 }, () => hello());
@@ -3155,6 +3737,7 @@
         if(quiet > 8000 && !hostWaitToast){ hostWaitToast = true; toast("ホストの電波を待っています…"); }
         if(quiet > 40000) leave("ホストとの接続が切れました。");
       }
+      if(role === "host" && H && H.online && H.phase === "lobby") onlineTick();
       if(role === "host" && H && !demo){
         const hb = hbView();
         for(const c of conns.values()) if(c.open) try{ c.send(hb); }catch(e){}
@@ -3165,6 +3748,7 @@
   window.addEventListener("pagehide", () => { if(role === "guest") sendToHost({ t:"bye" }); });
 
   function leave(msg){
+    stopOnline();
     clearInterval(hbTimer); stopGameTimers();
     if(H && H.game) clearTimeout(H.game.timer);
     clearTimeout(joinT); busy = false;
@@ -3178,13 +3762,16 @@
   }
 
   // ---------- ホスト ----------
-  function startHost(code, isDemo){
+  function startHost(code, isDemo, opts){
+    opts = opts || {};
     roomCode = code;
-    H = { code, players: new Map(), order: [], genres: new Set(POPULAR_GENRES), count: 10, phase: "lobby", spikes: [], game: null };
+    H = { code, players: new Map(), order: [], genres: new Set(POPULAR_GENRES), count: 10, phase: "lobby", spikes: [], game: null,
+          online: !!opts.online, expect: opts.expect || 1, t0: performance.now() };
     addPlayer("host", S.name, S.deviceId, myFighter(), false);
+    H.players.get("host").today = todayBumps();
     if(isDemo){
       const names = ["CPUぽん", "CPUりん", "CPUまる"];
-      names.forEach((n, i) => { const id = "cpu" + (i + 1); place = pick(Object.keys(PLACES)); const [c] = makePair(1, false).map(rollStats); c.exp = rnd(90); addPlayer(id, n, "cpu" + i, c, true); });
+      names.forEach((n, i) => { const id = "cpu" + (i + 1); const c = { kind: "k", id: "cpu" + (i + 1), cid: pick(KIDS), st: 1 + rnd(3), lv: 1 + rnd(25) }; addPlayer(id, n, "cpu", c, true); });
       const cpus = ["cpu1", "cpu2", "cpu3"];
       for(const a of cpus) for(const b of cpus) if(a !== b) H.players.get(a).bumps.add(b);
     }
@@ -3208,7 +3795,7 @@
     }else{ p.gone = true; toast(p.name + "の接続が切れました"); }
   }
   function lobbyView(){
-    return { t:"lobby", lv: H.lv || 0, code: H.code, phase: H.phase, count: H.count, genres: [...H.genres], demo,
+    return { t:"lobby", lv: H.lv || 0, online: !!H.online, code: H.code, phase: H.phase, count: H.count, genres: [...H.genres], demo,
       players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, bumps: p.bumps.size, host: id === "host", cpu: p.cpu }; }) };
   }
   function pushLobby(){ if(H){ H.lv = (H.lv || 0) + 1; bcast(lobbyView()); } }
@@ -3235,6 +3822,7 @@
         if(H.phase !== "lobby"){ if(c) c.send({ t:"reject", reason:"いまゲーム中です。終わってから入ってね。" }); conns.delete(from); return; }
         if(H.players.size >= MAX_PLAYERS){ if(c) c.send({ t:"reject", reason:"満員です（最大" + MAX_PLAYERS + "人）。" }); conns.delete(from); return; }
         addPlayer(from, name, String(m.deviceId || "").slice(0, 16), m.fighter, false);
+        H.players.get(from).today = (Array.isArray(m.today) ? m.today : []).slice(0, 300).map(x => String(x).slice(0, 16));
         sendTo(from, { t:"welcome", you: from, code: H.code });
         pushLobby();
         toast(name + "が入りました");
@@ -3273,18 +3861,29 @@
     const fresh = !A.bumps.has(b);
     A.bumps.add(b); B.bumps.add(a);
     bcast({ t:"bumped", a, b, an: A.name, bn: B.name });
-    if(fresh){
-      place = pick(Object.keys(PLACES));
-      const [ca, cb] = makePair(1, true).map(rollStats);
-      A.fighter = sanitize(ca); B.fighter = sanitize(cb);
-      sendTo(a, { t:"born", c: ca, partner: B.name });
-      if(!B.cpu) sendTo(b, { t:"born", c: cb, partner: A.name });
+    if(fresh && !H.online){
+      const da = A.deviceId || a, db = B.deviceId || b;
+      const limited = (A.today || []).includes(db) || (B.today || []).includes(da);
+      if(limited){
+        if(!A.cpu) sendTo(a, { t:"bumplimit", partner: B.name });
+        if(!B.cpu) sendTo(b, { t:"bumplimit", partner: A.name });
+      }else{
+        // 2人には同じキャラ（S1）が1体ずつ生まれる。レア度はガチャと同じ確率
+        const cid = drawOne(blankCol());
+        A.today = (A.today || []).concat(db); B.today = (B.today || []).concat(da);
+        for(const [P, id, other, odev] of [[A, a, B, db], [B, b, A, da]]){
+          if(P.cpu) continue;
+          const iid = rid(10);
+          P.fighter = sanitize({ kind: "k", id: iid, cid, st: 1, lv: 1 });
+          sendTo(id, { t:"bornk", cid, iid, partner: other.name, pdev: odev });
+        }
+      }
     }
   }
   function canStart(){
     const ps = [...H.players.values()];
     if(ps.length < 2) return "2人以上そろうとスタートできます。";
-    const nb = ps.filter(p => p.bumps.size < 1);
+    const nb = (demo || H.online) ? [] : ps.filter(p => p.bumps.size < 1);
     if(nb.length) return "まだコツンしていない人がいます（" + nb.map(p => p.name).join("、") + "）";
     if(ps.some(p => !p.fighter)) return "キャラがいない人がいます。";
     return "";
@@ -3307,6 +3906,11 @@
     const set = new Set(Array.isArray(arr) ? arr : []);
     const store = () => { try{ localStorage.setItem(SEEN_KEY, JSON.stringify([...set].slice(-8000))); }catch(e){} };
     return { has: k => set.has(k), add(k){ set.delete(k); set.add(k); store(); return this; }, delete: k => set.delete(k), get size(){ return set.size; } };
+  }
+  function onlineTick(){
+    const n = H.players.size, waited = performance.now() - H.t0;
+    if(n >= 2 && (n >= H.expect + 1 || waited > 12000)){ if(!canStart()) startGame(); }
+    else if(waited > 22000 && n < 2) leave("相手が来ませんでした。もう一度さがしてね");
   }
   // 心拍（2秒ごと）に、今の正しい状態を少しだけのせる。受けとりもれがあっても、これで追いつける
   function hbView(){
@@ -3362,6 +3966,7 @@
     if(fx.late && round >= total / 2){ t *= fx.late; why.push("ねぼすけ覚醒"); }
     if(fx.streak && A.streak > 1){ t *= 1 + fx.streak * (A.streak - 1); why.push(A.streak + "連続正解"); }
     if(fx.strict) t *= 1.3;
+    if(fx.rally && A.hp <= A.max * .4){ t *= fx.rally; why.push("ピンチで逆転"); }
     if(fx.random){ const k = .5 + Math.random() * 1.3; t *= k; why.push("きまぐれ×" + k.toFixed(1)); }
     d *= Math.max(.6, Math.min(1.8, t));
     return { d, why };
@@ -3385,7 +3990,8 @@
         const tr = rankOf.get(T.id); if(tr && tr < rank) continue;          // 自分より速い人には当たらない
         const c = A.fighter, o = T.fighter;
         let d = pw.d;
-        if(BEATS[c.type] === o.type) d *= 1.3; else if(BEATS[o.type] === c.type) d *= .85;
+        if(isK(c) || isK(o)){ if(kBeats(c, o)) d *= KCFG.attrBonus; }
+        else if(BEATS[c.type] === o.type) d *= 1.3; else if(BEATS[o.type] === c.type) d *= .85;
         if(pfx(c).chase && !tr) d += pfx(c).chase;
         // ぼうぎょ（体の形・個体差・性格）。苦手ジャンルの問題ではぼうぎょ1.4倍
         d /= statsOf(o).def * (isWeak(o, q.genre) ? 1.4 : 1);
@@ -3454,7 +4060,9 @@
         if(screen === "home") show("lobby");
         break;
       case "hb": if(role === "guest") onHeartbeat(m); break;
-      case "who": if(role === "guest") sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter() }); break;
+      case "who": if(role === "guest") sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter(), today: todayBumps() }); break;
+      case "bornk": onBornK(m); break;
+      case "bumplimit": toast("今日はもう" + String(m.partner || "").slice(0, 10) + "さんとコツンズ済み。キャラはまた明日！"); break;
       case "reject": leave(String(m.reason || "入れませんでした。").slice(0, 60)); break;
       case "pong": { const now = performance.now(), rtt = now - m.a; if(rtt < bestRtt){ bestRtt = rtt; offset = m.h - (m.a + now) / 2; } break; }
       case "lobby": VS.lobby = m; if(screen === "lobby" || (screen === "end" && m.phase === "lobby")){ if(screen !== "lobby") show("lobby"); renderLobby(); } break;
@@ -3500,6 +4108,7 @@
   const WEAK_TO = Object.fromEntries(Object.entries(BEATS).map(([a, b]) => [b, a]));
   function gradeBadge(c){ const g = gradeOf(c); return el("span", "gbadge " + g.k, g.n); }
   function statBars(c){
+    if(isK(c)){ const i = instById(c.id); return i ? xpBar(i) : el("div", "muted", "Lv" + lvl(c)); }
     const s = statsOf(c), box = el("div", "bars");
     const row = (label, val, max, txt) => {
       const r = el("div", "bar"); r.append(el("span", "bl", label));
@@ -3547,7 +4156,7 @@
   function revealBirth(){
     const ov = $("birth"); if(ov.hidden || !ov.classList.contains("wait")) return;
     clearTimeout(birthT);
-    const c = S.dex.find(d => d.id === ov.dataset.id); const gr = (c && c.grade) || 2;
+    const gm = /\bg([1-5])\b/.exec(ov.className); const gr = Math.min(4, gm ? +gm[1] : 2);
     ov.classList.remove("wait"); ov.classList.add("open");
     const fx = $("bi-fx"); fx.textContent = "";
     const n = [0, 0, 8, 26, 60][gr], cols = gr === 4 ? ["#ff5a5a", "#ffb03b", "#ffe14d", "#5fd36a", "#4fb3ff", "#9b7bff"] : ["#F6C945", "#fff3b0", "#ffffff"];
@@ -3559,7 +4168,7 @@
     sfx("born" + gr); buzz(gr === 4 ? [80, 40, 80, 40, 200] : gr === 3 ? [60, 40, 140] : gr === 1 ? [20] : [60, 40, 100]);
   }
 
-  function creatureLine(c){ return c.type + "タイプ・" + c.pers + "・Lv" + lvl(c); }
+  function creatureLine(c){ return isK(c) ? kAttrOf(c) + "・" + STAGE_LABEL[c.st] + "・Lv" + lvl(c) : c.type + "タイプ・" + c.pers + "・Lv" + lvl(c); }
   function charCard(c, box, withButtons){
     const pic = el("div", "pic"); pic.innerHTML = drawCreature(c);
     const tx = el("div", "tx");
@@ -3589,6 +4198,8 @@
     if(!L.demo && typeof qrcode !== "undefined" && $("l-qr").dataset.link !== link){
       const qr = qrcode(0, "M"); qr.addData(link); qr.make(); $("l-qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 1, scalable: true }); $("l-qr").dataset.link = link;
     }
+    $("l-online").hidden = !L.online; $("l-bump").hidden = !!L.online;
+    if(L.online) $("b-invite").hidden = true;
     const nb = me ? me.bumps : 0;
     $("l-bumpok").textContent = nb ? "コツンOK ✓ " + nb + "人とコツンしました" : "まだコツンしていません";
     $("l-bump").classList.toggle("done", nb > 0);
@@ -3620,7 +4231,7 @@
     const isHost = role === "host";
     $("b-start").hidden = !isHost;
     $("l-genre-text").textContent = L.genres.length + "ジャンル・" + L.count + "問" + (L.genres.length <= 4 ? "（" + L.genres.map(g => GENRES[g]).join("・") + "）" : "");
-    $("l-set").disabled = !isHost; $("l-set-chev").hidden = !isHost;
+    $("l-set").disabled = !isHost || !!L.online; $("l-set-chev").hidden = !isHost || !!L.online;
     if(isHost){
       const gbox = $("l-genres");
       if(!gbox.childElementCount){
@@ -3649,8 +4260,10 @@
       const why = canStart();
       $("b-start").disabled = !!why;
       $("l-status").textContent = why || "全員そろいました。スタートできます！";
+      if(L.online){ $("b-start").hidden = true; $("l-status").textContent = "対戦相手を待っています…（自動で始まります）"; }
+      else if(L.demo && !why) $("l-status").textContent = "スタートできます！（CPUとコツンすると、1日1回キャラが生まれます）";
     }else{
-      $("l-status").textContent = "ホストがスタートするのを待っています…";
+      $("l-status").textContent = L.online ? "まもなく始まります…" : "ホストがスタートするのを待っています…";
     }
   }
 
@@ -3686,6 +4299,13 @@
     setTimeout(() => $("rn-input").focus(), 50);
   }
   function saveRename(){
+    const ki = instById(renaming);
+    if(ki){
+      ki.nick = $("rn-input").value.trim().slice(0, 10); save(); $("rename").hidden = true;
+      if(ki.iid === S.fid && role && screen === "lobby") sendToHost({ t:"fighter", c: kFighter(ki) });
+      if($("sh-kdetail").classList.contains("on")) openKDetail(ki.iid);
+      refreshAll(); toast(ki.nick ? "名前を「" + ki.nick + "」にしました" : "名前をもとにもどしました"); return;
+    }
     const c = S.dex.find(d => d.id === renaming); if(!c) return;
     c.nick = $("rn-input").value.trim().slice(0, 10);
     save();
@@ -3842,7 +4462,9 @@
     G.lastMarks = marks;
     if(myRank && !G.counted.has(m.r)){
       G.counted.add(m.r); G.myCorrect++;
-      const mf = myFighter(); if(mf){ mf.know = mf.know || {}; mf.know[m.genre] = (mf.know[m.genre] || 0) + 1; save(); }
+      const mi = myInst();
+      if(mi){ mi.kc++; save(); }
+      else{ const mf = myFighter(); if(mf){ mf.know = mf.know || {}; mf.know[m.genre] = (mf.know[m.genre] || 0) + 1; save(); } }
     }
     G.animUntil = performance.now() + 2600;
     // 2) 問題がまだ出ていなかった人にも、問題と答えを出す
@@ -3916,13 +4538,30 @@
     const G = VS.game || { myCorrect: 0 };
     const win = m.ranking[0]; const mine = m.ranking.find(x => x.id === myId);
     const w = $("e-win"); w.textContent = "";
-    const pic = el("div", "pic"); pic.innerHTML = drawCreature(sanitize(win.fighter));
+    const pic = el("div", "pic"); pic.innerHTML = drawCreature(sanitize(win.fighter), "win");
     w.append(pic, el("div", "w", "優勝　" + String(win.name).slice(0, 10)), el("div", "muted", nameOf(sanitize(win.fighter)) + "　" + (mine ? "あなたは " + mine.place + "位 / " + m.ranking.length + "人" : "")));
     if(mine && mine.place === 1) sfx("win");
-    const lv = $("e-lv"); lv.textContent = ""; lv.className = "lvup";
+    const lv = $("e-lv"); lv.textContent = ""; lv.className = "lvup"; $("e-rw").textContent = "";
     const f = myFighter();
     if(mine){ S.games = (S.games || 0) + 1; if(mine.place === 1) S.wins = (S.wins || 0) + 1; }
-    if(f && mine){
+    if(mine){
+      const rw = giveRewards(mine.place, G.myCorrect, m.ranking.length, demo ? "cpu" : "pvp");
+      if(rw){
+        const box = $("e-rw");
+        const c1 = el("div", "rw"); c1.innerHTML = COIN_SVG; c1.append(el("b", null, "+" + rw.coins), el("small", null, "コツcoin" + (rw.capped ? "（今日の上限）" : "")));
+        const c2 = el("div", "rw"); c2.innerHTML = STONE_SVG; c2.append(el("b", null, "+" + rw.stones), el("small", null, "覚醒石"));
+        box.append(c1, c2);
+        if(rw.exp || rw.lvAfter){ const c3 = el("div", "rw"); c3.append(el("b", null, "+" + rw.exp), el("small", null, "EXP" + (rw.lvAfter > rw.lvBefore ? "・Lv" + rw.lvAfter + "に！" : ""))); box.append(c3); }
+      }
+    }
+    if(f && mine && isK(f)){
+      const i = myInst();
+      const p2 = el("div", "pic"); p2.innerHTML = drawCreature(f, mine.place === 1 ? "win" : "");
+      const tx = el("div"); tx.style.flex = "1";
+      tx.append(el("b", null, nameOf(f) + "　" + KMASTER[f.cid].rarity), i ? xpBar(i) : el("span"));
+      lv.append(p2, tx);
+      if(i && i.lv > f.lv){ lv.classList.add("up"); buzz([80, 60, 80, 60, 200]); }
+    }else if(f && mine){
       const before = lvl(f), hpBefore = maxHp(f), bonus = [0, 40, 25, 15][mine.place] || 8, gain = (G.myCorrect * 10 + bonus) * gradeOf(f).exp;
       f.exp = (f.exp || 0) + gain; f.battles = (f.battles || 0) + 1; if(mine.place === 1) f.wins = (f.wins || 0) + 1;
       const info = levelInfo(f.exp), after = info.lv;
@@ -3949,6 +4588,621 @@
     $("b-again").hidden = role !== "host";
     $("e-status").textContent = role === "host" ? "" : "ホストが「もう1回」を押すと、ロビーにもどります。";
     show("end");
+  }
+
+  // =====================================================================
+  // キャラクターコレクション（kotsunz_collection_v1）
+  //   保有キャラ・コツcoin・覚醒石・図鑑・ガチャ・進化・育成
+  //   ※ブラウザの中だけの無料体験版。お金のやりとりは実装しない
+  // =====================================================================
+  const isK = c => !!(c && c.kind === "k");
+  const kFighter = i => i ? { kind: "k", id: i.iid, cid: i.cid, st: i.st, lv: i.lv, nick: i.nick || "" } : null;
+  const kForm = c => KFORMS[c.cid + "-S" + (c.st || 1)] || null;
+  function sanitizeK(c){
+    if(!c || !KMASTER[c.cid]) return null;
+    const st = [1, 2, 3].includes(+c.st) ? +c.st : 1;
+    return { kind: "k", id: String(c.id || "").replace(/[^a-z0-9]/gi, "").slice(0, 16) || rid(10), cid: c.cid, st, lv: Math.max(1, Math.min(KCFG.level.max, parseInt(c.lv) || 1)), nick: String(c.nick || "").slice(0, 10) };
+  }
+  // 得意・苦手ジャンル（属性ごと。どの属性も同じ数）
+  const K_GOOD = {
+    "論理派":["math","science","element","tech","money","invention","english","katakana"],
+    "直感派":["flag","music","art","anime","game","disney","movie","theme"],
+    "記憶派":["history","nengo","worldhist","sengoku","kanji","capital","pref","yoji"],
+    "スピード派":["soccer","baseball","basketball","football","olympic","sports","kpop","hiphop"],
+    "逆転派":["zatsugaku","hougen","meibutsu","cooking","food","enka","drama","kdrama"],
+    "ひらめき派":["space","animal","body","world_geo","japan_geo","heritage","literature","proverb"],
+  };
+  const K_WEAK = {
+    "論理派":["anime","drama","enka","hougen"], "直感派":["math","nengo","element","money"], "記憶派":["sports","game","tech","space"],
+    "スピード派":["kanji","literature","classic","yoji"], "逆転派":["science","worldhist","invention","english"], "ひらめき派":["soccer","baseball","cooking","kpop"],
+  };
+  const kAttrOf = c => KMASTER[c.cid] ? KMASTER[c.cid].attr : null;
+  const kBeats = (a, b) => isK(a) && isK(b) && (K_BEATS[kAttrOf(a)] || []).includes(kAttrOf(b));
+
+  // ----- 日付 -----
+  function today(){ const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  const rngFloat = () => { const a = new Uint32Array(1); crypto.getRandomValues(a); return a[0] / 4294967296; };
+
+  // ----- 保存データの形と検査 -----
+  function blankCol(){
+    return { schema: "kotsunz_collection_v1", schemaVersion: 1, coins: 0, stones: 0, inst: [], found: {}, hist: [], tx: [],
+             pity: { rare: 0, legend: 0, total: 0 }, daily: { d: "", coins: 0, exp: 0, bumps: [], login: false }, migratedAt: 0 };
+  }
+  const num = (v, lo, hi) => Math.max(lo, Math.min(hi, Math.floor(+v) || 0));
+  function validateCol(raw){
+    const c = blankCol();
+    if(!raw || typeof raw !== "object") return c;
+    c.coins = num(raw.coins, 0, 99999999); c.stones = num(raw.stones, 0, 999999); c.migratedAt = num(raw.migratedAt, 0, 9e15);
+    const seen = new Set();
+    for(const i of Array.isArray(raw.inst) ? raw.inst.slice(0, 2000) : []){
+      if(!i || !KMASTER[i.cid]) continue;
+      const iid = String(i.iid || "").replace(/[^a-z0-9]/gi, "").slice(0, 16); if(!iid || seen.has(iid)) continue; seen.add(iid);
+      c.inst.push({ iid, cid: i.cid, st: [1, 2, 3].includes(+i.st) ? +i.st : 1, lv: num(i.lv, 1, KCFG.level.max) || 1, exp: num(i.exp, 0, 1e9),
+        fav: !!i.fav, lock: !!i.lock, at: num(i.at, 0, 9e15), skin: null, kc: num(i.kc, 0, 1e7), nick: String(i.nick || "").slice(0, 10), src: String(i.src || "").slice(0, 8) });
+    }
+    for(const [k, v] of Object.entries(raw.found && typeof raw.found === "object" ? raw.found : {})) if(KFORMS[k]) c.found[k] = num(v, 1, 9e15);
+    for(const i of c.inst) for(let s = 1; s <= i.st; s++) if(!c.found[i.cid + "-S" + s]) c.found[i.cid + "-S" + s] = i.at || 1;   // 持っているものは発見ずみ
+    c.hist = (Array.isArray(raw.hist) ? raw.hist : []).slice(0, 300).filter(h => h && typeof h === "object").map(h => JSON.parse(JSON.stringify(h)));
+    c.tx = (Array.isArray(raw.tx) ? raw.tx : []).slice(0, 60).map(String);
+    const p = raw.pity || {}; c.pity = { rare: num(p.rare, 0, 1e6), legend: num(p.legend, 0, 1e6), total: num(p.total, 0, 1e9) };
+    const d = raw.daily || {}; c.daily = { d: String(d.d || ""), coins: num(d.coins, 0, 1e9), exp: num(d.exp, 0, 1e9), bumps: (Array.isArray(d.bumps) ? d.bumps : []).slice(0, 500).map(x => String(x).slice(0, 16)), login: !!d.login };
+    return c;
+  }
+  function freshDaily(col){ if(col.daily.d !== today()) col.daily = { d: today(), coins: 0, exp: 0, bumps: [], login: false }; return col.daily; }
+  function addInst(col, cid, src, iid){
+    const i = { iid: iid || rid(10), cid, st: 1, lv: 1, exp: 0, fav: false, lock: false, at: Date.now(), skin: null, kc: 0, nick: "", src: src || "" };
+    col.inst.push(i);
+    if(!col.found[cid + "-S1"]) col.found[cid + "-S1"] = i.at;
+    return i;
+  }
+  // 1回の変更を「まるごと成功」か「何もしない」にする。同じ tx は2回実行しない
+  let txBusy = false;
+  function txRun(type, tx, fn){
+    if(txBusy) return { ok: false, err: "busy" };
+    if(!S.col || S.col.tx.includes(tx)) return { ok: false, err: "dup" };
+    txBusy = true;
+    try{
+      const draft = JSON.parse(JSON.stringify(S.col));
+      const r = fn(draft);
+      if(!r || !r.ok) return r || { ok: false };
+      draft.tx = [tx].concat(draft.tx).slice(0, 60);
+      draft.hist = [Object.assign({ tx, type, at: Date.now() }, r.info || {})].concat(draft.hist).slice(0, 300);
+      S.col = validateCol(draft);
+      save();
+      return r;
+    }finally{ txBusy = false; }
+  }
+
+  // ----- はじめて開いたとき・前の版からの移行（2回は行わない） -----
+  function ensureCol(){
+    const a = curAcct(); if(!a) return;
+    if(S.col && S.col.schema === "kotsunz_collection_v1"){ S.col = validateCol(S.col); return; }
+    // 上書きする前に、いまの記録を退避しておく
+    try{ const key = DATA(a.uid) + "-before-collection"; if(!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify(S)); }catch(e){}
+    const col = blankCol();
+    col.coins = KCFG.coins.start; col.migratedAt = Date.now();
+    // はじめての1体（おつか普通から）
+    const pool = KIDS.filter(c => ["おつ", "普通"].includes(KMASTER[c].rarity));
+    const first = addInst(col, pool[Math.floor(rngFloat() * pool.length)], "start");
+    col.hist.unshift({ tx: rid(12), type: "start", at: Date.now(), cid: first.cid, legacy: (S.dex || []).length });
+    S.col = col;
+    // 前の版のキャラ（コツン生まれ）はそのまま残して使える。まだ選んでいなければ新しい子で戦う
+    if(!S.fid || !(S.dex || []).some(d => d.id === S.fid)) S.fid = first.iid;
+    save();
+  }
+  function dailyLogin(){
+    if(!S.col) return;
+    const d = freshDaily(S.col);
+    if(!d.login){ d.login = true; S.col.coins += KCFG.coins.dailyLogin; save(); refreshAll(); setTimeout(() => toast("ログインボーナス +" + KCFG.coins.dailyLogin + " コツcoin"), 600); }
+  }
+  const myInst = () => S.col ? S.col.inst.find(i => i.iid === S.fid) || null : null;
+  const instById = iid => S.col ? S.col.inst.find(i => i.iid === iid) || null : null;
+
+  // ----- 対戦の報酬（コイン・覚醒石・経験値） -----
+  function giveRewards(place, correct, players, mode){
+    if(!S.col) return null;
+    const col = S.col, d = freshDaily(col), C = KCFG.coins;
+    let coins = (C.play + C.perCorrect * correct + (C.placeBonus[place] || 0)) * (mode === "cpu" ? C.cpuRate : 1);
+    coins = Math.max(0, Math.min(Math.round(coins), C.dailyCap - d.coins));
+    col.coins += coins; d.coins += coins;
+    const stones = place === 1 ? KCFG.stones.win : KCFG.stones.play;
+    col.stones += stones;
+    const out = { coins, stones, capped: d.coins >= C.dailyCap, exp: 0, lvBefore: 0, lvAfter: 0 };
+    const inst = myInst();
+    if(inst){
+      let exp = Math.round((correct * 10 + ([0, 40, 25, 15][place] || 8)) * (APP.rarityExpBonus[KMASTER[inst.cid].rarity] || 1));
+      exp = Math.max(0, Math.min(exp, KCFG.level.dailyExpCap - d.exp));
+      d.exp += exp; out.exp = exp; out.lvBefore = inst.lv;
+      addExp(inst, exp); out.lvAfter = inst.lv;
+    }
+    save();
+    return out;
+  }
+  function addExp(inst, exp){
+    inst.exp += exp;
+    while(inst.lv < KCFG.level.max && inst.exp >= KCFG.level.need(inst.lv)){ inst.exp -= KCFG.level.need(inst.lv); inst.lv++; }
+    if(inst.lv >= KCFG.level.max) inst.exp = Math.min(inst.exp, KCFG.level.need(KCFG.level.max));
+  }
+
+  // ----- ガチャ -----
+  const RANK = r => K_RARITIES.indexOf(r);
+  function rollRarity(minRank){
+    const list = K_RARITIES.slice(minRank || 0), P = KCFG.gacha.probs;
+    const tot = list.reduce((a, r) => a + P[r], 0);
+    let x = rngFloat() * tot;
+    for(const r of list){ x -= P[r]; if(x < 0) return r; }
+    return list[list.length - 1];
+  }
+  function drawOne(col){
+    col.pity.total++; col.pity.rare++; col.pity.legend++;
+    let rar;
+    if(col.pity.legend >= KCFG.gacha.pityLegend) rar = "レジェンド";        // 200回でレジェンド
+    else if(col.pity.rare >= KCFG.gacha.pityRare) rar = rollRarity(RANK("レア"));   // 10回以内にレア以上
+    else rar = rollRarity(0);
+    if(RANK(rar) >= RANK("レア")) col.pity.rare = 0;
+    if(rar === "レジェンド") col.pity.legend = 0;
+    const pool = KIDS.filter(c => KMASTER[c].rarity === rar);
+    return pool[Math.floor(rngFloat() * pool.length)];
+  }
+  // 天井をふくめた、レア以上の実際の出現率（表示用）
+  function effectiveRareRate(){
+    const p = K_RARITIES.slice(RANK("レア")).reduce((a, r) => a + KCFG.gacha.probs[r], 0), n = KCFG.gacha.pityRare;
+    return 1 / ((1 - Math.pow(1 - p, n)) / p);
+  }
+  let gBusy = false;
+  function pullGacha(n){
+    if(gBusy || !S.col) return;
+    const cost = n === 10 ? KCFG.gacha.ten : KCFG.gacha.single * n;
+    if(S.col.coins < cost){ toast("コツcoinが足りません（あと" + (cost - S.col.coins) + "）。対戦でためよう！"); buzz([40, 30, 40]); return; }
+    gBusy = true;
+    const r = txRun("gacha", "g" + rid(11), draft => {
+      if(draft.coins < cost) return { ok: false, err: "coins" };
+      draft.coins -= cost;
+      const out = [];
+      for(let i = 0; i < n; i++){
+        const cid = drawOne(draft), isNew = !draft.found[cid + "-S1"];
+        const inst = addInst(draft, cid, "gacha");
+        out.push({ cid, iid: inst.iid, isNew, count: draft.inst.filter(x => x.cid === cid && x.st === 1).length });
+      }
+      return { ok: true, out, info: { n, cost, cids: out.map(x => x.cid) } };
+    });
+    if(!r.ok){ gBusy = false; if(r.err === "coins") toast("コツcoinが足りません"); return; }
+    renderGacha();
+    showGachaResult(r.out, () => { gBusy = false; renderGacha(); });   // 保存ずみの結果を演出する
+  }
+
+  // ----- 進化 -----
+  const s1Of = cid => S.col.inst.filter(i => i.cid === cid && i.st === 1);
+  const protectedInst = i => i.lock || i.fav || i.iid === S.fid;
+  function evoS2State(target){
+    const others = s1Of(target.cid).filter(i => i.iid !== target.iid);
+    const usable = others.filter(i => !protectedInst(i));
+    return { have: others.length + 1, need: KCFG.evolve.s2Count, usable, ok: target.st === 1 && others.length + 1 >= KCFG.evolve.s2Count && usable.length >= KCFG.evolve.s2Consume };
+  }
+  function evoS3State(t){
+    const E = KCFG.evolve;
+    const c = [
+      { ok: t.st === 2, t: "S2になっている" },
+      { ok: t.lv >= E.s3Level, t: "Lv" + E.s3Level + "以上（いまLv" + t.lv + "）" },
+      { ok: S.col.stones >= E.s3Stones, t: "覚醒石 " + E.s3Stones + "個（いま" + S.col.stones + "個）" },
+      { ok: t.kc >= E.s3Correct, t: "ミッション：このキャラで " + E.s3Correct + "問正解（いま" + Math.min(t.kc, E.s3Correct) + "問）" },
+    ];
+    return { checks: c, ok: c.every(x => x.ok) };
+  }
+  function evolveS2(targetIid, mats, tx){
+    return txRun("evolve-s2", tx, draft => {
+      const t = draft.inst.find(i => i.iid === targetIid);
+      if(!t || t.st !== 1) return { ok: false, err: "target" };
+      const ms = [...new Set(mats)];
+      if(ms.length !== KCFG.evolve.s2Consume) return { ok: false, err: "count" };
+      const list = ms.map(id => draft.inst.find(i => i.iid === id));
+      if(list.some(m => !m || m.iid === t.iid || m.cid !== t.cid || m.st !== 1 || m.lock || m.fav || m.iid === S.fid)) return { ok: false, err: "material" };
+      draft.inst = draft.inst.filter(i => !ms.includes(i.iid));   // 素材を消費
+      t.st = 2;                                                    // 選んだ1体が進化
+      if(!draft.found[t.cid + "-S2"]) draft.found[t.cid + "-S2"] = Date.now();
+      return { ok: true, info: { target: t.iid, cid: t.cid, used: ms } };
+    });
+  }
+  function evolveS3(targetIid, tx){
+    return txRun("evolve-s3", tx, draft => {
+      const t = draft.inst.find(i => i.iid === targetIid), E = KCFG.evolve;
+      if(!t || t.st !== 2 || t.lv < E.s3Level || t.kc < E.s3Correct || draft.stones < E.s3Stones) return { ok: false, err: "cond" };
+      draft.stones -= E.s3Stones; t.st = 3;
+      if(!draft.found[t.cid + "-S3"]) draft.found[t.cid + "-S3"] = Date.now();
+      return { ok: true, info: { target: t.iid, cid: t.cid, stones: E.s3Stones } };
+    });
+  }
+  const evoReadyCount = () => S.col ? new Set(S.col.inst.filter(i => (i.st === 1 && evoS2State(i).ok) || (i.st === 2 && evoS3State(i).ok)).map(i => i.cid)).size : 0;
+
+  // ----- コツンで生まれる（同じ相手とは1日1回） -----
+  function bumpedToday(pdev){ return !!(S.col && freshDaily(S.col).bumps.includes(pdev)); }
+  function todayBumps(){ return S.col ? freshDaily(S.col).bumps.slice() : []; }
+  function onBornK(m){
+    if(!S.col || !KMASTER[m.cid]) return;
+    const pdev = String(m.pdev || "").slice(0, 16);
+    if(bumpedToday(pdev)){
+      toast("今日はもう" + String(m.partner || "").slice(0, 10) + "さんとコツンズ済み。キャラはまた明日！");
+      if(role && myFighter()) sendToHost({ t:"fighter", c: myFighter() });   // ホストに、いまのキャラを伝え直す
+      return;
+    }
+    const isNew = !S.col.found[m.cid + "-S1"];
+    const r = txRun("bump", "b" + String(m.iid || rid(10)), draft => {
+      freshDaily(draft).bumps.push(pdev);
+      addInst(draft, m.cid, "bump", String(m.iid || "").replace(/[^a-z0-9]/gi, "").slice(0, 16) || undefined);
+      return { ok: true, info: { cid: m.cid, partner: String(m.partner || "").slice(0, 10) } };
+    });
+    if(!r.ok) return;
+    const inst = S.col.inst.find(i => i.iid === m.iid) || S.col.inst[S.col.inst.length - 1];
+    S.fid = inst.iid; save();
+    showKBirth(inst, String(m.partner || "").slice(0, 10) + "とコツン！", isNew);
+    if(screen === "lobby") renderLobby(); else if(screen === "home") renderHome();
+  }
+
+  // =====================================================================
+  // 画面
+  // =====================================================================
+  const coinFmt = n => Number(n || 0).toLocaleString("ja-JP");
+  const kArt = (c, mood) => {
+    const f = kForm(c);
+    if(f && f.ready && f.imagePath) return `<img src="${f.imagePath}" alt="${f.name}" style="width:100%;height:100%;object-fit:contain" onerror="this.replaceWith(document.createRange().createContextualFragment(this.dataset.fb))" data-fb='${drawK(c.cid, c.st, mood).replace(/'/g, "&#39;")}'>`;
+    return drawK(c.cid, c.st, mood);
+  };
+  function rarityBadge(r){ return el("span", "gbadge " + (K_RARITY_K[r] || "g2"), r); }
+  function attrBadge(a){ const b = el("span", "abadge", a); b.style.setProperty("--ac", K_ATTR_COLOR[a] || "#888"); return b; }
+  function coinChip(){ const s2 = el("span", "coin"); s2.innerHTML = COIN_SVG; s2.append(document.createTextNode(coinFmt(S.col ? S.col.coins : 0))); return s2; }
+  const COIN_SVG = `<svg viewBox="0 0 24 24" class="ci"><circle cx="12" cy="12" r="10" fill="#FFC531" stroke="#C98A00" stroke-width="2"/><circle cx="12" cy="12" r="6.5" fill="none" stroke="#C98A00" stroke-width="1.5"/><text x="12" y="16" font-size="9" font-weight="900" text-anchor="middle" fill="#8A5A00">コ</text></svg>`;
+  const STONE_SVG = `<svg viewBox="0 0 24 24" class="ci"><path d="M12 2 L20 9 L12 22 L4 9Z" fill="#9B7BFF" stroke="#5B3FD0" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 9 L20 9 M12 2 L9 9 L12 22 L15 9Z" fill="none" stroke="#5B3FD0" stroke-width="1.2"/></svg>`;
+
+  function xpBar(i){
+    const need = KCFG.level.need(i.lv), max = i.lv >= KCFG.level.max;
+    const b = el("div", "xp"); const t = el("div", "xpt");
+    t.append(el("b", null, "Lv" + i.lv), el("span", null, max ? "MAX" : "次まで " + (need - i.exp)));
+    const bar = el("div", "xpbar"), f = el("i"); f.style.width = (max ? 100 : Math.min(100, i.exp / need * 100)) + "%"; bar.append(f);
+    b.append(t, bar); return b;
+  }
+
+  // ----- ガチャ画面 -----
+  function openGacha(){ show("gacha"); renderGacha(); }
+  function renderGacha(){
+    if(!S.col) return;
+    $("ga-coin").textContent = ""; $("ga-coin").append(coinChip());
+    $("b-ga1").disabled = S.col.coins < KCFG.gacha.single; $("b-ga10").disabled = S.col.coins < KCFG.gacha.ten;
+    const left = KCFG.gacha.pityRare - S.col.pity.rare, leftL = KCFG.gacha.pityLegend - S.col.pity.legend;
+    $("ga-pity").textContent = "あと" + left + "回以内にレア以上・あと" + leftL + "回でレジェンド";
+    const own = new Set(S.col.inst.map(i => i.cid)).size;
+    $("ga-own").textContent = "集めたキャラ " + own + " / " + KIDS.length + "種";
+  }
+  function openRates(){
+    const box = $("rates-body"); box.textContent = "";
+    const t = el("div", "ratetab");
+    for(const r of K_RARITIES){
+      const n = KIDS.filter(c => KMASTER[c].rarity === r).length, p = KCFG.gacha.probs[r];
+      const row = el("div", "rr"); row.append(rarityBadge(r), el("span", null, n + "種"), el("b", null, (p * 100).toFixed(1) + "%"), el("small", null, "1種あたり " + (p / n * 100).toFixed(3) + "%"));
+      t.append(row);
+    }
+    box.append(t,
+      el("p", "about", "まずレア度をこの確率で決め、そのレア度のキャラの中から同じ確率で1体選びます。出てくるのはS1（はじめの形）だけです。"),
+      el("p", "about", "天井：レア以上が" + (KCFG.gacha.pityRare - 1) + "回つづけて出なかったら、" + KCFG.gacha.pityRare + "回目はレア以上が確定（そのときの内訳はレア" + (KCFG.gacha.probs["レア"] / 0.2 * 100).toFixed(1) + "%・スーパーレア" + (KCFG.gacha.probs["スーパーレア"] / 0.2 * 100).toFixed(1) + "%・レジェンド" + (KCFG.gacha.probs["レジェンド"] / 0.2 * 100).toFixed(1) + "%）。" + KCFG.gacha.pityLegend + "回のあいだにレジェンドが出なければ、" + KCFG.gacha.pityLegend + "回目はレジェンドが確定します。天井があるので、レア以上の実際の出現率は約" + (effectiveRareRate() * 100).toFixed(1) + "%になります。"),
+      el("p", "about", "コツcoinは対戦の参加・正解・順位でもらえます（1日" + coinFmt(KCFG.coins.dailyCap) + "まで）。このバージョンは無料の体験版で、お金で買うことはできません。キャラのレア度や進化で、対戦の強さは変わりません。"));
+    openSheetEl("sh-rates");
+  }
+  function showGachaResult(out, done){
+    const ov = $("gacha-ov"), best = out.reduce((m, x) => Math.max(m, RANK(KMASTER[x.cid].rarity)), 0);
+    const gk = ["g1", "g2", "g3", "g4", "g5"][best];
+    ov.className = "gov " + gk + " spin"; ov.hidden = false;
+    $("go-grid").textContent = ""; $("go-title").textContent = "";
+    sfx("charge" + Math.min(4, best + 1)); buzz(best >= 3 ? [30, 60, 30, 60, 30, 60] : [30, 60, 30]);
+    const reveal = () => {
+      if(!ov.classList.contains("spin")) return;
+      ov.classList.remove("spin"); ov.classList.add("show");
+      $("go-title").textContent = out.length === 1 ? (out[0].isNew ? "NEW！" : "ゲット！") : out.length + "連の結果";
+      const grid = $("go-grid"); grid.className = "gogrid" + (out.length === 1 ? " one" : "");
+      out.forEach((x, i) => {
+        const m = KMASTER[x.cid], card = el("div", "gcard " + K_RARITY_K[m.rarity]);
+        card.style.animationDelay = (i * .09) + "s";
+        const pic = el("div", "pic"); pic.innerHTML = kArt({ cid: x.cid, st: 1 });
+        card.append(pic, el("b", null, m.names[0]), rarityBadge(m.rarity), attrBadge(m.attr));
+        card.append(el("span", "nd " + (x.isNew ? "new" : "dup"), x.isNew ? "NEW" : "DUP ×" + x.count));
+        if(!x.isNew && x.count >= KCFG.evolve.s2Count) card.append(el("span", "evo-hint", "進化できる！"));
+        grid.append(card);
+      });
+      sfx("born" + Math.min(4, best + 1)); buzz(best >= 3 ? [80, 40, 80, 40, 200] : [60, 40, 100]);
+    };
+    setTimeout(reveal, [1300, 1300, 1700, 2400, 3000][best]);
+    ov.onclick = e => {
+      if(ov.classList.contains("spin")){ reveal(); return; }
+      if(e.target.closest("#b-go-ok") || e.target === ov){ ov.hidden = true; ov.onclick = null; done && done(); }
+    };
+  }
+
+  // ----- キャラ一覧（持っているキャラ） -----
+  let charSort = "rarity";
+  function openChars(){ show("chars"); renderChars(); }
+  function renderChars(){
+    if(!S.col) return;
+    $("ch-coin").textContent = ""; $("ch-coin").append(coinChip());
+    $("ch-stone").innerHTML = STONE_SVG + "覚醒石 " + S.col.stones;
+    const grid = $("ch-grid"); grid.textContent = "";
+    const list = S.col.inst.slice();
+    const key = i => charSort === "rarity" ? -RANK(KMASTER[i.cid].rarity) * 1000 - i.st * 100 - i.lv : charSort === "level" ? -i.lv * 10 - i.st : -i.at;
+    list.sort((a, b) => key(a) - key(b) || a.cid.localeCompare(b.cid));
+    $("ch-count").textContent = list.length + "体";
+    for(const i of list){
+      const m = KMASTER[i.cid];
+      const card = el("button", "kc " + K_RARITY_K[m.rarity] + (i.iid === S.fid ? " sel" : ""));
+      const pic = el("div", "pic"); pic.innerHTML = kArt(i);
+      card.append(pic, el("b", null, i.nick || KFORMS[i.cid + "-S" + i.st].name), el("small", null, STAGE_LABEL[i.st] + "・Lv" + i.lv));
+      const tags = el("div", "kct"); tags.append(attrBadge(m.attr)); card.append(tags);
+      if(i.fav) card.append(el("span", "kfav", "★"));
+      if(i.lock) card.append(el("span", "klock", "🔒"));
+      if((i.st === 1 && evoS2State(i).ok) || (i.st === 2 && evoS3State(i).ok)) card.append(el("span", "kevo", "進化OK"));
+      if(i.iid === S.fid) card.append(el("span", "kuse", "使用中"));
+      card.addEventListener("click", () => openKDetail(i.iid));
+      grid.append(card);
+    }
+    const legacy = (S.dex || []).length;
+    $("ch-legacy").hidden = !legacy; $("ch-legacy").textContent = "コツン生まれの前のキャラ（" + legacy + "体）を見る";
+  }
+
+  // ----- キャラ詳細 -----
+  let detailIid = null;
+  function openKDetail(iid){
+    const i = instById(iid); if(!i) return;
+    detailIid = iid;
+    const m = KMASTER[i.cid], f = KFORMS[i.cid + "-S" + i.st], fx = K_ATTR_FX[m.attr];
+    const box = $("kd-body"); box.textContent = "";
+    const top = el("div", "kdtop " + K_RARITY_K[m.rarity]);
+    const pic = el("div", "pic"); pic.innerHTML = kArt(i);
+    const tx = el("div", "tx");
+    const nm = el("b", null, i.nick || f.name);
+    const badges = el("div", "badges"); badges.append(rarityBadge(m.rarity), attrBadge(m.attr), el("span", "sbadge", STAGE_LABEL[i.st]));
+    tx.append(nm, badges, el("div", "muted", m.personality), xpBar(i));
+    top.append(pic, tx);
+    // 進化の系統（S1→S2→S3）
+    const line = el("div", "evoline");
+    for(let s = 1; s <= 3; s++){
+      const ff = KFORMS[i.cid + "-S" + s], got = !!S.col.found[ff.fid];
+      const st2 = el("div", "el" + (s === i.st ? " cur" : "") + (got ? "" : " unk"));
+      const p2 = el("div", "pic"); p2.innerHTML = kArt({ cid: i.cid, st: s }); st2.append(p2, el("small", null, STAGE_LABEL[s] + " " + (got ? ff.name : "？？？")));
+      line.append(st2); if(s < 3) line.append(el("span", "arr", "›"));
+    }
+    const info = el("div", "traits");
+    const item = (icon, head, body2, cls) => { const r = el("div", "tr" + (cls ? " " + cls : "")); r.append(el("span", "ti", icon)); const t = el("div", "tt"); t.append(el("b", null, head), el("span", null, body2)); r.append(t); return r; };
+    const beats = K_BEATS[m.attr], loses = K_ATTRS.filter(a => (K_BEATS[a] || []).includes(m.attr));
+    info.append(
+      item("💫", "特技（" + m.attr + "）　" + fx.tag, fx.d),
+      item("⚔️", "得意ジャンル → こうげき1.5倍", K_GOOD[m.attr].map(g => GENRES[g]).join("・"), "good"),
+      item("🛡️", "苦手ジャンル → 受けるダメージ3割へる", K_WEAK[m.attr].map(g => GENRES[g]).join("・"), "weak"),
+      item("🔁", "属性の相性（与ダメージ" + KCFG.attrBonus + "倍）", beats.join("・") + "に強い／" + loses.join("・") + "に弱い"),
+      item("✨", "ワンポイント", m.signature),
+      item("⚖️", "強さ", "HPやこうげきは全キャラ共通。レア度・進化・レベルで強さは変わりません。勝負を決めるのはクイズの正解と速さ！"));
+    // 進化
+    const evo = el("div", "evobox");
+    if(i.st === 1){
+      const s = evoS2State(i);
+      evo.append(el("b", null, "S2へ進化（同じキャラのS1を3体で）"), el("div", "muted", "いま S1 が " + s.have + " / " + s.need + " 体。2体を素材にして、この子がS2になります。"));
+      const b = el("button", "btn primary small", s.ok ? "進化する" : "まだ進化できません"); b.disabled = !s.ok; b.addEventListener("click", () => openEvoS2(i.iid));
+      evo.append(b);
+      if(!s.ok && s.have >= s.need) evo.append(el("div", "muted", "素材にできるS1が足りません（お気に入り・ロック・使用中の子は素材にしません）"));
+    }else if(i.st === 2){
+      const s = evoS3State(i);
+      evo.append(el("b", null, "S3へ覚醒（素材はいりません）"));
+      for(const c of s.checks) evo.append(el("div", "chk" + (c.ok ? " ok" : ""), (c.ok ? "✓ " : "・") + c.t));
+      const b = el("button", "btn primary small", s.ok ? "覚醒する" : "条件をそろえよう"); b.disabled = !s.ok; b.addEventListener("click", () => openEvoS3(i.iid));
+      evo.append(b);
+    }else evo.append(el("b", null, "最終形態（S3）です！"));
+    // ボタン
+    const row = el("div", "row");
+    const bUse = el("button", "btn small" + (i.iid === S.fid ? " ghost" : " hot"), i.iid === S.fid ? "いま使っています" : "このキャラで戦う");
+    bUse.disabled = i.iid === S.fid;
+    bUse.addEventListener("click", () => { S.fid = i.iid; save(); if(role && VS.lobby && screen === "lobby") sendToHost({ t:"fighter", c: kFighter(i) }); toast((i.nick || f.name) + "で戦います"); openKDetail(i.iid); refreshAll(); });
+    row.append(bUse);
+    const row2 = el("div", "row");
+    const bFav = el("button", "btn ghost small", i.fav ? "★ お気に入り" : "☆ お気に入り");
+    bFav.addEventListener("click", () => { const x = instById(iid); if(x){ x.fav = !x.fav; save(); openKDetail(iid); refreshAll(); } });
+    const bLock = el("button", "btn ghost small", i.lock ? "🔒 ロック中" : "🔓 ロック");
+    bLock.addEventListener("click", () => { const x = instById(iid); if(x){ x.lock = !x.lock; save(); openKDetail(iid); refreshAll(); } });
+    const bName = el("button", "btn ghost small", "名前");
+    bName.addEventListener("click", () => openRename(kFighter(i)));
+    row2.append(bFav, bLock, bName);
+    box.append(top, line, row, row2, evo, info, el("p", "note", "所有ID " + i.iid + "・入手 " + new Date(i.at).toLocaleDateString("ja-JP") + "・このキャラで正解 " + i.kc + "問"));
+    openSheetEl("sh-kdetail");
+  }
+  function refreshAll(){ if(screen === "home") renderHome(); else if(screen === "chars") renderChars(); else if(screen === "dex") renderDex(); else if(screen === "lobby") renderLobby(); }
+
+  // ----- 進化の確認（素材えらび） -----
+  let evoTx = null, evoSel = [];
+  function openEvoS2(iid){
+    const i = instById(iid); if(!i) return;
+    const s = evoS2State(i); if(!s.ok) return;
+    evoTx = "e" + rid(11);
+    evoSel = s.usable.slice().sort((a, b) => a.lv - b.lv || a.at - b.at).slice(0, KCFG.evolve.s2Consume).map(x => x.iid);
+    const draw = () => {
+      const box = $("evo-body"); box.textContent = "";
+      const pv = el("div", "evopv");
+      const a = el("div", "pic"); a.innerHTML = kArt(i); const b = el("div", "pic"); b.innerHTML = kArt({ cid: i.cid, st: 2 });
+      pv.append(a, el("span", "arr", "→"), b);
+      box.append(pv, el("p", "lbl", KFORMS[i.cid + "-S1"].name + " → " + KFORMS[i.cid + "-S2"].name),
+        el("p", "muted", "素材にする2体をえらんでね（えらんだ子はいなくなります）。レベル" + i.lv + "はそのまま引きつぎます。"));
+      const list = el("div", "matlist");
+      for(const m of s.usable){
+        const on = evoSel.includes(m.iid);
+        const r = el("button", "mat" + (on ? " on" : ""));
+        const p = el("div", "pic"); p.innerHTML = kArt(m);
+        r.append(p, el("span", null, (m.nick || KFORMS[m.cid + "-S1"].name) + " Lv" + m.lv), el("b", null, on ? "素材" : ""));
+        r.addEventListener("click", () => {
+          if(evoSel.includes(m.iid)) evoSel = evoSel.filter(x => x !== m.iid);
+          else if(evoSel.length < KCFG.evolve.s2Consume) evoSel.push(m.iid);
+          draw();
+        });
+        list.append(r);
+      }
+      box.append(list);
+      const ok = evoSel.length === KCFG.evolve.s2Consume;
+      const go = el("button", "btn primary", ok ? "進化する（もとに戻せません）" : "素材をあと" + (KCFG.evolve.s2Consume - evoSel.length) + "体えらんでね");
+      go.disabled = !ok; go.id = "b-evo-go";
+      go.addEventListener("click", async () => {
+        go.disabled = true;
+        const yes = await confirmBox("本当に進化しますか？", "素材の2体はいなくなり、もとに戻せません。", "進化する");
+        if(!yes){ go.disabled = false; return; }
+        const r = evolveS2(i.iid, evoSel, evoTx);
+        if(!r.ok){ toast(r.err === "dup" || r.err === "busy" ? "もう進化しました" : "進化できませんでした"); closeSheets(); refreshAll(); return; }
+        closeSheets(); showEvolve(i.cid, 1, 2, () => { openKDetail(i.iid); refreshAll(); });
+      });
+      box.append(go);
+    };
+    draw();
+    openSheetEl("sh-evo");
+  }
+  async function openEvoS3(iid){
+    const i = instById(iid); if(!i || !evoS3State(i).ok) return;
+    const tx = "e" + rid(11);
+    const yes = await confirmBox(KFORMS[i.cid + "-S3"].name + "に覚醒しますか？", "覚醒石を" + KCFG.evolve.s3Stones + "個使います。もとに戻せません。", "覚醒する");
+    if(!yes) return;
+    const r = evolveS3(iid, tx);
+    if(!r.ok){ toast("覚醒できませんでした"); return; }
+    closeSheets(); showEvolve(i.cid, 2, 3, () => { openKDetail(iid); refreshAll(); });
+  }
+  function showEvolve(cid, from, to, done){
+    const ov = $("evo-ov"); ov.className = "evov stage" + to + " run"; ov.hidden = false;
+    $("ev-a").innerHTML = kArt({ cid, st: from }); $("ev-b").innerHTML = kArt({ cid, st: to }, "win");
+    $("ev-name").textContent = KFORMS[cid + "-S" + to].name;
+    $("ev-title").textContent = to === 3 ? "覚醒！" : "進化！";
+    sfx("charge4"); buzz([30, 60, 30, 60, 30]);
+    setTimeout(() => { ov.classList.add("done"); sfx("born4"); buzz([80, 40, 80, 40, 200]); }, 2200);
+    ov.onclick = () => { if(!ov.classList.contains("done")) return; ov.hidden = true; ov.onclick = null; done && done(); };
+  }
+
+  // ----- コツンで生まれたときの画面（新しいキャラ） -----
+  function showKBirth(inst, from, isNew){
+    const m = KMASTER[inst.cid], gr = RANK(m.rarity) + 1, ov = $("birth");
+    $("bi-from").textContent = from;
+    $("bi-pic").innerHTML = kArt(inst);
+    $("bi-grade").textContent = m.rarity + (gr >= 4 ? "!!" : gr === 3 ? "!" : "");
+    $("bi-name").textContent = KFORMS[inst.cid + "-S1"].name;
+    $("bi-tag").textContent = m.attr + "・" + K_ATTR_FX[m.attr].tag + (isNew ? "・NEW" : "・" + s1Of(inst.cid).length + "体目");
+    const d = $("bi-desc"); d.textContent = "";
+    d.append(el("div", "muted", m.personality));
+    ov.dataset.id = inst.iid;
+    ov.className = "ov birth " + ["", "g1", "g2", "g3", "g4", "g4"][gr] + " wait";
+    ov.hidden = false;
+    sfx("charge" + Math.min(4, gr)); buzz(gr >= 3 ? [30, 60, 30, 60, 30, 60] : [30, 60, 30]);
+    clearTimeout(birthT);
+    birthT = setTimeout(revealBirth, [0, 1300, 1300, 1900, 2700, 3200][gr]);
+  }
+
+  // ----- 図鑑（150マス） -----
+  const dexF = { r: "", a: "", s: "" };
+  function openDex(){ show("dex"); buildDexFilters(); renderDex(); }
+  function buildDexFilters(){
+    const box = $("dx-filter"); if(box.childElementCount) return;
+    const mk = (key, label, vals) => {
+      const row = el("div", "chips small"); row.append(el("span", "fl", label));
+      for(const [v, t] of [["", "すべて"]].concat(vals.map(x => [x, x]))){
+        const b = el("button", "chip", t); b.dataset.k = key; b.dataset.v = v;
+        b.addEventListener("click", () => { dexF[key] = v; renderDex(); });
+        row.append(b);
+      }
+      box.append(row);
+    };
+    mk("r", "レア度", K_RARITIES); mk("a", "属性", K_ATTRS); mk("s", "進化", ["S1", "S2", "S3"]);
+  }
+  function renderDex(){
+    if(!S.col) return;
+    for(const b of $("dx-filter").querySelectorAll(".chip")) b.setAttribute("aria-pressed", dexF[b.dataset.k] === b.dataset.v ? "true" : "false");
+    const found = S.col.found, total = Object.keys(KFORMS).length, got = Object.keys(found).length;
+    $("dx-prog").textContent = "発見 " + got + " / " + total;
+    $("dx-bar").style.width = (got / total * 100) + "%";
+    const grid = $("dx-grid"); grid.textContent = "";
+    for(const cid of KIDS){
+      const m = KMASTER[cid];
+      if(dexF.r && m.rarity !== dexF.r) continue;
+      if(dexF.a && m.attr !== dexF.a) continue;
+      for(let s = 1; s <= 3; s++){
+        if(dexF.s && dexF.s !== "S" + s) continue;
+        const f = KFORMS[cid + "-S" + s], g = !!found[f.fid];
+        const cell = el("button", "dxc " + K_RARITY_K[m.rarity] + (g ? "" : " unk"));
+        const pic = el("div", "pic"); pic.innerHTML = kArt({ cid, st: s }); cell.append(pic, el("small", null, g ? f.name : "？？？"), el("i", "no", cid.slice(1) + "-" + s));
+        cell.addEventListener("click", () => openDexEntry(cid, s));
+        grid.append(cell);
+      }
+    }
+  }
+  function openDexEntry(cid, s){
+    const m = KMASTER[cid], f = KFORMS[cid + "-S" + s], g = !!S.col.found[f.fid];
+    const box = $("kd-body"); box.textContent = "";
+    const top = el("div", "kdtop " + K_RARITY_K[m.rarity] + (g ? "" : " unk"));
+    const pic = el("div", "pic"); pic.innerHTML = kArt({ cid, st: s });
+    const tx = el("div", "tx"); const badges = el("div", "badges"); badges.append(rarityBadge(m.rarity), attrBadge(m.attr), el("span", "sbadge", STAGE_LABEL[s]));
+    tx.append(el("b", null, g ? f.name : "？？？"), badges, el("div", "muted", g ? m.personality : (s === 1 ? "ガチャかコツンで出会えるかも" : "S" + (s - 1) + "から進化させると発見できます")));
+    top.append(pic, tx);
+    box.append(top);
+    if(g) box.append(el("p", "about", "ワンポイント：" + m.signature + "　特技：" + K_ATTR_FX[m.attr].tag));
+    const mine = S.col.inst.filter(i => i.cid === cid);
+    if(mine.length){ const b = el("button", "btn ghost small", "持っているこのキャラ（" + mine.length + "体）を見る"); b.addEventListener("click", () => openKDetail(mine.sort((a, b2) => b2.st - a.st || b2.lv - a.lv)[0].iid)); box.append(b); }
+    openSheetEl("sh-kdetail");
+  }
+
+  // =====================================================================
+  // オンライン対戦（公開の中継サーバーで、待っている人どうしを自動でつなぐ）
+  // =====================================================================
+  const MM_TOPIC = "kotsunz-mm/v4/queue";
+  let MM = null;
+  async function startOnline(){
+    if(!needName()) return;
+    if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認してね", true); return; }
+    stopOnline();
+    show("match"); $("mm-pic").innerHTML = myFighter() ? drawCreature(myFighter()) : ""; $("mm-status").textContent = "サーバーにつないでいます…"; $("mm-count").textContent = ""; $("b-mm-cpu").hidden = true;
+    await enableMotion();
+    const list = brokers(); let c = null, bi = 0;
+    for(let i = 0; i < list.length && !c; i++){ c = await mqOpen(list[i]); if(c) bi = i; }
+    if(screen !== "match"){ try{ c && c.end(true); }catch(e){} return; }
+    if(!c){ $("mm-status").textContent = "通信サーバーにつながりません。電波を確認してね"; $("b-mm-cpu").hidden = false; return; }
+    const me = { sid: rid(10), name: S.name };
+    MM = { c, bi, me, seen: new Map(), t0: performance.now(), timer: null, done: false };
+    c.on("message", (tp, buf) => {
+      if(!MM || MM.done || tp !== MM_TOPIC) return;
+      let m; try{ m = JSON.parse(buf.toString()); }catch(e){ return; }
+      if(m.t === "seek" && m.sid && m.sid !== me.sid) MM.seen.set(String(m.sid).slice(0, 12), { name: String(m.name || "").slice(0, 10), at: performance.now() });
+      if(m.t === "match" && Array.isArray(m.to) && m.to.includes(me.sid)){
+        MM.done = true; const code = String(m.room || ""), b = parseInt(m.b, 10) || 0;
+        $("mm-status").textContent = "相手が見つかりました！"; sfx("ok"); buzz([40, 30, 80]);
+        stopOnline();
+        setTimeout(() => joinRoom(code, { online: true, b }), 300);
+      }
+    });
+    c.subscribe(MM_TOPIC, { qos: 0 });
+    const seek = () => { try{ c.publish(MM_TOPIC, JSON.stringify({ t: "seek", sid: me.sid, name: me.name, v: 4 }), { qos: 0 }); }catch(e){} };
+    seek();
+    $("mm-status").textContent = "対戦相手をさがしています…";
+    MM.timer = setInterval(() => {
+      if(!MM || MM.done) return;
+      seek();
+      const now = performance.now();
+      for(const [k, v] of MM.seen) if(now - v.at > 5000) MM.seen.delete(k);
+      const others = [...MM.seen.keys()].sort();
+      $("mm-count").textContent = others.length ? "いま " + (others.length + 1) + "人が待っています" : "";
+      const waited = now - MM.t0;
+      if(waited > 25000) $("b-mm-cpu").hidden = false;
+      // いちばん小さいIDの人がホストになって部屋を作り、ほかの人（最大3人）を呼ぶ
+      if(others.length && waited > 3500 && me.sid < others[0]){
+        const to = others.slice(0, 3);
+        MM.done = true; $("mm-status").textContent = "相手が見つかりました！部屋を作っています…"; sfx("ok");
+        const cc = MM.c, b = MM.bi;
+        clearInterval(MM.timer); MM = null;
+        createRoom({ online: true, expect: to.length, broker: b }).then(code => {
+          if(!code){ try{ cc.end(true); }catch(e){} return; }
+          const msg = JSON.stringify({ t: "match", room: code, b, to, from: me.sid });
+          try{ cc.publish(MM_TOPIC, msg, { qos: 1 }); }catch(e){}
+          setTimeout(() => { try{ cc.publish(MM_TOPIC, msg, { qos: 1 }); }catch(e){} }, 1200);
+          setTimeout(() => { try{ cc.end(false); }catch(e){} }, 2500);
+        });
+      }
+    }, 1500);
+  }
+  function stopOnline(){
+    const m = MM; MM = null; if(!m) return;
+    clearInterval(m.timer); try{ m.c.end(false); }catch(e){}
   }
 
   // =====================================================================
@@ -4029,7 +5283,11 @@
   const hex = buf => [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, "0")).join("");
   async function pinHash(salt, pin){ return hex(await crypto.subtle.digest("SHA-256", te.encode("kotsunz|" + salt + "|" + pin))); }
   function persistStorage(){ try{ navigator.storage && navigator.storage.persist && navigator.storage.persist().catch(() => {}); }catch(e){} }
-  function fighterOfData(d){ const f = (d.dex || []).find(x => x.id === d.fid); return f ? sanitize(f) : null; }
+  function fighterOfData(d){
+    const i = d.col && Array.isArray(d.col.inst) ? d.col.inst.find(x => x.iid === d.fid && KMASTER[x.cid]) : null;
+    if(i) return kFighter(i);
+    const f = (d.dex || []).find(x => x.id === d.fid); return f ? sanitize(f) : null;
+  }
 
   function showAccounts(){
     closeSheets(); show("account");
@@ -4040,7 +5298,8 @@
       const d = loadData(a.uid), f = fighterOfData(d);
       const b = el("button", "acc");
       const pic = el("div", "pic"); if(f) pic.innerHTML = drawCreature(f); else pic.append(el("div", "egg"));
-      const tx = el("div", "tx"); tx.append(el("b", null, a.name), el("small", null, "図鑑 " + d.dex.length + "体・" + (d.games || 0) + "戦" + (d.wins || 0) + "勝"));
+      const nk = d.col && Array.isArray(d.col.inst) ? d.col.inst.length : 0;
+      const tx = el("div", "tx"); tx.append(el("b", null, a.name), el("small", null, "キャラ " + (nk + d.dex.length) + "体・" + (d.games || 0) + "戦" + (d.wins || 0) + "勝"));
       b.append(pic, tx, el("span", "chev", "›"));
       b.addEventListener("click", () => loginAs(a));
       list.append(b);
@@ -4058,8 +5317,8 @@
     enterAs(a);
   }
   function enterAs(a){
-    AC.cur = a.uid; saveAccts(); S = loadData(a.uid); save(); persistStorage();
-    show("home"); renderHome(); sfx("ok");
+    AC.cur = a.uid; saveAccts(); S = loadData(a.uid); ensureCol(); save(); persistStorage();
+    show("home"); renderHome(); sfx("ok"); dailyLogin();
   }
   async function createAccount(){
     const name = await askText("ニックネームを決めてね", "部屋の中のみんなに見える名前です。本名はさけてね（10文字まで）", "", "例）YK");
@@ -4098,7 +5357,7 @@
     const a = curAcct(); if(!a) return;
     const body = JSON.stringify({ kind: "kotsunz-backup", v: 1, at: new Date().toISOString(), acct: { name: a.name, salt: a.salt, ph: a.ph }, data: S });
     const url = URL.createObjectURL(new Blob([body], { type: "application/json" }));
-    const x = document.createElement("a"); x.href = url; x.download = "kotsunz-backup-" + new Date().toISOString().slice(0, 10) + ".json";
+    const x = document.createElement("a"); x.href = url; x.download = "kotsunz-backup-" + today() + ".json";
     document.body.appendChild(x); x.click(); setTimeout(() => { x.remove(); URL.revokeObjectURL(url); }, 5000);
     toast("バックアップのファイルを保存しました");
   }
@@ -4115,7 +5374,10 @@
     }
     const a = { uid: rid(10), name, salt: salt || rid(12), ph, at: Date.now() };
     if(!ph){ const p = await newPin(name); if(p == null) return false; a.ph = await pinHash(a.salt, p); }
-    const data = Object.assign(blankS(name), { dex, fid: f0 ? f0.id : null, games: Math.max(0, parseInt(d.games) || 0), wins: Math.max(0, parseInt(d.wins) || 0), sound: d.sound !== false });
+    const col = d.col && d.col.schema === "kotsunz_collection_v1" ? validateCol(d.col) : undefined;
+    const fid = col && col.inst.some(i => i.iid === d.fid) ? d.fid : (f0 ? f0.id : null);
+    const data = Object.assign(blankS(name), { dex, fid, games: Math.max(0, parseInt(d.games) || 0), wins: Math.max(0, parseInt(d.wins) || 0), sound: d.sound !== false });
+    if(col) data.col = col;
     try{ localStorage.setItem(DATA(a.uid), JSON.stringify(data)); }catch(e){ toast("保存できませんでした"); return false; }
     AC.list.push(a); saveAccts(); enterAs(a);
     toast(name + "さんの記録を引き継ぎました");
@@ -4225,6 +5487,7 @@
   // ホーム
   // =====================================================================
   function openDetail(c){
+    if(isK(c)){ openKDetail(c.id); return; }
     const body = $("detail-body"); body.textContent = "";
     const top = el("div", "dtop"); const pic = el("div", "pic"); pic.innerHTML = drawCreature(c);
     const tx = el("div", "tx"); const nm = el("b", null, nameOf(c) + " "); nm.append(gradeBadge(c));
@@ -4236,29 +5499,33 @@
   }
   function renderHome(){
     const a = curAcct(); if(!a) return;
+    ensureCol();
     $("h-name").textContent = a.name;
     const f = myFighter();
     $("h-av").innerHTML = f ? drawCreature(f) : "";
+    $("h-coin").textContent = ""; $("h-coin").append(coinChip());
     const box = $("home-me"); box.textContent = "";
     if(f){
       box.className = "partner " + gradeOf(f).k;
       const pic = el("div", "pic"); pic.innerHTML = drawCreature(f);
       const tx = el("div", "tx");
-      const nm = el("div", "pn"); nm.append(el("b", null, nameOf(f)), gradeBadge(f));
-      tx.append(el("div", "cap", "いっしょに戦うキャラ"), nm, el("div", "pl2", creatureLine(f) + "・" + (pfx(f).tag || "")), statBars(f));
-      const btns = el("div", "pbtns");
-      const b1 = el("button", "pillbtn", "図鑑（" + S.dex.length + "）"); b1.addEventListener("click", openSheet);
-      const b2 = el("button", "pillbtn ghost", "くわしく"); b2.addEventListener("click", () => openDetail(f));
-      const b3 = el("button", "pillbtn ghost", "名前"); b3.addEventListener("click", () => openRename(f));
-      btns.append(b1, b2, b3);
-      box.append(pic, tx, btns);
+      const nm = el("div", "pn"); nm.append(el("b", null, nameOf(f)));
+      const badges = el("div", "badges");
+      if(isK(f)){ badges.append(rarityBadge(KMASTER[f.cid].rarity), attrBadge(kAttrOf(f)), el("span", "sbadge", STAGE_LABEL[f.st])); }
+      else badges.append(gradeBadge(f), el("span", "sbadge", "コツン生まれ"));
+      tx.append(el("div", "cap", "いっしょに戦うキャラ"), nm, badges, el("div", "pl2", "特技：" + (pfx(f).tag || "") + (isK(f) ? "" : "・" + f.type + "タイプ")), statBars(f));
+      box.append(pic, tx);
+      box.onclick = () => openDetail(f);
     }else{
-      box.className = "partner empty";
-      const tx = el("div", "tx"); tx.append(el("b", null, "まだキャラがいません"), el("div", "pl2", "部屋に入って、近くの人とスマホをコツンすると、2人だけのキャラが生まれるよ。「1人で練習」でも試せます。"));
+      box.className = "partner empty"; box.onclick = null;
+      const tx = el("div", "tx"); tx.append(el("b", null, "まだキャラがいません"), el("div", "pl2", "ガチャをひくか、近くの人とスマホをコツンすると仲間になるよ。"));
       box.append(el("div", "egg big"), tx);
     }
-    const rec = $("home-rec"); rec.textContent = "";
-    for(const [n, l] of [[S.games || 0, "試合"], [S.wins || 0, "優勝"], [S.dex.length, "図鑑"]]){ const t = el("div", "st"); t.append(el("b", null, String(n)), el("span", null, l)); rec.append(t); }
+    $("t-gacha").textContent = coinFmt(S.col.coins) + "コイン";
+    $("t-chars").textContent = S.col.inst.length + "体";
+    const n = evoReadyCount(); $("t-evo").hidden = !n; $("t-evo").textContent = "進化" + n;
+    $("t-dex").textContent = Object.keys(S.col.found).length + "/" + Object.keys(KFORMS).length;
+    $("home-rec").textContent = "通算 " + (S.games || 0) + "戦 " + (S.wins || 0) + "勝";
     $("b-sound").textContent = S.sound === false ? "効果音：OFF（タップでON）" : "効果音：ON（タップでOFF）";
     const inv = ROOM_Q && !ROOM_USED;
     $("home-join").hidden = !inv; if(inv) $("hj-code").textContent = "部屋 " + ROOM_Q;
@@ -4267,15 +5534,7 @@
   // =====================================================================
   // スタート画面
   // =====================================================================
-  function titleCreatures(){
-    const keep = place;
-    place = "umi"; const [a] = makePair(1, false);
-    place = "machi"; const [b] = makePair(1, false);
-    place = keep;
-    Object.assign(a, { body: "round", extra: "ears", pattern: "cheeks", eyes: "dot", grade: 2, night: false, main: TYPES.umi.main, sub: TYPES.umi.sub, deep: TYPES.umi.deep });
-    Object.assign(b, { body: "drop", extra: "antenna", pattern: "belly", eyes: "shine", grade: 2, night: false, main: TYPES.machi.main, sub: TYPES.machi.sub, deep: TYPES.machi.deep });
-    return [sanitize(a), sanitize(b)];
-  }
+  function titleCreatures(){ return [{ kind: "k", id: "t1", cid: "K035", st: 1, lv: 1 }, { kind: "k", id: "t2", cid: "K049", st: 1, lv: 1 }]; }
   let titleGone = false;
   function initTitle(){
     const [a, b] = titleCreatures();
@@ -4296,9 +5555,24 @@
   // =====================================================================
   // ボタン
   // =====================================================================
-  $("b-create").addEventListener("click", createRoom);
-  $("b-joinopen").addEventListener("click", () => { openSheetEl("sh-join"); setTimeout(() => $("code").focus(), 250); });
+  $("b-friend").addEventListener("click", () => openSheetEl("sh-friend"));
+  $("b-create").addEventListener("click", () => { closeSheets(); createRoom(); });
   $("b-join").addEventListener("click", () => { const c = $("code").value.replace(/\D/g, ""); if(c.length === 6) closeSheets(); joinRoom(c); });
+  $("b-online").addEventListener("click", startOnline);
+  $("b-mm-cancel").addEventListener("click", () => { stopOnline(); show("home"); renderHome(); });
+  $("b-mm-cpu").addEventListener("click", () => { stopOnline(); show("home"); startDemo(); });
+  $("b-gacha").addEventListener("click", openGacha);
+  $("b-chars").addEventListener("click", openChars);
+  $("b-dex").addEventListener("click", openDex);
+  $("h-coin").addEventListener("click", openGacha);
+  for(const b of document.querySelectorAll("[data-home]")) b.addEventListener("click", () => { show("home"); renderHome(); });
+  $("b-ga1").addEventListener("click", () => pullGacha(1));
+  $("b-ga10").addEventListener("click", () => pullGacha(10));
+  $("ga-cost1").innerHTML = COIN_SVG + coinFmt(KCFG.gacha.single); $("ga-cost10").innerHTML = COIN_SVG + coinFmt(KCFG.gacha.ten);
+  $("b-rates").addEventListener("click", openRates);
+  $("ch-sort").addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; charSort = b.dataset.s; for(const x of $("ch-sort").children) x.setAttribute("aria-pressed", x === b ? "true" : "false"); renderChars(); });
+  $("ch-sort").children[0].setAttribute("aria-pressed", "true");
+  $("ch-legacy").addEventListener("click", openSheet);
   $("code").addEventListener("keydown", e => { if(e.key === "Enter") $("b-join").click(); });
   $("b-join-link").addEventListener("click", () => joinRoom(ROOM_Q));
   $("b-demo").addEventListener("click", startDemo);
@@ -4345,6 +5619,9 @@
   if(Q.has("notitle")) leaveTitle();
   if(DEBUG) window.__hb = { host: () => H, view: () => VS, me: () => myId, spike: () => localSpike(performance.now()), state: () => S, born: m => onBorn(m), pair: () => makePair(1, true),
     // テスト用：あいことばなしで、すぐにアカウントを作ってログインする
+    col: () => S.col, master: () => ({ bad: validateMaster(), kids: KIDS.length, forms: Object.keys(KFORMS).length }),
+    give: (cid, n, st) => { for(let i = 0; i < (n || 1); i++){ const x = addInst(S.col, cid, "test"); if(st) x.st = st; } save(); refreshAll(); },
+    setCoins: n => { S.col.coins = n; save(); refreshAll(); }, evolveS2, evolveS3, drawOne, blankCol, rollRarity, effectiveRareRate, KCFG,
     quickLogin: name => { const a = { uid: rid(10), name: String(name || "テスト").slice(0, 10), salt: rid(12), ph: "0".repeat(64), at: Date.now() }; AC.list.push(a); localStorage.setItem(DATA(a.uid), JSON.stringify(blankS(a.name))); enterAs(a); } };
 })();
 </script>

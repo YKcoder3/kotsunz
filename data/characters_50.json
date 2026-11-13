@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "K001",
+    "name": "ぬけもん",
+    "attribute": "逆転派",
+    "rarity": "おつ",
+    "personality": "無気力でいつもあと1問で本気になる",
+    "visualSignature": "ゆがんだ三角耳と片頬ばんそうこう",
+    "stageNames": [
+      "ぬけもん",
+      "ぬけもん・ちょい本気",
+      "ぬけもん・本気のふり"
+    ],
+    "imageKey": "characters/k001",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K002",
+    "name": "めだまる",
+    "attribute": "記憶派",
+    "rarity": "普通",
+    "personality": "目玉焼きを頭に載せた忘れんぼ",
+    "visualSignature": "頭の黄身とつぶらな上目",
+    "stageNames": [
+      "めだまる",
+      "ものしりめだまる",
+      "ぜんちめだまる"
+    ],
+    "imageKey": "characters/k002",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K003",
+    "name": "ロジポン",
+    "attribute": "論理派",
+    "rarity": "レア",
+    "personality": "理屈っぽい丸メガネ",
+    "visualSignature": "片方だけ大きい眼鏡",
+    "stageNames": [
+      "ロジポン",
+      "ロジポン・研究員",
+      "ロジポン・賢者"
+    ],
+    "imageKey": "characters/k003",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K004",
+    "name": "ピピット",
+    "attribute": "スピード派",
+    "rarity": "スーパーレア",
+    "personality": "早すぎて自分の答えを聞けない",
+    "visualSignature": "片耳が稲妻の形",
+    "stageNames": [
+      "ピピット",
+      "ピピット・疾走",
+      "ピピット・閃光"
+    ],
+    "imageKey": "characters/k004",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K005",
+    "name": "ルミュ",
+    "attribute": "ひらめき派",
+    "rarity": "レジェンド",
+    "personality": "夢で正解を拾ってくる",
+    "visualSignature": "星型の前髪と眠たい目",
+    "stageNames": [
+      "ルミュ",
+      "ルミュ・星詠み",
+      "ルミュ・天球"
+    ],
+    "imageKey": "characters/k005",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K006",
+    "name": "ムキッツ",
+    "attribute": "逆転派",
+    "rarity": "普通",
+    "personality": "見た目だけ筋肉質だが気が小さい",
+    "visualSignature": "ふるえる緑の力こぶ",
+    "stageNames": [
+      "ムキッツ",
+      "ムキッツ・奮起",
+      "ムキッツ・無敵顔"
+    ],
+    "imageKey": "characters/k006",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K007",
+    "name": "ウロット",
+    "attribute": "直感派",
+    "rarity": "レア",
+    "personality": "頭の金魚に答えを相談",
+    "visualSignature": "透明な頭と泳ぐ魚",
+    "stageNames": [
+      "ウロット",
+      "ウロット・水読み",
+      "ウロット・深海"
+    ],
+    "imageKey": "characters/k007",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K008",
+    "name": "クエス",
+    "attribute": "ひらめき派",
+    "rarity": "レア",
+    "personality": "質問ばかりして答えを忘れる",
+    "visualSignature": "？が浮くフード",
+    "stageNames": [
+      "クエス",
+      "クエス・なぞ解き",
+      "クエス・大予言"
+    ],
+    "imageKey": "characters/k008",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K009",
+    "name": "ホコリィ",
+    "attribute": "逆転派",
+    "rarity": "おつ",
+    "personality": "掃除すると消えそうなほこり玉",
+    "visualSignature": "左右非対称の綿毛",
+    "stageNames": [
+      "ホコリィ",
+      "ホコリィ・ふわもこ",
+      "ホコリィ・雲王"
+    ],
+    "imageKey": "characters/k009",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K010",
+    "name": "カンペン",
+    "attribute": "記憶派",
+    "rarity": "普通",
+    "personality": "カンペを見ても字が読めない",
+    "visualSignature": "鉛筆みたいな短い耳",
+    "stageNames": [
+      "カンペン",
+      "カンペン・書記",
+      "カンペン・大教授"
+    ],
+    "imageKey": "characters/k010",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K011",
+    "name": "ガチャロン",
+    "attribute": "ひらめき派",
+    "rarity": "普通",
+    "personality": "お腹から自分のカプセルが出る",
+    "visualSignature": "お腹の透明な窓",
+    "stageNames": [
+      "ガチャロン",
+      "ガチャロン・回転",
+      "ガチャロン・超回転"
+    ],
+    "imageKey": "characters/k011",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K012",
+    "name": "ミテミ",
+    "attribute": "論理派",
+    "rarity": "普通",
+    "personality": "虫眼鏡で何でも大げさに見る",
+    "visualSignature": "巨大な片目レンズ",
+    "stageNames": [
+      "ミテミ",
+      "ミテミ・観測員",
+      "ミテミ・千里眼"
+    ],
+    "imageKey": "characters/k012",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K013",
+    "name": "ネムリィ",
+    "attribute": "逆転派",
+    "rarity": "おつ",
+    "personality": "寝言だけ正しい",
+    "visualSignature": "寝袋のような胴体",
+    "stageNames": [
+      "ネムリィ",
+      "ネムリィ・寝返り",
+      "ネムリィ・夢覚醒"
+    ],
+    "imageKey": "characters/k013",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K014",
+    "name": "ポコロ",
+    "attribute": "スピード派",
+    "rarity": "おつ",
+    "personality": "急いで転ぶと一番速い",
+    "visualSignature": "片足だけローラースケート",
+    "stageNames": [
+      "ポコロ",
+      "ポコロ・早歩き",
+      "ポコロ・流星"
+    ],
+    "imageKey": "characters/k014",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K015",
+    "name": "モニョン",
+    "attribute": "直感派",
+    "rarity": "おつ",
+    "personality": "形がいつも一歩遅れて変わる",
+    "visualSignature": "片方だけ長い触角",
+    "stageNames": [
+      "モニョン",
+      "モニョン・変形",
+      "モニョン・無限体"
+    ],
+    "imageKey": "characters/k015",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K016",
+    "name": "シラベェ",
+    "attribute": "論理派",
+    "rarity": "普通",
+    "personality": "何でもノートに記録する",
+    "visualSignature": "胸に小さな四角いメモ",
+    "stageNames": [
+      "シラベェ",
+      "シラベェ・調査員",
+      "シラベェ・博士"
+    ],
+    "imageKey": "characters/k016",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K017",
+    "name": "オモチュ",
+    "attribute": "記憶派",
+    "rarity": "おつ",
+    "personality": "もちのように伸びて知識をくっつける",
+    "visualSignature": "角ばったおもち耳",
+    "stageNames": [
+      "オモチュ",
+      "オモチュ・のびもち",
+      "オモチュ・満月もち"
+    ],
+    "imageKey": "characters/k017",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K018",
+    "name": "チカチカ",
+    "attribute": "スピード派",
+    "rarity": "普通",
+    "personality": "考えると頬のライトが点滅",
+    "visualSignature": "片頬に豆電球",
+    "stageNames": [
+      "チカチカ",
+      "チカチカ・点灯",
+      "チカチカ・閃雷"
+    ],
+    "imageKey": "characters/k018",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K019",
+    "name": "ワスレル",
+    "attribute": "記憶派",
+    "rarity": "おつ",
+    "personality": "覚えた瞬間に全部忘れる",
+    "visualSignature": "背中に結び目のリボン",
+    "stageNames": [
+      "ワスレル",
+      "ワスレル・復習",
+      "ワスレル・忘却王"
+    ],
+    "imageKey": "characters/k019",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K020",
+    "name": "モクモク",
+    "attribute": "逆転派",
+    "rarity": "おつ",
+    "personality": "プレッシャーで煙が出る",
+    "visualSignature": "頭から細い煙が一本",
+    "stageNames": [
+      "モクモク",
+      "モクモク・白煙",
+      "モクモク・雷雲"
+    ],
+    "imageKey": "characters/k020",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K021",
+    "name": "コロッピ",
+    "attribute": "直感派",
+    "rarity": "普通",
+    "personality": "転がって決める勝負師",
+    "visualSignature": "サイコロのようなほっぺ",
+    "stageNames": [
+      "コロッピ",
+      "コロッピ・回転王",
+      "コロッピ・黄金比"
+    ],
+    "imageKey": "characters/k021",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K022",
+    "name": "ハテナコ",
+    "attribute": "ひらめき派",
+    "rarity": "普通",
+    "personality": "疑問が増えると丸くなる",
+    "visualSignature": "逆さまの？型の耳",
+    "stageNames": [
+      "ハテナコ",
+      "ハテナコ・発見",
+      "ハテナコ・大発見"
+    ],
+    "imageKey": "characters/k022",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K023",
+    "name": "パチパチ",
+    "attribute": "スピード派",
+    "rarity": "普通",
+    "personality": "拍手で問題を飛ばしそう",
+    "visualSignature": "手がほぼ拍手の形",
+    "stageNames": [
+      "パチパチ",
+      "パチパチ・連打",
+      "パチパチ・音速"
+    ],
+    "imageKey": "characters/k023",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K024",
+    "name": "ドロリン",
+    "attribute": "直感派",
+    "rarity": "おつ",
+    "personality": "いつも半透明で存在感が薄い",
+    "visualSignature": "半透明のしずく尾",
+    "stageNames": [
+      "ドロリン",
+      "ドロリン・ゆらり",
+      "ドロリン・幻影"
+    ],
+    "imageKey": "characters/k024",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K025",
+    "name": "ベンチョ",
+    "attribute": "論理派",
+    "rarity": "普通",
+    "personality": "解説は長いのに結論がない",
+    "visualSignature": "口の横に小さなチョーク",
+    "stageNames": [
+      "ベンチョ",
+      "ベンチョ・演説",
+      "ベンチョ・大賢者"
+    ],
+    "imageKey": "characters/k025",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K026",
+    "name": "コツコツ",
+    "attribute": "記憶派",
+    "rarity": "普通",
+    "personality": "毎日一問ずつこつこつ貯める",
+    "visualSignature": "丸い石のような背中",
+    "stageNames": [
+      "コツコツ",
+      "コツコツ・努力家",
+      "コツコツ・達人"
+    ],
+    "imageKey": "characters/k026",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K027",
+    "name": "ズバッピ",
+    "attribute": "スピード派",
+    "rarity": "レア",
+    "personality": "切れ味のよいツッコミ担当",
+    "visualSignature": "横一直線の眉毛",
+    "stageNames": [
+      "ズバッピ",
+      "ズバッピ・瞬断",
+      "ズバッピ・超音速"
+    ],
+    "imageKey": "characters/k027",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K028",
+    "name": "ユルリカ",
+    "attribute": "ひらめき派",
+    "rarity": "普通",
+    "personality": "ひらめくまで寝転ぶ",
+    "visualSignature": "片耳だけ電球状",
+    "stageNames": [
+      "ユルリカ",
+      "ユルリカ・ひらめき",
+      "ユルリカ・大天才"
+    ],
+    "imageKey": "characters/k028",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K029",
+    "name": "マグレオ",
+    "attribute": "直感派",
+    "rarity": "おつ",
+    "personality": "当たると全部まぐれと言う",
+    "visualSignature": "星型に欠けた耳",
+    "stageNames": [
+      "マグレオ",
+      "マグレオ・連勝",
+      "マグレオ・奇跡"
+    ],
+    "imageKey": "characters/k029",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K030",
+    "name": "キオクン",
+    "attribute": "記憶派",
+    "rarity": "レア",
+    "personality": "見た景色を引き出しにしまう",
+    "visualSignature": "腹部の小さな引き出し",
+    "stageNames": [
+      "キオクン",
+      "キオクン・整理",
+      "キオクン・記録神"
+    ],
+    "imageKey": "characters/k030",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K031",
+    "name": "ヒラメェ",
+    "attribute": "ひらめき派",
+    "rarity": "普通",
+    "personality": "魚じゃないのに横に跳ねる",
+    "visualSignature": "平たい頭と丸い尾",
+    "stageNames": [
+      "ヒラメェ",
+      "ヒラメェ・着想",
+      "ヒラメェ・超着想"
+    ],
+    "imageKey": "characters/k031",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K032",
+    "name": "ナゾミン",
+    "attribute": "論理派",
+    "rarity": "普通",
+    "personality": "謎を解くほど眉毛が増える",
+    "visualSignature": "左右で本数が違う眉",
+    "stageNames": [
+      "ナゾミン",
+      "ナゾミン・推理",
+      "ナゾミン・真理"
+    ],
+    "imageKey": "characters/k032",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K033",
+    "name": "ダッシュン",
+    "attribute": "スピード派",
+    "rarity": "普通",
+    "personality": "止まると眠くなる",
+    "visualSignature": "背中の小さな風車",
+    "stageNames": [
+      "ダッシュン",
+      "ダッシュン・加速",
+      "ダッシュン・光速"
+    ],
+    "imageKey": "characters/k033",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K034",
+    "name": "モフタ",
+    "attribute": "逆転派",
+    "rarity": "おつ",
+    "personality": "逆境で毛量が増える",
+    "visualSignature": "三本だけ飛び出る毛",
+    "stageNames": [
+      "モフタ",
+      "モフタ・もふ増し",
+      "モフタ・大もふ"
+    ],
+    "imageKey": "characters/k034",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K035",
+    "name": "ピンポン",
+    "attribute": "直感派",
+    "rarity": "普通",
+    "personality": "勘で答えてベルが鳴る",
+    "visualSignature": "頭頂部の押しボタン",
+    "stageNames": [
+      "ピンポン",
+      "ピンポン・早押し",
+      "ピンポン・大正解"
+    ],
+    "imageKey": "characters/k035",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K036",
+    "name": "ギモンヌ",
+    "attribute": "論理派",
+    "rarity": "レア",
+    "personality": "質問が鋭すぎる貴族",
+    "visualSignature": "片方だけ巻いた口ひげ",
+    "stageNames": [
+      "ギモンヌ",
+      "ギモンヌ・分析",
+      "ギモンヌ・真眼"
+    ],
+    "imageKey": "characters/k036",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K037",
+    "name": "ホシポン",
+    "attribute": "ひらめき派",
+    "rarity": "普通",
+    "personality": "流れ星を数えて眠れない",
+    "visualSignature": "額の小さな穴あき星",
+    "stageNames": [
+      "ホシポン",
+      "ホシポン・星集め",
+      "ホシポン・銀河"
+    ],
+    "imageKey": "characters/k037",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K038",
+    "name": "パニモ",
+    "attribute": "逆転派",
+    "rarity": "おつ",
+    "personality": "焦ると逆に集中する",
+    "visualSignature": "片目だけぐるぐる",
+    "stageNames": [
+      "パニモ",
+      "パニモ・耐久",
+      "パニモ・逆転王"
+    ],
+    "imageKey": "characters/k038",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K039",
+    "name": "ペラコ",
+    "attribute": "記憶派",
+    "rarity": "おつ",
+    "personality": "ページが風に飛ぶ本の子",
+    "visualSignature": "背中の一枚ページ",
+    "stageNames": [
+      "ペラコ",
+      "ペラコ・しおり",
+      "ペラコ・百科"
+    ],
+    "imageKey": "characters/k039",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K040",
+    "name": "トキメキ",
+    "attribute": "スピード派",
+    "rarity": "普通",
+    "personality": "心拍と同じ速さで答える",
+    "visualSignature": "ハート形の耳が片方",
+    "stageNames": [
+      "トキメキ",
+      "トキメキ・鼓動",
+      "トキメキ・超鼓動"
+    ],
+    "imageKey": "characters/k040",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K041",
+    "name": "チョッカン",
+    "attribute": "直感派",
+    "rarity": "レア",
+    "personality": "未来が一瞬だけ見える",
+    "visualSignature": "目元に一本の三日月",
+    "stageNames": [
+      "チョッカン",
+      "チョッカン・予感",
+      "チョッカン・予知"
+    ],
+    "imageKey": "characters/k041",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K042",
+    "name": "プチメモ",
+    "attribute": "記憶派",
+    "rarity": "おつ",
+    "personality": "メモが小さすぎて読めない",
+    "visualSignature": "耳に貼りつく小付箋",
+    "stageNames": [
+      "プチメモ",
+      "プチメモ・暗記",
+      "プチメモ・大図鑑"
+    ],
+    "imageKey": "characters/k042",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K043",
+    "name": "ロンロン",
+    "attribute": "論理派",
+    "rarity": "普通",
+    "personality": "考えすぎて自分に反論",
+    "visualSignature": "左右逆向きの眉",
+    "stageNames": [
+      "ロンロン",
+      "ロンロン・証明",
+      "ロンロン・大論証"
+    ],
+    "imageKey": "characters/k043",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K044",
+    "name": "カッとん",
+    "attribute": "スピード派",
+    "rarity": "おつ",
+    "personality": "一秒で怒って二秒で忘れる",
+    "visualSignature": "片頬の小さな火花",
+    "stageNames": [
+      "カッとん",
+      "カッとん・瞬発",
+      "カッとん・熱風"
+    ],
+    "imageKey": "characters/k044",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K045",
+    "name": "アタルン",
+    "attribute": "直感派",
+    "rarity": "普通",
+    "personality": "答えより先に笑顔が出る",
+    "visualSignature": "お腹の小さな的マーク",
+    "stageNames": [
+      "アタルン",
+      "アタルン・的中",
+      "アタルン・神勘"
+    ],
+    "imageKey": "characters/k045",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K046",
+    "name": "ソウゾウ",
+    "attribute": "ひらめき派",
+    "rarity": "レア",
+    "personality": "頭に架空の街を建てる",
+    "visualSignature": "頭上の小さな家型突起",
+    "stageNames": [
+      "ソウゾウ",
+      "ソウゾウ・設計",
+      "ソウゾウ・創世"
+    ],
+    "imageKey": "characters/k046",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K047",
+    "name": "クルミン",
+    "attribute": "論理派",
+    "rarity": "おつ",
+    "personality": "難問を殻にしまいこむ",
+    "visualSignature": "殻の渦模様と一文字口",
+    "stageNames": [
+      "クルミン",
+      "クルミン・熟考",
+      "クルミン・叡智"
+    ],
+    "imageKey": "characters/k047",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K048",
+    "name": "オチツキ",
+    "attribute": "逆転派",
+    "rarity": "普通",
+    "personality": "最後の一秒だけ落ち着く",
+    "visualSignature": "片足だけ座禅ポーズ",
+    "stageNames": [
+      "オチツキ",
+      "オチツキ・集中",
+      "オチツキ・不動"
+    ],
+    "imageKey": "characters/k048",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K049",
+    "name": "ハヤオシ",
+    "attribute": "スピード派",
+    "rarity": "スーパーレア",
+    "personality": "早押しボタンから生まれた",
+    "visualSignature": "額の丸い赤いボタン",
+    "stageNames": [
+      "ハヤオシ",
+      "ハヤオシ・迅雷",
+      "ハヤオシ・雷帝"
+    ],
+    "imageKey": "characters/k049",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  },
+  {
+    "id": "K050",
+    "name": "セイカイ",
+    "attribute": "ひらめき派",
+    "rarity": "レア",
+    "personality": "正解を聞くと初めて驚く",
+    "visualSignature": "片側だけ開いた王冠耳",
+    "stageNames": [
+      "セイカイ",
+      "セイカイ・開眼",
+      "セイカイ・星冠"
+    ],
+    "imageKey": "characters/k050",
+    "baseStats": {
+      "hp": 100,
+      "attack": 20,
+      "defense": 20,
+      "speed": 20
+    },
+    "isCollaboration": false
+  }
+]
