@@ -1,159 +1,170 @@
 {
-  "version": "1.1.0",
-  "catalogCount": 150,
-  "baseCharacterCount": 50,
-  "formsPerCharacter": 3,
-  "attributes": [
-    "論理派",
-    "直感派",
-    "記憶派",
-    "スピード派",
-    "逆転派",
-    "ひらめき派"
+ "version": "1.2.0",
+ "catalogCount": 1500,
+ "baseCharacterCount": 500,
+ "formsPerCharacter": 3,
+ "attributes": [
+  "論理派",
+  "直感派",
+  "記憶派",
+  "スピード派",
+  "逆転派",
+  "ひらめき派"
+ ],
+ "attributeAdvantages": {
+  "論理派": [
+   "直感派",
+   "記憶派"
   ],
-  "attributeAdvantages": {
-    "論理派": [
-      "直感派",
-      "記憶派"
-    ],
-    "直感派": [
-      "記憶派",
-      "スピード派"
-    ],
-    "記憶派": [
-      "スピード派",
-      "逆転派"
-    ],
-    "スピード派": [
-      "逆転派",
-      "ひらめき派"
-    ],
-    "逆転派": [
-      "ひらめき派",
-      "論理派"
-    ],
-    "ひらめき派": [
-      "論理派",
-      "直感派"
-    ]
+  "直感派": [
+   "記憶派",
+   "スピード派"
+  ],
+  "記憶派": [
+   "スピード派",
+   "逆転派"
+  ],
+  "スピード派": [
+   "逆転派",
+   "ひらめき派"
+  ],
+  "逆転派": [
+   "ひらめき派",
+   "論理派"
+  ],
+  "ひらめき派": [
+   "論理派",
+   "直感派"
+  ]
+ },
+ "advantageDamageMultiplier": 1.0,
+ "rarityProbabilities": {
+  "おつ": 0.45,
+  "普通": 0.35,
+  "レア": 0.15,
+  "スーパーレア": 0.045,
+  "レジェンド": 0.005
+ },
+ "evolution": {
+  "stage1to2": {
+   "awakeningStone": 2,
+   "minLevel": 1,
+   "duplicateRequired": false,
+   "duplicateCopies": 3,
+   "copiesConsumed": 2,
+   "note": "S1を3体そろえる（2体を素材にして1体が進化）か、覚醒石2個のどちらかで進化できる"
   },
-  "advantageDamageMultiplier": 1.05,
-  "rarityProbabilities": {
-    "おつ": 0.45,
-    "普通": 0.35,
-    "レア": 0.15,
-    "スーパーレア": 0.045,
-    "レジェンド": 0.005
-  },
-  "evolution": {
-    "stage1to2": {
-      "awakeningStone": 2,
-      "minLevel": 1,
-      "duplicateRequired": false
-    },
-    "stage2to3": {
-      "awakeningStone": 3,
-      "minLevel": 20,
-      "duplicateRequired": false
-    }
-  },
-  "growth": {
-    "maxLevel": 30,
-    "expToNextLevelFormula": "floor(50 * pow(level, 1.4))",
-    "statCapMode": "cosmetic-first; pvp normalized",
-    "dailyExpCap": 1000
-  },
-  "gacha": {
-    "drawPriceSoftCurrency": 10,
-    "tenDrawPriceSoftCurrency": 100,
-    "hardCurrencyPaymentEnabled": false,
-    "pity": {
-      "rareOrAboveWithin": 10,
-      "legendarySelectableWithin": 200
-    },
-    "drawOnlyStage1": true,
-    "guaranteeMechanics": "configurable before release"
-  },
-  "kotsunzApp": {
-    "dataVersion": 6,
-    "starter": {
-      "freeTenDrawTickets": 1,
-      "awakeningStones": 5,
-      "coins": 0
-    },
-    "coins": {
-      "rule": "人数Nの試合で、順位pの人は (N-p+1) コイン",
-      "rankedMultiplier": 2,
-      "cpu": 0,
-      "dailyCap": 1500
-    },
-    "awakeningStoneSources": [
-      "称号",
-      "ランク戦のシーズン報酬",
-      "購入（今後。いまは未実装）"
-    ],
-    "battle": {
-      "hp": 110,
-      "attack": 1,
-      "defense": 1,
-      "levelAffectsBattle": false,
-      "guardWhenCorrectButSlower": 0.5
-    },
-    "dupToExp": 120,
-    "rarityExpBonus": {
-      "おつ": 1.5,
-      "普通": 1,
-      "レア": 1,
-      "スーパーレア": 1,
-      "レジェンド": 1
-    },
-    "ranked": {
-      "pointsPerMatch": 30,
-      "divisions": [
-        [
-          "ブロンズ",
-          0
-        ],
-        [
-          "シルバー",
-          100
-        ],
-        [
-          "ゴールド",
-          250
-        ],
-        [
-          "プラチナ",
-          450
-        ],
-        [
-          "ダイヤ",
-          700
-        ],
-        [
-          "マスター",
-          1000
-        ],
-        [
-          "レジェンド",
-          1400
-        ]
-      ],
-      "seasonRewardStones": {
-        "ゴールド": 1,
-        "プラチナ": 1,
-        "ダイヤ": 2,
-        "マスター": 2,
-        "レジェンド": 3
-      },
-      "season": "毎月1日に新シーズン。ポイントは半分になる"
-    },
-    "titleStones": {
-      "1": 0,
-      "2": 1,
-      "3": 1,
-      "4": 2,
-      "5": 3
-    }
+  "stage2to3": {
+   "awakeningStone": 3,
+   "minLevel": 20,
+   "duplicateRequired": false,
+   "note": "覚醒石3個とLv20以上（v6でユーザーが決めた条件。パック案の覚醒石10個＋専用ミッションは未採用）"
   }
+ },
+ "growth": {
+  "maxLevel": 30,
+  "expToNextLevelFormula": "floor(50 * pow(level, 1.4))",
+  "statCapMode": "cosmetic-first; pvp normalized",
+  "dailyExpCap": 1000
+ },
+ "gacha": {
+  "drawPriceSoftCurrency": 10,
+  "tenDrawPriceSoftCurrency": 100,
+  "hardCurrencyPaymentEnabled": false,
+  "pity": {
+   "rareOrAboveWithin": 10,
+   "legendarySelectableWithin": 200
+  },
+  "drawOnlyStage1": true,
+  "guaranteeMechanics": "configurable before release"
+ },
+ "kotsunzApp": {
+  "dataVersion": 6,
+  "starter": {
+   "freeTenDrawTickets": 1,
+   "awakeningStones": 5,
+   "coins": 0
+  },
+  "coins": {
+   "rule": "人数Nの試合で、順位pの人は (N-p+1) コイン",
+   "rankedMultiplier": 2,
+   "cpu": 0,
+   "dailyCap": 1500
+  },
+  "awakeningStoneSources": [
+   "称号",
+   "ランク戦のシーズン報酬",
+   "購入（今後。いまは未実装）"
+  ],
+  "battle": {
+   "hp": 110,
+   "attack": 1,
+   "defense": 1,
+   "levelAffectsBattle": false,
+   "guardWhenCorrectButSlower": 0.5,
+   "passiveAttributeEffects": false
+  },
+  "dupToExp": 120,
+  "rarityExpBonus": {
+   "おつ": 1.5,
+   "普通": 1,
+   "レア": 1,
+   "スーパーレア": 1,
+   "レジェンド": 1
+  },
+  "ranked": {
+   "pointsPerMatch": 30,
+   "divisions": [
+    [
+     "ブロンズ",
+     0
+    ],
+    [
+     "シルバー",
+     100
+    ],
+    [
+     "ゴールド",
+     250
+    ],
+    [
+     "プラチナ",
+     450
+    ],
+    [
+     "ダイヤ",
+     700
+    ],
+    [
+     "マスター",
+     1000
+    ],
+    [
+     "レジェンド",
+     1400
+    ]
+   ],
+   "seasonRewardStones": {
+    "ゴールド": 1,
+    "プラチナ": 1,
+    "ダイヤ": 2,
+    "マスター": 2,
+    "レジェンド": 3
+   },
+   "season": "毎月1日に新シーズン。ポイントは半分になる"
+  },
+  "titleStones": {
+   "1": 0,
+   "2": 1,
+   "3": 1,
+   "4": 2,
+   "5": 3
+  },
+  "specials": {
+   "enabled": true,
+   "config": "data/special_config_v3.json",
+   "countdownMs": 4200,
+   "declareCloseMsBeforeReveal": 400
+  }
+ }
 }

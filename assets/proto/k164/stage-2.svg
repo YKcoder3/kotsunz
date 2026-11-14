@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="ソラメル S2" viewBox="0 0 512 512"><defs>
+<radialGradient id="body" cx="35%" cy="21%" r="81%"><stop offset="0%" stop-color="#F2EBFC"/><stop offset="40%" stop-color="#D3BAF4"/><stop offset="75%" stop-color="#C6A5F1"/><stop offset="100%" stop-color="#9F81C8"/></radialGradient>
+<radialGradient id="blush"><stop offset="0" stop-color="#FF799C" stop-opacity=".52"/><stop offset="1" stop-color="#FF799C" stop-opacity="0"/></radialGradient>
+<linearGradient id="iris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#29223D"/><stop offset="1" stop-color="#533C65"/></linearGradient>
+<linearGradient id="shine" x1=".1" y1=".05" x2=".9" y2="1"><stop offset="0" stop-color="white" stop-opacity=".8"/><stop offset=".48" stop-color="white" stop-opacity=".1"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+<filter id="drop" x="-35%" y="-30%" width="170%" height="170%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="fuzz"><feTurbulence baseFrequency=".11" numOctaves="2" seed="12" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.10" /></feComponentTransfer></filter>
+<clipPath id="bodyclip"><path d="M250 139 C344 137 403 215 400 304 C399 398 339 441 255 441 C167 441 111 398 111 306 C111 214 167 140 250 139 Z"/></clipPath>
+</defs>
+<ellipse cx="256" cy="456" rx="147" ry="17" fill="#25183B" opacity=".18" filter="url(#drop)"/>
+<ellipse cx="256" cy="292" rx="174" ry="160" fill="none" stroke="#D7B2CA" stroke-width="7" opacity=".37" stroke-dasharray="12 18"/>
+<path d="M195 187Q176 117 214 105 Q257 114 232 187Z" fill="url(#body)" stroke="#7755C2" stroke-width="7" stroke-linejoin="round"/>
+<path d="M280 190 Q257 123 290 81 Q332 62 328 119 L325 190 Z" fill="url(#body)" stroke="#7755C2" stroke-width="7" stroke-linejoin="round"/>
+<ellipse cx="187" cy="420" rx="40" ry="23" fill="#D3BAF4" stroke="#7755C2" stroke-width="6" transform="rotate(-8 187 420)"/>
+<ellipse cx="327" cy="419" rx="40" ry="23" fill="#D3BAF4" stroke="#7755C2" stroke-width="6" transform="rotate(9 327 419)"/>
+<path d="M250 139 C344 137 403 215 400 304 C399 398 339 441 255 441 C167 441 111 398 111 306 C111 214 167 140 250 139 Z" fill="url(#body)" stroke="#7755C2" stroke-width="8" stroke-linejoin="round"/>
+<g clip-path="url(#bodyclip)"><rect x="105" y="130" width="310" height="320" filter="url(#fuzz)" opacity=".38"/><path d="M149 286 C153 187 221 141 283 158 C216 187 178 248 173 314Z" fill="url(#shine)" opacity=".72"/><ellipse cx="309" cy="396" rx="114" ry="45" fill="#9F81C8" opacity=".11"/></g>
+<ellipse cx="215" cy="309" rx="19" ry="23" fill="url(#iris)"/><ellipse cx="209" cy="300" rx="7" ry="8" fill="white" opacity=".96"/><circle cx="223" cy="319" r="3.4" fill="white" opacity=".75"/>
+<ellipse cx="171" cy="348" rx="23" ry="14" fill="url(#blush)"/>
+<ellipse cx="296" cy="306" rx="19" ry="23" fill="url(#iris)"/><ellipse cx="290" cy="297" rx="7" ry="8" fill="white" opacity=".96"/><circle cx="304" cy="316" r="3.4" fill="white" opacity=".75"/>
+<ellipse cx="340" cy="345" rx="23" ry="14" fill="url(#blush)"/>
+<path d="M242 371 Q256 387 273 371" fill="none" stroke="#4B345E" stroke-width="7" stroke-linecap="round"/>
+<g fill="#E5B99F" stroke="#7755C2" stroke-width="5" stroke-linejoin="round" opacity=".94"><path d="M220 228C243 193 269 193 292 228 C269 263 243 263 220 228Z"/></g>
+<path d="M123 388 Q253 464 388 387" fill="none" stroke="#EED2C2" stroke-width="9" stroke-linecap="round" opacity=".7"/>
+<path d="M92 273 Q96 285 108 289 Q96 293 92 305 Q88 293 76 289 Q88 285 92 273Z" fill="#F0D7C8" opacity=".79"/>
+<path d="M374 160 Q376 166 382 168 Q376 170 374 176 Q372 170 366 168 Q372 166 374 160Z" fill="#F0D7C8" opacity=".79"/>
+<path d="M258 421 Q260 429 268 431 Q260 433 258 441 Q256 433 248 431 Q256 429 258 421Z" fill="#F0D7C8" opacity=".79"/>
+<path d="M143 165 Q146 174 155 177 Q146 180 143 189 Q140 180 131 177 Q140 174 143 165Z" fill="#F0D7C8" opacity=".79"/>
+</svg>
