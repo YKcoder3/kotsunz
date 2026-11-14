@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "catalogCount": 150,
   "baseCharacterCount": 50,
   "formsPerCharacter": 3,
@@ -47,17 +47,13 @@
   },
   "evolution": {
     "stage1to2": {
-      "requiredOwnedCopies": 3,
-      "consumedCopies": 2,
-      "result": "retain one evolved instance",
-      "minLevel": 1
+      "awakeningStone": 2,
+      "minLevel": 1,
+      "duplicateRequired": false
     },
     "stage2to3": {
+      "awakeningStone": 3,
       "minLevel": 20,
-      "materials": {
-        "awakeningStone": 10
-      },
-      "requireQuestClear": true,
       "duplicateRequired": false
     }
   },
@@ -68,8 +64,8 @@
     "dailyExpCap": 1000
   },
   "gacha": {
-    "drawPriceSoftCurrency": 100,
-    "tenDrawPriceSoftCurrency": 1000,
+    "drawPriceSoftCurrency": 10,
+    "tenDrawPriceSoftCurrency": 100,
     "hardCurrencyPaymentEnabled": false,
     "pity": {
       "rareOrAboveWithin": 10,
@@ -79,40 +75,85 @@
     "guaranteeMechanics": "configurable before release"
   },
   "kotsunzApp": {
+    "dataVersion": 6,
+    "starter": {
+      "freeTenDrawTickets": 1,
+      "awakeningStones": 5,
+      "coins": 0
+    },
     "coins": {
-      "start": 300,
-      "play": 20,
-      "perCorrect": 5,
-      "placeBonus": [
-        0,
-        60,
-        30,
-        15
-      ],
-      "cpuRate": 0.5,
-      "dailyCap": 1500,
-      "dailyLogin": 50
+      "rule": "人数Nの試合で、順位pの人は (N-p+1) コイン",
+      "rankedMultiplier": 2,
+      "cpu": 0,
+      "dailyCap": 1500
     },
-    "awakeningStones": {
-      "win": 2,
-      "play": 1
-    },
+    "awakeningStoneSources": [
+      "称号",
+      "ランク戦のシーズン報酬",
+      "購入（今後。いまは未実装）"
+    ],
     "battle": {
       "hp": 110,
       "attack": 1,
       "defense": 1,
-      "levelAffectsBattle": false
+      "levelAffectsBattle": false,
+      "guardWhenCorrectButSlower": 0.5
     },
-    "s3Quest": {
-      "correctWithThisCharacter": 30
-    },
-    "bumpBirthPerPartnerPerDay": 1,
+    "dupToExp": 120,
     "rarityExpBonus": {
       "おつ": 1.5,
       "普通": 1,
       "レア": 1,
       "スーパーレア": 1,
       "レジェンド": 1
+    },
+    "ranked": {
+      "pointsPerMatch": 30,
+      "divisions": [
+        [
+          "ブロンズ",
+          0
+        ],
+        [
+          "シルバー",
+          100
+        ],
+        [
+          "ゴールド",
+          250
+        ],
+        [
+          "プラチナ",
+          450
+        ],
+        [
+          "ダイヤ",
+          700
+        ],
+        [
+          "マスター",
+          1000
+        ],
+        [
+          "レジェンド",
+          1400
+        ]
+      ],
+      "seasonRewardStones": {
+        "ゴールド": 1,
+        "プラチナ": 1,
+        "ダイヤ": 2,
+        "マスター": 2,
+        "レジェンド": 3
+      },
+      "season": "毎月1日に新シーズン。ポイントは半分になる"
+    },
+    "titleStones": {
+      "1": 0,
+      "2": 1,
+      "3": 1,
+      "4": 2,
+      "5": 3
     }
   }
 }

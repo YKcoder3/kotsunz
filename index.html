@@ -759,6 +759,78 @@
   .rw small{font-size:11px;color:var(--sub);font-weight:700}
   .rw:nth-child(2){animation-delay:.15s}.rw:nth-child(3){animation-delay:.3s}
   .birth .btn.ghost{background:transparent;box-shadow:none}
+
+  /* =================================================================
+     v6 ランク戦・称号・シールド・チケット
+     ================================================================= */
+  .tiles.four{grid-template-columns:repeat(4,1fr);gap:6px}
+  .tiles.four .tile b{font-size:14px}
+  .tiles.four .tile .tic{font-size:23px}
+  .gbtn.ticket{width:100%;background:linear-gradient(90deg,#22C38A,#3D7BFF);color:#fff;box-shadow:0 5px 0 #1A7A60;animation:pulse 1.4s ease-in-out infinite}
+  .gbtn.ticket small{font-weight:800;opacity:.9}
+  .evocost{display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px}
+  .evocost .ci{width:30px;height:30px}
+  .evocost b{font-size:22px;font-family:var(--round)}
+  /* division のバッジ */
+  .divb{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:900;color:var(--dc);background:#fff;border:2px solid var(--dc);border-radius:999px;padding:2px 9px 2px 4px;white-space:nowrap}
+  .divb i{width:14px;height:14px;border-radius:50%;background:var(--dc);box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+  .divb.sm{font-size:10px;padding:1px 7px 1px 3px;border-width:1.5px}
+  .divb.sm i{width:10px;height:10px}
+  .ptitle{font-size:10px;font-weight:800;color:#8A5A00;background:#FFF3C4;border-radius:6px;padding:0 5px;display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rw.rk{gap:6px}
+  /* ランク戦のキュー */
+  .rqlist{display:flex;flex-direction:column;gap:8px}
+  .rqb{appearance:none;border:0;background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-align:left;font:inherit;color:var(--ink);box-shadow:var(--shadow)}
+  .rqb .tx{flex:1;min-width:0}
+  .rqb b{font-family:var(--round);font-size:17px;display:block}
+  .rqb small{font-size:11px;color:var(--sub);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rqb:active{transform:scale(.98)}
+  /* プロフィール */
+  #pf-body > * + *{margin-top:10px}
+  .pfhead{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#2E2169,#5B3FD0);color:#fff;border-radius:22px;padding:14px}
+  .pfhead .pic{width:88px;height:88px;flex:none;background:#fff;border-radius:20px}
+  .pfhead .pic svg{width:100%;height:100%}
+  .pfhead b{font-family:var(--round);font-size:22px;display:block}
+  .pftitle{display:inline-block;background:#FFC531;color:#2E2169;font-weight:900;font-size:13px;border-radius:999px;padding:3px 12px;margin:4px 0 6px}
+  .pfrank{background:#fff;border-radius:18px;padding:12px;box-shadow:var(--shadow);border-left:6px solid var(--dc)}
+  .pfrank b{font-family:var(--round);font-size:20px;color:var(--dc);display:block}
+  .pfrank small{font-size:11px;color:var(--sub)}
+  .pfq{background:#fff;border-radius:18px;padding:6px 12px;box-shadow:var(--shadow)}
+  .qrow{display:grid;grid-template-columns:1fr auto 52px;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px;font-weight:700}
+  .qrow:last-child{border-bottom:0}
+  .qrow small{text-align:right;color:var(--sub);font-size:11px}
+  .pfstats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .pfstats div{background:#fff;border-radius:14px;padding:8px;text-align:center;box-shadow:var(--shadow)}
+  .pfstats b{display:block;font-family:var(--round);font-size:20px}
+  .pfstats span{font-size:10.5px;color:var(--sub);font-weight:700}
+  .tlist{display:flex;flex-direction:column;gap:6px}
+  .trow{display:flex;align-items:center;gap:8px;background:#F0EEF5;border-radius:14px;padding:8px 10px;opacity:.75}
+  .trow.got{background:#fff;opacity:1;box-shadow:var(--shadow)}
+  .trow.eq{box-shadow:0 0 0 2.5px var(--hot),var(--shadow)}
+  .trow .tl{flex:1;min-width:0;display:flex;flex-direction:column}
+  .trow b{font-size:14px}
+  .trow small{font-size:11px;color:var(--sub)}
+  .stars{font-size:10px;letter-spacing:-.05em;color:#C9C5D6}
+  .trow.got .stars{color:#FFB800}
+  .trow.got .stars.s5{color:#FF4D8D}
+  /* 称号ゲット */
+  .tpop{position:fixed;inset:0;z-index:55;background:rgba(20,16,44,.7);display:flex;align-items:center;justify-content:center;padding:20px}
+  .tpop[hidden]{display:none}
+  .tpbox{background:radial-gradient(circle at 50% 0%,#5B3FD0,#2E2169 70%);color:#fff;border-radius:28px;padding:24px 20px;width:min(340px,100%);text-align:center;box-shadow:0 0 0 3px #FFC531,0 20px 60px rgba(0,0,0,.4)}
+  .tpop.on .tpbox{animation:stamp .6s cubic-bezier(.2,1.7,.5,1) both}
+  .tp-cap{font-weight:900;letter-spacing:.2em;font-size:13px;color:#FFC531}
+  .tp-star{font-size:22px;color:#FFC531;margin-top:6px;letter-spacing:.1em}
+  .tp-name{font-family:var(--round);font-weight:900;font-size:30px;margin-top:4px}
+  .tp-desc{font-size:12.5px;opacity:.85;margin-top:6px}
+  .tp-stone{display:inline-flex;align-items:center;gap:4px;margin-top:12px;background:#fff;color:#2E2169;font-weight:900;border-radius:999px;padding:4px 14px 4px 4px}
+  .tp-stone:empty{display:none}
+  .tp-tap{font-size:11px;opacity:.6;margin-top:14px}
+  /* シールド */
+  .rs .shield{position:absolute;right:-4px;top:12px;font-size:16px;z-index:3;animation:pop .4s cubic-bezier(.3,1.6,.5,1)}
+  .rs.guard .pic{border-radius:50%;box-shadow:0 0 0 3px #3D7BFF}
+  .rs .dmg.g{color:#3D7BFF}
+  .gbtn.ticket{animation:glow 1.4s ease-in-out infinite}
+  @keyframes glow{50%{box-shadow:0 5px 0 #1A7A60,0 0 22px 4px rgba(34,195,138,.6)}}
 </style>
 </head>
 <body>
@@ -814,13 +886,14 @@
     <div class="cap" style="margin-top:2px">バトル</div>
     <div class="actions">
       <button class="act primary" id="b-friend"><span class="ai"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm8 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zM1 20c0-3.9 3.1-7 7-7s7 3.1 7 7v1H1zm15.5-6.9c3.6.3 6.5 2.9 6.5 6.4V21h-6v-1c0-2.6-1-5-2.6-6.6.7-.2 1.4-.3 2.1-.3z"/></svg></span><span class="at"><b>友達と対戦</b><small>部屋を作る・コードで入る（最大10人）</small></span></button>
-      <button class="act blue" id="b-online"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.9 1.2 1.6 2.6 2 4h-4c.4-1.4 1.1-2.8 2-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.9-1.2-1.6-2.6-2-4h4c-.4 1.4-1.1 2.8-2 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4z"/></svg></span><span class="at"><b>オンライン対戦</b><small>全国のだれかと自動でマッチング</small></span></button>
-      <button class="act ghost" id="b-demo"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 1 3.7V7h4a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3h4V5.7A2 2 0 0 1 12 2zM9 11.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></span><span class="at"><b>コンピューター対戦</b><small>CPU 3人と練習（コインは半分）</small></span></button>
+      <button class="act blue" id="b-online"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.9 1.2 1.6 2.6 2 4h-4c.4-1.4 1.1-2.8 2-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.9-1.2-1.6-2.6-2-4h4c-.4 1.4-1.1 2.8-2 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4z"/></svg></span><span class="at"><b>ランク戦（オンライン）</b><small>ジャンルをえらんで、全国のだれかと対戦</small></span></button>
+      <button class="act ghost" id="b-demo"><span class="ai"><svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 1 3.7V7h4a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3h4V5.7A2 2 0 0 1 12 2zM9 11.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm6 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></span><span class="at"><b>コンピューター対戦</b><small>CPU 3人と練習（コインはなし）</small></span></button>
     </div>
-    <div class="tiles">
-      <button class="tile gacha" id="b-gacha"><span class="tic">🎁</span><b>ガチャ</b><small id="t-gacha"></small></button>
+    <div class="tiles four">
+      <button class="tile gacha" id="b-gacha"><span class="tic">🎁</span><b>ガチャ</b><small id="t-gacha"></small><span class="badge" id="t-ticket" hidden>無料</span></button>
       <button class="tile chars" id="b-chars"><span class="tic">🧸</span><b>キャラ</b><small id="t-chars"></small><span class="badge" id="t-evo" hidden></span></button>
       <button class="tile dex" id="b-dex"><span class="tic">📖</span><b>図鑑</b><small id="t-dex"></small></button>
+      <button class="tile prof" id="b-prof"><span class="tic">🏅</span><b>称号</b><small id="t-prof"></small></button>
     </div>
     <div class="status" id="home-status"></div>
     <div class="homefoot"><span id="home-rec"></span><button class="linkbtn" id="b-about">このアプリについて</button></div>
@@ -828,7 +901,7 @@
 
   <!-- ガチャ -->
   <section id="s-gacha" hidden>
-    <div class="hbar"><button class="back" data-home>‹ ホーム</button><div id="ga-coin"></div></div>
+    <div class="hbar"><button class="back" data-home>‹ ホーム</button><div class="hright"><span class="stonechip" id="ga-stone"></span><span id="ga-coin"></span></div></div>
     <div class="gbanner">
       <div class="gm-top">KOTSUNZ</div>
       <div class="gmachine"><div class="gglobe"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="gbody"><div class="gknob"></div><div class="gslot"></div></div></div>
@@ -836,13 +909,14 @@
       <div class="gsub">50種のキャラから、S1（はじめの形）が出るよ</div>
     </div>
     <div class="muted center" id="ga-own"></div>
+    <button class="gbtn ticket" id="b-gat" hidden><b>無料10連チケットで引く</b><small></small></button>
     <div class="gbtns">
       <button class="gbtn" id="b-ga1"><b>1回ひく</b><span class="cost" id="ga-cost1"></span></button>
       <button class="gbtn ten" id="b-ga10"><b>10回ひく</b><span class="cost" id="ga-cost10"></span></button>
     </div>
     <div class="muted center small" id="ga-pity"></div>
     <button class="linkbtn" id="b-rates">排出率・天井・注意事項</button>
-    <p class="note">このバージョンは無料の体験版です。コツcoinは対戦の参加・正解・順位でもらえます。レア度で対戦の強さは変わりません。</p>
+    <p class="note">コツcoinは友達対戦・ランク戦の順位でもらえます（N人なら1位はNコイン…最下位は1コイン。ランク戦は2倍）。覚醒石は称号とランク戦のシーズン報酬で手に入ります。このバージョンは無料の体験版で、お金での購入はありません。レア度で対戦の強さは変わりません。</p>
   </section>
 
   <!-- 持っているキャラ -->
@@ -868,7 +942,7 @@
   <section id="s-match" hidden>
     <div class="mm">
       <div class="mm-ring"><div class="mm-pic" id="mm-pic"></div></div>
-      <h2>オンライン対戦</h2>
+      <h2 id="mm-q">ランク戦</h2>
       <p class="mm-st" id="mm-status"></p>
       <p class="muted" id="mm-count"></p>
       <button class="btn ghost small" id="b-mm-cancel">やめる</button>
@@ -883,7 +957,7 @@
       <div><div class="cap">部屋コード</div><div class="roomcode" id="l-code"></div></div>
       <div class="lhead-r"><div class="count" id="l-count"></div><button class="pillbtn" id="b-invite">＋ 招待する</button></div>
     </div>
-    <div class="onlinebn" id="l-online" hidden><b>オンライン対戦</b><span>人数がそろったら自動で始まります</span></div>
+    <div class="onlinebn" id="l-online" hidden><b id="l-online-q">ランク戦</b><span>人数がそろったら自動で始まります</span></div>
     <div class="bump" id="l-bump">
       <div class="flash" id="l-flash"></div>
       <h3>近くの人とスマホをコツン！</h3>
@@ -1003,6 +1077,7 @@
 <div class="sheet" id="sh-acct">
   <div class="shhead"><h2 id="sa-name"></h2><button class="xbtn" data-close>閉じる</button></div>
   <div class="menu">
+    <button id="b-sa-prof">プロフィール・称号</button>
     <button id="b-sa-rename">ニックネームを変える</button>
     <button id="b-sa-pin">あいことばを変える</button>
     <button id="b-sa-xfer">別のスマホへ引き継ぐ</button>
@@ -1122,6 +1197,32 @@
   <p class="ev-tap">タップで閉じる</p>
 </div>
 
+<!-- ランク戦のジャンルえらび -->
+<div class="sheet tall" id="sh-ranked">
+  <div class="shhead"><h2>ランク戦</h2><button class="xbtn" data-close>閉じる</button></div>
+  <p class="muted">ジャンルをえらんで、同じジャンルを待っている人と対戦します。1位は+30pt、最下位は−30pt。divisionが上がると、シーズン報酬で覚醒石がもらえます。毎月1日に新シーズン（ポイントは半分に）。</p>
+  <div class="rqlist" id="rq-list"></div>
+  <p class="note">記録はこのスマホの中に保存されます（サーバーがないので、全国ランキングではありません）。</p>
+</div>
+
+<!-- プロフィール -->
+<div class="sheet tall" id="sh-prof">
+  <div class="shhead"><h2>プロフィール</h2><button class="xbtn" data-close>閉じる</button></div>
+  <div id="pf-body"></div>
+</div>
+
+<!-- 称号ゲット -->
+<div class="tpop" id="tpop" hidden>
+  <div class="tpbox">
+    <div class="tp-cap">称号ゲット！</div>
+    <div class="tp-star" id="tp-star"></div>
+    <div class="tp-name" id="tp-name"></div>
+    <div class="tp-desc" id="tp-desc"></div>
+    <div class="tp-stone" id="tp-stone"></div>
+    <div class="tp-tap">タップで閉じる</div>
+  </div>
+</div>
+
 <script src="https://unpkg.com/mqtt@5.16.1/dist/mqtt.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
 <script>
@@ -1148,23 +1249,22 @@
   // kotsunz-accts-v1 … アカウントの一覧（ニックネーム・あいことばのハッシュ）と、今ログインしている人
   // kotsunz-hb-u-<uid> … アカウントごとのキャラ・戦績
   const ACCTS = "kotsunz-accts-v1", DATA = uid => "kotsunz-hb-u-" + uid;
+  // v6：全員の記録（アカウントもふくむ）を、この端末で一度だけ消して最初からにする
+  const DATA_VER = 6;
+  (function resetOnce(){
+    try{
+      if(localStorage.getItem("kotsunz-reset") === "v" + DATA_VER) return;
+      const ks = []; for(let i = 0; i < localStorage.length; i++){ const k = localStorage.key(i); if(/^kotsunz/.test(k)) ks.push(k); }
+      ks.forEach(k => localStorage.removeItem(k));
+      localStorage.setItem("kotsunz-reset", "v" + DATA_VER);
+    }catch(e){}
+  })();
   function loadAccts(){ try{ const a = JSON.parse(localStorage.getItem(ACCTS)); if(a && Array.isArray(a.list)) return a; }catch(e){} return { v:1, list:[], cur:null }; }
   function saveAccts(){ try{ localStorage.setItem(ACCTS, JSON.stringify(AC)); }catch(e){} }
   let AC = loadAccts();
   const curAcct = () => AC.list.find(a => a.uid === AC.cur) || null;
-  function blankS(name){ return { deviceId: rid(12), name: name || "", dex: [], fid: null, games: 0, wins: 0 }; }
+  function blankS(name){ return { ver: DATA_VER, deviceId: rid(12), name: name || "", dex: [], fid: null, games: 0, wins: 0 }; }
   function loadData(uid){ try{ const v = JSON.parse(localStorage.getItem(DATA(uid))); if(v && typeof v === "object") return Object.assign(blankS(), v, { dex: Array.isArray(v.dex) ? v.dex : [] }); }catch(e){} return blankS(); }
-  // 前の版（アカウントなし）で遊んでいた記録は、最初のアカウントとして引きつぐ
-  (function migrate(){
-    if(AC.list.length) return;
-    let old = null; try{ old = JSON.parse(localStorage.getItem(STORE)); }catch(e){}
-    if(old && typeof old === "object" && ((old.dex || []).length || old.name)){
-      const uid = rid(10);
-      AC.list.push({ uid, name: String(old.name || "プレイヤー").slice(0, 10), salt: rid(12), ph: null, at: Date.now() });
-      try{ localStorage.setItem(DATA(uid), JSON.stringify(old)); }catch(e){}
-      saveAccts();
-    }
-  })();
   let S = AC.cur && curAcct() ? loadData(AC.cur) : blankS();
   function save(){ const a = curAcct(); if(!a) return; S.name = a.name; try{ localStorage.setItem(DATA(a.uid), JSON.stringify(S)); }catch(e){} }
 
@@ -3238,7 +3338,7 @@
   // キャラクターのマスター・設定・絵（正式な画像ができるまでのSVG）
   // =====================================================================
   // マスターは data/ の JSON（characters_50.json・forms_150.json・game_config.json）をビルド時に埋めこむ
-  const GCFG = {"version": "1.0.0", "catalogCount": 150, "baseCharacterCount": 50, "formsPerCharacter": 3, "attributes": ["論理派", "直感派", "記憶派", "スピード派", "逆転派", "ひらめき派"], "attributeAdvantages": {"論理派": ["直感派", "記憶派"], "直感派": ["記憶派", "スピード派"], "記憶派": ["スピード派", "逆転派"], "スピード派": ["逆転派", "ひらめき派"], "逆転派": ["ひらめき派", "論理派"], "ひらめき派": ["論理派", "直感派"]}, "advantageDamageMultiplier": 1.05, "rarityProbabilities": {"おつ": 0.45, "普通": 0.35, "レア": 0.15, "スーパーレア": 0.045, "レジェンド": 0.005}, "evolution": {"stage1to2": {"requiredOwnedCopies": 3, "consumedCopies": 2, "result": "retain one evolved instance", "minLevel": 1}, "stage2to3": {"minLevel": 20, "materials": {"awakeningStone": 10}, "requireQuestClear": true, "duplicateRequired": false}}, "growth": {"maxLevel": 30, "expToNextLevelFormula": "floor(50 * pow(level, 1.4))", "statCapMode": "cosmetic-first; pvp normalized", "dailyExpCap": 1000}, "gacha": {"drawPriceSoftCurrency": 100, "tenDrawPriceSoftCurrency": 1000, "hardCurrencyPaymentEnabled": false, "pity": {"rareOrAboveWithin": 10, "legendarySelectableWithin": 200}, "drawOnlyStage1": true, "guaranteeMechanics": "configurable before release"}, "kotsunzApp": {"coins": {"start": 300, "play": 20, "perCorrect": 5, "placeBonus": [0, 60, 30, 15], "cpuRate": 0.5, "dailyCap": 1500, "dailyLogin": 50}, "awakeningStones": {"win": 2, "play": 1}, "battle": {"hp": 110, "attack": 1, "defense": 1, "levelAffectsBattle": false}, "s3Quest": {"correctWithThisCharacter": 30}, "bumpBirthPerPartnerPerDay": 1, "rarityExpBonus": {"おつ": 1.5, "普通": 1, "レア": 1, "スーパーレア": 1, "レジェンド": 1}}};
+  const GCFG = {"version": "1.1.0", "catalogCount": 150, "baseCharacterCount": 50, "formsPerCharacter": 3, "attributes": ["論理派", "直感派", "記憶派", "スピード派", "逆転派", "ひらめき派"], "attributeAdvantages": {"論理派": ["直感派", "記憶派"], "直感派": ["記憶派", "スピード派"], "記憶派": ["スピード派", "逆転派"], "スピード派": ["逆転派", "ひらめき派"], "逆転派": ["ひらめき派", "論理派"], "ひらめき派": ["論理派", "直感派"]}, "advantageDamageMultiplier": 1.05, "rarityProbabilities": {"おつ": 0.45, "普通": 0.35, "レア": 0.15, "スーパーレア": 0.045, "レジェンド": 0.005}, "evolution": {"stage1to2": {"awakeningStone": 2, "minLevel": 1, "duplicateRequired": false}, "stage2to3": {"awakeningStone": 3, "minLevel": 20, "duplicateRequired": false}}, "growth": {"maxLevel": 30, "expToNextLevelFormula": "floor(50 * pow(level, 1.4))", "statCapMode": "cosmetic-first; pvp normalized", "dailyExpCap": 1000}, "gacha": {"drawPriceSoftCurrency": 10, "tenDrawPriceSoftCurrency": 100, "hardCurrencyPaymentEnabled": false, "pity": {"rareOrAboveWithin": 10, "legendarySelectableWithin": 200}, "drawOnlyStage1": true, "guaranteeMechanics": "configurable before release"}, "kotsunzApp": {"dataVersion": 6, "starter": {"freeTenDrawTickets": 1, "awakeningStones": 5, "coins": 0}, "coins": {"rule": "人数Nの試合で、順位pの人は (N-p+1) コイン", "rankedMultiplier": 2, "cpu": 0, "dailyCap": 1500}, "awakeningStoneSources": ["称号", "ランク戦のシーズン報酬", "購入（今後。いまは未実装）"], "battle": {"hp": 110, "attack": 1, "defense": 1, "levelAffectsBattle": false, "guardWhenCorrectButSlower": 0.5}, "dupToExp": 120, "rarityExpBonus": {"おつ": 1.5, "普通": 1, "レア": 1, "スーパーレア": 1, "レジェンド": 1}, "ranked": {"pointsPerMatch": 30, "divisions": [["ブロンズ", 0], ["シルバー", 100], ["ゴールド", 250], ["プラチナ", 450], ["ダイヤ", 700], ["マスター", 1000], ["レジェンド", 1400]], "seasonRewardStones": {"ゴールド": 1, "プラチナ": 1, "ダイヤ": 2, "マスター": 2, "レジェンド": 3}, "season": "毎月1日に新シーズン。ポイントは半分になる"}, "titleStones": {"1": 0, "2": 1, "3": 1, "4": 2, "5": 3}}};
   const K_RARITIES = Object.keys(GCFG.rarityProbabilities);
   const K_ATTRS = GCFG.attributes.slice();
   const K_BEATS = GCFG.attributeAdvantages;
@@ -3246,10 +3346,10 @@
   const KCFG = {
     gacha: { single: GCFG.gacha.drawPriceSoftCurrency, ten: GCFG.gacha.tenDrawPriceSoftCurrency, probs: GCFG.rarityProbabilities,
              pityRare: GCFG.gacha.pity.rareOrAboveWithin, pityLegend: GCFG.gacha.pity.legendarySelectableWithin, paid: GCFG.gacha.hardCurrencyPaymentEnabled },
-    coins: APP.coins, stones: APP.awakeningStones, battle: APP.battle,
+    coins: APP.coins, battle: APP.battle, starter: APP.starter, ranked: APP.ranked, titleStones: APP.titleStones,
     level: { max: GCFG.growth.maxLevel, dailyExpCap: GCFG.growth.dailyExpCap, need: lv => Math.floor(50 * Math.pow(lv, 1.4)) },
-    evolve: { s2Count: GCFG.evolution.stage1to2.requiredOwnedCopies, s2Consume: GCFG.evolution.stage1to2.consumedCopies,
-              s3Level: GCFG.evolution.stage2to3.minLevel, s3Stones: GCFG.evolution.stage2to3.materials.awakeningStone, s3Correct: APP.s3Quest.correctWithThisCharacter },
+    evolve: { s2Stones: GCFG.evolution.stage1to2.awakeningStone, s2Level: GCFG.evolution.stage1to2.minLevel,
+              s3Stones: GCFG.evolution.stage2to3.awakeningStone, s3Level: GCFG.evolution.stage2to3.minLevel },
     attrBonus: GCFG.advantageDamageMultiplier,
   };
   // 属性ごとの特技。レア度に関係なく、同じ属性なら同じ強さ
@@ -3702,7 +3802,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     mq.removeAllListeners("message");
     mq.unsubscribe(tRoom(code));
     hostConn = { open: true, send: m => pub(tHost(code), { f: myId, m }) };
-    const hello = () => sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter(), today: todayBumps() });
+    const hello = () => sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter(), today: todayBumps(), title: eqTitle(), rp: P().rk.rp });
     mq.on("message", (topic, buf) => { if(topic !== tCli(code, myId)) return; const d = parse(buf); if(d) clientHandle(d); });
     mq.on("connect", () => { if(role === "guest") hello(); });   // つなぎ直したら名のり直す
     mq.subscribe(tCli(code, myId), { qos: 1 }, () => hello());
@@ -3766,9 +3866,10 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     opts = opts || {};
     roomCode = code;
     H = { code, players: new Map(), order: [], genres: new Set(POPULAR_GENRES), count: 10, phase: "lobby", spikes: [], game: null,
-          online: !!opts.online, expect: opts.expect || 1, t0: performance.now() };
+          online: !!opts.online, expect: opts.expect || 1, t0: performance.now(), queue: opts.queue || "all" };
+    if(H.online){ const q = rqOf(H.queue); H.genres = new Set(q.genres || Object.keys(GENRES)); }
     addPlayer("host", S.name, S.deviceId, myFighter(), false);
-    H.players.get("host").today = todayBumps();
+    H.players.get("host").today = todayBumps(); H.players.get("host").title = eqTitle(); H.players.get("host").rp = P().rk.rp;
     if(isDemo){
       const names = ["CPUぽん", "CPUりん", "CPUまる"];
       names.forEach((n, i) => { const id = "cpu" + (i + 1); const c = { kind: "k", id: "cpu" + (i + 1), cid: pick(KIDS), st: 1 + rnd(3), lv: 1 + rnd(25) }; addPlayer(id, n, "cpu", c, true); });
@@ -3795,8 +3896,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     }else{ p.gone = true; toast(p.name + "の接続が切れました"); }
   }
   function lobbyView(){
-    return { t:"lobby", lv: H.lv || 0, online: !!H.online, code: H.code, phase: H.phase, count: H.count, genres: [...H.genres], demo,
-      players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, bumps: p.bumps.size, host: id === "host", cpu: p.cpu }; }) };
+    return { t:"lobby", lv: H.lv || 0, online: !!H.online, queue: H.queue || "all", code: H.code, phase: H.phase, count: H.count, genres: [...H.genres], demo,
+      players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, bumps: p.bumps.size, host: id === "host", cpu: p.cpu, title: p.title || "", rp: p.rp || 0 }; }) };
   }
   function pushLobby(){ if(H){ H.lv = (H.lv || 0) + 1; bcast(lobbyView()); } }
 
@@ -3823,6 +3924,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         if(H.players.size >= MAX_PLAYERS){ if(c) c.send({ t:"reject", reason:"満員です（最大" + MAX_PLAYERS + "人）。" }); conns.delete(from); return; }
         addPlayer(from, name, String(m.deviceId || "").slice(0, 16), m.fighter, false);
         H.players.get(from).today = (Array.isArray(m.today) ? m.today : []).slice(0, 300).map(x => String(x).slice(0, 16));
+        H.players.get(from).title = String(m.title || "").slice(0, 16); H.players.get(from).rp = num(m.rp, 0, 1e6);
         sendTo(from, { t:"welcome", you: from, code: H.code });
         pushLobby();
         toast(name + "が入りました");
@@ -3979,7 +4081,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const correct = alive.filter(p => (G.ans.get(p.id) || {}).c === q.answer).sort((a, b) => G.ans.get(a.id).ms - G.ans.get(b.id).ms);
     const rankOf = new Map(correct.map((p, i) => [p.id, i + 1]));
     for(const p of alive){ if(rankOf.has(p.id)){ p.streak++; p.correct++; p.totalMs += G.ans.get(p.id).ms; } else p.streak = 0; }
-    const incoming = new Map(alive.map(p => [p.id, []])), dealt = {}, why = {};
+    const incoming = new Map(alive.map(p => [p.id, []])), dealt = {}, why = {}, guard = {};
     correct.forEach((A, i) => {
       const rank = i + 1, a = G.ans.get(A.id);
       const pw = attackPower(A, q.genre, a.ms, G.limit[A.id] || BASE_LIMIT, rank, G.r, G.total);
@@ -3995,6 +4097,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         if(pfx(c).chase && !tr) d += pfx(c).chase;
         // ぼうぎょ（体の形・個体差・性格）。苦手ジャンルの問題ではぼうぎょ1.4倍
         d /= statsOf(o).def * (isWeak(o, q.genre) ? 1.4 : 1);
+        if(tr){ d *= KCFG.battle.guardWhenCorrectButSlower; guard[T.id] = true; }
         incoming.get(T.id).push(Math.min(35, d)); n++;
       }
       dealt[A.id] = n;
@@ -4014,7 +4117,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     }
     const answers = {}; for(const [k, v] of G.ans) answers[k] = v.c;
     bcast({ t:"res", id: G.id, r: G.r, genre: q.genre, prompt: q.prompt, choices: q.choices, answer: q.answer, atext: q.choices[q.answer], ranking: correct.map(p => ({ id: p.id, ms: Math.round(G.ans.get(p.id).ms) })),
-            answers, taken, dealt, why, heal, self, out, hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) });
+            answers, taken, dealt, why, heal, self, out, guard, hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) });
     G.timer = setTimeout(nextQ, RESULT_MS);
   }
   function endGame(){
@@ -4060,7 +4163,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         if(screen === "home") show("lobby");
         break;
       case "hb": if(role === "guest") onHeartbeat(m); break;
-      case "who": if(role === "guest") sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter(), today: todayBumps() }); break;
+      case "who": if(role === "guest") sendToHost({ t:"hello", name: S.name, deviceId: S.deviceId, fighter: myFighter(), today: todayBumps(), title: eqTitle(), rp: P().rk.rp }); break;
       case "bornk": onBornK(m); break;
       case "bumplimit": toast("今日はもう" + String(m.partner || "").slice(0, 10) + "さんとコツンズ済み。キャラはまた明日！"); break;
       case "reject": leave(String(m.reason || "入れませんでした。").slice(0, 60)); break;
@@ -4199,6 +4302,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const qr = qrcode(0, "M"); qr.addData(link); qr.make(); $("l-qr").innerHTML = qr.createSvgTag({ cellSize: 4, margin: 1, scalable: true }); $("l-qr").dataset.link = link;
     }
     $("l-online").hidden = !L.online; $("l-bump").hidden = !!L.online;
+    if(L.online) $("l-online-q").textContent = "ランク戦・" + rqOf(L.queue).label;
     if(L.online) $("b-invite").hidden = true;
     const nb = me ? me.bumps : 0;
     $("l-bumpok").textContent = nb ? "コツンOK ✓ " + nb + "人とコツンしました" : "まだコツンしていません";
@@ -4224,7 +4328,10 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const row = el("div", "pc" + (p.id === myId ? " me" : "") + (p.bumps ? " ok" : ""));
       const pic = el("div", "pic"); if(p.fighter) pic.innerHTML = drawCreature(p.fighter); else pic.append(el("div", "egg"));
       const tx = el("div", "tx"); const nm = el("b", null, p.name);
-      tx.append(nm, el("div", "kt", p.bumps ? "コツン ✓" + p.bumps : "コツン待ち"));
+      tx.append(nm);
+      if(p.title) tx.append(el("div", "ptitle", p.title));
+      if(L.online) tx.append(divBadge(num(p.rp, 0, 1e6), true));
+      else tx.append(el("div", "kt", p.bumps ? "コツン ✓" + p.bumps : "コツン待ち"));
       if(p.host || p.cpu || p.id === myId) row.append(el("span", "tagmini", p.id === myId ? "あなた" : p.host ? "ホスト" : "CPU"));
       row.append(pic, tx); list.appendChild(row);
     }
@@ -4460,8 +4567,12 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     m.ranking.forEach((x, i) => { marks[x.id] = i + 1; });
     for(const id of G.order) if(!(id in marks)) marks[id] = (m.answers[id] == null || m.answers[id] < 0) ? "none" : "ng";
     G.lastMarks = marks;
+    if(m.guard && m.guard[myId] && !G.counted.has("g" + m.r)){ G.counted.add("g" + m.r); G.shields = (G.shields || 0) + 1; }
+    { const me = G.players.get(myId); if(me && me.max) G.minHp = Math.min(G.minHp == null ? 1 : G.minHp, me.hp / me.max); }
     if(myRank && !G.counted.has(m.r)){
       G.counted.add(m.r); G.myCorrect++;
+      if(m.ranking[myRank - 1].ms < 500) G.fast = (G.fast || 0) + 1;
+      if(VS.lobby && VS.lobby.online){ const pp = P(); pp.gc[m.genre] = (pp.gc[m.genre] || 0) + 1; }
       const mi = myInst();
       if(mi){ mi.kc++; save(); }
       else{ const mf = myFighter(); if(mf){ mf.know = mf.know || {}; mf.know[m.genre] = (mf.know[m.genre] || 0) + 1; save(); } }
@@ -4494,7 +4605,11 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     later(() => {
       renderRoster(null, marks);
       let any = false;
-      for(const d of $("g-roster").children){ const t = m.taken[d.dataset.id]; if(t){ any = true; const x = d.querySelector(".dmg"); x.textContent = "-" + t; x.classList.add("on"); d.classList.add("shake"); } }
+      for(const d of $("g-roster").children){
+        const t = m.taken[d.dataset.id], gd = m.guard && m.guard[d.dataset.id];
+        if(gd){ d.classList.add("guard"); d.append(el("span", "shield", "🛡")); }
+        if(t){ any = true; const x = d.querySelector(".dmg"); x.textContent = "-" + t; x.classList.toggle("g", !!gd); x.classList.add("on"); if(!gd) d.classList.add("shake"); }
+      }
       if(any) sfx("hit");
       const taken = m.taken[myId] || 0;
       renderMe();
@@ -4513,6 +4628,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       buzz(myRank === 1 ? [50, 40, 50] : 30);
     }
     const taken = m.taken[myId] || 0;
+    if(m.guard && m.guard[myId]) sub += (sub ? "　" : "") + "🛡シールド！正解したのでダメージ半分";
     if(taken) sub += (sub ? "　" : "") + taken + "ダメージ受けた" + (f && isWeak(f, m.genre) ? "（苦手ジャンルでぼうぎょUP中）" : "");
     if(m.heal[myId]) sub += "　HP" + m.heal[myId] + "回復";
     if(m.self[myId]) sub += "　まじめなので自分に" + m.self[myId] + "ダメージ";
@@ -4543,15 +4659,31 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(mine && mine.place === 1) sfx("win");
     const lv = $("e-lv"); lv.textContent = ""; lv.className = "lvup"; $("e-rw").textContent = "";
     const f = myFighter();
-    if(mine){ S.games = (S.games || 0) + 1; if(mine.place === 1) S.wins = (S.wins || 0) + 1; }
+    const mode = demo ? "cpu" : (VS.lobby && VS.lobby.online) ? "ranked" : "pvp";
+    let rank = null;
     if(mine){
-      const rw = giveRewards(mine.place, G.myCorrect, m.ranking.length, demo ? "cpu" : "pvp");
+      const N = m.ranking.length, pp = P();
+      // 戦績・称号のための記録（コンピューター対戦はふくめない）
+      if(mode !== "cpu"){
+        S.games = (S.games || 0) + 1; if(mine.place === 1) S.wins = (S.wins || 0) + 1;
+        pp.streak = mine.place === 1 ? pp.streak + 1 : 0; pp.best = Math.max(pp.best, pp.streak);
+        pp.fast += G.fast || 0; pp.shields += G.shields || 0;
+        const rounds = (G.r || 0) + 1;
+        if(mine.place === 1 && rounds >= 5 && G.myCorrect >= rounds) pp.perfect++;
+        if(mine.place === 1 && G.minHp != null && G.minHp <= .15) pp.comeback++;
+      }
+      if(mode === "ranked") rank = rankUpdate(mine.place, N, VS.lobby.queue || "all");
+      const rw = giveRewards(mine.place, N, mode);
       if(rw){
         const box = $("e-rw");
-        const c1 = el("div", "rw"); c1.innerHTML = COIN_SVG; c1.append(el("b", null, "+" + rw.coins), el("small", null, "コツcoin" + (rw.capped ? "（今日の上限）" : "")));
-        const c2 = el("div", "rw"); c2.innerHTML = STONE_SVG; c2.append(el("b", null, "+" + rw.stones), el("small", null, "覚醒石"));
-        box.append(c1, c2);
+        const c1 = el("div", "rw"); c1.innerHTML = COIN_SVG; c1.append(el("b", null, "+" + rw.coins), el("small", null, mode === "cpu" ? "コツcoin（練習）" : mode === "ranked" ? "コツcoin（ランク戦×2）" : "コツcoin"));
+        box.append(c1);
         if(rw.exp || rw.lvAfter){ const c3 = el("div", "rw"); c3.append(el("b", null, "+" + rw.exp), el("small", null, "EXP" + (rw.lvAfter > rw.lvBefore ? "・Lv" + rw.lvAfter + "に！" : ""))); box.append(c3); }
+        if(rank){
+          const c4 = el("div", "rw rk"); c4.append(divBadge(rank.after.rp, true), el("b", null, (rank.delta >= 0 ? "+" : "") + rank.delta + "pt"));
+          box.append(c4);
+          if(rank.after.i > rank.before.i) setTimeout(() => toast(rank.after.name + "に昇格！" + (rank.stones ? "　覚醒石 +" + rank.stones : "")), 900);
+        }
       }
     }
     if(f && mine && isK(f)){
@@ -4575,6 +4707,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     }
     save();
     $("e-save").textContent = "成果は「" + ((curAcct() || {}).name || "") + "」のアカウントに保存しました";
+    setTimeout(afterProgress, 1500);   // 称号のチェック
     const list = $("e-rank"); list.textContent = "";
     for(const x of m.ranking){
       const row = el("div", "rk" + (x.id === myId ? " me" : ""));
@@ -4625,14 +4758,14 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
 
   // ----- 保存データの形と検査 -----
   function blankCol(){
-    return { schema: "kotsunz_collection_v1", schemaVersion: 1, coins: 0, stones: 0, inst: [], found: {}, hist: [], tx: [],
+    return { schema: "kotsunz_collection_v1", schemaVersion: 2, coins: 0, stones: 0, tickets: 0, inst: [], found: {}, hist: [], tx: [],
              pity: { rare: 0, legend: 0, total: 0 }, daily: { d: "", coins: 0, exp: 0, bumps: [], login: false }, migratedAt: 0 };
   }
   const num = (v, lo, hi) => Math.max(lo, Math.min(hi, Math.floor(+v) || 0));
   function validateCol(raw){
     const c = blankCol();
     if(!raw || typeof raw !== "object") return c;
-    c.coins = num(raw.coins, 0, 99999999); c.stones = num(raw.stones, 0, 999999); c.migratedAt = num(raw.migratedAt, 0, 9e15);
+    c.coins = num(raw.coins, 0, 99999999); c.stones = num(raw.stones, 0, 999999); c.tickets = num(raw.tickets, 0, 99); c.migratedAt = num(raw.migratedAt, 0, 9e15);
     const seen = new Set();
     for(const i of Array.isArray(raw.inst) ? raw.inst.slice(0, 2000) : []){
       if(!i || !KMASTER[i.cid]) continue;
@@ -4673,44 +4806,32 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     }finally{ txBusy = false; }
   }
 
-  // ----- はじめて開いたとき・前の版からの移行（2回は行わない） -----
+  // ----- はじめてのアカウント：無料10連チケット1枚と覚醒石5個（2回はもらえない） -----
   function ensureCol(){
     const a = curAcct(); if(!a) return;
+    if(!S.prof) S.prof = blankProf();
     if(S.col && S.col.schema === "kotsunz_collection_v1"){ S.col = validateCol(S.col); return; }
-    // 上書きする前に、いまの記録を退避しておく
-    try{ const key = DATA(a.uid) + "-before-collection"; if(!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify(S)); }catch(e){}
     const col = blankCol();
-    col.coins = KCFG.coins.start; col.migratedAt = Date.now();
-    // はじめての1体（おつか普通から）
-    const pool = KIDS.filter(c => ["おつ", "普通"].includes(KMASTER[c].rarity));
-    const first = addInst(col, pool[Math.floor(rngFloat() * pool.length)], "start");
-    col.hist.unshift({ tx: rid(12), type: "start", at: Date.now(), cid: first.cid, legacy: (S.dex || []).length });
-    S.col = col;
-    // 前の版のキャラ（コツン生まれ）はそのまま残して使える。まだ選んでいなければ新しい子で戦う
-    if(!S.fid || !(S.dex || []).some(d => d.id === S.fid)) S.fid = first.iid;
+    col.coins = KCFG.starter.coins; col.stones = KCFG.starter.awakeningStones; col.tickets = KCFG.starter.freeTenDrawTickets; col.migratedAt = Date.now();
+    col.hist.unshift({ tx: rid(12), type: "starter", at: Date.now(), stones: col.stones, tickets: col.tickets });
+    S.col = col; S.dex = []; S.fid = null;
     save();
   }
-  function dailyLogin(){
-    if(!S.col) return;
-    const d = freshDaily(S.col);
-    if(!d.login){ d.login = true; S.col.coins += KCFG.coins.dailyLogin; save(); refreshAll(); setTimeout(() => toast("ログインボーナス +" + KCFG.coins.dailyLogin + " コツcoin"), 600); }
-  }
+  function dailyLogin(){}
   const myInst = () => S.col ? S.col.inst.find(i => i.iid === S.fid) || null : null;
   const instById = iid => S.col ? S.col.inst.find(i => i.iid === iid) || null : null;
 
   // ----- 対戦の報酬（コイン・覚醒石・経験値） -----
-  function giveRewards(place, correct, players, mode){
+  function giveRewards(place, N, mode){
     if(!S.col) return null;
     const col = S.col, d = freshDaily(col), C = KCFG.coins;
-    let coins = (C.play + C.perCorrect * correct + (C.placeBonus[place] || 0)) * (mode === "cpu" ? C.cpuRate : 1);
-    coins = Math.max(0, Math.min(Math.round(coins), C.dailyCap - d.coins));
+    let coins = mode === "cpu" ? C.cpu : Math.max(0, N - place + 1) * (mode === "ranked" ? C.rankedMultiplier : 1);
+    coins = Math.max(0, Math.min(coins, C.dailyCap - d.coins));
     col.coins += coins; d.coins += coins;
-    const stones = place === 1 ? KCFG.stones.win : KCFG.stones.play;
-    col.stones += stones;
-    const out = { coins, stones, capped: d.coins >= C.dailyCap, exp: 0, lvBefore: 0, lvAfter: 0 };
+    const out = { coins, stones: 0, capped: coins === 0 && d.coins >= C.dailyCap, exp: 0, lvBefore: 0, lvAfter: 0 };
     const inst = myInst();
     if(inst){
-      let exp = Math.round((correct * 10 + ([0, 40, 25, 15][place] || 8)) * (APP.rarityExpBonus[KMASTER[inst.cid].rarity] || 1));
+      let exp = Math.round(((VS.game ? VS.game.myCorrect : 0) * 10 + ([0, 40, 25, 15][place] || 8)) * (APP.rarityExpBonus[KMASTER[inst.cid].rarity] || 1));
       exp = Math.max(0, Math.min(exp, KCFG.level.dailyExpCap - d.exp));
       d.exp += exp; out.exp = exp; out.lvBefore = inst.lv;
       addExp(inst, exp); out.lvAfter = inst.lv;
@@ -4750,13 +4871,15 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     return 1 / ((1 - Math.pow(1 - p, n)) / p);
   }
   let gBusy = false;
-  function pullGacha(n){
+  function pullGacha(n, useTicket){
     if(gBusy || !S.col) return;
-    const cost = n === 10 ? KCFG.gacha.ten : KCFG.gacha.single * n;
+    const cost = useTicket ? 0 : n === 10 ? KCFG.gacha.ten : KCFG.gacha.single * n;
+    if(useTicket && S.col.tickets < 1){ toast("チケットがありません"); return; }
     if(S.col.coins < cost){ toast("コツcoinが足りません（あと" + (cost - S.col.coins) + "）。対戦でためよう！"); buzz([40, 30, 40]); return; }
     gBusy = true;
     const r = txRun("gacha", "g" + rid(11), draft => {
       if(draft.coins < cost) return { ok: false, err: "coins" };
+      if(useTicket){ if(draft.tickets < 1) return { ok: false, err: "ticket" }; draft.tickets--; }
       draft.coins -= cost;
       const out = [];
       for(let i = 0; i < n; i++){
@@ -4764,55 +4887,50 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         const inst = addInst(draft, cid, "gacha");
         out.push({ cid, iid: inst.iid, isNew, count: draft.inst.filter(x => x.cid === cid && x.st === 1).length });
       }
-      return { ok: true, out, info: { n, cost, cids: out.map(x => x.cid) } };
+      // まだ戦うキャラがいなければ、いちばんレアな子をえらぶ
+      if(!S.fid || !draft.inst.some(i => i.iid === S.fid)){ const best = out.slice().sort((a, b) => RANK(KMASTER[b.cid].rarity) - RANK(KMASTER[a.cid].rarity))[0]; S.fid = best.iid; }
+      return { ok: true, out, info: { n, cost, ticket: !!useTicket, cids: out.map(x => x.cid) } };
     });
     if(!r.ok){ gBusy = false; if(r.err === "coins") toast("コツcoinが足りません"); return; }
     renderGacha();
-    showGachaResult(r.out, () => { gBusy = false; renderGacha(); });   // 保存ずみの結果を演出する
+    showGachaResult(r.out, () => { gBusy = false; renderGacha(); afterProgress(); });   // 保存ずみの結果を演出する
   }
 
-  // ----- 進化 -----
+  // ----- 進化（覚醒石とレベル）-----
+  // S1→S2：覚醒石2個　S2→S3：覚醒石3個とLv20以上
   const s1Of = cid => S.col.inst.filter(i => i.cid === cid && i.st === 1);
   const protectedInst = i => i.lock || i.fav || i.iid === S.fid;
-  function evoS2State(target){
-    const others = s1Of(target.cid).filter(i => i.iid !== target.iid);
-    const usable = others.filter(i => !protectedInst(i));
-    return { have: others.length + 1, need: KCFG.evolve.s2Count, usable, ok: target.st === 1 && others.length + 1 >= KCFG.evolve.s2Count && usable.length >= KCFG.evolve.s2Consume };
-  }
-  function evoS3State(t){
+  function evoState(t){
     const E = KCFG.evolve;
-    const c = [
-      { ok: t.st === 2, t: "S2になっている" },
-      { ok: t.lv >= E.s3Level, t: "Lv" + E.s3Level + "以上（いまLv" + t.lv + "）" },
-      { ok: S.col.stones >= E.s3Stones, t: "覚醒石 " + E.s3Stones + "個（いま" + S.col.stones + "個）" },
-      { ok: t.kc >= E.s3Correct, t: "ミッション：このキャラで " + E.s3Correct + "問正解（いま" + Math.min(t.kc, E.s3Correct) + "問）" },
-    ];
-    return { checks: c, ok: c.every(x => x.ok) };
+    if(t.st >= 3) return { checks: [], ok: false, max: true };
+    const needS = t.st === 1 ? E.s2Stones : E.s3Stones, needL = t.st === 1 ? E.s2Level : E.s3Level;
+    const c = [{ ok: S.col.stones >= needS, t: "覚醒石 " + needS + "個（いま" + S.col.stones + "個）" }];
+    if(needL > 1) c.push({ ok: t.lv >= needL, t: "Lv" + needL + "以上（いまLv" + t.lv + "）" });
+    return { checks: c, ok: c.every(x => x.ok), stones: needS, level: needL, to: t.st + 1 };
   }
-  function evolveS2(targetIid, mats, tx){
-    return txRun("evolve-s2", tx, draft => {
-      const t = draft.inst.find(i => i.iid === targetIid);
-      if(!t || t.st !== 1) return { ok: false, err: "target" };
-      const ms = [...new Set(mats)];
-      if(ms.length !== KCFG.evolve.s2Consume) return { ok: false, err: "count" };
-      const list = ms.map(id => draft.inst.find(i => i.iid === id));
-      if(list.some(m => !m || m.iid === t.iid || m.cid !== t.cid || m.st !== 1 || m.lock || m.fav || m.iid === S.fid)) return { ok: false, err: "material" };
-      draft.inst = draft.inst.filter(i => !ms.includes(i.iid));   // 素材を消費
-      t.st = 2;                                                    // 選んだ1体が進化
-      if(!draft.found[t.cid + "-S2"]) draft.found[t.cid + "-S2"] = Date.now();
-      return { ok: true, info: { target: t.iid, cid: t.cid, used: ms } };
-    });
-  }
-  function evolveS3(targetIid, tx){
-    return txRun("evolve-s3", tx, draft => {
+  function evolve(targetIid, tx){
+    return txRun("evolve", tx, draft => {
       const t = draft.inst.find(i => i.iid === targetIid), E = KCFG.evolve;
-      if(!t || t.st !== 2 || t.lv < E.s3Level || t.kc < E.s3Correct || draft.stones < E.s3Stones) return { ok: false, err: "cond" };
-      draft.stones -= E.s3Stones; t.st = 3;
-      if(!draft.found[t.cid + "-S3"]) draft.found[t.cid + "-S3"] = Date.now();
-      return { ok: true, info: { target: t.iid, cid: t.cid, stones: E.s3Stones } };
+      if(!t || t.st >= 3) return { ok: false, err: "target" };
+      const needS = t.st === 1 ? E.s2Stones : E.s3Stones, needL = t.st === 1 ? E.s2Level : E.s3Level;
+      if(draft.stones < needS || t.lv < needL) return { ok: false, err: "cond" };
+      draft.stones -= needS; t.st++;
+      if(!draft.found[t.cid + "-S" + t.st]) draft.found[t.cid + "-S" + t.st] = Date.now();
+      return { ok: true, info: { target: t.iid, cid: t.cid, to: t.st, stones: needS } };
     });
   }
-  const evoReadyCount = () => S.col ? new Set(S.col.inst.filter(i => (i.st === 1 && evoS2State(i).ok) || (i.st === 2 && evoS3State(i).ok)).map(i => i.cid)).size : 0;
+  // 同じキャラを重ねて経験値にする（ダブったキャラの使いみち）
+  function feedDup(targetIid, tx){
+    return txRun("feed", tx, draft => {
+      const t = draft.inst.find(i => i.iid === targetIid); if(!t) return { ok: false, err: "target" };
+      const m = draft.inst.filter(i => i.cid === t.cid && i.iid !== t.iid && !i.lock && !i.fav && i.iid !== S.fid).sort((a, b) => a.st - b.st || a.lv - b.lv)[0];
+      if(!m) return { ok: false, err: "none" };
+      draft.inst = draft.inst.filter(i => i.iid !== m.iid);
+      addExp(t, APP.dupToExp + (m.st - 1) * 200);
+      return { ok: true, info: { target: t.iid, used: m.iid, cid: t.cid } };
+    });
+  }
+  const evoReadyCount = () => S.col ? S.col.inst.filter(i => evoState(i).ok).length : 0;
 
   // ----- コツンで生まれる（同じ相手とは1日1回） -----
   function bumpedToday(pdev){ return !!(S.col && freshDaily(S.col).bumps.includes(pdev)); }
@@ -4867,6 +4985,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(!S.col) return;
     $("ga-coin").textContent = ""; $("ga-coin").append(coinChip());
     $("b-ga1").disabled = S.col.coins < KCFG.gacha.single; $("b-ga10").disabled = S.col.coins < KCFG.gacha.ten;
+    $("b-gat").hidden = !S.col.tickets; $("b-gat").querySelector("small").textContent = "のこり " + S.col.tickets + "枚";
+    $("ga-stone").innerHTML = STONE_SVG + "覚醒石 " + S.col.stones;
     const left = KCFG.gacha.pityRare - S.col.pity.rare, leftL = KCFG.gacha.pityLegend - S.col.pity.legend;
     $("ga-pity").textContent = "あと" + left + "回以内にレア以上・あと" + leftL + "回でレジェンド";
     const own = new Set(S.col.inst.map(i => i.cid)).size;
@@ -4883,7 +5003,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(t,
       el("p", "about", "まずレア度をこの確率で決め、そのレア度のキャラの中から同じ確率で1体選びます。出てくるのはS1（はじめの形）だけです。"),
       el("p", "about", "天井：レア以上が" + (KCFG.gacha.pityRare - 1) + "回つづけて出なかったら、" + KCFG.gacha.pityRare + "回目はレア以上が確定（そのときの内訳はレア" + (KCFG.gacha.probs["レア"] / 0.2 * 100).toFixed(1) + "%・スーパーレア" + (KCFG.gacha.probs["スーパーレア"] / 0.2 * 100).toFixed(1) + "%・レジェンド" + (KCFG.gacha.probs["レジェンド"] / 0.2 * 100).toFixed(1) + "%）。" + KCFG.gacha.pityLegend + "回のあいだにレジェンドが出なければ、" + KCFG.gacha.pityLegend + "回目はレジェンドが確定します。天井があるので、レア以上の実際の出現率は約" + (effectiveRareRate() * 100).toFixed(1) + "%になります。"),
-      el("p", "about", "コツcoinは対戦の参加・正解・順位でもらえます（1日" + coinFmt(KCFG.coins.dailyCap) + "まで）。このバージョンは無料の体験版で、お金で買うことはできません。キャラのレア度や進化で、対戦の強さは変わりません。"));
+      el("p", "about", "コツcoinは友達対戦・ランク戦の順位でもらえます。N人の試合なら、1位はNコイン、2位はN−1コイン…最下位は1コイン（ランク戦は2倍、コンピューター対戦はなし）。このバージョンは無料の体験版で、お金で買うことはできません。キャラのレア度や進化で、対戦の強さは変わりません。"));
     openSheetEl("sh-rates");
   }
   function showGachaResult(out, done){
@@ -4903,7 +5023,6 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         const pic = el("div", "pic"); pic.innerHTML = kArt({ cid: x.cid, st: 1 });
         card.append(pic, el("b", null, m.names[0]), rarityBadge(m.rarity), attrBadge(m.attr));
         card.append(el("span", "nd " + (x.isNew ? "new" : "dup"), x.isNew ? "NEW" : "DUP ×" + x.count));
-        if(!x.isNew && x.count >= KCFG.evolve.s2Count) card.append(el("span", "evo-hint", "進化できる！"));
         grid.append(card);
       });
       sfx("born" + Math.min(4, best + 1)); buzz(best >= 3 ? [80, 40, 80, 40, 200] : [60, 40, 100]);
@@ -4935,7 +5054,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const tags = el("div", "kct"); tags.append(attrBadge(m.attr)); card.append(tags);
       if(i.fav) card.append(el("span", "kfav", "★"));
       if(i.lock) card.append(el("span", "klock", "🔒"));
-      if((i.st === 1 && evoS2State(i).ok) || (i.st === 2 && evoS3State(i).ok)) card.append(el("span", "kevo", "進化OK"));
+      if(evoState(i).ok) card.append(el("span", "kevo", "進化OK"));
       if(i.iid === S.fid) card.append(el("span", "kuse", "使用中"));
       card.addEventListener("click", () => openKDetail(i.iid));
       grid.append(card);
@@ -4978,19 +5097,26 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       item("⚖️", "強さ", "HPやこうげきは全キャラ共通。レア度・進化・レベルで強さは変わりません。勝負を決めるのはクイズの正解と速さ！"));
     // 進化
     const evo = el("div", "evobox");
-    if(i.st === 1){
-      const s = evoS2State(i);
-      evo.append(el("b", null, "S2へ進化（同じキャラのS1を3体で）"), el("div", "muted", "いま S1 が " + s.have + " / " + s.need + " 体。2体を素材にして、この子がS2になります。"));
-      const b = el("button", "btn primary small", s.ok ? "進化する" : "まだ進化できません"); b.disabled = !s.ok; b.addEventListener("click", () => openEvoS2(i.iid));
+    const es = evoState(i);
+    if(es.max) evo.append(el("b", null, "最終形態（S3）です！"));
+    else{
+      evo.append(el("b", null, (es.to === 2 ? "S2へ進化" : "S3へ覚醒") + "（" + KFORMS[i.cid + "-S" + es.to].name + "）"));
+      for(const c of es.checks) evo.append(el("div", "chk" + (c.ok ? " ok" : ""), (c.ok ? "✓ " : "・") + c.t));
+      const b = el("button", "btn primary small", es.ok ? (es.to === 2 ? "進化する" : "覚醒する") : "条件をそろえよう"); b.disabled = !es.ok; b.addEventListener("click", () => openEvo(i.iid));
       evo.append(b);
-      if(!s.ok && s.have >= s.need) evo.append(el("div", "muted", "素材にできるS1が足りません（お気に入り・ロック・使用中の子は素材にしません）"));
-    }else if(i.st === 2){
-      const s = evoS3State(i);
-      evo.append(el("b", null, "S3へ覚醒（素材はいりません）"));
-      for(const c of s.checks) evo.append(el("div", "chk" + (c.ok ? " ok" : ""), (c.ok ? "✓ " : "・") + c.t));
-      const b = el("button", "btn primary small", s.ok ? "覚醒する" : "条件をそろえよう"); b.disabled = !s.ok; b.addEventListener("click", () => openEvoS3(i.iid));
-      evo.append(b);
-    }else evo.append(el("b", null, "最終形態（S3）です！"));
+      if(!es.checks[0].ok) evo.append(el("div", "muted small", "覚醒石は、称号をとる・ランク戦のシーズン報酬で手に入ります。"));
+    }
+    const dups = S.col.inst.filter(x => x.cid === i.cid && x.iid !== i.iid && !protectedInst(x)).length;
+    if(dups){
+      const fb = el("button", "btn ghost small", "同じキャラを1体重ねる（経験値 +" + APP.dupToExp + "〜）・あと" + dups + "体");
+      fb.addEventListener("click", async () => {
+        const yes = await confirmBox("1体を重ねますか？", "同じキャラのうち、いちばん育っていない1体がいなくなり、この子の経験値になります。", "重ねる");
+        if(!yes) return;
+        const r = feedDup(i.iid, "f" + rid(11));
+        if(r.ok){ sfx("ok"); toast("経験値になりました！"); openKDetail(i.iid); refreshAll(); }
+      });
+      evo.append(fb);
+    }
     // ボタン
     const row = el("div", "row");
     const bUse = el("button", "btn small" + (i.iid === S.fid ? " ghost" : " hot"), i.iid === S.fid ? "いま使っています" : "このキャラで戦う");
@@ -5008,60 +5134,29 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(top, line, row, row2, evo, info, el("p", "note", "所有ID " + i.iid + "・入手 " + new Date(i.at).toLocaleDateString("ja-JP") + "・このキャラで正解 " + i.kc + "問"));
     openSheetEl("sh-kdetail");
   }
-  function refreshAll(){ if(screen === "home") renderHome(); else if(screen === "chars") renderChars(); else if(screen === "dex") renderDex(); else if(screen === "lobby") renderLobby(); }
+  function refreshAll(){ if(screen === "home") renderHome(); else if(screen === "gacha") renderGacha(); else if(screen === "chars") renderChars(); else if(screen === "dex") renderDex(); else if(screen === "lobby") renderLobby(); }
 
-  // ----- 進化の確認（素材えらび） -----
-  let evoTx = null, evoSel = [];
-  function openEvoS2(iid){
+  // ----- 進化の確認 -----
+  async function openEvo(iid){
     const i = instById(iid); if(!i) return;
-    const s = evoS2State(i); if(!s.ok) return;
-    evoTx = "e" + rid(11);
-    evoSel = s.usable.slice().sort((a, b) => a.lv - b.lv || a.at - b.at).slice(0, KCFG.evolve.s2Consume).map(x => x.iid);
-    const draw = () => {
-      const box = $("evo-body"); box.textContent = "";
-      const pv = el("div", "evopv");
-      const a = el("div", "pic"); a.innerHTML = kArt(i); const b = el("div", "pic"); b.innerHTML = kArt({ cid: i.cid, st: 2 });
-      pv.append(a, el("span", "arr", "→"), b);
-      box.append(pv, el("p", "lbl", KFORMS[i.cid + "-S1"].name + " → " + KFORMS[i.cid + "-S2"].name),
-        el("p", "muted", "素材にする2体をえらんでね（えらんだ子はいなくなります）。レベル" + i.lv + "はそのまま引きつぎます。"));
-      const list = el("div", "matlist");
-      for(const m of s.usable){
-        const on = evoSel.includes(m.iid);
-        const r = el("button", "mat" + (on ? " on" : ""));
-        const p = el("div", "pic"); p.innerHTML = kArt(m);
-        r.append(p, el("span", null, (m.nick || KFORMS[m.cid + "-S1"].name) + " Lv" + m.lv), el("b", null, on ? "素材" : ""));
-        r.addEventListener("click", () => {
-          if(evoSel.includes(m.iid)) evoSel = evoSel.filter(x => x !== m.iid);
-          else if(evoSel.length < KCFG.evolve.s2Consume) evoSel.push(m.iid);
-          draw();
-        });
-        list.append(r);
-      }
-      box.append(list);
-      const ok = evoSel.length === KCFG.evolve.s2Consume;
-      const go = el("button", "btn primary", ok ? "進化する（もとに戻せません）" : "素材をあと" + (KCFG.evolve.s2Consume - evoSel.length) + "体えらんでね");
-      go.disabled = !ok; go.id = "b-evo-go";
-      go.addEventListener("click", async () => {
-        go.disabled = true;
-        const yes = await confirmBox("本当に進化しますか？", "素材の2体はいなくなり、もとに戻せません。", "進化する");
-        if(!yes){ go.disabled = false; return; }
-        const r = evolveS2(i.iid, evoSel, evoTx);
-        if(!r.ok){ toast(r.err === "dup" || r.err === "busy" ? "もう進化しました" : "進化できませんでした"); closeSheets(); refreshAll(); return; }
-        closeSheets(); showEvolve(i.cid, 1, 2, () => { openKDetail(i.iid); refreshAll(); });
-      });
-      box.append(go);
-    };
-    draw();
-    openSheetEl("sh-evo");
-  }
-  async function openEvoS3(iid){
-    const i = instById(iid); if(!i || !evoS3State(i).ok) return;
+    const es = evoState(i); if(!es.ok) return;
     const tx = "e" + rid(11);
-    const yes = await confirmBox(KFORMS[i.cid + "-S3"].name + "に覚醒しますか？", "覚醒石を" + KCFG.evolve.s3Stones + "個使います。もとに戻せません。", "覚醒する");
-    if(!yes) return;
-    const r = evolveS3(iid, tx);
-    if(!r.ok){ toast("覚醒できませんでした"); return; }
-    closeSheets(); showEvolve(i.cid, 2, 3, () => { openKDetail(iid); refreshAll(); });
+    const box = $("evo-body"); box.textContent = "";
+    const pv = el("div", "evopv");
+    const a = el("div", "pic"); a.innerHTML = kArt(i); const b = el("div", "pic"); b.innerHTML = kArt({ cid: i.cid, st: es.to });
+    pv.append(a, el("span", "arr", "→"), b);
+    const cost = el("div", "evocost"); cost.innerHTML = STONE_SVG; cost.append(el("b", null, "× " + es.stones), el("span", null, "（いま" + S.col.stones + "個 → " + (S.col.stones - es.stones) + "個）"));
+    box.append(pv, el("p", "lbl center", KFORMS[i.cid + "-S" + i.st].name + " → " + KFORMS[i.cid + "-S" + es.to].name), cost,
+      el("p", "muted center", "レベルと名前はそのまま。対戦の強さは変わらず、見た目と演出がパワーアップします。もとには戻せません。"));
+    const go = el("button", "btn primary", es.to === 2 ? "進化する" : "覚醒する"); go.id = "b-evo-go";
+    go.addEventListener("click", () => {
+      go.disabled = true;
+      const r = evolve(i.iid, tx);
+      if(!r.ok){ toast(r.err === "dup" || r.err === "busy" ? "もう進化しました" : "進化できませんでした"); closeSheets(); refreshAll(); return; }
+      closeSheets(); showEvolve(i.cid, es.to - 1, es.to, () => { openKDetail(i.iid); refreshAll(); afterProgress(); });
+    });
+    box.append(go);
+    openSheetEl("sh-evo");
   }
   function showEvolve(cid, from, to, done){
     const ov = $("evo-ov"); ov.className = "evov stage" + to + " run"; ov.hidden = false;
@@ -5080,7 +5175,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     $("bi-pic").innerHTML = kArt(inst);
     $("bi-grade").textContent = m.rarity + (gr >= 4 ? "!!" : gr === 3 ? "!" : "");
     $("bi-name").textContent = KFORMS[inst.cid + "-S1"].name;
-    $("bi-tag").textContent = m.attr + "・" + K_ATTR_FX[m.attr].tag + (isNew ? "・NEW" : "・" + s1Of(inst.cid).length + "体目");
+    $("bi-tag").textContent = m.attr + "・" + K_ATTR_FX[m.attr].tag + (isNew ? "・NEW" : "・" + S.col.inst.filter(x => x.cid === inst.cid).length + "体目");
     const d = $("bi-desc"); d.textContent = "";
     d.append(el("div", "muted", m.personality));
     ov.dataset.id = inst.iid;
@@ -5146,33 +5241,35 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   // =====================================================================
   // オンライン対戦（公開の中継サーバーで、待っている人どうしを自動でつなぐ）
   // =====================================================================
-  const MM_TOPIC = "kotsunz-mm/v4/queue";
+  const MM_TOPIC = "kotsunz-mm/v6";
   let MM = null;
-  async function startOnline(){
+  async function startOnline(qkey){
     if(!needName()) return;
+    const queue = rqOf(qkey);
     if(typeof mqtt === "undefined"){ homeStatus("通信の部品が読み込めませんでした。電波を確認してね", true); return; }
     stopOnline();
-    show("match"); $("mm-pic").innerHTML = myFighter() ? drawCreature(myFighter()) : ""; $("mm-status").textContent = "サーバーにつないでいます…"; $("mm-count").textContent = ""; $("b-mm-cpu").hidden = true;
+    show("match"); $("mm-q").textContent = "ランク戦・" + queue.label; $("mm-pic").innerHTML = myFighter() ? drawCreature(myFighter()) : ""; $("mm-status").textContent = "サーバーにつないでいます…"; $("mm-count").textContent = ""; $("b-mm-cpu").hidden = true;
     await enableMotion();
     const list = brokers(); let c = null, bi = 0;
     for(let i = 0; i < list.length && !c; i++){ c = await mqOpen(list[i]); if(c) bi = i; }
     if(screen !== "match"){ try{ c && c.end(true); }catch(e){} return; }
     if(!c){ $("mm-status").textContent = "通信サーバーにつながりません。電波を確認してね"; $("b-mm-cpu").hidden = false; return; }
     const me = { sid: rid(10), name: S.name };
+    const TOPIC = MM_TOPIC + "/" + queue.key;
     MM = { c, bi, me, seen: new Map(), t0: performance.now(), timer: null, done: false };
     c.on("message", (tp, buf) => {
-      if(!MM || MM.done || tp !== MM_TOPIC) return;
+      if(!MM || MM.done || tp !== TOPIC) return;
       let m; try{ m = JSON.parse(buf.toString()); }catch(e){ return; }
       if(m.t === "seek" && m.sid && m.sid !== me.sid) MM.seen.set(String(m.sid).slice(0, 12), { name: String(m.name || "").slice(0, 10), at: performance.now() });
       if(m.t === "match" && Array.isArray(m.to) && m.to.includes(me.sid)){
         MM.done = true; const code = String(m.room || ""), b = parseInt(m.b, 10) || 0;
         $("mm-status").textContent = "相手が見つかりました！"; sfx("ok"); buzz([40, 30, 80]);
         stopOnline();
-        setTimeout(() => joinRoom(code, { online: true, b }), 300);
+        setTimeout(() => joinRoom(code, { online: true, b, queue: queue.key }), 300);
       }
     });
-    c.subscribe(MM_TOPIC, { qos: 0 });
-    const seek = () => { try{ c.publish(MM_TOPIC, JSON.stringify({ t: "seek", sid: me.sid, name: me.name, v: 4 }), { qos: 0 }); }catch(e){} };
+    c.subscribe(TOPIC, { qos: 0 });
+    const seek = () => { try{ c.publish(TOPIC, JSON.stringify({ t: "seek", sid: me.sid, name: me.name, v: 4 }), { qos: 0 }); }catch(e){} };
     seek();
     $("mm-status").textContent = "対戦相手をさがしています…";
     MM.timer = setInterval(() => {
@@ -5190,11 +5287,11 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         MM.done = true; $("mm-status").textContent = "相手が見つかりました！部屋を作っています…"; sfx("ok");
         const cc = MM.c, b = MM.bi;
         clearInterval(MM.timer); MM = null;
-        createRoom({ online: true, expect: to.length, broker: b }).then(code => {
+        createRoom({ online: true, expect: to.length, broker: b, queue: queue.key }).then(code => {
           if(!code){ try{ cc.end(true); }catch(e){} return; }
           const msg = JSON.stringify({ t: "match", room: code, b, to, from: me.sid });
-          try{ cc.publish(MM_TOPIC, msg, { qos: 1 }); }catch(e){}
-          setTimeout(() => { try{ cc.publish(MM_TOPIC, msg, { qos: 1 }); }catch(e){} }, 1200);
+          try{ cc.publish(TOPIC, msg, { qos: 1 }); }catch(e){}
+          setTimeout(() => { try{ cc.publish(TOPIC, msg, { qos: 1 }); }catch(e){} }, 1200);
           setTimeout(() => { try{ cc.end(false); }catch(e){} }, 2500);
         });
       }
@@ -5203,6 +5300,200 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   function stopOnline(){
     const m = MM; MM = null; if(!m) return;
     clearInterval(m.timer); try{ m.c.end(false); }catch(e){}
+  }
+  // =====================================================================
+  // プロフィール・ランク戦（division・シーズン）・称号
+  //   ※記録はこのスマホの中。サーバーがないので、正式なランキングではない
+  // =====================================================================
+  const DIVS = KCFG.ranked.divisions;            // [名前, 必要ポイント]
+  const DIV_COLOR = { "ブロンズ":"#C97B4A", "シルバー":"#9AA8BA", "ゴールド":"#E8B10F", "プラチナ":"#3FC1B5", "ダイヤ":"#4F8BFF", "マスター":"#A855F7", "レジェンド":"#FF4D8D" };
+  function divOf(rp){
+    let i = 0; for(let k = 0; k < DIVS.length; k++) if(rp >= DIVS[k][1]) i = k;
+    const next = DIVS[i + 1] || null;
+    return { i, name: DIVS[i][0], rp, next: next ? next[1] : null, nextName: next ? next[0] : null, from: DIVS[i][1] };
+  }
+  const seasonId = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0"); };
+  // ランク戦のキュー（全ジャンル＋ジャンルのグループごと）
+  const RQ = [{ key: "all", label: "全ジャンル", genres: null }].concat(GENRE_GROUPS.map(([label, keys], i) => ({ key: "g" + i, label, genres: keys })));
+  const rqOf = k => RQ.find(q => q.key === k) || RQ[0];
+
+  function blankProf(){
+    return { v: 1, streak: 0, best: 0, fast: 0, perfect: 0, comeback: 0, shields: 0, gc: {},
+             rk: { rp: 0, grp: {}, gbest: {}, best: 0, games: 0, wins: 0, season: "", sdiv: 0 }, titles: {}, eq: null };
+  }
+  function validateProf(raw){
+    const p = blankProf(); if(!raw || typeof raw !== "object") return p;
+    for(const k of ["streak", "best", "fast", "perfect", "comeback", "shields"]) p[k] = num(raw[k], 0, 1e7);
+    for(const [g, v] of Object.entries(raw.gc || {})) if(GENRES[g]) p.gc[g] = num(v, 0, 1e7);
+    const r = raw.rk || {};
+    p.rk.rp = num(r.rp, 0, 1e6); p.rk.best = num(r.best, 0, 1e6); p.rk.games = num(r.games, 0, 1e7); p.rk.wins = num(r.wins, 0, 1e7);
+    p.rk.season = String(r.season || "").slice(0, 7); p.rk.sdiv = num(r.sdiv, 0, DIVS.length - 1);
+    for(const q of RQ){ if(r.grp && r.grp[q.key] != null) p.rk.grp[q.key] = num(r.grp[q.key], 0, 1e6); if(r.gbest && r.gbest[q.key] != null) p.rk.gbest[q.key] = num(r.gbest[q.key], 0, 1e6); }
+    for(const [id, v] of Object.entries(raw.titles || {})) if(TITLE_BY[id]) p.titles[id] = num(v, 1, 9e15);
+    p.eq = raw.eq && p.titles[raw.eq] ? raw.eq : null;
+    return p;
+  }
+  const P = () => { if(!S.prof || S.prof.v !== 1) S.prof = validateProf(S.prof); return S.prof; };
+  // 新しいシーズン：ポイントは半分（はじめての人は0のまま）
+  function checkSeason(){
+    const p = P(), cur = seasonId();
+    if(p.rk.season === cur) return;
+    if(p.rk.season){ p.rk.rp = Math.floor(p.rk.rp / 2); for(const k of Object.keys(p.rk.grp)) p.rk.grp[k] = Math.floor(p.rk.grp[k] / 2); }
+    p.rk.season = cur; p.rk.sdiv = divOf(p.rk.rp).i;
+    save();
+  }
+  // ランク戦の結果。1位 +30 … 最下位 -30（人数で割りふる）
+  function rankUpdate(place, N, qkey){
+    checkSeason();
+    const p = P(), k = KCFG.ranked.pointsPerMatch;
+    const delta = N > 1 ? Math.round(k * (N + 1 - 2 * place) / (N - 1)) : 0;
+    const before = divOf(p.rk.rp);
+    p.rk.rp = Math.max(0, p.rk.rp + delta); p.rk.best = Math.max(p.rk.best, p.rk.rp);
+    p.rk.grp[qkey] = Math.max(0, (p.rk.grp[qkey] || 0) + delta); p.rk.gbest[qkey] = Math.max(p.rk.gbest[qkey] || 0, p.rk.grp[qkey]);
+    p.rk.games++; if(place === 1) p.rk.wins++;
+    const after = divOf(p.rk.rp);
+    // シーズン中にはじめて上がったdivisionには、覚醒石の報酬
+    let stones = 0;
+    if(after.i > p.rk.sdiv){ for(let i = p.rk.sdiv + 1; i <= after.i; i++) stones += KCFG.ranked.seasonRewardStones[DIVS[i][0]] || 0; p.rk.sdiv = after.i; }
+    if(stones && S.col) S.col.stones += stones;
+    save();
+    return { delta, before, after, stones, qrp: p.rk.grp[qkey] };
+  }
+
+  // ----- 称号（どれも簡単には取れない。とると覚醒石がもらえる）-----
+  const TITLES = [];
+  const T = (id, name, star, desc, cond) => TITLES.push({ id, name, star, desc, cond });
+  for(const g of Object.keys(GENRES)){
+    T("g30:" + g, GENRES[g] + "の猛者", 3, "ランク戦で「" + GENRES[g] + "」を30問正解", p => (p.gc[g] || 0) >= 30);
+    T("g100:" + g, GENRES[g] + "の覇者", 5, "ランク戦で「" + GENRES[g] + "」を100問正解", p => (p.gc[g] || 0) >= 100);
+  }
+  for(const q of RQ){
+    const all = q.key === "all";
+    T("q250:" + q.key, all ? "オールラウンダー" : q.label + "の実力者", 2, "ランク戦「" + q.label + "」でゴールド（250pt）に到達", p => (p.rk.gbest[q.key] || 0) >= 250);
+    T("q700:" + q.key, all ? "知の達人" : q.label + "の達人", 4, "ランク戦「" + q.label + "」でダイヤ（700pt）に到達", p => (p.rk.gbest[q.key] || 0) >= 700);
+    T("q1400:" + q.key, all ? "脳速の頂点" : q.label + "の頂点", 5, "ランク戦「" + q.label + "」でレジェンド（1400pt）に到達", p => (p.rk.gbest[q.key] || 0) >= 1400);
+  }
+  T("st3", "三連覇", 3, "友達対戦かランク戦で3回連続優勝", p => p.best >= 3);
+  T("st5", "五連覇", 4, "5回連続優勝", p => p.best >= 5);
+  T("st10", "十連覇", 5, "10回連続優勝", p => p.best >= 10);
+  T("w10", "勝ち名乗り", 1, "友達対戦かランク戦で10回優勝", () => (S.wins || 0) >= 10);
+  T("w50", "常勝", 3, "50回優勝", () => (S.wins || 0) >= 50);
+  T("w100", "百戦錬磨", 4, "100回優勝", () => (S.wins || 0) >= 100);
+  T("r10", "ランク戦デビュー", 1, "ランク戦を10試合", p => p.rk.games >= 10);
+  T("r100", "ランク戦の住人", 3, "ランク戦を100試合", p => p.rk.games >= 100);
+  T("f1", "電光石火", 2, "0.5秒以内に正解", p => p.fast >= 1);
+  T("f30", "神速", 4, "0.5秒以内の正解を30回", p => p.fast >= 30);
+  T("pf", "パーフェクト", 4, "5問以上の試合で全問正解して優勝", p => p.perfect >= 1);
+  T("cb", "大逆転", 4, "HPが15%以下になってから優勝", p => p.comeback >= 1);
+  T("sh10", "鉄壁", 2, "シールドを10回発動", p => p.shields >= 10);
+  T("sh50", "絶対防御", 4, "シールドを50回発動", p => p.shields >= 50);
+  T("c30", "コレクター", 2, "図鑑を30形態発見", () => S.col && Object.keys(S.col.found).length >= 30);
+  T("c75", "図鑑はかせ", 3, "図鑑を75形態発見", () => S.col && Object.keys(S.col.found).length >= 75);
+  T("c150", "図鑑マスター", 5, "図鑑の150形態をすべて発見", () => S.col && Object.keys(S.col.found).length >= 150);
+  T("s3", "覚醒者", 2, "キャラをS3に覚醒させる", () => S.col && S.col.inst.some(i => i.st === 3));
+  T("leg", "伝説の目撃者", 3, "レジェンドのキャラを手に入れる", () => S.col && S.col.inst.some(i => KMASTER[i.cid].rarity === "レジェンド"));
+  const TITLE_BY = Object.fromEntries(TITLES.map(t => [t.id, t]));
+  const eqTitle = () => { const p = P(); return p.eq && TITLE_BY[p.eq] ? TITLE_BY[p.eq].name : ""; };
+
+  let titleQueue = [];
+  function checkTitles(){
+    const p = P(), got = [];
+    for(const t of TITLES){
+      if(p.titles[t.id]) continue;
+      let ok = false; try{ ok = !!t.cond(p); }catch(e){}
+      if(ok){ p.titles[t.id] = Date.now(); const st = KCFG.titleStones[t.star] || 0; if(S.col) S.col.stones += st; got.push({ t, st }); }
+    }
+    if(got.length){ if(!p.eq) p.eq = got[0].t.id; save(); titleQueue = titleQueue.concat(got); showTitlePop(); }
+    return got;
+  }
+  // 何かが進んだあと（試合・ガチャ・進化）に呼ぶ
+  function afterProgress(){ checkSeason(); checkTitles(); refreshAll(); }
+  let popBusy = false;
+  function showTitlePop(){
+    if(popBusy || !titleQueue.length) return;
+    popBusy = true;
+    const { t, st } = titleQueue.shift(), ov = $("tpop");
+    $("tp-star").textContent = "★".repeat(t.star);
+    $("tp-name").textContent = t.name; $("tp-desc").textContent = t.desc;
+    $("tp-stone").innerHTML = st ? STONE_SVG + "覚醒石 +" + st : "";
+    ov.hidden = false; ov.classList.remove("on"); void ov.offsetWidth; ov.classList.add("on");
+    sfx("win"); buzz([60, 40, 60, 40, 160]);
+    ov.onclick = () => { ov.hidden = true; ov.onclick = null; popBusy = false; refreshAll(); setTimeout(showTitlePop, 200); };
+  }
+
+  // ----- 画面：divisionのバッジ -----
+  function divBadge(rp, small){
+    const d = divOf(rp), b = el("span", "divb" + (small ? " sm" : ""));
+    b.style.setProperty("--dc", DIV_COLOR[d.name] || "#888");
+    b.append(el("i"), document.createTextNode(d.name));
+    return b;
+  }
+
+  // ----- プロフィール -----
+  let profTab = "got";
+  function openProfile(){
+    checkSeason();
+    const p = P(), a = curAcct(); if(!a) return;
+    const box = $("pf-body"); box.textContent = "";
+    const head = el("div", "pfhead");
+    const av = el("div", "pic"); const f = myFighter(); if(f) av.innerHTML = drawCreature(f, "win");
+    const tx = el("div", "tx"); tx.append(el("b", null, a.name));
+    const tt = el("div", "pftitle", eqTitle() || "称号なし"); tx.append(tt, divBadge(p.rk.rp));
+    head.append(av, tx);
+    // 全体のランク
+    const d = divOf(p.rk.rp);
+    const rk = el("div", "pfrank"); rk.style.setProperty("--dc", DIV_COLOR[d.name]);
+    rk.append(el("div", "cap", "ランク戦（" + p.rk.season.replace("-", "年") + "月シーズン）"), el("b", null, d.name + "　" + p.rk.rp + "pt"));
+    const bar = el("div", "xpbar"), bi = el("i"); bi.style.width = (d.next ? (p.rk.rp - d.from) / (d.next - d.from) * 100 : 100) + "%"; bi.style.background = "var(--dc)"; bar.append(bi);
+    rk.append(bar, el("small", null, d.next ? d.nextName + "まであと" + (d.next - p.rk.rp) + "pt（到達で覚醒石 +" + (KCFG.ranked.seasonRewardStones[d.nextName] || 0) + "）" : "最高ランク！"));
+    // ジャンルごと
+    const qs = el("div", "pfq");
+    for(const q of RQ){ const r = el("div", "qrow"); r.append(el("span", null, q.label), divBadge(p.rk.grp[q.key] || 0, true), el("small", null, (p.rk.grp[q.key] || 0) + "pt")); qs.append(r); }
+    // 記録
+    const st = el("div", "pfstats");
+    for(const [n, l] of [[S.games || 0, "試合"], [S.wins || 0, "優勝"], [p.best, "最高連勝"], [p.rk.games, "ランク戦"], [p.shields, "シールド"], [p.fast, "0.5秒正解"]]){ const x = el("div"); x.append(el("b", null, String(n)), el("span", null, l)); st.append(x); }
+    // 称号
+    const nGot = Object.keys(p.titles).length;
+    const th = el("div", "row"); th.style.alignItems = "center";
+    th.append(el("p", "lbl", "称号 " + nGot + " / " + TITLES.length));
+    const seg = el("div", "seg small"); seg.style.flex = "none"; seg.style.width = "auto";
+    for(const [k, l] of [["got", "とった"], ["all", "すべて"]]){ const b = el("button", null, l); b.setAttribute("aria-pressed", profTab === k ? "true" : "false"); b.addEventListener("click", () => { profTab = k; openProfile(); }); seg.append(b); }
+    th.append(seg);
+    const tl = el("div", "tlist");
+    const list = TITLES.filter(t => profTab === "all" || p.titles[t.id]).sort((x, y) => (!!p.titles[y.id] - !!p.titles[x.id]) || y.star - x.star);
+    if(!list.length) tl.append(el("div", "acempty", "まだ称号がありません。ランク戦や友達対戦で、むずかしい記録にちょうせんしよう！"));
+    for(const t of list.slice(0, profTab === "all" ? 200 : 999)){
+      const got = !!p.titles[t.id];
+      const r = el("div", "trow" + (got ? " got" : "") + (p.eq === t.id ? " eq" : ""));
+      const l = el("div", "tl"); l.append(el("span", "stars s" + t.star, "★".repeat(t.star)), el("b", null, got ? t.name : t.name), el("small", null, t.desc + "（覚醒石+" + (KCFG.titleStones[t.star] || 0) + "）"));
+      r.append(l);
+      if(got){ const b = el("button", "pillbtn" + (p.eq === t.id ? "" : " ghost"), p.eq === t.id ? "つけている" : "つける"); b.addEventListener("click", () => { p.eq = p.eq === t.id ? null : t.id; save(); openProfile(); refreshAll(); }); r.append(b); }
+      tl.append(r);
+    }
+    const share = el("button", "btn ghost small", "プロフィールを友達に送る");
+    share.addEventListener("click", async () => {
+      const text = "コツンズ 脳速クイズバトル\n" + a.name + (eqTitle() ? "『" + eqTitle() + "』" : "") + "\nランク：" + d.name + " " + p.rk.rp + "pt\n称号 " + nGot + "個・優勝 " + (S.wins || 0) + "回\n" + location.origin + location.pathname;
+      try{ if(navigator.share){ await navigator.share({ title: "コツンズ", text }); return; } }catch(e){ if(e && e.name === "AbortError") return; }
+      try{ await navigator.clipboard.writeText(text); toast("コピーしました"); }catch(e){}
+    });
+    box.append(head, rk, el("p", "lbl", "ジャンル別のdivision"), qs, st, share, th, tl);
+    openSheetEl("sh-prof");
+  }
+
+  // ----- ランク戦のジャンルえらび -----
+  function openRanked(){
+    if(!needName()) return;
+    if(!myFighter()){ toast("まずはガチャでキャラを手に入れよう！"); openGacha(); return; }
+    checkSeason();
+    const p = P(), box = $("rq-list"); box.textContent = "";
+    for(const q of RQ){
+      const b = el("button", "rqb");
+      const l = el("div", "tx"); l.append(el("b", null, q.label), el("small", null, q.genres ? q.genres.map(g => GENRES[g]).join("・") : "52ジャンルすべてから出題"));
+      b.append(l, divBadge(p.rk.grp[q.key] || 0, true));
+      b.addEventListener("click", () => { closeSheets(); startOnline(q.key); });
+      box.append(b);
+    }
+    openSheetEl("sh-ranked");
   }
 
   // =====================================================================
@@ -5328,7 +5619,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     a.ph = await pinHash(a.salt, p);
     try{ localStorage.setItem(DATA(a.uid), JSON.stringify(blankS(name))); }catch(e){ toast("保存できませんでした"); return; }
     AC.list.push(a); saveAccts(); enterAs(a);
-    toast("ようこそ、" + name + "さん！");
+    openGacha(); toast("ようこそ、" + name + "さん！ まずは無料の10連ガチャを引こう！");
   }
   function logout(){ AC.cur = null; saveAccts(); S = blankS(); showAccounts(); }
   async function renameAccount(){
@@ -5364,10 +5655,12 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   // 引き継ぎ・バックアップのデータを、このスマホのアカウントとして入れる
   async function importAccount(obj){
     if(!obj || (obj.kind !== "kotsunz-acct" && obj.kind !== "kotsunz-backup") || !obj.acct || !obj.data || typeof obj.data !== "object"){ toast("コツンズのデータではありません"); return false; }
+    if(obj.data.ver !== DATA_VER){ toast("前のバージョンのデータは使えません（全員リセットしました）"); return false; }
     const name = String(obj.acct.name || "プレイヤー").slice(0, 10), salt = String(obj.acct.salt || "").slice(0, 32), ph = /^[0-9a-f]{64}$/.test(obj.acct.ph || "") ? obj.acct.ph : null;
     const d = obj.data;
-    const dex = (Array.isArray(d.dex) ? d.dex : []).slice(0, 300).map(c => { const x = sanitize(c); if(!x) return null; x.battles = Math.max(0, parseInt(c.battles) || 0); x.wins = Math.max(0, parseInt(c.wins) || 0); return x; }).filter(Boolean);
-    const f0 = dex.find(c => c.id === d.fid) || dex[dex.length - 1];
+    const dex = [];
+    const fi = d.col && Array.isArray(d.col.inst) ? d.col.inst.find(i => i.iid === d.fid && KMASTER[i.cid]) : null;
+    const f0 = fi ? kFighter(fi) : null;
     if(ph && salt){
       const p = await askPin({ title: name + "さんの記録", text: "このアカウントのあいことばを入れてね", av: f0 ? drawCreature(f0) : "", check: async v => (await pinHash(salt, v)) === ph });
       if(p == null) return false;
@@ -5375,9 +5668,10 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const a = { uid: rid(10), name, salt: salt || rid(12), ph, at: Date.now() };
     if(!ph){ const p = await newPin(name); if(p == null) return false; a.ph = await pinHash(a.salt, p); }
     const col = d.col && d.col.schema === "kotsunz_collection_v1" ? validateCol(d.col) : undefined;
-    const fid = col && col.inst.some(i => i.iid === d.fid) ? d.fid : (f0 ? f0.id : null);
+    const fid = col && col.inst.some(i => i.iid === d.fid) ? d.fid : null;
     const data = Object.assign(blankS(name), { dex, fid, games: Math.max(0, parseInt(d.games) || 0), wins: Math.max(0, parseInt(d.wins) || 0), sound: d.sound !== false });
     if(col) data.col = col;
+    data.prof = validateProf(d.prof);
     try{ localStorage.setItem(DATA(a.uid), JSON.stringify(data)); }catch(e){ toast("保存できませんでした"); return false; }
     AC.list.push(a); saveAccts(); enterAs(a);
     toast(name + "さんの記録を引き継ぎました");
@@ -5521,7 +5815,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const tx = el("div", "tx"); tx.append(el("b", null, "まだキャラがいません"), el("div", "pl2", "ガチャをひくか、近くの人とスマホをコツンすると仲間になるよ。"));
       box.append(el("div", "egg big"), tx);
     }
-    $("t-gacha").textContent = coinFmt(S.col.coins) + "コイン";
+    $("t-gacha").textContent = coinFmt(S.col.coins) + "コイン"; $("t-ticket").hidden = !S.col.tickets;
+    $("t-prof").textContent = Object.keys(P().titles).length + "個";
     $("t-chars").textContent = S.col.inst.length + "体";
     const n = evoReadyCount(); $("t-evo").hidden = !n; $("t-evo").textContent = "進化" + n;
     $("t-dex").textContent = Object.keys(S.col.found).length + "/" + Object.keys(KFORMS).length;
@@ -5555,10 +5850,13 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   // =====================================================================
   // ボタン
   // =====================================================================
-  $("b-friend").addEventListener("click", () => openSheetEl("sh-friend"));
+  $("b-friend").addEventListener("click", () => { if(!myFighter()){ toast("まずはガチャでキャラを手に入れよう！"); openGacha(); return; } openSheetEl("sh-friend"); });
   $("b-create").addEventListener("click", () => { closeSheets(); createRoom(); });
   $("b-join").addEventListener("click", () => { const c = $("code").value.replace(/\D/g, ""); if(c.length === 6) closeSheets(); joinRoom(c); });
-  $("b-online").addEventListener("click", startOnline);
+  $("b-online").addEventListener("click", openRanked);
+  $("b-prof").addEventListener("click", openProfile);
+  $("b-sa-prof").addEventListener("click", openProfile);
+  $("b-gat").addEventListener("click", () => pullGacha(10, true));
   $("b-mm-cancel").addEventListener("click", () => { stopOnline(); show("home"); renderHome(); });
   $("b-mm-cpu").addEventListener("click", () => { stopOnline(); show("home"); startDemo(); });
   $("b-gacha").addEventListener("click", openGacha);
@@ -5575,7 +5873,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   $("ch-legacy").addEventListener("click", openSheet);
   $("code").addEventListener("keydown", e => { if(e.key === "Enter") $("b-join").click(); });
   $("b-join-link").addEventListener("click", () => joinRoom(ROOM_Q));
-  $("b-demo").addEventListener("click", startDemo);
+  $("b-demo").addEventListener("click", () => { if(!myFighter()){ toast("まずはガチャでキャラを手に入れよう！"); openGacha(); return; } startDemo(); });
   $("b-bump").addEventListener("click", () => { audio(); localSpike(performance.now()); });
   $("b-start").addEventListener("click", startGame);
   $("b-again").addEventListener("click", rematch);
@@ -5621,8 +5919,9 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     // テスト用：あいことばなしで、すぐにアカウントを作ってログインする
     col: () => S.col, master: () => ({ bad: validateMaster(), kids: KIDS.length, forms: Object.keys(KFORMS).length }),
     give: (cid, n, st) => { for(let i = 0; i < (n || 1); i++){ const x = addInst(S.col, cid, "test"); if(st) x.st = st; } save(); refreshAll(); },
-    setCoins: n => { S.col.coins = n; save(); refreshAll(); }, evolveS2, evolveS3, drawOne, blankCol, rollRarity, effectiveRareRate, KCFG,
-    quickLogin: name => { const a = { uid: rid(10), name: String(name || "テスト").slice(0, 10), salt: rid(12), ph: "0".repeat(64), at: Date.now() }; AC.list.push(a); localStorage.setItem(DATA(a.uid), JSON.stringify(blankS(a.name))); enterAs(a); } };
+    setCoins: n => { S.col.coins = n; save(); refreshAll(); }, evolve, feedDup, drawOne, blankCol, rollRarity, effectiveRareRate, KCFG,
+    prof: () => P(), checkTitles, rankUpdate, titles: () => TITLES.length, setStones: n => { S.col.stones = n; save(); refreshAll(); },
+    quickLogin: name => { const a = { uid: rid(10), name: String(name || "テスト").slice(0, 10), salt: rid(12), ph: "0".repeat(64), at: Date.now() }; AC.list.push(a); localStorage.setItem(DATA(a.uid), JSON.stringify(blankS(a.name))); enterAs(a); const x = addInst(S.col, pick(KIDS), "test"); S.fid = x.iid; save(); renderHome(); } };
 })();
 </script>
 </body>
