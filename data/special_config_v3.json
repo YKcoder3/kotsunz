@@ -36,7 +36,8 @@
     "chargeOrder": "spend_from_starting_meter_then_award_round_gain",
     "failBehavior": "if_wrong_no_spend_apply_normal_wrong_change",
     "oneIntentPerRound": true,
-    "permanentBattleBoost": false
+    "permanentBattleBoost": false,
+    "resetOnUse": true
   },
   "abilities": {
     "defaultAttack": {
@@ -251,6 +252,6 @@
   },
   "appExtensions": {
     "version": "v7.1",
-    "note": "アプリ側の追加。画面は ATTACK / DEFEND / RECOVER の3つ。キャラの固有技は系統に合うボタンに入る。共通RECOVERの数値は heal 系統の基本値と同じ。攻撃は1位の正解者だけ（2位以下の正解者はダメージ軽減だけ）なので、攻撃系の技は1位のときだけ発動し、それ以外は不発でゲージを使わない。"
+    "note": "アプリ側の追加。画面は ATTACK / DEFEND / RECOVER の3つ。キャラの固有技は系統に合うボタンに入る。共通RECOVERの数値は heal 系統の基本値と同じ。攻撃は1位の正解者だけ（2位以下の正解者はダメージ軽減だけ）なので、攻撃系の技は1位のときだけ発動し、それ以外は不発でゲージを使わない。 v7.2：必殺技が発動したらSPは0にもどる（その問題で増える分も入らない）。"
   }
 }
