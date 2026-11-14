@@ -940,12 +940,160 @@
   .qcard.sp-on{min-height:112px;padding:10px 14px}
   .qcard.sp-on .count3{font-size:44px;line-height:1}
   .qcard.sp-on .genre-big{font-size:16px}
+
+  /* ===================== v7.1：技えらび（ATTACK / DEFEND / RECOVER × 小・中・大） ===================== */
+  .sppanel{background:linear-gradient(180deg,#2B1B6B,#1C1250);border-radius:22px;padding:12px;gap:10px;box-shadow:0 10px 24px rgba(28,18,80,.35),inset 0 1px 0 rgba(255,255,255,.12);color:#fff;position:relative}
+  .spm{display:flex;align-items:center;gap:8px}
+  .spml{font-family:var(--round);font-weight:900;font-size:13px;color:#FFE27A;letter-spacing:.06em}
+  .spmbar{position:relative;flex:1;height:12px;border-radius:6px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 3px rgba(0,0,0,.4)}
+  .spmbar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#7BD0FF,#B49BFF 55%,#FFC531);box-shadow:0 0 10px rgba(255,214,102,.6);transition:width .5s ease-out}
+  .spmbar .tk{position:absolute;top:-3px;width:3px;height:18px;margin-left:-1.5px;border-radius:2px;background:rgba(255,255,255,.35)}
+  .spmbar .tk.on{background:#FFE27A;box-shadow:0 0 8px #FFE27A}
+  .spmv{font-family:var(--round);font-weight:900;font-size:18px;min-width:30px;text-align:right}
+  .spkeys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .spk{appearance:none;border:0;border-radius:18px;min-height:96px;padding:8px 4px 9px;font:inherit;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;position:relative;
+    box-shadow:0 5px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.35),inset 0 -6px 12px rgba(0,0,0,.18);transition:transform .08s,box-shadow .08s,filter .15s}
+  .spk svg{width:34px;height:34px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.3))}
+  .spk b{font-family:"Arial Black","Hiragino Sans",system-ui,sans-serif;font-weight:900;font-size:14px;letter-spacing:.04em;text-shadow:0 2px 0 rgba(0,0,0,.3)}
+  .spk small{font-size:10.5px;font-weight:800;line-height:1.2;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;opacity:.95}
+  .spk.attack{background:linear-gradient(180deg,#FF8A5B,#E8364F)}
+  .spk.guard{background:linear-gradient(180deg,#5CB4FF,#2F5BEA)}
+  .spk.recover{background:linear-gradient(180deg,#5BE6A0,#18A866)}
+  .spk.uniq::before{content:"★";position:absolute;top:5px;left:8px;font-size:12px;color:#FFE27A;text-shadow:0 0 6px rgba(255,226,122,.9)}
+  .spk:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.35)}
+  .spk.on{transform:translateY(1px) scale(1.03);box-shadow:0 0 0 3px #FFE27A,0 0 22px rgba(255,226,122,.7),inset 0 2px 0 rgba(255,255,255,.35)}
+  .spk:disabled{filter:grayscale(.85) brightness(.6);box-shadow:inset 0 2px 0 rgba(255,255,255,.12)}
+  .spk .ready{position:absolute;top:-8px;right:-4px;background:#FFE27A;color:#3a2600;font-family:"Arial Black",system-ui,sans-serif;font-size:10px;font-weight:900;border-radius:999px;padding:2px 7px;box-shadow:0 2px 0 rgba(0,0,0,.3);animation:pop .3s ease-out}
+  @keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
+  .sptiers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .spt{appearance:none;border:0;border-radius:999px;min-height:46px;font-family:var(--round);font-weight:900;font-size:20px;color:#fff;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 2px rgba(255,255,255,.22)}
+  .spt.on.small{background:linear-gradient(180deg,#7BD0FF,#3D7BFF);box-shadow:0 0 0 2px #fff,0 0 14px rgba(123,208,255,.7)}
+  .spt.on.medium{background:linear-gradient(180deg,#C9B3FF,#7B5CFF);box-shadow:0 0 0 2px #fff,0 0 14px rgba(180,155,255,.7)}
+  .spt.on.large{background:linear-gradient(180deg,#FFE27A,#FF9F1C);color:#3a2600;box-shadow:0 0 0 2px #fff,0 0 18px rgba(255,197,49,.8)}
+  .spt:disabled{opacity:.3}
+  .sppanel.sealed .spkeys, .sppanel.sealed .sptiers{opacity:.35}
+  .spseal{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:44px;border-radius:22px;background:rgba(20,10,50,.35)}
+  .sppanel.mini{background:transparent;box-shadow:none;padding:0}
+  .spchip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 14px 5px 8px;color:#fff;font-weight:900;font-size:14px;box-shadow:0 3px 0 rgba(0,0,0,.25)}
+  .spchip svg{width:22px;height:22px}
+  .spchip.attack{background:linear-gradient(90deg,#FF8A5B,#E8364F)}.spchip.guard{background:linear-gradient(90deg,#5CB4FF,#2F5BEA)}.spchip.recover{background:linear-gradient(90deg,#5BE6A0,#18A866)}
+  /* 技の名前だけを出す */
+  .skev{align-items:center}
+  .skl{display:inline-flex;align-items:center;gap:8px;grid-template-columns:none;border:0;border-radius:999px;padding:6px 16px 6px 8px;background:linear-gradient(90deg,#2B1B6B,#4A2FB0);color:#fff;box-shadow:0 4px 12px rgba(28,18,80,.3)}
+  .skl svg{width:24px;height:24px;flex:none}
+  .skl b{font-family:var(--round);font-size:15px}
+  .skl.mine.attack{background:linear-gradient(90deg,#FF8A5B,#E8364F)}.skl.mine.guard{background:linear-gradient(90deg,#5CB4FF,#2F5BEA)}.skl.mine.recover{background:linear-gradient(90deg,#5BE6A0,#18A866)}
+  .skl.hit{background:linear-gradient(90deg,#3a1030,#8a1f45)}
+  .skl.large{box-shadow:0 0 0 2px #FFE27A,0 4px 16px rgba(255,197,49,.45)}
+  .banner.sk{font-size:22px}
+  .banner.sk.large{background:linear-gradient(90deg,#FFB800,#FF7A1C);color:#2a1600}
+  .rank.win1 > div{font-size:16px}
+  .qcard.sp-on{min-height:96px;padding:8px 14px}
+  .qcard.sp-on .count3{font-size:40px}
+
+  /* ===================== v7.1：表紙・アカウント・ホーム・ロビーのデザイン ===================== */
+  /* 表紙：一枚絵＋光の演出（絵が読めないときは、前のコードで描いた表紙が出る） */
+  .t-art{position:absolute;inset:0;z-index:5;background:#24135e;overflow:hidden;display:none}
+  .title.has-art .t-art{display:block}
+  .title.has-art > :not(.t-art){display:none}
+  .t-canvas{position:absolute;left:50%;top:50%;width:max(100vw,calc(100dvh * .5628));aspect-ratio:941/1672;transform:translate(-50%,-50%)}
+  .t-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:tzoom 9s ease-in-out infinite alternate}
+  @keyframes tzoom{from{transform:scale(1)}to{transform:scale(1.035)}}
+  .t-glow{position:absolute;border-radius:50%;pointer-events:none;mix-blend-mode:screen}
+  .t-glow.g1{left:22%;top:5%;width:56%;height:18%;background:radial-gradient(closest-side,rgba(255,236,140,.55),transparent);animation:tpulse 1.6s ease-in-out infinite}
+  .t-glow.g2{left:8%;top:72%;width:84%;height:10%;background:radial-gradient(closest-side,rgba(255,255,255,.5),transparent);animation:tpulse 1.2s ease-in-out infinite}
+  @keyframes tpulse{0%,100%{opacity:.2}50%{opacity:1}}
+  .t-ring{position:absolute;left:50%;top:80.5%;width:46%;aspect-ratio:4/1;margin-left:-23%;border-radius:50%;border:2px solid rgba(255,226,160,.9);box-shadow:0 0 18px rgba(255,214,140,.8);transform:translateY(-50%) scale(.3);opacity:0;animation:tring 1.8s ease-out infinite}
+  @keyframes tring{0%{transform:translateY(-50%) scale(.3);opacity:0}25%{opacity:1}100%{transform:translateY(-50%) scale(1.4);opacity:0}}
+  .t-shine{position:absolute;left:12%;top:41%;width:76%;height:13%;overflow:hidden;mix-blend-mode:screen;-webkit-mask-image:radial-gradient(closest-side,#000 70%,transparent);mask-image:radial-gradient(closest-side,#000 70%,transparent)}
+  .t-shine::after{content:"";position:absolute;top:-20%;bottom:-20%;width:24%;left:-30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:tshine 3.4s ease-in-out infinite 1s}
+  @keyframes tshine{0%{left:-30%}45%,100%{left:120%}}
+  .t-canvas .tw{position:absolute;width:10px;height:10px;margin:-5px;background:radial-gradient(closest-side,#fff,rgba(255,255,255,0));border-radius:50%;animation:ttw 2.4s ease-in-out infinite}
+  .t-canvas .tw::before,.t-canvas .tw::after{content:"";position:absolute;left:50%;top:50%;width:22px;height:2px;margin:-1px -11px;background:linear-gradient(90deg,transparent,#fff,transparent)}
+  .t-canvas .tw::after{transform:rotate(90deg)}
+  @keyframes ttw{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}
+  @media (prefers-reduced-motion: reduce){ .t-img,.t-glow,.t-ring,.t-shine::after,.t-canvas .tw{animation:none} .t-ring{opacity:0} }
+
+  /* 画面ごとの背景（フルブリード） */
+  body[data-scr="account"]{background:linear-gradient(180deg,#7C8EE6 0%,#A9A7EE 34%,#CFC5F3 62%,#E6DEF8 100%) fixed}
+  body[data-scr="home"],body[data-scr="lobby"],body[data-scr="gacha"],body[data-scr="chars"],body[data-scr="dex"],body[data-scr="match"],body[data-scr="end"]{background:radial-gradient(120% 60% at 50% 0%,#F4EFFF 0%,#E7DFFA 45%,#DCD2F6 100%) fixed}
+  body[data-scr="game"]{background:linear-gradient(180deg,#EFEAFB,#E4DCF7) fixed}
+
+  /* アカウント */
+  #s-account{gap:12px;position:relative}
+  .ac-head{margin:calc(-18px - var(--st)) -16px -14px;position:relative;z-index:0}
+  .ac-head img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+  .ac-hero{position:relative;z-index:1;text-align:center;margin:0}
+  .ac-hero h2{font-size:34px;color:#fff;letter-spacing:.04em;-webkit-text-stroke:1.5px #4a2fa3;paint-order:stroke fill;text-shadow:0 3px 0 #4a2fa3,0 6px 16px rgba(60,30,140,.45);display:flex;align-items:center;justify-content:center;gap:10px}
+  .ac-hero h2 .lf{font-size:22px;color:#FFD84A;-webkit-text-stroke:0;text-shadow:0 0 10px rgba(255,216,74,.8)}
+  .ac-hero p{color:#3d2f73;font-weight:700;font-size:13.5px;margin-top:6px}
+  .aclist{position:relative;z-index:1}
+  #s-account .acc{background:rgba(255,255,255,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 8px 20px rgba(60,40,140,.18),inset 0 0 0 1.5px rgba(255,255,255,.9);border-radius:24px}
+  .acempty{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.88);border-radius:999px;padding:6px 18px 6px 6px;box-shadow:0 8px 22px rgba(60,40,140,.2),inset 0 0 0 2px rgba(255,255,255,.95),0 0 0 3px rgba(242,194,48,.35);white-space:pre-line;font-weight:800;font-size:13.5px;color:#2a1f5a;line-height:1.6}
+  .acempty img{width:84px;height:auto;flex:none;border-radius:18px}
+  .btn.glossy{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFE27A 0%,#FFC531 48%,#FFAE12 100%);color:#2a1f5a;box-shadow:0 5px 0 #C9860A,0 10px 22px rgba(201,134,10,.35),inset 0 2px 0 rgba(255,255,255,.7);font-size:20px;min-height:62px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:10px}
+  .btn.glossy::before{content:"";position:absolute;left:8%;right:8%;top:5px;height:38%;border-radius:999px;background:linear-gradient(rgba(255,255,255,.65),rgba(255,255,255,0))}
+  .btn.glossy > *{position:relative}
+  .btn.glossy .arr{position:absolute;right:22px;font-style:normal;font-size:16px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .ac-sub{gap:10px}
+  .glass{appearance:none;flex:1;min-width:0;display:flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:10px 12px;min-height:54px;font:inherit;font-weight:800;font-size:12.5px;white-space:nowrap;color:#2a1f5a;background:rgba(255,255,255,.85);box-shadow:0 6px 16px rgba(60,40,140,.16),inset 0 0 0 1.5px #fff}
+  .glass svg{width:22px;height:22px;flex:none;color:#4a2fa3}
+  .glass span{flex:1;text-align:left}
+  .glass i{font-style:normal;color:#7B5CFF;font-size:12px}
+  .glass:active{transform:scale(.97)}
+  .ac-cat{display:flex;justify-content:flex-end;margin:0 -16px -26px 0;pointer-events:none}
+  .ac-cat img{width:56%;max-width:240px;-webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent);mask-image:radial-gradient(closest-side,#000 72%,transparent)}
+  .note.infobox{position:relative;z-index:1;display:flex;gap:10px;align-items:flex-start;text-align:left;background:rgba(40,26,104,.78);color:#fff;border-radius:18px;padding:12px 14px;font-size:12px;line-height:1.6;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .note.infobox .ii{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-weight:700;font-size:14px}
+
+  /* ホーム：ロゴ画像 */
+  .hlogo.img{line-height:0}
+  .hlogo.img img{height:44px;width:auto;filter:drop-shadow(0 3px 6px rgba(60,30,140,.25))}
+
+  /* ロビー */
+  .llogo{display:flex;justify-content:center;margin:-8px 0 -6px;line-height:0}
+  .llogo img{height:58px;width:auto;filter:drop-shadow(0 3px 6px rgba(60,30,140,.25))}
+  #s-lobby .lhead{align-items:center}
+  .lchip{background:rgba(255,255,255,.9);border-radius:22px;padding:6px 16px 8px;box-shadow:0 6px 16px rgba(60,40,140,.14),inset 0 0 0 1.5px #fff}
+  .lchip .cap{font-size:11px;font-weight:800;color:#4a3d7a;margin:0;letter-spacing:.06em}
+  .lchip .roomcode{font-family:var(--round);font-size:28px;letter-spacing:.1em;color:#1E1B3A}
+  .lchip.cnt{display:flex;align-items:center;gap:8px;border-radius:999px;padding:8px 16px}
+  .lchip.cnt svg{width:24px;height:24px}
+  .lchip.cnt .count{font-family:var(--round);font-weight:900;font-size:18px}
+  #s-lobby .pillbtn{background:linear-gradient(180deg,#8B6CFF,#5B3FD0);box-shadow:0 3px 0 #3d2a99}
+  #s-lobby .bump{background:radial-gradient(120% 90% at 50% 20%,#7B5CE6 0%,#5232B8 45%,#3A2190 100%);border-radius:28px;padding:16px 14px 14px;box-shadow:0 14px 30px rgba(58,33,144,.35),inset 0 0 0 2px rgba(255,255,255,.18);overflow:hidden}
+  #s-lobby .bump h3{font-family:var(--round);font-size:21px;font-weight:900;color:#fff;margin:0;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+  #s-lobby .bump h3 em{font-style:normal;color:#FFD84A;font-size:25px}
+  .bhero{position:relative;margin:6px -14px 0;line-height:0}
+  .bhero img{width:100%;height:auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .bhero .phones{display:none}
+  .bhero.noimg img{display:none}.bhero.noimg .phones{display:block;position:relative;height:120px}
+  .bhero img{animation:hbob 2.6s ease-in-out infinite}
+  @keyframes hbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  #s-lobby .bump .ok{color:#fff;font-size:15px;margin-top:2px}
+  #s-lobby .bump .btn.glossy{margin-top:10px;font-size:18px;min-height:56px}
+  #s-lobby .bump .btn.glossy small{font-size:12px;font-weight:800}
+  #s-lobby .bump.done{background:radial-gradient(120% 90% at 50% 20%,#36C08A 0%,#1E8D68 50%,#155E49 100%)}
+  #s-lobby .pl{background:rgba(255,255,255,.92);border-radius:20px;box-shadow:0 6px 16px rgba(60,40,140,.12),inset 0 0 0 1.5px #fff;min-height:64px}
+  #s-lobby .pl .pic{width:50px;height:50px}
+  #s-lobby .mine{background:rgba(255,255,255,.92);border-radius:24px;box-shadow:0 8px 20px rgba(60,40,140,.14),inset 0 0 0 1.5px #fff}
+  #s-lobby .mine .pic{width:64px;height:64px}
+  #s-lobby .setrow{border-radius:22px;background:rgba(255,255,255,.92);box-shadow:0 6px 16px rgba(60,40,140,.12),inset 0 0 0 1.5px #fff}
+  #s-lobby .dock{background:linear-gradient(rgba(220,210,246,0),#DCD2F6 30%)}
+  #s-lobby .dock .btn.ghost{background:rgba(255,255,255,.95);border:0;border-radius:999px;box-shadow:0 5px 0 #C9BEE8}
+  #s-lobby .dock .btn.hot{border-radius:999px;font-size:24px;background:linear-gradient(180deg,#FFE27A 0%,#FFC531 48%,#FFAE12 100%);box-shadow:0 5px 0 #C9860A,0 10px 22px rgba(201,134,10,.35),inset 0 2px 0 rgba(255,255,255,.7)}
+  #s-lobby .dock .status{text-align:center;color:#3d2f73}
 </style>
 <link rel="stylesheet" href="styles/premium-theme.css">
 </head>
 <body>
 <!-- スタート画面 -->
 <div class="title" id="title">
+  <div class="t-art" aria-hidden="true"><div class="t-canvas">
+    <img class="t-img" src="assets/ui/title.webp" alt="" decoding="async" onload="document.getElementById('title').classList.add('has-art')">
+    <div class="t-glow g1"></div><div class="t-glow g2"></div><div class="t-ring"></div><div class="t-shine"></div>
+    <i class="tw" style="left:12%;top:31%"></i><i class="tw" style="left:86%;top:24%;animation-delay:.8s"></i><i class="tw" style="left:9%;top:56%;animation-delay:1.4s"></i><i class="tw" style="left:91%;top:48%;animation-delay:.4s"></i><i class="tw" style="left:22%;top:8%;animation-delay:2s"></i><i class="tw" style="left:73%;top:66%;animation-delay:1.1s"></i>
+  </div></div>
   <div class="t-rays"></div>
   <div class="t-stars" id="t-stars"></div>
   <div class="t-stage">
@@ -965,27 +1113,28 @@
 <main>
   <!-- アカウントをえらぶ -->
   <section id="s-account" hidden>
-    <div class="hbar"><div class="hlogo">コツンズ</div></div>
+    <div class="ac-head"><img src="assets/ui/acc_head.webp" alt="コツンズ 脳速クイズバトル"></div>
     <div class="ac-hero">
-      <h2>だれが遊ぶ？</h2>
-      <p class="muted">アカウントをえらんで、あいことば（4けた）でログインしてね。</p>
+      <h2><span class="lf">✦</span>だれが遊ぶ？<span class="lf">✦</span></h2>
+      <p>アカウントをえらんで、あいことば（4けた）でログインしてね。</p>
     </div>
     <div class="aclist" id="ac-list"></div>
-    <button class="btn primary" id="b-ac-new">＋ 新しくはじめる</button>
-    <div class="row">
-      <button class="btn ghost small" id="b-ac-xfer">スマホから引き継ぐ</button>
-      <button class="btn ghost small" id="b-ac-file">ファイルから戻す</button>
+    <button class="btn primary glossy" id="b-ac-new"><span>＋ 新しくはじめる</span><i class="arr">▶</i></button>
+    <div class="row ac-sub">
+      <button class="glass" id="b-ac-xfer"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>スマホから引き継ぐ</span><i>▶</i></button>
+      <button class="glass" id="b-ac-file"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>ファイルから戻す</span><i>▶</i></button>
     </div>
     <input type="file" id="ac-file" accept=".json,application/json" hidden>
     <div class="status" id="ac-status"></div>
     <div class="spacer"></div>
-    <p class="note">アカウントと記録は、このスマホのブラウザの中に保存されます。サーバーには送りません。機種変更のときは「別のスマホへ引き継ぐ」を使ってね。</p>
+    <div class="ac-cat" aria-hidden="true"><img src="assets/ui/acc_cat.webp" alt=""></div>
+    <p class="note infobox"><span class="ii">i</span><span>アカウントと記録は、このスマホのブラウザの中に保存されます。サーバーには送りません。機種変更のときは「別のスマホへ引き継ぐ」を使ってね。</span></p>
   </section>
 
   <!-- ホーム -->
   <section id="s-home" hidden>
     <div class="hbar">
-      <div class="hlogo">コツンズ</div>
+      <div class="hlogo img"><img src="assets/ui/logo_light.webp" alt="コツンズ"></div>
       <div class="hright"><button class="coinbtn" id="h-coin"></button><button class="achip" id="b-acct"><span class="av" id="h-av"></span><span class="nm" id="h-name"></span><span class="chev">▾</span></button></div>
     </div>
     <div class="invite-bn" id="home-join" hidden>
@@ -1063,17 +1212,18 @@
 
   <!-- ロビー -->
   <section id="s-lobby" hidden>
+    <div class="llogo"><img src="assets/ui/logo_light.webp" alt="コツンズ"></div>
     <div class="lhead">
-      <div><div class="cap">部屋コード</div><div class="roomcode" id="l-code"></div></div>
-      <div class="lhead-r"><div class="count" id="l-count"></div><button class="pillbtn" id="b-invite">＋ 招待する</button></div>
+      <div class="lchip code"><div class="cap">部屋コード</div><div class="roomcode" id="l-code"></div></div>
+      <div class="lhead-r"><div class="lchip cnt"><svg viewBox="0 0 24 24"><path d="M8 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm8 0a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zM1 20c0-3.9 3.1-7 7-7s7 3.1 7 7v1H1zm15.5-6.9c3.6.3 6.5 2.9 6.5 6.4V21h-6v-1c0-2.6-1-5-2.6-6.6.7-.2 1.4-.3 2.1-.3z" fill="#7B5CFF"/></svg><span class="count" id="l-count"></span></div><button class="pillbtn" id="b-invite">＋ 招待する</button></div>
     </div>
     <div class="onlinebn" id="l-online" hidden><b id="l-online-q">ランク戦</b><span>人数がそろったら自動で始まります</span></div>
     <div class="bump" id="l-bump">
       <div class="flash" id="l-flash"></div>
-      <h3>近くの人とスマホをコツン！</h3>
-      <div class="phones"><div class="ph l"></div><div class="ph r"></div></div>
+      <h3>近くの人とスマホを<em>コツン！</em></h3>
+      <div class="bhero"><img src="assets/ui/lobby_hero.webp" alt="" onerror="this.parentNode.classList.add('noimg')"><div class="phones"><div class="ph l"></div><div class="ph r"></div></div></div>
       <div class="ok" id="l-bumpok">まだコツンしていません</div>
-      <button class="btn small" id="b-bump">コツンした！（2人で同時に押す）</button>
+      <button class="btn small glossy" id="b-bump">✦ コツンした！<small>（2人で同時に押す）</small> ✦</button>
     </div>
     <div class="pgrid" id="l-players"></div>
     <div class="mine" id="l-me"></div>
@@ -1354,7 +1504,7 @@
   const BUMP_WIN = 500;                              // 2台の揺れがこの時間内ならコツン成立
   const MAX_PLAYERS = 10;
   const BASE_LIMIT = 10000;                          // 1問の制限時間
-  const COUNTDOWN = 4200, RESULT_MS = 4300;           // v7：技をえらぶ時間のぶん、ジャンル発表を1秒のばした
+  const COUNTDOWN = 7000, RESULT_MS = 4300;           // v7：ジャンル発表から問題まで7秒（このあいだに技をえらぶ）
   const SP_CLOSE = 400;                               // 問題が出る400ミリ秒前で、技の宣言をしめきる
   const STORE = "kotsunz-hayaoshi-v1";
 
@@ -3457,7 +3607,7 @@
   // マスターは data/ の JSON をビルド時に埋めこむ
   //   game_config.json（アプリの設定）・kotsunz_master_500.json（500体）・special_config_v3.json（必殺技の数値。唯一の正）
   const GCFG = {"version": "1.2.0", "catalogCount": 1500, "baseCharacterCount": 500, "formsPerCharacter": 3, "attributes": ["論理派", "直感派", "記憶派", "スピード派", "逆転派", "ひらめき派"], "attributeAdvantages": {"論理派": ["直感派", "記憶派"], "直感派": ["記憶派", "スピード派"], "記憶派": ["スピード派", "逆転派"], "スピード派": ["逆転派", "ひらめき派"], "逆転派": ["ひらめき派", "論理派"], "ひらめき派": ["論理派", "直感派"]}, "advantageDamageMultiplier": 1.0, "rarityProbabilities": {"おつ": 0.45, "普通": 0.35, "レア": 0.15, "スーパーレア": 0.045, "レジェンド": 0.005}, "evolution": {"stage1to2": {"awakeningStone": 2, "minLevel": 1, "duplicateRequired": false, "duplicateCopies": 3, "copiesConsumed": 2, "note": "S1を3体そろえる（2体を素材にして1体が進化）か、覚醒石2個のどちらかで進化できる"}, "stage2to3": {"awakeningStone": 3, "minLevel": 20, "duplicateRequired": false, "note": "覚醒石3個とLv20以上（v6でユーザーが決めた条件。パック案の覚醒石10個＋専用ミッションは未採用）"}}, "growth": {"maxLevel": 30, "expToNextLevelFormula": "floor(50 * pow(level, 1.4))", "statCapMode": "cosmetic-first; pvp normalized", "dailyExpCap": 1000}, "gacha": {"drawPriceSoftCurrency": 10, "tenDrawPriceSoftCurrency": 100, "hardCurrencyPaymentEnabled": false, "pity": {"rareOrAboveWithin": 10, "legendarySelectableWithin": 200}, "drawOnlyStage1": true, "guaranteeMechanics": "configurable before release"}, "kotsunzApp": {"dataVersion": 6, "starter": {"freeTenDrawTickets": 1, "awakeningStones": 5, "coins": 0}, "coins": {"rule": "人数Nの試合で、順位pの人は (N-p+1) コイン", "rankedMultiplier": 2, "cpu": 0, "dailyCap": 1500}, "awakeningStoneSources": ["称号", "ランク戦のシーズン報酬", "購入（今後。いまは未実装）"], "battle": {"hp": 110, "attack": 1, "defense": 1, "levelAffectsBattle": false, "guardWhenCorrectButSlower": 0.5, "passiveAttributeEffects": false}, "dupToExp": 120, "rarityExpBonus": {"おつ": 1.5, "普通": 1, "レア": 1, "スーパーレア": 1, "レジェンド": 1}, "ranked": {"pointsPerMatch": 30, "divisions": [["ブロンズ", 0], ["シルバー", 100], ["ゴールド", 250], ["プラチナ", 450], ["ダイヤ", 700], ["マスター", 1000], ["レジェンド", 1400]], "seasonRewardStones": {"ゴールド": 1, "プラチナ": 1, "ダイヤ": 2, "マスター": 2, "レジェンド": 3}, "season": "毎月1日に新シーズン。ポイントは半分になる"}, "titleStones": {"1": 0, "2": 1, "3": 1, "4": 2, "5": 3}, "specials": {"enabled": true, "config": "data/special_config_v3.json", "countdownMs": 4200, "declareCloseMsBeforeReveal": 400}}};
-  const SPC = {"schemaVersion": "3.0.0", "supersedes": {"passiveAttackMultiplier": true, "passiveDefenseMultiplier": true, "passiveCharacterSkills": true}, "meter": {"max": 100, "initial": 10, "tiers": {"small": 25, "medium": 55, "large": 90}, "gain": {"correct": 14, "rank1": 8, "correctStreak2": 3, "correctStreak3Plus": 6, "firstStreak2": 4, "firstStreak3Plus": 7, "favoriteCorrect": 4, "favoriteFirst": 5, "weakCorrect": 8, "weakFirst": 3, "attributeAdvantageCorrect": 2}, "loss": {"neutralWrong": -2, "favoriteWrong": -4, "weakWrong": -3}, "maxGainPerQuestion": 34, "spendCondition": "selected_before_reveal_AND_answer_correct", "chargeOrder": "spend_from_starting_meter_then_award_round_gain", "failBehavior": "if_wrong_no_spend_apply_normal_wrong_change", "oneIntentPerRound": true, "permanentBattleBoost": false}, "abilities": {"defaultAttack": {"small": 3, "medium": 5, "large": 8}, "defaultGuard": {"small": 4, "medium": 8, "large": 12}, "defaultAttackRoundAdditionalDamageCap": 18, "uniques": {"burst": {"role": "attack", "small": 2, "medium": 4, "large": 6, "max": {"small": 4, "medium": 7, "large": 9}}, "shield": {"role": "guard", "small": 4, "medium": 7, "large": 11, "max": {"small": 7, "medium": 10, "large": 14}}, "heal": {"role": "heal", "small": 4, "medium": 8, "large": 11, "max": {"small": 7, "medium": 11, "large": 14}}, "hint": {"role": "support", "small": {"guard": 2}, "medium": {"guard": 4, "nextQuestionRemoveWrongChoices": 1}, "large": {"guard": 6, "nextQuestionRemoveWrongChoices": 1}, "guardCap": 9}, "seal": {"role": "control", "small": {"damage": 2}, "medium": {"damage": 3, "nextQuestionLockSpecial": 1}, "large": {"damage": 4, "nextQuestionLockSpecial": 1}, "damageCap": 7}, "cleanse": {"role": "guard", "small": {"guard": 3}, "medium": {"guard": 6, "removePendingStatus": 1}, "large": {"guard": 9, "removePendingStatus": 1}, "guardCap": 12}, "focus": {"role": "support", "small": {"heal": 3}, "medium": {"heal": 5, "nextQuestionGaugeIfCorrect": 4}, "large": {"heal": 8, "nextQuestionGaugeIfCorrect": 6}, "healCap": 11}, "comeback": {"role": "hybrid", "small": {"damage": 2, "heal": 2}, "medium": {"damage": 3, "heal": 4}, "large": {"damage": 4, "heal": 6}, "damageCap": 6, "healCap": 8}}, "rarityUniqueBonus": {"おつ": 0, "普通": 0, "レア": 1, "スーパーレア": 1, "レジェンド": 2}, "stageUniqueBonus": {"1": 0, "2": 1, "3": 2}, "applyUniqueBonusTo": "only_single_integer_HP_effect_of_unique_skills_not_status_duration_or_permanent_modifiers", "skillEffectRequiresCorrectAnswer": true, "enemyPenaltyMaxTargets": 1, "sealDurationRounds": 1, "sealImmunityFollowingRounds": 2, "oneHintRemovedPerQuestionMax": 1, "targeting": "eligible lowest-ranked player excluding caster; deterministic host choice", "stage2UnlocksControlStatuses": true, "attributeAdvantageGaugeOnly": true, "noDamageMultipliersFromAttributesOrFavorites": true, "weakGenreWrongFlatProtection": 2, "weakGenreWrongFlatProtectionPolicy": "If the character is wrong or timed out on its weak genre, reduce incoming damage by a flat 2 HP after normal defense; never below zero. This is not a percentage or attack multiplier; optional balance toggle default on."}, "ui": {"showStrengthField": false, "showOnePointField": false, "attributeVisible": true, "rarityVisible": true, "stageVisible": true, "specialMeterAlwaysVisible": true, "selectPhase": "after_genre_announced_before_question_reveal", "selectionTypes": ["attack", "guard", "unique"], "announceOthersOnlyAfterQuestion": true, "favoriteVisual": "soft_golden_light_and_small_sparkles_no_flashing", "weakVisual": "soft_dim_violet_not_unreadable", "normalVisual": "existing_theme", "accessibleReduceMotion": true, "showEffectAs": "plain_HP_numbers_and_gauge_points_not_percentage_multipliers"}, "network": {"hostAuthoritative": true, "skillIntentMessage": "skillIntent", "skillAckMessage": "skillAck", "skillEventsInResult": "skillEvents", "includeGaugeInRoundSnapshots": true, "acceptUntilMsBeforeQuestionReveal": 400, "preventReplayBy": ["gameId", "round", "playerId", "nonce"], "forbidClientDeclaredDamageOrGauge": true, "featureFlag": "specialsV1"}, "balancing": {"recommendedRoundCount": 10, "maxPlayers": 10, "allowOneSkillPerQuestionPerPlayer": true, "damageFloor": 0, "hpCeiling": "fighter.max", "nonStackingStatus": true, "noReviveAfterKO": true, "note": "numbers are playtest baseline; do not change base damage formulas without A/B tests"}};
+  const SPC = {"schemaVersion": "3.0.0", "supersedes": {"passiveAttackMultiplier": true, "passiveDefenseMultiplier": true, "passiveCharacterSkills": true}, "meter": {"max": 100, "initial": 10, "tiers": {"small": 25, "medium": 55, "large": 90}, "gain": {"correct": 14, "rank1": 8, "correctStreak2": 3, "correctStreak3Plus": 6, "firstStreak2": 4, "firstStreak3Plus": 7, "favoriteCorrect": 4, "favoriteFirst": 5, "weakCorrect": 8, "weakFirst": 3, "attributeAdvantageCorrect": 2}, "loss": {"neutralWrong": -2, "favoriteWrong": -4, "weakWrong": -3}, "maxGainPerQuestion": 34, "spendCondition": "selected_before_reveal_AND_answer_correct", "chargeOrder": "spend_from_starting_meter_then_award_round_gain", "failBehavior": "if_wrong_no_spend_apply_normal_wrong_change", "oneIntentPerRound": true, "permanentBattleBoost": false}, "abilities": {"defaultAttack": {"small": 3, "medium": 5, "large": 8}, "defaultGuard": {"small": 4, "medium": 8, "large": 12}, "defaultAttackRoundAdditionalDamageCap": 18, "uniques": {"burst": {"role": "attack", "small": 2, "medium": 4, "large": 6, "max": {"small": 4, "medium": 7, "large": 9}}, "shield": {"role": "guard", "small": 4, "medium": 7, "large": 11, "max": {"small": 7, "medium": 10, "large": 14}}, "heal": {"role": "heal", "small": 4, "medium": 8, "large": 11, "max": {"small": 7, "medium": 11, "large": 14}}, "hint": {"role": "support", "small": {"guard": 2}, "medium": {"guard": 4, "nextQuestionRemoveWrongChoices": 1}, "large": {"guard": 6, "nextQuestionRemoveWrongChoices": 1}, "guardCap": 9}, "seal": {"role": "control", "small": {"damage": 2}, "medium": {"damage": 3, "nextQuestionLockSpecial": 1}, "large": {"damage": 4, "nextQuestionLockSpecial": 1}, "damageCap": 7}, "cleanse": {"role": "guard", "small": {"guard": 3}, "medium": {"guard": 6, "removePendingStatus": 1}, "large": {"guard": 9, "removePendingStatus": 1}, "guardCap": 12}, "focus": {"role": "support", "small": {"heal": 3}, "medium": {"heal": 5, "nextQuestionGaugeIfCorrect": 4}, "large": {"heal": 8, "nextQuestionGaugeIfCorrect": 6}, "healCap": 11}, "comeback": {"role": "hybrid", "small": {"damage": 2, "heal": 2}, "medium": {"damage": 3, "heal": 4}, "large": {"damage": 4, "heal": 6}, "damageCap": 6, "healCap": 8}}, "rarityUniqueBonus": {"おつ": 0, "普通": 0, "レア": 1, "スーパーレア": 1, "レジェンド": 2}, "stageUniqueBonus": {"1": 0, "2": 1, "3": 2}, "applyUniqueBonusTo": "only_single_integer_HP_effect_of_unique_skills_not_status_duration_or_permanent_modifiers", "skillEffectRequiresCorrectAnswer": true, "enemyPenaltyMaxTargets": 1, "sealDurationRounds": 1, "sealImmunityFollowingRounds": 2, "oneHintRemovedPerQuestionMax": 1, "targeting": "eligible lowest-ranked player excluding caster; deterministic host choice", "stage2UnlocksControlStatuses": true, "attributeAdvantageGaugeOnly": true, "noDamageMultipliersFromAttributesOrFavorites": true, "weakGenreWrongFlatProtection": 2, "weakGenreWrongFlatProtectionPolicy": "If the character is wrong or timed out on its weak genre, reduce incoming damage by a flat 2 HP after normal defense; never below zero. This is not a percentage or attack multiplier; optional balance toggle default on.", "defaultRecover": {"small": 4, "medium": 8, "large": 11}, "categoryOfUnique": {"burst": "attack", "seal": "attack", "comeback": "attack", "shield": "guard", "hint": "guard", "cleanse": "guard", "heal": "recover", "focus": "recover"}, "attackNeedsFirstPlace": true}, "ui": {"showStrengthField": false, "showOnePointField": false, "attributeVisible": true, "rarityVisible": true, "stageVisible": true, "specialMeterAlwaysVisible": true, "selectPhase": "after_genre_announced_before_question_reveal", "selectionTypes": ["attack", "guard", "unique"], "announceOthersOnlyAfterQuestion": true, "favoriteVisual": "soft_golden_light_and_small_sparkles_no_flashing", "weakVisual": "soft_dim_violet_not_unreadable", "normalVisual": "existing_theme", "accessibleReduceMotion": true, "showEffectAs": "plain_HP_numbers_and_gauge_points_not_percentage_multipliers"}, "network": {"hostAuthoritative": true, "skillIntentMessage": "skillIntent", "skillAckMessage": "skillAck", "skillEventsInResult": "skillEvents", "includeGaugeInRoundSnapshots": true, "acceptUntilMsBeforeQuestionReveal": 400, "preventReplayBy": ["gameId", "round", "playerId", "nonce"], "forbidClientDeclaredDamageOrGauge": true, "featureFlag": "specialsV1"}, "balancing": {"recommendedRoundCount": 10, "maxPlayers": 10, "allowOneSkillPerQuestionPerPlayer": true, "damageFloor": 0, "hpCeiling": "fighter.max", "nonStackingStatus": true, "noReviveAfterKO": true, "note": "numbers are playtest baseline; do not change base damage formulas without A/B tests"}, "appExtensions": {"version": "v7.1", "note": "アプリ側の追加。画面は ATTACK / DEFEND / RECOVER の3つ。キャラの固有技は系統に合うボタンに入る。共通RECOVERの数値は heal 系統の基本値と同じ。攻撃は1位の正解者だけ（2位以下の正解者はダメージ軽減だけ）なので、攻撃系の技は1位のときだけ発動し、それ以外は不発でゲージを使わない。"}};
   const K_RARITIES = Object.keys(GCFG.rarityProbabilities);
   const K_ATTRS = GCFG.attributes.slice();
   const K_BEATS = GCFG.attributeAdvantages;
@@ -3741,9 +3891,15 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   //   ・コストは「ジャンル発表時のゲージ」から引き、その問題で増えた分はあとで足す
   // =====================================================================
   const SP_TIERS = ["small", "medium", "large"];
-  const SP_TYPES = ["attack", "guard", "unique"];
-  const SP_TIER_JA = { small: "小技", medium: "中技", large: "大技" };
-  const SP_TYPE_JA = { attack: "攻撃", guard: "守り", unique: "固有技" };
+  // 画面のボタンは ATTACK / DEFEND / RECOVER の3つ。キャラの固有技は、系統に合うボタンに入る
+  const SP_KEYS = ["attack", "guard", "recover"];
+  const SP_TYPES = ["attack", "guard", "recover", "unique"];
+  const SP_TIER_JA = { small: "小", medium: "中", large: "大" };
+  const SP_TYPE_JA = { attack: "ATTACK", guard: "DEFEND", recover: "RECOVER", unique: "必殺技" };
+  const SK_CAT = SPC.abilities.categoryOfUnique;
+  // ボタン(key)とキャラの系統(fam)から、実際の技の種類を決める
+  const spTypeOf = (key, fam) => SP_KEYS.includes(key) ? (SK_CAT[fam] === key ? "unique" : key) : null;
+  const spIsAttack = (type, fam) => type === "attack" || (type === "unique" && SK_CAT[fam] === "attack");
   const spClamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
   const spCost = tier => SPC.meter.tiers[tier];
 
@@ -3771,7 +3927,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const start = o.start;
     if(!Number.isFinite(start) || start < 0 || start > SPC.meter.max) throw new Error("invalid starting meter");
     const ok = !!(o.intent && SP_TYPES.includes(o.intent.type) && spCanDeclare({ gauge: start, tier: o.intent.tier, alive: o.alive, sealed: o.sealed }));
-    const activated = !!(o.correct && ok);
+    const activated = !!(o.correct && ok && !o.blocked);
     const spent = activated ? spCost(o.intent.tier) : 0;
     const earned = o.ko ? 0 : spGaugeDelta(o);                 // KOしたら、それ以上は増えない
     return { activated, declaredOk: ok, spent, earned, end: spClamp(start - spent + earned, 0, SPC.meter.max) };
@@ -3797,6 +3953,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(!SP_TIERS.includes(tier)) throw new Error("unknown tier");
     if(type === "attack") return { damage: SPC.abilities.defaultAttack[tier] };
     if(type === "guard") return { guard: SPC.abilities.defaultGuard[tier] };
+    if(type === "recover") return { heal: SPC.abilities.defaultRecover[tier] };
     throw new Error("not a basic skill");
   }
   function spEffect(o){ return o.type === "unique" ? spUnique(o.fam, o.tier, o.rarity, o.stage) : spBasic(o.type, o.tier); }
@@ -3829,22 +3986,24 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   function spResolveRound(ps, base, hits, ctx){
     const A = SPC.abilities, seed = ctx.gid + "|" + ctx.round;
     const byId = new Map(ps.map(p => [p.id, p]));
-    const act = new Map(), events = [], fizzle = {};
+    const act = new Map(), events = [], fizzle = {}, blocked = new Set();
     for(const p of ps){
       if(!p.alive || !p.intent) continue;
       const it = p.intent, ok = SP_TYPES.includes(it.type) && spCanDeclare({ gauge: p.meter, tier: it.tier, alive: p.alive, sealed: p.sealed });
       if(!ok){ fizzle[p.id] = "ゲージ不足か封印中で、宣言は無効でした"; continue; }
       if(!p.rank){ fizzle[p.id] = (p.answered ? "不正解" : "時間切れ") + "で不発。ゲージは使っていません"; continue; }
+      // 攻撃は1位の人だけ。攻撃系の技は1位でなければ不発（ゲージは使わない）
+      if(SPC.abilities.attackNeedsFirstPlace && spIsAttack(it.type, p.fam) && p.rank !== 1){ fizzle[p.id] = "1位ではなかったので不発"; blocked.add(p.id); continue; }
       act.set(p.id, spEffect({ type: it.type, tier: it.tier, fam: p.fam, rarity: p.rarity, stage: p.stage }));
     }
     // 1) 追加攻撃（通常攻撃が届く相手だけ）
-    const extra = {}, dealtX = {};
+    const extra = {}, dealtX = {}, hitTo = {};
     for(const [id, e] of act){
       if(!e.damage) continue;
       const tg = (hits[id] || []).filter(t => byId.get(t) && byId.get(t).alive);
       const sp = spSpread(e.damage, tg, A.defaultAttackRoundAdditionalDamageCap, seed + "|" + id);
       let sum = 0; for(const [t, v] of Object.entries(sp)){ extra[t] = (extra[t] || 0) + v; sum += v; }
-      dealtX[id] = sum;
+      dealtX[id] = sum; hitTo[id] = Object.keys(sp);
     }
     // 2) 軽減（守り・シールド・ヒント・クレンズ）と、苦手ジャンルで不正解のときの固定2HP
     const taken = {}, guarded = {}, weakProt = {};
@@ -3890,14 +4049,14 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     for(const p of ps){
       if(!p.alive){ meter[p.id] = p.meter; continue; }
       const r = spFinish({ start: p.meter, intent: p.intent, alive: p.alive, sealed: p.sealed, correct: !!p.rank, rank: p.rank, correctStreak: p.correctStreak, firstStreak: p.firstStreak,
-        affinity: p.affinity, adv: p.adv, bonus: p.rank ? p.bonus : 0, ko: hp[p.id] <= 0 });
+        affinity: p.affinity, adv: p.adv, bonus: p.rank ? p.bonus : 0, ko: hp[p.id] <= 0, blocked: blocked.has(p.id) });
       meter[p.id] = r.end; spent[p.id] = r.spent; earned[p.id] = r.earned;
     }
     // 8) 公開するイベント（全員に見せる。発動したものだけ）
     for(const [id, e] of act){
       const p = byId.get(id), it = p.intent;
-      const ev = { id, type: it.type, tier: it.tier, name: it.type === "unique" ? p.skillName : SP_TYPE_JA[it.type] + "技", fam: it.type === "unique" ? p.fam : it.type };
-      if(dealtX[id]) ev.dmg = dealtX[id];
+      const ev = { id, type: it.type, key: it.type === "unique" ? SK_CAT[p.fam] : it.type, tier: it.tier, name: it.type === "unique" ? p.skillName : SP_TYPE_JA[it.type], fam: it.type === "unique" ? p.fam : it.type };
+      if(dealtX[id]){ ev.dmg = dealtX[id]; ev.to = hitTo[id]; }
       if(guarded[id]) ev.guard = guarded[id]; else if(e.guard) ev.guardReady = e.guard;
       if(healed[id]) ev.heal = healed[id];
       if(next[id] && next[id].hint) ev.hint = 1;
@@ -3968,7 +4127,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
 
   // ---------- 画面 ----------
   let screen = "home";
-  function show(n){ screen = n; for(const s of document.querySelectorAll("main > section")) s.hidden = s.id !== "s-" + n; window.scrollTo(0, 0); }
+  function show(n){ screen = n; document.body.dataset.scr = n; for(const s of document.querySelectorAll("main > section")) s.hidden = s.id !== "s-" + n; window.scrollTo(0, 0); }
   let toastT = null;
   function toast(t){ const e = $("toast"); e.textContent = t; e.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove("on"), 2200); }
   const buzz = p => { try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
@@ -4396,7 +4555,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const G = H.game; if(!G || !p) return { t:"sp" };
     const m = isK(p.fighter) ? KMASTER[p.fighter.cid] : null;
     return { t:"sp", g: G.id, r: G.r, m: p.meter, sealed: p.sealedR === G.r, alive: !!p.alive, open: !!G.q && performance.now() < G.declareUntil,
-             sk: m ? { n: m.skill.name, f: m.skill.fam } : null, it: (G.intent.get(p.id) || null) && { k: G.intent.get(p.id).type, tier: G.intent.get(p.id).tier, n: G.intent.get(p.id).n } };
+             sk: m ? { n: m.skill.name, f: m.skill.fam, c: SK_CAT[m.skill.fam] } : null, it: (G.intent.get(p.id) || null) && { k: G.intent.get(p.id).k, tier: G.intent.get(p.id).tier, n: G.intent.get(p.id).n } };
   }
   function onSkillIntent(id, m){
     const G = H.game, p = H.players.get(id);
@@ -4412,10 +4571,10 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(performance.now() > G.declareUntil) res = [false, "締め切りに間に合いませんでした"];
     else if(!p.alive) res = [false, "KO中は使えません"];
     else if(m.k == null){ G.intent.delete(id); res = [true, ""]; }
-    else if(!SP_TYPES.includes(m.k) || !SP_TIERS.includes(m.tier)) res = [false, "その技は使えません"];
+    else if(!SP_KEYS.includes(m.k) || !SP_TIERS.includes(m.tier)) res = [false, "その技は使えません"];
     else if(p.sealedR === G.r) res = [false, "封印されています"];
     else if(p.meter < spCost(m.tier)) res = [false, "ゲージが足りません"];
-    else { G.intent.set(id, { type: m.k, tier: m.tier, n }); res = [true, ""]; }
+    else { G.intent.set(id, { k: m.k, tier: m.tier, n }); res = [true, ""]; }
     const msg = { t:"skack", g: G.id, r: m.r, n, ok: res[0], k: res[0] ? (m.k || null) : null, tier: res[0] && m.k ? m.tier : null, why: res[1] };
     G.nonces.set(key, msg);
     sendTo(id, msg);
@@ -4426,8 +4585,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const can = SP_TIERS.filter(t => p.meter >= spCost(t)); if(!can.length || Math.random() < .3) return;
     const tier = can.length > 1 && Math.random() < .35 ? can[can.length - 2] : can[can.length - 1];
     const low = p.hp <= p.max * .45;
-    const type = low ? pick(["guard", "unique", "unique"]) : pick(["attack", "attack", "unique", "guard"]);
-    G.intent.set(p.id, { type, tier, n: "cpu" + G.r });
+    const k = low ? pick(["guard", "recover", "recover"]) : pick(["attack", "attack", "guard", "recover"]);
+    G.intent.set(p.id, { k, tier, n: "cpu" + G.r });
   }
   const affinityOf = (c, genre) => isGood(c, genre) ? "favorite" : isWeak(c, genre) ? "weak" : "neutral";
   function resolveQ(){
@@ -4443,7 +4602,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     }
     // 1) ふつうの攻撃（早押しの順位と速さ）。正解したのに押し負けた人はシールドで半分
     const incoming = new Map(alive.map(p => [p.id, []])), dealt = {}, why = {}, guard = {}, hits = {};
-    correct.forEach((A, i) => {
+    // 攻撃するのは1位の正解者だけ。2位以下の正解者は攻撃しないで、受けるダメージが減る（シールド）
+    correct.slice(0, 1).forEach((A, i) => {
       const rank = i + 1, a = G.ans.get(A.id);
       const pw = attackPower(A, q.genre, a.ms, G.limit[A.id] || BASE_LIMIT, rank);
       why[A.id] = pw.why; hits[A.id] = [];
@@ -4468,7 +4628,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       return { id: p.id, alive: true, hp: p.hp, max: p.max, meter: p.meter, rank: rankOf.get(p.id) || 0, answered: !!a && a.c >= 0,
         correctStreak: p.streak, firstStreak: p.fstreak, affinity: affinityOf(p.fighter, q.genre),
         adv: alive.some(o => o !== p && kBeats(p.fighter, o.fighter)), bonus: p.focusRes || 0, sealed: p.sealedR === G.r, immuneTo: p.immuneTo,
-        intent: G.intent.get(p.id) || null, rarity: m ? m.rarity : "普通", stage: (p.fighter && p.fighter.st) || 1, fam: m ? m.skill.fam : "burst", skillName: m ? m.skill.name : "必殺技" };
+        intent: G.intent.get(p.id) ? { type: spTypeOf(G.intent.get(p.id).k, m ? m.skill.fam : ""), tier: G.intent.get(p.id).tier } : null, rarity: m ? m.rarity : "普通", stage: (p.fighter && p.fighter.st) || 1, fam: m ? m.skill.fam : "burst", skillName: m ? m.skill.name : "必殺技" };
     });
     const R = spResolveRound(ps, base, hits, { gid: G.id, round: G.r, last: G.r + 1 >= G.total });
     const out = [];
@@ -4868,7 +5028,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       d.dataset.id = id;
       const pic = el("div", "pic"); pic.innerHTML = drawCreature(p.fighter);
       const hb = el("div", "hpb"); const i = el("i"); const r = Math.max(0, p.hp / p.max); i.style.width = (r * 100) + "%"; if(r <= .3) i.className = "low"; hb.append(i);
-      const badge = el("span", "mark", typeof mk === "number" ? mk + "位" : mk === "ng" ? "×" : mk === "none" ? "…" : "");
+      const badge = el("span", "mark", mk === 1 ? "👑" : typeof mk === "number" ? "" : mk === "ng" ? "×" : mk === "none" ? "…" : "");
       d.append(el("span", "bolt", "押した"), badge, pic, hb, el("div", "n", p.name), el("div", "hpn", p.alive ? String(Math.max(0, p.hp)) : "KO"), el("div", "dmg"));
       box.appendChild(d);
     }
@@ -4886,7 +5046,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     renderRoster([]);
     const f = me && me.fighter;
     const aff = f ? affinityOf(f, m.genre) : "neutral";
-    const note = aff === "favorite" ? "✨得意ジャンル　正解でゲージ大きめ・まちがえると−4" : aff === "weak" ? "苦手ジャンル　正解でゲージ+8・まちがえてもダメージ2軽減" : "";
+    const note = "";
     renderMe(note);
     G.aff = aff;
     const card = $("g-card"), ch = $("g-choices"); card.textContent = ""; ch.textContent = "";
@@ -4895,7 +5055,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const showAt = role === "host" ? m.at : performance.now() + Math.max(500, (m.wait || COUNTDOWN) - lat);
     const cd = el("div", "count3"); card.append(el("div", "genre-big", GENRES[m.genre]), cd);
     card.classList.remove("aff-favorite", "aff-weak"); if(aff !== "neutral") card.classList.add("aff-" + aff);
-    if(aff !== "neutral") card.append(el("div", "note " + (aff === "favorite" ? "good" : "weak"), aff === "favorite" ? "得意ジャンル！" : "苦手ジャンル"));
+    if(aff !== "neutral") card.append(el("div", "note " + (aff === "favorite" ? "good" : "weak"), aff === "favorite" ? "✨ 得意" : "苦手"));
     $("g-skev").textContent = "";
     // 必殺技をえらぶ時間（問題が出る少し前にしめきる）
     G.spCloseAt = showAt - (m.close || SP_CLOSE) - 150;
@@ -4930,7 +5090,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         });
         ch.appendChild(b);
       });
-      $("g-stat").textContent = alive ? (m.hide && m.hide[myId] != null ? "💡必殺技の効果で、まちがいが1つ消えた！（あなただけ）" : "") : "KOされたので観戦中";
+      $("g-stat").textContent = alive ? "" : "KO…観戦中";
       qTimer = setInterval(() => {
         const left = Math.max(0, limit - (performance.now() - t0));
         $("g-timer").style.width = (left / limit * 100) + "%";
@@ -4986,15 +5146,16 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const ansBox = el("div", "ansbox"); ansBox.append(el("div", "al", "正解"), el("div", "at", m.atext || choices[m.answer] || ""));
     card.append(el("div", "qsmall", m.prompt || (G.q && G.q.prompt) || ""), ansBox);
     sfx(myRank ? "ok" : "ng");
-    $("g-stat").textContent = myRank ? myRank + "位で正解！ " + (m.ranking[myRank - 1].ms / 1000).toFixed(2) + "秒" : (myAns == null || myAns < 0 ? "時間切れ…" : "不正解…");
+    $("g-stat").textContent = myRank === 1 ? "1位！ " + (m.ranking[0].ms / 1000).toFixed(2) + "秒" : myRank ? "正解！ 🛡" : (myAns == null || myAns < 0 ? "時間切れ…" : "不正解…");
     $("g-stat").className = "gstat " + (myRank ? "ok" : "ng");
     // 3) 演出：いちばん速かった人の攻撃 → ダメージ
     const top = m.ranking[0];
     later(() => {
       if(top){
         const p = G.players.get(top.id);
-        if(top.id === myId) banner("クリティカル！ あなたの攻撃！", "crit");
-        else banner("⚡ " + (p ? p.name : "") + "の攻撃！", "");
+        const sk = (m.skillEvents || []).find(e => e.id === top.id && e.dmg);
+        if(top.id === myId) banner(sk ? "「" + sk.name + "」！" : "あなたの攻撃！", "crit" + (sk ? " sk " + sk.tier : ""));
+        else banner((p ? p.name : "") + (sk ? "の「" + sk.name + "」！" : "の攻撃！"), sk ? "sk " + sk.tier : "");
         sfx("crit");
       }else banner("だれも正解できなかった！", "none");
     }, 450);
@@ -5019,29 +5180,18 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   }
   function showResultPanel(m, myRank, myAns){
     const G = VS.game;
-    const f = (G.players.get(myId) || {}).fighter;
-    let sub = "";
-    if(myRank){
-      sub = (m.dealt[myId] ? m.dealt[myId] + "人に攻撃" : "自分より遅い人がいなかった") + ((m.why[myId] || []).length ? "（" + m.why[myId].join("・") + "）" : "");
-      buzz(myRank === 1 ? [50, 40, 50] : 30);
-    }
-    const taken = m.taken[myId] || 0;
-    if(m.guard && m.guard[myId]) sub += (sub ? "　" : "") + "🛡シールド！正解したのでダメージ半分";
-    if(taken) sub += (sub ? "　" : "") + taken + "ダメージ受けた";
-    if(m.weak && m.weak[myId]) sub += "（苦手ジャンルの守りで" + m.weak[myId] + "軽減）";
-    if(m.heal && m.heal[myId]) sub += "　HP" + m.heal[myId] + "回復";
-    if(m.out.includes(myId)) sub += "　KO…";
-    renderMe(sub);
-    // 正解した人の順位を、問題カードの中に出す（スクロールしなくても見える）
+    if(myRank === 1) buzz([50, 40, 50]); else if(myRank) buzz(30);
+    renderMe("");
+    // その問題で勝った人（1位）だけを出す
     const card = $("g-card");
-    const rk = el("div", "rank");
-    if(!m.ranking.length) rk.append(el("div", "watch", "だれも正解できなかった！"));
-    m.ranking.slice(0, 4).forEach((x, i) => {
-      const p = G.players.get(x.id); const row = el("div", x.id === myId ? "me" : null);
-      const l = el("span"); l.append(el("b", "rkno r" + (i + 1), String(i + 1)), document.createTextNode(p ? p.name : ""));
-      row.append(l, el("span", null, (x.ms / 1000).toFixed(2) + "秒・" + (m.dealt[x.id] || 0) + "人に攻撃")); rk.append(row);
-    });
-    if(m.ranking.length > 4) rk.append(el("div", "watch", "ほか" + (m.ranking.length - 4) + "人が正解"));
+    const rk = el("div", "rank win1");
+    const top = m.ranking[0];
+    if(!top) rk.append(el("div", "watch", "だれも正解できなかった！"));
+    else{
+      const p = G.players.get(top.id); const row = el("div", top.id === myId ? "me" : null);
+      const l = el("span"); l.append(el("b", "rkno r1", "👑"), document.createTextNode(p ? p.name : ""));
+      row.append(l, el("span", null, (top.ms / 1000).toFixed(2) + "秒")); rk.append(row);
+    }
     if(m.out.length) rk.append(el("div", "watch ko", "KO　" + m.out.map(id => (G.players.get(id) || {}).name).join("、")));
     card.append(rk);
   }
@@ -5058,10 +5208,9 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const parts = [];
       if(m.spent) parts.push("ゲージ−" + m.spent);
       if(m.earned) parts.push((m.spent ? "" : "ゲージ") + (m.earned > 0 ? "＋" : "−") + Math.abs(m.earned));
-      if(m.fz) later(() => { const n = $("gm-note"); n.textContent = "必殺技は不発：" + m.fz; }, 1500);
-      else if(parts.length) later(() => { const n = $("gm-note"); if(n.textContent.indexOf("ゲージ") < 0) n.textContent = (n.textContent + "　" + parts.join(" ")).trim(); }, 1500);
+
       const nx = m.next || {};
-      if(nx.sealed) later(() => toast("🔒 次の問題は必殺技を宣言できません（封印）"), 1900);
+
     }
     renderMeter(); renderSkillPanel();
   }
@@ -5082,53 +5231,72 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     // 返事が来なければ、締め切りまで同じ宣言を送り直す（ホストは同じものを二重に処理しない）
     const retry = () => { if(!VS.game || VS.game !== G || G.spLocked || !G.sp.sel || G.sp.sel.n !== n || G.sp.sel.st !== "wait") return; sendToHost(msg); G.spRetry = setTimeout(retry, 900); };
     G.spRetry = setTimeout(retry, 900);
-    buzz(15); renderSkillPanel();
+    buzz(15); sfx("tick"); renderSkillPanel();
   }
+  const SP_ICON = {
+    attack: `<svg viewBox="0 0 48 48"><path d="M38 6l4 4-20 20-4-4z" fill="#fff"/><path d="M14 26l8 8-3 3-3-1-5 5-4-4 5-5-1-3z" fill="#FFE27A"/><path d="M36 4l8 8-3 1-6-6z" fill="#fff" opacity=".7"/></svg>`,
+    guard: `<svg viewBox="0 0 48 48"><path d="M24 4l16 6v12c0 11-7 19-16 22C15 41 8 33 8 22V10z" fill="#fff"/><path d="M24 10l10 4v8c0 7-4 13-10 15z" fill="#BFE0FF"/></svg>`,
+    recover: `<svg viewBox="0 0 48 48"><path d="M24 42S6 31 6 18a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 13-18 24-18 24z" fill="#fff"/><path d="M21 16h6v6h6v6h-6v6h-6v-6h-6v-6h6z" fill="#3ED68A"/></svg>`,
+  };
+  const SP_LABEL = { attack: "ATTACK", guard: "DEFEND", recover: "RECOVER" };
   function renderSkillPanel(){
     const G = VS.game, box = $("g-sp"); if(!G) return;
     const me = G.players.get(myId), q = G.q;
     const T = SPC.meter.tiers, v = G.sp.m;
     if(!q || !q.sp || !me || !me.alive || G.sp.r !== q.r || G.res && G.resR === q.r){ box.hidden = true; $("g-card").classList.remove("sp-on"); return; }
     const sel = G.sp.sel && G.sp.sel.k ? G.sp.sel : null;
-    // 問題が出たあとは、宣言した内容だけ小さく出す
+    const uniq = G.sp.sk && G.sp.sk.c;
+    // 問題が出たあとは、宣言した技だけ小さく出す
     if(G.spLocked){
       $("g-card").classList.remove("sp-on");
-      box.hidden = !sel; box.className = "sppanel mini";
-      if(sel){ box.textContent = ""; box.append(el("span", "spchip " + sel.tier, (sel.st === "ok" ? "⚡" : "…") + spTypeName(sel.k) + "【" + SP_TIER_JA[sel.tier] + "】"), el("span", "muted", sel.st === "ok" ? "正解すれば発動！" : "受付を確認できませんでした")); }
+      box.hidden = !sel || sel.st !== "ok"; box.className = "sppanel mini";
+      if(sel){ box.textContent = ""; const c = el("span", "spchip " + sel.k + " " + sel.tier); c.innerHTML = SP_ICON[sel.k]; c.append(el("b", null, (uniq === sel.k ? G.sp.sk.n : SP_LABEL[sel.k]) + "・" + SP_TIER_JA[sel.tier])); box.append(c); }
       return;
     }
-    box.hidden = false; box.className = "sppanel"; box.textContent = "";
+    box.hidden = false; box.className = "sppanel" + (G.sp.sealed ? " sealed" : ""); box.textContent = "";
     if(!G.shown) $("g-card").classList.add("sp-on");
-    if(G.sp.sealed){ box.append(el("div", "spseal", "🔒 封印中…この問題は必殺技を宣言できません")); return; }
-    if(v < T.small){ box.append(el("div", "spwait", "必殺技ゲージ " + v + "/" + SPC.meter.max + "　あと" + (T.small - v) + "で小技が使えます")); return; }
-    const head = el("div", "sphead"); head.append(el("b", null, "必殺技をえらぶ"), el("span", "muted", "正解したら発動。まちがえたらゲージは使いません"));
-    const r1 = el("div", "sprow types"), r2 = el("div", "sprow tiers");
-    const best = SP_TIERS.filter(t => v >= T[t]).pop();
-    for(const k of SP_TYPES){
-      const b = el("button", "spb t-" + k, k === "unique" ? (G.sp.sk ? (SK_FAM_ICON[G.sp.sk.f] || "★") + G.sp.sk.n : "固有技") : (k === "attack" ? "⚔️攻撃" : "🛡守り"));
-      b.setAttribute("aria-pressed", sel && sel.k === k ? "true" : "false");
-      b.addEventListener("click", () => spSend(k, sel && sel.tier && v >= T[sel.tier] ? sel.tier : best));
+    // ゲージ
+    const mt = el("div", "spm"); const bar = el("div", "spmbar"); const fill = el("i"); fill.style.width = (v / SPC.meter.max * 100) + "%"; bar.append(fill);
+    for(const t of SP_TIERS){ const tk = el("b", "tk" + (v >= T[t] ? " on" : "")); tk.style.left = (T[t] / SPC.meter.max * 100) + "%"; bar.append(tk); }
+    mt.append(el("span", "spml", "SP"), bar, el("span", "spmv", String(v)));
+    box.append(mt);
+    if(G.spSelK && !SP_KEYS.includes(G.spSelK)) G.spSelK = null;
+    const r1 = el("div", "spkeys");
+    for(const k of SP_KEYS){
+      const on = sel ? sel.k === k : G.spSelK === k;
+      const b = el("button", "spk " + k + (on ? " on" : "") + (uniq === k ? " uniq" : ""));
+      b.innerHTML = SP_ICON[k]; b.append(el("b", null, SP_LABEL[k]));
+      if(uniq === k) b.append(el("small", null, G.sp.sk.n));
+      if(on && sel && sel.st === "ok") b.append(el("span", "ready", "READY"));
+      b.disabled = v < T.small || G.sp.sealed;
+      b.addEventListener("click", () => {
+        if(sel && sel.k === k){ spSend(null, null); G.spSelK = null; return; }      // もう一度押すと取り消し
+        const tier = sel && sel.tier && v >= T[sel.tier] ? sel.tier : (G.spTier && v >= T[G.spTier] ? G.spTier : "small");
+        G.spSelK = k; spSend(k, tier);
+      });
       r1.append(b);
     }
+    const r2 = el("div", "sptiers");
     for(const t of SP_TIERS){
-      const b = el("button", "spb tier " + t, TIER_SHORT[t] + T[t]); b.disabled = v < T[t];
-      b.setAttribute("aria-pressed", sel && sel.tier === t ? "true" : "false");
-      b.addEventListener("click", () => spSend(sel ? sel.k : "attack", t));
+      const on = sel ? sel.tier === t : G.spTier === t;
+      const b = el("button", "spt " + t + (on ? " on" : ""), SP_TIER_JA[t]); b.disabled = v < T[t] || G.sp.sealed;
+      b.addEventListener("click", () => { G.spTier = t; if(sel) spSend(sel.k, t); else renderSkillPanel(); });
       r2.append(b);
     }
-    const foot = el("div", "spfoot");
-    if(sel){
-      foot.append(el("span", "spst " + sel.st, sel.st === "ok" ? "✓ 準備OK：" + spTypeName(sel.k) + "【" + SP_TIER_JA[sel.tier] + "】" + spEffectText(sel.k, sel.tier) : "送信中…"));
-      const c = el("button", "spcancel", "やめる"); c.addEventListener("click", () => spSend(null, null)); foot.append(c);
-    }else foot.append(el("span", "muted", "えらばなくてもOK"));
-    box.append(head, r1, r2, foot);
+    box.append(r1, r2);
+    if(G.sp.sealed) box.append(el("div", "spseal", "🔒"));
   }
-  const spTypeName = k => k === "unique" ? ((VS.game && VS.game.sp.sk && VS.game.sp.sk.n) || "固有技") : SP_TYPE_JA[k] + "技";
-  function spEffectText(k, tier){
-    const G = VS.game, me = G && G.players.get(myId), f = me && me.fighter, m = f && isK(f) ? KMASTER[f.cid] : null;
-    let e;
-    try{ e = k === "unique" ? spUnique(m ? m.skill.fam : "burst", tier, m ? m.rarity : "普通", (f && f.st) || 1) : spBasic(k, tier); }catch(err){ return ""; }
-    return "（" + spEffectWords(e) + "）";
+  // 答え合わせのあと：自分の技が出たときと、攻撃の技をくらったときだけ、技の名前を出す
+  function showSkillEvents(m){
+    const box = $("g-skev"); box.textContent = "";
+    const evs = Array.isArray(m.skillEvents) ? m.skillEvents : [];
+    const mine = evs.find(e => e.id === myId);
+    const hitMe = evs.filter(e => e.id !== myId && ((e.to || []).includes(myId) || (e.seal && e.seal.target === myId && !e.seal.cleansed)));
+    const G = VS.game;
+    if(mine){ const row = el("div", "skl mine " + mine.tier + " " + mine.key); row.innerHTML = SP_ICON[mine.key] || ""; row.append(el("b", null, "「" + mine.name + "」")); box.append(row); }
+    for(const e of hitMe){ const p = G && G.players.get(e.id); const row = el("div", "skl hit " + e.tier); row.innerHTML = SP_ICON.attack; row.append(el("b", null, (p ? p.name : "") + "の「" + e.name + "」")); box.append(row); }
+    const top = mine || hitMe[0];
+    if(top){ spFx(top.tier, !!mine); if(top.tier === "large") buzz([30, 40, 30]); }
   }
   function spEffectWords(e){
     const w = [];
@@ -5138,36 +5306,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(e.nextQuestionRemoveWrongChoices) w.push("次の問題は自分だけ3択");
     if(e.nextQuestionLockSpecial) w.push("1人の次の宣言を封印");
     if(e.removePendingStatus) w.push("封印をふせぐ");
-    if(e.nextQuestionGaugeIfCorrect) w.push("次も正解でゲージ+" + e.nextQuestionGaugeIfCorrect);
+    if(e.nextQuestionGaugeIfCorrect) w.push("次も正解でSP+" + e.nextQuestionGaugeIfCorrect);
     return w.join("・");
-  }
-  function skillLine(ev){
-    const G = VS.game, p = G && G.players.get(ev.id), who = p ? p.name : "";
-    const icon = ev.type === "attack" ? "⚔️" : ev.type === "guard" ? "🛡" : (SK_FAM_ICON[ev.fam] || "★");
-    const eff = [];
-    if(ev.dmg) eff.push("+" + ev.dmg + "ダメージ");
-    if(ev.guard) eff.push(ev.guard + "軽減");
-    else if(ev.guardReady) eff.push("守り" + ev.guardReady + "（攻撃は来なかった）");
-    if(ev.heal) eff.push("HP+" + ev.heal);
-    if(ev.hint) eff.push("次は3択");
-    if(ev.focus) eff.push("次も正解でゲージ+" + ev.focus);
-    if(ev.seal){ const t = G && G.players.get(ev.seal.target); eff.push(ev.seal.cleansed ? (t ? t.name : "") + "は封印をふせいだ" : (t ? t.name : "") + "の次の宣言を封印"); }
-    return { icon, text: who + "の" + ev.name + "【" + SP_TIER_JA[ev.tier] + "】発動！", eff: eff.join("・") || "効果なし", mine: ev.id === myId, tier: ev.tier };
-  }
-  // 答え合わせのあとで、はじめて全員に技を公開する（上位3件＋ほかの人数）
-  function showSkillEvents(m){
-    const box = $("g-skev"); box.textContent = "";
-    const evs = Array.isArray(m.skillEvents) ? m.skillEvents : []; if(!evs.length) return;
-    evs.slice(0, 3).forEach((ev, i) => {
-      const L = skillLine(ev), row = el("div", "skl " + L.tier + (L.mine ? " mine" : ""));
-      row.style.animationDelay = (i * .25) + "s";
-      row.append(el("span", "ic", L.icon), el("b", null, L.text), el("span", "ef", L.eff)); box.append(row);
-    });
-    if(evs.length > 3){ const more = el("button", "sklmore", "ほか" + (evs.length - 3) + "人も必殺技発動（全部見る）"); more.addEventListener("click", () => { more.remove(); evs.slice(3).forEach(ev => { const L = skillLine(ev), row = el("div", "skl " + L.tier); row.append(el("span", "ic", L.icon), el("b", null, L.text), el("span", "ef", L.eff)); box.append(row); }); }); box.append(more); }
-    const top = evs[0];
-    spFx(top.tier, top.id === myId);
-    sfx(top.tier === "large" ? "crit" : "ok");
-    if(top.tier === "large") buzz([30, 40, 30]);
   }
   function spFx(tier, mine){
     const fx = $("g-spfx"); fx.className = "spfx"; void fx.offsetWidth; fx.className = "spfx on " + tier + (mine ? " mine" : "");
@@ -5651,7 +5791,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(tb);
     if(fam === "seal" && st < 2) box.append(el("p", "muted small", "封印はS2から使えます（S1では追加攻撃だけ）"));
     const bonus = SPC.abilities.rarityUniqueBonus[m.rarity] + SPC.abilities.stageUniqueBonus[String(st)];
-    box.append(el("p", "muted small", "レア度と進化で、HPの数値が1つだけ +" + bonus + "（上限あり）。共通の⚔️攻撃・🛡守りも全員使えます"));
+    box.append(el("p", "muted small", "バトルでは「" + ({ attack: "ATTACK", guard: "DEFEND", recover: "RECOVER" })[SK_CAT[fam]] + "」ボタンがこの技になります。レア度と進化で数値が +" + bonus + "（上限あり）"));
     return box;
   }
   function kInfo(m, st, owned){
@@ -5664,9 +5804,9 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const g = SPC.meter.gain, l = SPC.meter.loss;
     info.append(
       item(SK_FAM_ICON[m.skill.fam] || "★", "必殺技", kSkillRows(m, st), "skill"),
-      item("✨", "得意ジャンル（正解でゲージ+" + g.favoriteCorrect + "、1位でさらに+" + g.favoriteFirst + "／まちがえると" + l.favoriteWrong + "）", favTxt, "good"),
-      item("🌙", "苦手ジャンル（正解でゲージ+" + g.weakCorrect + "、1位でさらに+" + g.weakFirst + "／まちがえても受けるダメージ" + SPC.abilities.weakGenreWrongFlatProtection + "軽減）", weakTxt, "weak"),
-      item("🔁", "属性 " + m.attr, beats.join("・") + "に有利（相手にいて正解するとゲージ+" + g.attributeAdvantageCorrect + "）／" + loses.join("・") + "が苦手。ダメージの倍率はありません"));
+      item("✨", "得意ジャンル（正解でSP+" + g.favoriteCorrect + "、1位でさらに+" + g.favoriteFirst + "／まちがえると" + l.favoriteWrong + "）", favTxt, "good"),
+      item("🌙", "苦手ジャンル（正解でSP+" + g.weakCorrect + "、1位でさらに+" + g.weakFirst + "／まちがえても受けるダメージ" + SPC.abilities.weakGenreWrongFlatProtection + "軽減）", weakTxt, "weak"),
+      item("🔁", "属性 " + m.attr, beats.join("・") + "に有利（相手にいて正解するとSP+" + g.attributeAdvantageCorrect + "）／" + loses.join("・") + "が苦手。ダメージの倍率はありません"));
     const story = el("div", "tt");
     const loreItem = item("📖", "物語", story, "lore");
     story.append(el("span", null, m.personality + (m.catchphrase ? "　口ぐせ「" + m.catchphrase + "」" : "")));
@@ -6250,7 +6390,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     closeSheets(); show("account");
     $("ac-status").textContent = "";
     const list = $("ac-list"); list.textContent = "";
-    if(!AC.list.length) list.append(el("div", "acempty", "まだアカウントがありません。「新しくはじめる」から作ってね。"));
+    if(!AC.list.length){ const e = el("div", "acempty"); e.innerHTML = '<img src="assets/ui/acc_wizard.webp" alt="">'; e.append(el("span", null, "まだアカウントがありません。\n「新しくはじめる」から作ってね。")); list.append(e); }
     for(const a of AC.list){
       const d = loadData(a.uid), f = fighterOfData(d);
       const b = el("button", "acc");
@@ -6473,7 +6613,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const badges = el("div", "badges");
       if(isK(f)){ badges.append(rarityBadge(KMASTER[f.cid].rarity), attrBadge(kAttrOf(f)), el("span", "sbadge", STAGE_LABEL[f.st])); }
       else badges.append(gradeBadge(f), el("span", "sbadge", "コツン生まれ"));
-      tx.append(el("div", "cap", "いっしょに戦うキャラ"), nm, badges, el("div", "pl2", "特技：" + (pfx(f).tag || "") + (isK(f) ? "" : "・" + f.type + "タイプ")), statBars(f));
+      tx.append(el("div", "cap", "いっしょに戦うキャラ"), nm, badges, el("div", "pl2", isK(f) ? "必殺技「" + KMASTER[f.cid].skill.name + "」" : f.type + "タイプ"), statBars(f));
       box.append(pic, tx);
       box.onclick = () => openDetail(f);
     }else{

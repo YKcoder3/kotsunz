@@ -185,7 +185,23 @@
     "attributeAdvantageGaugeOnly": true,
     "noDamageMultipliersFromAttributesOrFavorites": true,
     "weakGenreWrongFlatProtection": 2,
-    "weakGenreWrongFlatProtectionPolicy": "If the character is wrong or timed out on its weak genre, reduce incoming damage by a flat 2 HP after normal defense; never below zero. This is not a percentage or attack multiplier; optional balance toggle default on."
+    "weakGenreWrongFlatProtectionPolicy": "If the character is wrong or timed out on its weak genre, reduce incoming damage by a flat 2 HP after normal defense; never below zero. This is not a percentage or attack multiplier; optional balance toggle default on.",
+    "defaultRecover": {
+      "small": 4,
+      "medium": 8,
+      "large": 11
+    },
+    "categoryOfUnique": {
+      "burst": "attack",
+      "seal": "attack",
+      "comeback": "attack",
+      "shield": "guard",
+      "hint": "guard",
+      "cleanse": "guard",
+      "heal": "recover",
+      "focus": "recover"
+    },
+    "attackNeedsFirstPlace": true
   },
   "ui": {
     "showStrengthField": false,
@@ -232,5 +248,9 @@
     "nonStackingStatus": true,
     "noReviveAfterKO": true,
     "note": "numbers are playtest baseline; do not change base damage formulas without A/B tests"
+  },
+  "appExtensions": {
+    "version": "v7.1",
+    "note": "アプリ側の追加。画面は ATTACK / DEFEND / RECOVER の3つ。キャラの固有技は系統に合うボタンに入る。共通RECOVERの数値は heal 系統の基本値と同じ。攻撃は1位の正解者だけ（2位以下の正解者はダメージ軽減だけ）なので、攻撃系の技は1位のときだけ発動し、それ以外は不発でゲージを使わない。"
   }
 }
