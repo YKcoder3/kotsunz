@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "note": "Planning only. These are NOT permission grants, character art, promotional approvals, or playable content.",
+  "licenseCandidates": [
+    {
+      "collabId": "IP-DISNEY-PLACEHOLDER",
+      "category": "Disney / family entertainment",
+      "title": "Disney作品（候補）",
+      "rightsHolder": "要確認",
+      "licenseStatus": "not_requested",
+      "approved": false,
+      "publishable": false,
+      "drawableFromIP": false,
+      "displayInGame": false,
+      "gachaEnabled": false,
+      "characters": [],
+      "logo": null,
+      "artAssets": [],
+      "requiredApprovals": [
+        "キャラクター・作品名",
+        "衣装とデザイン",
+        "音楽・台詞",
+        "広告・ガチャ表示",
+        "地域・期間・媒体",
+        "再許諾・グッズ化"
+      ]
+    },
+    {
+      "collabId": "IP-ANIME-PLACEHOLDER",
+      "category": "Japanese anime",
+      "title": "アニメ作品（候補）",
+      "rightsHolder": "要確認",
+      "licenseStatus": "not_requested",
+      "approved": false,
+      "publishable": false,
+      "drawableFromIP": false,
+      "displayInGame": false,
+      "gachaEnabled": false,
+      "characters": [],
+      "logo": null,
+      "artAssets": [],
+      "requiredApprovals": [
+        "原作・アニメ製作委員会等の権利範囲",
+        "キャラ設定と衣装",
+        "名称・ロゴ",
+        "商品化・二次利用",
+        "広告審査"
+      ]
+    },
+    {
+      "collabId": "IP-DRAMA-PLACEHOLDER",
+      "category": "Japanese drama",
+      "title": "ドラマ作品（候補）",
+      "rightsHolder": "要確認",
+      "licenseStatus": "not_requested",
+      "approved": false,
+      "publishable": false,
+      "drawableFromIP": false,
+      "displayInGame": false,
+      "gachaEnabled": false,
+      "characters": [],
+      "logo": null,
+      "artAssets": [],
+      "requiredApprovals": [
+        "作品名とロゴ",
+        "出演者の肖像・パブリシティ等",
+        "衣装と小道具",
+        "映像や音声",
+        "グッズ化・広告"
+      ]
+    }
+  ],
+  "originalThemeEventsUsableBeforeLicenses": [
+    {
+      "eventId": "ORIGINAL-STARDUST",
+      "title": "ほしぞらたんけん",
+      "inspiration": "星・宇宙という一般的なテーマ",
+      "usesThirdPartyIP": false,
+      "description": "オリジナル宇宙探査衣装。既存作品のロゴや具体的な意匠を使わない。"
+    },
+    {
+      "eventId": "ORIGINAL-MYSTERY",
+      "title": "こそこそ探偵団",
+      "inspiration": "謎解き・探検という一般的なテーマ",
+      "usesThirdPartyIP": false,
+      "description": "オリジナルの虫眼鏡・コートなど。特定ドラマの演出、固有の紋章や役名は使用しない。"
+    },
+    {
+      "eventId": "ORIGINAL-STORYBOOK",
+      "title": "おとぎの迷宮",
+      "inspiration": "童話・物語という一般的なテーマ",
+      "usesThirdPartyIP": false,
+      "description": "特定のDisney作品と誤認させない独自の配色・輪郭・小道具を用いる。"
+    }
+  ],
+  "collabBannerSample": {
+    "id": "collab-demo-disabled",
+    "name": "将来の正式コラボ専用枠",
+    "enabled": false,
+    "ratesPercent": {
+      "おつ": 45,
+      "普通": 35,
+      "レア": 15,
+      "スーパーレア": 4.5,
+      "レジェンド": 0.5
+    },
+    "collectionType": "collab",
+    "pool": [],
+    "releasesAfter": "signed_licensing_agreement_and_asset_approval"
+  }
+}

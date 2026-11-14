@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "3.0.0",
+  "supersedes": {
+    "passiveAttackMultiplier": true,
+    "passiveDefenseMultiplier": true,
+    "passiveCharacterSkills": true
+  },
+  "meter": {
+    "max": 100,
+    "initial": 10,
+    "tiers": {
+      "small": 25,
+      "medium": 55,
+      "large": 90
+    },
+    "gain": {
+      "correct": 14,
+      "rank1": 8,
+      "correctStreak2": 3,
+      "correctStreak3Plus": 6,
+      "firstStreak2": 4,
+      "firstStreak3Plus": 7,
+      "favoriteCorrect": 4,
+      "favoriteFirst": 5,
+      "weakCorrect": 8,
+      "weakFirst": 3,
+      "attributeAdvantageCorrect": 2
+    },
+    "loss": {
+      "neutralWrong": -2,
+      "favoriteWrong": -4,
+      "weakWrong": -3
+    },
+    "maxGainPerQuestion": 34,
+    "spendCondition": "selected_before_reveal_AND_answer_correct",
+    "chargeOrder": "spend_from_starting_meter_then_award_round_gain",
+    "failBehavior": "if_wrong_no_spend_apply_normal_wrong_change",
+    "oneIntentPerRound": true,
+    "permanentBattleBoost": false
+  },
+  "abilities": {
+    "defaultAttack": {
+      "small": 3,
+      "medium": 5,
+      "large": 8
+    },
+    "defaultGuard": {
+      "small": 4,
+      "medium": 8,
+      "large": 12
+    },
+    "defaultAttackRoundAdditionalDamageCap": 18,
+    "uniques": {
+      "burst": {
+        "role": "attack",
+        "small": 2,
+        "medium": 4,
+        "large": 6,
+        "max": {
+          "small": 4,
+          "medium": 7,
+          "large": 9
+        }
+      },
+      "shield": {
+        "role": "guard",
+        "small": 4,
+        "medium": 7,
+        "large": 11,
+        "max": {
+          "small": 7,
+          "medium": 10,
+          "large": 14
+        }
+      },
+      "heal": {
+        "role": "heal",
+        "small": 4,
+        "medium": 8,
+        "large": 11,
+        "max": {
+          "small": 7,
+          "medium": 11,
+          "large": 14
+        }
+      },
+      "hint": {
+        "role": "support",
+        "small": {
+          "guard": 2
+        },
+        "medium": {
+          "guard": 4,
+          "nextQuestionRemoveWrongChoices": 1
+        },
+        "large": {
+          "guard": 6,
+          "nextQuestionRemoveWrongChoices": 1
+        },
+        "guardCap": 9
+      },
+      "seal": {
+        "role": "control",
+        "small": {
+          "damage": 2
+        },
+        "medium": {
+          "damage": 3,
+          "nextQuestionLockSpecial": 1
+        },
+        "large": {
+          "damage": 4,
+          "nextQuestionLockSpecial": 1
+        },
+        "damageCap": 7
+      },
+      "cleanse": {
+        "role": "guard",
+        "small": {
+          "guard": 3
+        },
+        "medium": {
+          "guard": 6,
+          "removePendingStatus": 1
+        },
+        "large": {
+          "guard": 9,
+          "removePendingStatus": 1
+        },
+        "guardCap": 12
+      },
+      "focus": {
+        "role": "support",
+        "small": {
+          "heal": 3
+        },
+        "medium": {
+          "heal": 5,
+          "nextQuestionGaugeIfCorrect": 4
+        },
+        "large": {
+          "heal": 8,
+          "nextQuestionGaugeIfCorrect": 6
+        },
+        "healCap": 11
+      },
+      "comeback": {
+        "role": "hybrid",
+        "small": {
+          "damage": 2,
+          "heal": 2
+        },
+        "medium": {
+          "damage": 3,
+          "heal": 4
+        },
+        "large": {
+          "damage": 4,
+          "heal": 6
+        },
+        "damageCap": 6,
+        "healCap": 8
+      }
+    },
+    "rarityUniqueBonus": {
+      "おつ": 0,
+      "普通": 0,
+      "レア": 1,
+      "スーパーレア": 1,
+      "レジェンド": 2
+    },
+    "stageUniqueBonus": {
+      "1": 0,
+      "2": 1,
+      "3": 2
+    },
+    "applyUniqueBonusTo": "only_single_integer_HP_effect_of_unique_skills_not_status_duration_or_permanent_modifiers",
+    "skillEffectRequiresCorrectAnswer": true,
+    "enemyPenaltyMaxTargets": 1,
+    "sealDurationRounds": 1,
+    "sealImmunityFollowingRounds": 2,
+    "oneHintRemovedPerQuestionMax": 1,
+    "targeting": "eligible lowest-ranked player excluding caster; deterministic host choice",
+    "stage2UnlocksControlStatuses": true,
+    "attributeAdvantageGaugeOnly": true,
+    "noDamageMultipliersFromAttributesOrFavorites": true,
+    "weakGenreWrongFlatProtection": 2,
+    "weakGenreWrongFlatProtectionPolicy": "If the character is wrong or timed out on its weak genre, reduce incoming damage by a flat 2 HP after normal defense; never below zero. This is not a percentage or attack multiplier; optional balance toggle default on."
+  },
+  "ui": {
+    "showStrengthField": false,
+    "showOnePointField": false,
+    "attributeVisible": true,
+    "rarityVisible": true,
+    "stageVisible": true,
+    "specialMeterAlwaysVisible": true,
+    "selectPhase": "after_genre_announced_before_question_reveal",
+    "selectionTypes": [
+      "attack",
+      "guard",
+      "unique"
+    ],
+    "announceOthersOnlyAfterQuestion": true,
+    "favoriteVisual": "soft_golden_light_and_small_sparkles_no_flashing",
+    "weakVisual": "soft_dim_violet_not_unreadable",
+    "normalVisual": "existing_theme",
+    "accessibleReduceMotion": true,
+    "showEffectAs": "plain_HP_numbers_and_gauge_points_not_percentage_multipliers"
+  },
+  "network": {
+    "hostAuthoritative": true,
+    "skillIntentMessage": "skillIntent",
+    "skillAckMessage": "skillAck",
+    "skillEventsInResult": "skillEvents",
+    "includeGaugeInRoundSnapshots": true,
+    "acceptUntilMsBeforeQuestionReveal": 400,
+    "preventReplayBy": [
+      "gameId",
+      "round",
+      "playerId",
+      "nonce"
+    ],
+    "forbidClientDeclaredDamageOrGauge": true,
+    "featureFlag": "specialsV1"
+  },
+  "balancing": {
+    "recommendedRoundCount": 10,
+    "maxPlayers": 10,
+    "allowOneSkillPerQuestionPerPlayer": true,
+    "damageFloor": 0,
+    "hpCeiling": "fighter.max",
+    "nonStackingStatus": true,
+    "noReviveAfterKO": true,
+    "note": "numbers are playtest baseline; do not change base damage formulas without A/B tests"
+  }
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="フラシン S1" viewBox="0 0 512 512"><defs>
+<radialGradient id="body" cx="35%" cy="21%" r="81%"><stop offset="0%" stop-color="#F3F6E1"/><stop offset="40%" stop-color="#D5E197"/><stop offset="75%" stop-color="#C9D878"/><stop offset="100%" stop-color="#A1A86D"/></radialGradient>
+<radialGradient id="blush"><stop offset="0" stop-color="#FF799C" stop-opacity=".52"/><stop offset="1" stop-color="#FF799C" stop-opacity="0"/></radialGradient>
+<linearGradient id="iris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#29223D"/><stop offset="1" stop-color="#533C65"/></linearGradient>
+<linearGradient id="shine" x1=".1" y1=".05" x2=".9" y2="1"><stop offset="0" stop-color="white" stop-opacity=".8"/><stop offset=".48" stop-color="white" stop-opacity=".1"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+<filter id="drop" x="-35%" y="-30%" width="170%" height="170%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="fuzz"><feTurbulence baseFrequency=".11" numOctaves="2" seed="10" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.10" /></feComponentTransfer></filter>
+<clipPath id="bodyclip"><path d="M183 163 Q258 143 334 163 Q393 178 404 244 L400 359 Q395 429 331 438 L178 438 Q107 432 109 360 L113 247 Q115 181 183 163 Z"/></clipPath>
+</defs>
+<ellipse cx="256" cy="456" rx="147" ry="17" fill="#25183B" opacity=".18" filter="url(#drop)"/>
+<path d="M152 200 Q129 133 162 91 Q204 72 200 129 L197 200 Z" fill="url(#body)" stroke="#76943C" stroke-width="7" stroke-linejoin="round"/>
+<path d="M312 181 Q291 136 330 110 Q390 96 370 181Z" fill="url(#body)" stroke="#76943C" stroke-width="7" stroke-linejoin="round"/>
+<ellipse cx="187" cy="420" rx="40" ry="23" fill="#D5E197" stroke="#76943C" stroke-width="6" transform="rotate(-8 187 420)"/>
+<ellipse cx="327" cy="419" rx="40" ry="23" fill="#D5E197" stroke="#76943C" stroke-width="6" transform="rotate(9 327 419)"/>
+<path d="M183 163 Q258 143 334 163 Q393 178 404 244 L400 359 Q395 429 331 438 L178 438 Q107 432 109 360 L113 247 Q115 181 183 163 Z" fill="url(#body)" stroke="#76943C" stroke-width="8" stroke-linejoin="round"/>
+<g clip-path="url(#bodyclip)"><rect x="105" y="130" width="310" height="320" filter="url(#fuzz)" opacity=".38"/><path d="M149 286 C153 187 221 141 283 158 C216 187 178 248 173 314Z" fill="url(#shine)" opacity=".72"/><ellipse cx="309" cy="396" rx="114" ry="45" fill="#A1A86D" opacity=".11"/></g>
+<path d="M189 308 Q211 322 233 308" fill="none" stroke="#352A4B" stroke-width="10" stroke-linecap="round"/>
+<ellipse cx="167" cy="345" rx="23" ry="14" fill="url(#blush)"/>
+<path d="M278 305 Q300 319 322 305" fill="none" stroke="#352A4B" stroke-width="10" stroke-linecap="round"/>
+<ellipse cx="344" cy="342" rx="23" ry="14" fill="url(#blush)"/>
+<path d="M242 371 Q256 387 273 371" fill="none" stroke="#4B345E" stroke-width="7" stroke-linecap="round"/>
+<g fill="#E7D069" stroke="#76943C" stroke-width="5" stroke-linejoin="round" opacity=".94"><rect x="232" y="202" width="48" height="52" rx="8"/><path d="M232 222H280" fill="none" stroke="#76943C" stroke-width="5"/></g>
+<path d="M350 379 Q352 385 358 387 Q352 389 350 395 Q348 389 342 387 Q348 385 350 379Z" fill="#F1E4AA" opacity=".79"/>
+<path d="M83 234 Q85 242 93 244 Q85 246 83 254 Q81 246 73 244 Q81 242 83 234Z" fill="#F1E4AA" opacity=".79"/>
+<path d="M420 187 Q423 196 432 199 Q423 202 420 211 Q417 202 408 199 Q417 196 420 187Z" fill="#F1E4AA" opacity=".79"/>
+<path d="M205 391 Q208 402 219 405 Q208 408 205 419 Q202 408 191 405 Q202 402 205 391Z" fill="#F1E4AA" opacity=".79"/>
+<path d="M182 128 Q186 140 198 144 Q186 148 182 160 Q178 148 166 144 Q178 140 182 128Z" fill="#F1E4AA" opacity=".79"/>
+<path d="M430 328 Q432 334 438 336 Q432 338 430 344 Q428 338 422 336 Q428 334 430 328Z" fill="#F1E4AA" opacity=".79"/>
+<path d="M101 312 Q103 320 111 322 Q103 324 101 332 Q99 324 91 322 Q99 320 101 312Z" fill="#F1E4AA" opacity=".79"/>
+</svg>

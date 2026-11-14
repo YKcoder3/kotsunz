@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="キラモル S1" viewBox="0 0 512 512"><defs>
+<radialGradient id="body" cx="35%" cy="21%" r="81%"><stop offset="0%" stop-color="#EDF1F4"/><stop offset="40%" stop-color="#C1CED9"/><stop offset="75%" stop-color="#AEC0CE"/><stop offset="100%" stop-color="#8D96AE"/></radialGradient>
+<radialGradient id="blush"><stop offset="0" stop-color="#FF799C" stop-opacity=".52"/><stop offset="1" stop-color="#FF799C" stop-opacity="0"/></radialGradient>
+<linearGradient id="iris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#29223D"/><stop offset="1" stop-color="#533C65"/></linearGradient>
+<linearGradient id="shine" x1=".1" y1=".05" x2=".9" y2="1"><stop offset="0" stop-color="white" stop-opacity=".8"/><stop offset=".48" stop-color="white" stop-opacity=".1"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+<filter id="drop" x="-35%" y="-30%" width="170%" height="170%"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="fuzz"><feTurbulence baseFrequency=".11" numOctaves="2" seed="5" type="fractalNoise"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.10" /></feComponentTransfer></filter>
+<clipPath id="bodyclip"><path d="M250 139 C344 137 403 215 400 304 C399 398 339 441 255 441 C167 441 111 398 111 306 C111 214 167 140 250 139 Z"/></clipPath>
+</defs>
+<ellipse cx="256" cy="456" rx="147" ry="17" fill="#25183B" opacity=".18" filter="url(#drop)"/>
+<path d="M172 200 Q149 133 182 91 Q224 72 220 129 L217 200 Z" fill="url(#body)" stroke="#566F8E" stroke-width="7" stroke-linejoin="round"/>
+<path d="M292 181 Q271 136 310 110 Q370 96 350 181Z" fill="url(#body)" stroke="#566F8E" stroke-width="7" stroke-linejoin="round"/>
+<ellipse cx="187" cy="420" rx="40" ry="23" fill="#C1CED9" stroke="#566F8E" stroke-width="6" transform="rotate(-8 187 420)"/>
+<ellipse cx="327" cy="419" rx="40" ry="23" fill="#C1CED9" stroke="#566F8E" stroke-width="6" transform="rotate(9 327 419)"/>
+<path d="M250 139 C344 137 403 215 400 304 C399 398 339 441 255 441 C167 441 111 398 111 306 C111 214 167 140 250 139 Z" fill="url(#body)" stroke="#566F8E" stroke-width="8" stroke-linejoin="round"/>
+<g clip-path="url(#bodyclip)"><rect x="105" y="130" width="310" height="320" filter="url(#fuzz)" opacity=".38"/><path d="M149 286 C153 187 221 141 283 158 C216 187 178 248 173 314Z" fill="url(#shine)" opacity=".72"/><ellipse cx="309" cy="396" rx="114" ry="45" fill="#8D96AE" opacity=".11"/></g>
+<ellipse cx="211" cy="306" rx="19" ry="23" fill="url(#iris)"/><ellipse cx="205" cy="297" rx="7" ry="8" fill="white" opacity=".96"/><circle cx="219" cy="316" r="3.4" fill="white" opacity=".75"/>
+<ellipse cx="167" cy="345" rx="23" ry="14" fill="url(#blush)"/>
+<ellipse cx="300" cy="303" rx="19" ry="23" fill="url(#iris)"/><ellipse cx="294" cy="294" rx="7" ry="8" fill="white" opacity=".96"/><circle cx="308" cy="313" r="3.4" fill="white" opacity=".75"/>
+<ellipse cx="344" cy="342" rx="23" ry="14" fill="url(#blush)"/>
+<path d="M241 367 Q255 393 275 363" fill="none" stroke="#4A3152" stroke-width="7" stroke-linecap="round"/>
+<g fill="#DBC58F" stroke="#566F8E" stroke-width="5" stroke-linejoin="round" opacity=".94"><path d="M234 215L271 197L286 225L249 258L226 235Z"/></g>
+<path d="M421 259 Q424 268 433 271 Q424 274 421 283 Q418 274 409 271 Q418 268 421 259Z" fill="#EADEBF" opacity=".79"/>
+<path d="M130 364 Q133 375 144 378 Q133 381 130 392 Q127 381 116 378 Q127 375 130 364Z" fill="#EADEBF" opacity=".79"/>
+<path d="M266 105 Q270 117 282 121 Q270 125 266 137 Q262 125 250 121 Q262 117 266 105Z" fill="#EADEBF" opacity=".79"/>
+<path d="M361 372 Q363 378 369 380 Q363 382 361 388 Q359 382 353 380 Q359 378 361 372Z" fill="#EADEBF" opacity=".79"/>
+</svg>
