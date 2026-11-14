@@ -1342,7 +1342,7 @@
     <div class="rewards" id="e-rw"></div>
     <div class="lvup" id="e-lv"></div>
     <div class="plist" id="e-rank"></div>
-    <p style="text-align:center;font-weight:900" id="e-rule"></p>
+    <p style="text-align:center;font-weight:900" id="e-rule" hidden></p>
     <p class="muted" style="text-align:center" id="e-save"></p>
     <div class="status" id="e-status"></div>
     <div class="spacer"></div>
@@ -1577,7 +1577,7 @@
   const BUMP_WIN = 500;                              // 2台の揺れがこの時間内ならコツン成立
   const MAX_PLAYERS = 10;
   const BASE_LIMIT = 10000;                          // 1問の制限時間
-  const COUNTDOWN = 7000, RESULT_MS = 4300;           // v7：ジャンル発表から問題まで7秒（このあいだに技をえらぶ）
+  const COUNTDOWN = 5000, RESULT_MS = 4300;           // ジャンル発表から問題まで5秒（このあいだに技をえらぶ）
   const SP_CLOSE = 400;                               // 問題が出る400ミリ秒前で、技の宣言をしめきる
   const STORE = "kotsunz-hayaoshi-v1";
 
@@ -5481,7 +5481,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       list.append(row);
     }
     const last = m.ranking[m.ranking.length - 1];
-    $("e-rule").textContent = mine && mine.place === m.ranking.length ? "最下位なので、スマホを30分しまって話そう。" : String(last.name).slice(0, 10) + "は最下位。スマホを30分しまって、みんなで話そう。";
+    $("e-rule").textContent = "";
     $("b-again").hidden = role !== "host";
     $("e-status").textContent = role === "host" ? "" : "ホストが「もう1回」を押すと、ロビーにもどります。";
     show("end");
