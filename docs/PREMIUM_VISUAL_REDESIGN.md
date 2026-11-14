@@ -37,3 +37,5 @@ CSS-only design preview. Never change quiz data, networking, user accounts, char
 
 ## Revert
 Remove the premium-theme.css stylesheet link from index.html to disable visual changes.
+## Status (2026-11-14)
+v7.1 の新デザイン（表紙・アカウント・ロビー・アイコン）を main に入れたため、この CSS は index.html から読みこんでいません。背景やアカウント画面の指定が v7.1 とぶつかるためです。ファイルは参考として残しています。
