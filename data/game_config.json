@@ -1,7 +1,7 @@
 {
- "version": "1.2.0",
- "catalogCount": 1500,
- "baseCharacterCount": 500,
+ "version": "2.0.0",
+ "catalogCount": 1350,
+ "baseCharacterCount": 450,
  "formsPerCharacter": 3,
  "attributes": [
   "論理派",
@@ -79,7 +79,7 @@
   "guaranteeMechanics": "configurable before release"
  },
  "kotsunzApp": {
-  "dataVersion": 6,
+  "dataVersion": 9,
   "starter": {
    "freeTenDrawTickets": 1,
    "awakeningStones": 5,
@@ -160,10 +160,11 @@
    "4": 2,
    "5": 3
   },
+  "catalogEpoch": "new450-v2-reset",
   "specials": {
    "enabled": true,
-   "config": "data/special_config_v3.json",
-   "countdownMs": 4200,
+   "config": "data/special_config_new450.json",
+   "countdownMs": 5000,
    "declareCloseMsBeforeReveal": 400
   }
  }

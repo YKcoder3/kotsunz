@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "new450-v2-reset",
+  "isReferenceSpecNotInstalled": true,
+  "catalog": {
+    "families": 450,
+    "stages": 3,
+    "forms": 1350,
+    "oldCatalogNameAndArtReplaced": true,
+    "newIdPrefix": "NZ",
+    "oldIdsRemainArchivedOnly": false,
+    "oldCatalogRecordsExcludedFromActiveAndArchive": true
+  },
+  "skillMeter": {
+    "starting": 10,
+    "maximum": 100,
+    "tiers": {
+      "small": 25,
+      "medium": 55,
+      "large": 90
+    },
+    "gains": {
+      "correct": 14,
+      "firstCorrect": 8,
+      "correctStreak2": 3,
+      "correctStreak3Plus": 6,
+      "firstStreak2": 4,
+      "firstStreak3Plus": 7,
+      "preferredCorrect": 4,
+      "preferredFirst": 5,
+      "weakCorrect": 8,
+      "weakFirst": 3,
+      "attributeAdvantageCorrect": 2
+    },
+    "losses": {
+      "normalWrong": -2,
+      "preferredWrong": -4,
+      "weakWrong": -3
+    },
+    "maxGainPerQuestion": 34,
+    "costSource": "gauge_available_at_question_start_not_round_gains",
+    "oneSharedGauge": true,
+    "oneSelectionPerQuestion": true
+  },
+  "skillRules": {
+    "attack": {
+      "condition": "rank1_correct",
+      "noTriggerNoCost": true,
+      "baseBonusByTier": {
+        "small": 3,
+        "medium": 5,
+        "large": 8
+      },
+      "maxBonusByTier": {
+        "small": 5,
+        "medium": 8,
+        "large": 11
+      },
+      "canOnlyHitNormallyEligibleTargets": true,
+      "extraDamagePerRoundCap": 18
+    },
+    "defense": {
+      "condition": "valid_declaration_irrespective_of_answer_and_rank",
+      "chargeOnUseEvenIfNoIncomingDamage": true,
+      "baseDamageReductionByTier": {
+        "small": 4,
+        "medium": 8,
+        "large": 12
+      },
+      "maxDamageReductionByTier": {
+        "small": 6,
+        "medium": 11,
+        "large": 15
+      },
+      "resolveBeforeKO": true
+    },
+    "recover": {
+      "condition": "any_correct",
+      "noTriggerNoCost": true,
+      "baseHealByTier": {
+        "small": 6,
+        "medium": 11,
+        "large": 16
+      },
+      "maxBaseHealByTier": {
+        "small": 9,
+        "medium": 15,
+        "large": 20
+      },
+      "rank1ExtraHeal": {
+        "small": 3,
+        "medium": 5,
+        "large": 7
+      },
+      "lowHPThresholdRatio": 0.35,
+      "lowHPExtraHeal": {
+        "small": 2,
+        "medium": 3,
+        "large": 4
+      },
+      "overhealToNextRoundShieldCap": {
+        "small": 1,
+        "medium": 2,
+        "large": 3
+      },
+      "preventsSameRoundKOWhenNetHPPositive": true,
+      "doesNotRevivePreviouslyKO": true
+    },
+    "mirror": {
+      "inherits": "defense",
+      "storedBlockedDamageMaximum": 6,
+      "storedDamageValidForNextNRounds": 2,
+      "requiresRank1ToReflect": true,
+      "reflectionFractionOfStoredOrCurrentActualBlockedDamage": 0.5,
+      "maxReflectedBonusByTier": {
+        "small": 1,
+        "medium": 2,
+        "large": 3
+      },
+      "cannotReflectIfNothingWasEverBlocked": true,
+      "automaticEnemySplit": true,
+      "noChainReflections": true
+    }
+  },
+  "scaling": {
+    "rarityBonus": {
+      "おつ": 0,
+      "普通": 0,
+      "レア": 1,
+      "スーパーレア": 1,
+      "レジェンド": 2
+    },
+    "evolutionStageBonus": {
+      "1": 0,
+      "2": 1,
+      "3": 2
+    },
+    "levelBonus": "min(2, floor(level / 12))",
+    "applyToOnlyOnePrimaryHPNumberPerSkillNotBonusOrStatus": true,
+    "clampToSkillTierMaximum": true,
+    "note": "All values are unvalidated playtest baselines; prevent rarity advantage from deciding matches. No passive stats or timing advantage."
+  },
+  "skillSlots": {
+    "baseSkillsEveryone": [
+      "basic_attack",
+      "basic_defense"
+    ],
+    "uniqueSlot1": "stage1_all",
+    "uniqueSlot2": "stage1_super_rare_or_legendary_else_stage2",
+    "noStacking": true,
+    "sameGaugeForAll": true
+  },
+  "gacha": {
+    "stageDrawn": 1,
+    "unchangedUserFacingFlow": true,
+    "paidPurchasesEnabled": false,
+    "provisionalRarityRatesPercent": {
+      "おつ": 45,
+      "普通": 35,
+      "レア": 15,
+      "スーパーレア": 4.5,
+      "レジェンド": 0.5
+    }
+  },
+  "evolution": {
+    "s1ToS2CopiesNeeded": 3,
+    "s1CopiesConsumed": 2,
+    "s2ToS3LevelMin": 20,
+    "awakeningStones": 10,
+    "characterMissionRequired": true,
+    "preserveExistingSystem": true
+  },
+  "art": {
+    "useProvidedFilesNotRegenerated": true,
+    "fileOrder": "21 sheets original zip order; each collage row-major; S1-S2-S3 left-to-right",
+    "rightsReviewRequired": true,
+    "visualCropQARequired": true
+  },
+  "compatibility": {
+    "doNotAlterQuizQuestionsOrTiming": true,
+    "doNotAlterRoomCodesOrTransport": true,
+    "doNotSilentlyOverwriteOldSaves": false,
+    "mapPreferredWeakGenresToRepoExistingIds": true,
+    "hostAuthoritativeResolution": true,
+    "oldPlayerDataIntentionallyDiscarded": true,
+    "noOldSaveMigrationOrCompensation": true,
+    "preserveGameMechanicsNotOldPlayerProgress": true
+  },
+  "playerDataReset": {
+    "policy": "full_reset_on_first_launch_of_new450_v2",
+    "explicitUserConsent": true,
+    "newCatalogEpoch": "new450-v2-reset",
+    "resetCompleteMarkerSuggested": "kotsunz_catalog_epoch_new450_v2",
+    "runOncePerBrowserInstall": true,
+    "doNotResetOnLaterReloads": true,
+    "clearAllExistingKotsunzPlayerProgress": true,
+    "clearNicknamesAndOldPlayerIds": true,
+    "clearOwnedCharactersDexProgressCoinsGachaLevelsAchievementsMatchRecords": true,
+    "keepOldCharacterArchives": false,
+    "carryOverOldAccountInventoryOrScores": false,
+    "giveCompensationOrConvertOldIDs": false,
+    "restoreLegacyBackups": false,
+    "onlyDeleteAppSpecificStorage": true,
+    "blanketLocalStorageClearAllowed": false,
+    "showUserFacingResetNotice": true,
+    "doesNotDeleteQuizQuestionsOrGameSystems": true,
+    "recheckCurrentRepositoryStorageKeysBeforeCoding": true,
+    "recheckRemoteStorageExistence": true,
+    "requireCatalogVersionForClientsAndImports": true,
+    "specPath": "docs/RESET_POLICY_V2.md"
+  },
+  "publicationWorkflow": {
+    "target": "general_publication_after_rights_similarity_trademark_crop_QA_and_game_regression_checks",
+    "initialCharacterPublishable": false,
+    "initialStatusMeaning": "pending_review_not_permanent_ban",
+    "reviewSheets": "data/source_rights_21.csv",
+    "reviewCharacters": "data/release_review_450.csv",
+    "approveCommand": "python scripts/approve_release.py --approve --reviewer \"Responsible reviewer\"",
+    "afterApproval": "publish_game_via_authorized_repository_deployment_and_verify_live_site",
+    "doNotClaimReviewedWithoutEvidence": true,
+    "userAlreadyRequestedPublicationAfterChecks": true
+  }
+}

@@ -1,0 +1,83 @@
+{
+ "自然・動物": [
+  "animal",
+  "plant",
+  "body"
+ ],
+ "歴史": [
+  "history",
+  "sengoku",
+  "nengo",
+  "worldhist",
+  "jphist",
+  "wdhist"
+ ],
+ "宇宙・科学": [
+  "space",
+  "science",
+  "element",
+  "invention"
+ ],
+ "企業・ロゴ": [
+  "brand",
+  "econ",
+  "manner",
+  "money"
+ ],
+ "食べ物": [
+  "food",
+  "cooking",
+  "meibutsu"
+ ],
+ "地理": [
+  "japan_geo",
+  "world_geo",
+  "capital",
+  "pref",
+  "w_spots",
+  "j_spots",
+  "heritage"
+ ],
+ "芸能・音楽": [
+  "kpop",
+  "western",
+  "jpop",
+  "classic",
+  "enka",
+  "hiphop",
+  "theme",
+  "music"
+ ],
+ "スポーツ": [
+  "soccer",
+  "baseball",
+  "basketball",
+  "football",
+  "olympic",
+  "sports",
+  "tennis",
+  "golf",
+  "f1",
+  "legends",
+  "fitness"
+ ],
+ "生活・雑学": [
+  "zatsugaku",
+  "seasonal",
+  "retro",
+  "idiom",
+  "proverb"
+ ],
+ "アニメ・漫画": [
+  "anime",
+  "ghibli"
+ ],
+ "ゲーム": [
+  "game"
+ ],
+ "映画・ドラマ": [
+  "movie",
+  "drama",
+  "kdrama"
+ ]
+}
