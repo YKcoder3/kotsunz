@@ -1,0 +1,2051 @@
+{
+ "note": "写真・ロゴ・地図クイズの素材台帳。approved になるまでゲームに出さない",
+ "approved": [],
+ "pending": [
+  {
+   "id": "KZI0001",
+   "category": "写真｜世界・日本の名所",
+   "answer": "エッフェル塔",
+   "planned_file": "img-0001.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0002",
+   "category": "写真｜世界・日本の名所",
+   "answer": "東京タワー",
+   "planned_file": "img-0002.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0003",
+   "category": "写真｜世界・日本の名所",
+   "answer": "姫路城",
+   "planned_file": "img-0003.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0004",
+   "category": "写真｜世界・日本の名所",
+   "answer": "マチュ・ピチュ",
+   "planned_file": "img-0004.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0005",
+   "category": "写真｜世界・日本の名所",
+   "answer": "タージ・マハル",
+   "planned_file": "img-0005.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0006",
+   "category": "写真｜世界・日本の名所",
+   "answer": "自由の女神像",
+   "planned_file": "img-0006.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0007",
+   "category": "写真｜世界・日本の名所",
+   "answer": "サグラダ・ファミリア",
+   "planned_file": "img-0007.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0008",
+   "category": "写真｜世界・日本の名所",
+   "answer": "コロッセオ",
+   "planned_file": "img-0008.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0009",
+   "category": "写真｜世界・日本の名所",
+   "answer": "ピサの斜塔",
+   "planned_file": "img-0009.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0010",
+   "category": "写真｜世界・日本の名所",
+   "answer": "金閣寺",
+   "planned_file": "img-0010.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0011",
+   "category": "写真｜世界・日本の名所",
+   "answer": "厳島神社の大鳥居",
+   "planned_file": "img-0011.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0012",
+   "category": "写真｜世界・日本の名所",
+   "answer": "アンコール・ワット",
+   "planned_file": "img-0012.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0013",
+   "category": "写真｜世界・日本の名所",
+   "answer": "ブルジュ・ハリファ",
+   "planned_file": "img-0013.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0014",
+   "category": "写真｜世界・日本の名所",
+   "answer": "シドニー・オペラハウス",
+   "planned_file": "img-0014.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0015",
+   "category": "写真｜世界・日本の名所",
+   "answer": "モアイ像",
+   "planned_file": "img-0015.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0016",
+   "category": "写真｜世界・日本の名所",
+   "answer": "マリーナベイ・サンズ",
+   "planned_file": "img-0016.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0017",
+   "category": "写真｜世界・日本の名所",
+   "answer": "富士山",
+   "planned_file": "img-0017.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0018",
+   "category": "写真｜世界・日本の名所",
+   "answer": "グランドキャニオン",
+   "planned_file": "img-0018.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0019",
+   "category": "写真｜世界・日本の名所",
+   "answer": "ストーンヘンジ",
+   "planned_file": "img-0019.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0020",
+   "category": "写真｜世界・日本の名所",
+   "answer": "万里の長城",
+   "planned_file": "img-0020.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0021",
+   "category": "写真｜人物",
+   "answer": "夏目漱石",
+   "planned_file": "img-0021.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0022",
+   "category": "写真｜人物",
+   "answer": "福沢諭吉",
+   "planned_file": "img-0022.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0023",
+   "category": "写真｜人物",
+   "answer": "野口英世",
+   "planned_file": "img-0023.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0024",
+   "category": "写真｜人物",
+   "answer": "アインシュタイン",
+   "planned_file": "img-0024.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0025",
+   "category": "写真｜人物",
+   "answer": "マリー・キュリー",
+   "planned_file": "img-0025.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0026",
+   "category": "写真｜人物",
+   "answer": "ガンディー",
+   "planned_file": "img-0026.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0027",
+   "category": "写真｜人物",
+   "answer": "ナイチンゲール",
+   "planned_file": "img-0027.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0028",
+   "category": "写真｜人物",
+   "answer": "エジソン",
+   "planned_file": "img-0028.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0029",
+   "category": "写真｜人物",
+   "answer": "ダーウィン",
+   "planned_file": "img-0029.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0030",
+   "category": "写真｜人物",
+   "answer": "ベートーヴェン",
+   "planned_file": "img-0030.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0031",
+   "category": "写真｜人物",
+   "answer": "モーツァルト",
+   "planned_file": "img-0031.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0032",
+   "category": "写真｜人物",
+   "answer": "徳川家康",
+   "planned_file": "img-0032.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0033",
+   "category": "写真｜人物",
+   "answer": "織田信長",
+   "planned_file": "img-0033.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0034",
+   "category": "写真｜人物",
+   "answer": "葛飾北斎",
+   "planned_file": "img-0034.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0035",
+   "category": "写真｜人物",
+   "answer": "レオナルド・ダ・ヴィンチ",
+   "planned_file": "img-0035.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0036",
+   "category": "写真｜人物",
+   "answer": "シェイクスピア",
+   "planned_file": "img-0036.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0037",
+   "category": "写真｜人物",
+   "answer": "ニュートン",
+   "planned_file": "img-0037.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0038",
+   "category": "写真｜人物",
+   "answer": "リンカーン",
+   "planned_file": "img-0038.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0039",
+   "category": "写真｜人物",
+   "answer": "伊藤博文",
+   "planned_file": "img-0039.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0040",
+   "category": "写真｜人物",
+   "answer": "樋口一葉",
+   "planned_file": "img-0040.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "肖像権・パブリシティ権の確認"
+   ]
+  },
+  {
+   "id": "KZI0041",
+   "category": "写真｜企業ロゴ",
+   "answer": "トヨタ",
+   "planned_file": "img-0041.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0042",
+   "category": "写真｜企業ロゴ",
+   "answer": "ホンダ",
+   "planned_file": "img-0042.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0043",
+   "category": "写真｜企業ロゴ",
+   "answer": "日産",
+   "planned_file": "img-0043.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0044",
+   "category": "写真｜企業ロゴ",
+   "answer": "ソニー",
+   "planned_file": "img-0044.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0045",
+   "category": "写真｜企業ロゴ",
+   "answer": "任天堂",
+   "planned_file": "img-0045.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0046",
+   "category": "写真｜企業ロゴ",
+   "answer": "パナソニック",
+   "planned_file": "img-0046.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0047",
+   "category": "写真｜企業ロゴ",
+   "answer": "ユニクロ",
+   "planned_file": "img-0047.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0048",
+   "category": "写真｜企業ロゴ",
+   "answer": "無印良品",
+   "planned_file": "img-0048.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0049",
+   "category": "写真｜企業ロゴ",
+   "answer": "サントリー",
+   "planned_file": "img-0049.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0050",
+   "category": "写真｜企業ロゴ",
+   "answer": "キリン",
+   "planned_file": "img-0050.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0051",
+   "category": "写真｜企業ロゴ",
+   "answer": "アサヒ",
+   "planned_file": "img-0051.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0052",
+   "category": "写真｜企業ロゴ",
+   "answer": "スターバックス",
+   "planned_file": "img-0052.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0053",
+   "category": "写真｜企業ロゴ",
+   "answer": "マクドナルド",
+   "planned_file": "img-0053.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0054",
+   "category": "写真｜企業ロゴ",
+   "answer": "バーガーキング",
+   "planned_file": "img-0054.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0055",
+   "category": "写真｜企業ロゴ",
+   "answer": "モスバーガー",
+   "planned_file": "img-0055.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0056",
+   "category": "写真｜企業ロゴ",
+   "answer": "ローソン",
+   "planned_file": "img-0056.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0057",
+   "category": "写真｜企業ロゴ",
+   "answer": "セブン-イレブン",
+   "planned_file": "img-0057.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0058",
+   "category": "写真｜企業ロゴ",
+   "answer": "ファミリーマート",
+   "planned_file": "img-0058.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0059",
+   "category": "写真｜企業ロゴ",
+   "answer": "Google",
+   "planned_file": "img-0059.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0060",
+   "category": "写真｜企業ロゴ",
+   "answer": "Apple",
+   "planned_file": "img-0060.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0061",
+   "category": "写真｜企業ロゴ",
+   "answer": "Microsoft",
+   "planned_file": "img-0061.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0062",
+   "category": "写真｜企業ロゴ",
+   "answer": "Amazon",
+   "planned_file": "img-0062.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0063",
+   "category": "写真｜企業ロゴ",
+   "answer": "Netflix",
+   "planned_file": "img-0063.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0064",
+   "category": "写真｜企業ロゴ",
+   "answer": "YouTube",
+   "planned_file": "img-0064.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0065",
+   "category": "写真｜企業ロゴ",
+   "answer": "LINE",
+   "planned_file": "img-0065.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）",
+    "商標・ブランド利用規定の確認"
+   ]
+  },
+  {
+   "id": "KZI0066",
+   "category": "写真｜料理",
+   "answer": "寿司",
+   "planned_file": "img-0066.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0067",
+   "category": "写真｜料理",
+   "answer": "たこ焼き",
+   "planned_file": "img-0067.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0068",
+   "category": "写真｜料理",
+   "answer": "お好み焼き",
+   "planned_file": "img-0068.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0069",
+   "category": "写真｜料理",
+   "answer": "天ぷら",
+   "planned_file": "img-0069.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0070",
+   "category": "写真｜料理",
+   "answer": "うどん",
+   "planned_file": "img-0070.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0071",
+   "category": "写真｜料理",
+   "answer": "そば",
+   "planned_file": "img-0071.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0072",
+   "category": "写真｜料理",
+   "answer": "ラーメン",
+   "planned_file": "img-0072.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0073",
+   "category": "写真｜料理",
+   "answer": "餃子",
+   "planned_file": "img-0073.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0074",
+   "category": "写真｜料理",
+   "answer": "カレーライス",
+   "planned_file": "img-0074.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0075",
+   "category": "写真｜料理",
+   "answer": "オムライス",
+   "planned_file": "img-0075.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0076",
+   "category": "写真｜料理",
+   "answer": "パエリア",
+   "planned_file": "img-0076.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0077",
+   "category": "写真｜料理",
+   "answer": "フォー",
+   "planned_file": "img-0077.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0078",
+   "category": "写真｜料理",
+   "answer": "ビビンバ",
+   "planned_file": "img-0078.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0079",
+   "category": "写真｜料理",
+   "answer": "タコス",
+   "planned_file": "img-0079.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0080",
+   "category": "写真｜料理",
+   "answer": "ピザ",
+   "planned_file": "img-0080.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0081",
+   "category": "写真｜料理",
+   "answer": "トムヤムクン",
+   "planned_file": "img-0081.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0082",
+   "category": "写真｜料理",
+   "answer": "ガパオライス",
+   "planned_file": "img-0082.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0083",
+   "category": "写真｜料理",
+   "answer": "チーズフォンデュ",
+   "planned_file": "img-0083.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0084",
+   "category": "写真｜料理",
+   "answer": "ムサカ",
+   "planned_file": "img-0084.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0085",
+   "category": "写真｜料理",
+   "answer": "ハンバーガー",
+   "planned_file": "img-0085.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0086",
+   "category": "写真｜料理",
+   "answer": "クロワッサン",
+   "planned_file": "img-0086.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0087",
+   "category": "写真｜料理",
+   "answer": "マカロン",
+   "planned_file": "img-0087.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0088",
+   "category": "写真｜料理",
+   "answer": "ティラミス",
+   "planned_file": "img-0088.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0089",
+   "category": "写真｜料理",
+   "answer": "モンブラン",
+   "planned_file": "img-0089.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0090",
+   "category": "写真｜料理",
+   "answer": "パンケーキ",
+   "planned_file": "img-0090.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0091",
+   "category": "写真｜動物・植物",
+   "answer": "レッサーパンダ",
+   "planned_file": "img-0091.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0092",
+   "category": "写真｜動物・植物",
+   "answer": "カピバラ",
+   "planned_file": "img-0092.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0093",
+   "category": "写真｜動物・植物",
+   "answer": "アルパカ",
+   "planned_file": "img-0093.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0094",
+   "category": "写真｜動物・植物",
+   "answer": "カモノハシ",
+   "planned_file": "img-0094.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0095",
+   "category": "写真｜動物・植物",
+   "answer": "ハシビロコウ",
+   "planned_file": "img-0095.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0096",
+   "category": "写真｜動物・植物",
+   "answer": "フラミンゴ",
+   "planned_file": "img-0096.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0097",
+   "category": "写真｜動物・植物",
+   "answer": "キリン",
+   "planned_file": "img-0097.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0098",
+   "category": "写真｜動物・植物",
+   "answer": "シマウマ",
+   "planned_file": "img-0098.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0099",
+   "category": "写真｜動物・植物",
+   "answer": "コアラ",
+   "planned_file": "img-0099.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0100",
+   "category": "写真｜動物・植物",
+   "answer": "ペンギン",
+   "planned_file": "img-0100.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0101",
+   "category": "写真｜動物・植物",
+   "answer": "カワセミ",
+   "planned_file": "img-0101.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0102",
+   "category": "写真｜動物・植物",
+   "answer": "オオサンショウウオ",
+   "planned_file": "img-0102.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0103",
+   "category": "写真｜動物・植物",
+   "answer": "イソギンチャク",
+   "planned_file": "img-0103.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0104",
+   "category": "写真｜動物・植物",
+   "answer": "サボテン",
+   "planned_file": "img-0104.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0105",
+   "category": "写真｜動物・植物",
+   "answer": "アジサイ",
+   "planned_file": "img-0105.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0106",
+   "category": "地図｜国・都道府県",
+   "answer": "日本",
+   "planned_file": "img-0106.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0107",
+   "category": "地図｜国・都道府県",
+   "answer": "イタリア",
+   "planned_file": "img-0107.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0108",
+   "category": "地図｜国・都道府県",
+   "answer": "フランス",
+   "planned_file": "img-0108.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0109",
+   "category": "地図｜国・都道府県",
+   "answer": "ブラジル",
+   "planned_file": "img-0109.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0110",
+   "category": "地図｜国・都道府県",
+   "answer": "オーストラリア",
+   "planned_file": "img-0110.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0111",
+   "category": "地図｜国・都道府県",
+   "answer": "インド",
+   "planned_file": "img-0111.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0112",
+   "category": "地図｜国・都道府県",
+   "answer": "カナダ",
+   "planned_file": "img-0112.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0113",
+   "category": "地図｜国・都道府県",
+   "answer": "中国",
+   "planned_file": "img-0113.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0114",
+   "category": "地図｜国・都道府県",
+   "answer": "エジプト",
+   "planned_file": "img-0114.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0115",
+   "category": "地図｜国・都道府県",
+   "answer": "タイ",
+   "planned_file": "img-0115.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0116",
+   "category": "地図｜国・都道府県",
+   "answer": "ニュージーランド",
+   "planned_file": "img-0116.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0117",
+   "category": "地図｜国・都道府県",
+   "answer": "チリ",
+   "planned_file": "img-0117.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0118",
+   "category": "地図｜国・都道府県",
+   "answer": "アイスランド",
+   "planned_file": "img-0118.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0119",
+   "category": "地図｜国・都道府県",
+   "answer": "マダガスカル",
+   "planned_file": "img-0119.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0120",
+   "category": "地図｜国・都道府県",
+   "answer": "イギリス",
+   "planned_file": "img-0120.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0121",
+   "category": "地図｜国・都道府県",
+   "answer": "ドイツ",
+   "planned_file": "img-0121.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0122",
+   "category": "地図｜国・都道府県",
+   "answer": "南アフリカ",
+   "planned_file": "img-0122.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0123",
+   "category": "地図｜国・都道府県",
+   "answer": "韓国",
+   "planned_file": "img-0123.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0124",
+   "category": "地図｜国・都道府県",
+   "answer": "アルゼンチン",
+   "planned_file": "img-0124.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  },
+  {
+   "id": "KZI0125",
+   "category": "地図｜国・都道府県",
+   "answer": "ベトナム",
+   "planned_file": "img-0125.webp",
+   "status": "pending_asset_and_license_review",
+   "needs": [
+    "画像ファイル",
+    "出典ページ",
+    "作者",
+    "ライセンス",
+    "ライセンスURL",
+    "クレジット表記",
+    "代替テキスト（答えを書かない）"
+   ]
+  }
+ ]
+}

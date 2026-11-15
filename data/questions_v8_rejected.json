@@ -1,0 +1,635 @@
+{
+ "count": 105,
+ "items": [
+  {
+   "id": "LEGQ0183",
+   "reason": "既存の問題と重複（BANK:sengoku）",
+   "question": "江戸幕府を開いた人物は？",
+   "existing": "江戸幕府を開いた人物は？"
+  },
+  {
+   "id": "LEGQ0242",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "青森県の県庁所在地は？",
+   "existing": "青森県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0243",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "岩手県の県庁所在地は？",
+   "existing": "岩手県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0244",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "宮城県の県庁所在地は？",
+   "existing": "宮城県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0245",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "秋田県の県庁所在地は？",
+   "existing": "秋田県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0246",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "山形県の県庁所在地は？",
+   "existing": "山形県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0247",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "福島県の県庁所在地は？",
+   "existing": "福島県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0248",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "茨城県の県庁所在地は？",
+   "existing": "茨城県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0249",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "栃木県の県庁所在地は？",
+   "existing": "栃木県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0250",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "群馬県の県庁所在地は？",
+   "existing": "群馬県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0251",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "埼玉県の県庁所在地は？",
+   "existing": "埼玉県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0252",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "千葉県の県庁所在地は？",
+   "existing": "千葉県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0253",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "神奈川県の県庁所在地は？",
+   "existing": "神奈川県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0254",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "新潟県の県庁所在地は？",
+   "existing": "新潟県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0255",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "石川県の県庁所在地は？",
+   "existing": "石川県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0256",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "福井県の県庁所在地は？",
+   "existing": "福井県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0257",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "山梨県の県庁所在地は？",
+   "existing": "山梨県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0258",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "長野県の県庁所在地は？",
+   "existing": "長野県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0259",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "岐阜県の県庁所在地は？",
+   "existing": "岐阜県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0260",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "静岡県の県庁所在地は？",
+   "existing": "静岡県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0261",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "三重県の県庁所在地は？",
+   "existing": "三重県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0262",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "滋賀県の県庁所在地は？",
+   "existing": "滋賀県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0263",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "兵庫県の県庁所在地は？",
+   "existing": "兵庫県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0264",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "奈良県の県庁所在地は？",
+   "existing": "奈良県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0265",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "和歌山県の県庁所在地は？",
+   "existing": "和歌山県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0266",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "島根県の県庁所在地は？",
+   "existing": "島根県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0267",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "愛媛県の県庁所在地は？",
+   "existing": "愛媛県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0268",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "佐賀県の県庁所在地は？",
+   "existing": "佐賀県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0269",
+   "reason": "既存の問題と重複（TABLE:pref）",
+   "question": "熊本県の県庁所在地は？",
+   "existing": "熊本県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0270",
+   "reason": "既存の問題と重複（BANK:japan_geo）",
+   "question": "沖縄県の県庁所在地は？",
+   "existing": "沖縄県の県庁所在地は？"
+  },
+  {
+   "id": "LEGQ0272",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "カナダの首都は？",
+   "existing": "カナダの首都は？"
+  },
+  {
+   "id": "LEGQ0273",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "メキシコの首都は？",
+   "existing": "メキシコの首都は？"
+  },
+  {
+   "id": "LEGQ0274",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ブラジルの首都は？",
+   "existing": "ブラジルの首都は？"
+  },
+  {
+   "id": "LEGQ0275",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "アルゼンチンの首都は？",
+   "existing": "アルゼンチンの首都は？"
+  },
+  {
+   "id": "LEGQ0276",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "イギリスの首都は？",
+   "existing": "イギリスの首都は？"
+  },
+  {
+   "id": "LEGQ0277",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "フランスの首都は？",
+   "existing": "フランスの首都は？"
+  },
+  {
+   "id": "LEGQ0278",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ドイツの首都は？",
+   "existing": "ドイツの首都は？"
+  },
+  {
+   "id": "LEGQ0279",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "イタリアの首都は？",
+   "existing": "イタリアの首都は？"
+  },
+  {
+   "id": "LEGQ0280",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "スペインの首都は？",
+   "existing": "スペインの首都は？"
+  },
+  {
+   "id": "LEGQ0281",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ポルトガルの首都は？",
+   "existing": "ポルトガルの首都は？"
+  },
+  {
+   "id": "LEGQ0282",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "スイスの首都は？",
+   "existing": "スイスの首都は？"
+  },
+  {
+   "id": "LEGQ0283",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "オーストリアの首都は？",
+   "existing": "オーストリアの首都は？"
+  },
+  {
+   "id": "LEGQ0284",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ギリシャの首都は？",
+   "existing": "ギリシャの首都は？"
+  },
+  {
+   "id": "LEGQ0285",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "トルコの首都は？",
+   "existing": "トルコの首都は？"
+  },
+  {
+   "id": "LEGQ0286",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "エジプトの首都は？",
+   "existing": "エジプトの首都は？"
+  },
+  {
+   "id": "LEGQ0287",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ケニアの首都は？",
+   "existing": "ケニアの首都は？"
+  },
+  {
+   "id": "LEGQ0288",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ナイジェリアの首都は？",
+   "existing": "ナイジェリアの首都は？"
+  },
+  {
+   "id": "LEGQ0290",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "中国の首都は？",
+   "existing": "中国の首都は？"
+  },
+  {
+   "id": "LEGQ0291",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "韓国の首都は？",
+   "existing": "韓国の首都は？"
+  },
+  {
+   "id": "LEGQ0292",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "タイの首都は？",
+   "existing": "タイの首都は？"
+  },
+  {
+   "id": "LEGQ0293",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ベトナムの首都は？",
+   "existing": "ベトナムの首都は？"
+  },
+  {
+   "id": "LEGQ0294",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "フィリピンの首都は？",
+   "existing": "フィリピンの首都は？"
+  },
+  {
+   "id": "LEGQ0295",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "インドの首都は？",
+   "existing": "インドの首都は？"
+  },
+  {
+   "id": "LEGQ0296",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "パキスタンの首都は？",
+   "existing": "パキスタンの首都は？"
+  },
+  {
+   "id": "LEGQ0297",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "オーストラリアの首都は？",
+   "existing": "オーストラリアの首都は？"
+  },
+  {
+   "id": "LEGQ0298",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ニュージーランドの首都は？",
+   "existing": "ニュージーランドの首都は？"
+  },
+  {
+   "id": "LEGQ0299",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "サウジアラビアの首都は？",
+   "existing": "サウジアラビアの首都は？"
+  },
+  {
+   "id": "LEGQ0300",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "アラブ首長国連邦の首都は？",
+   "existing": "アラブ首長国連邦の首都は？"
+  },
+  {
+   "id": "LEGQ0301",
+   "reason": "既存の問題と重複（BANK:science）",
+   "question": "水の化学式は？",
+   "existing": "水の化学式は？"
+  },
+  {
+   "id": "LEGQ0302",
+   "reason": "既存の問題と重複（BANK:science）",
+   "question": "二酸化炭素の化学式は？",
+   "existing": "二酸化炭素の化学式は？"
+  },
+  {
+   "id": "LEGQ0376",
+   "reason": "既存の問題と重複（BANK:history）",
+   "question": "『モナ・リザ』を描いたのは？",
+   "existing": "「モナ・リザ」を描いたのは？"
+  },
+  {
+   "id": "LEGQ0621",
+   "reason": "既存の問題と重複（BANK:movie）",
+   "question": "映画『タイタニック（1997年）』の監督は？",
+   "existing": "映画『タイタニック』（1997年）の監督は？"
+  },
+  {
+   "id": "LEGQ0644",
+   "reason": "既存の問題と重複（BANK:movie）",
+   "question": "映画『ドライブ・マイ・カー』の監督は？",
+   "existing": "映画『ドライブ・マイ・カー』の監督は？"
+  },
+  {
+   "id": "LEGQ0657",
+   "reason": "既存の問題と重複（BANK:movie）",
+   "question": "『ハリー・ポッター』の主人公が通う魔法学校は？",
+   "existing": "『ハリー・ポッター』の主人公が通う魔法学校は？"
+  },
+  {
+   "id": "LEGQ0661",
+   "reason": "既存の問題と重複（BANK:disney）",
+   "question": "『トイ・ストーリー』のカウボーイ人形の名前は？",
+   "existing": "『トイ・ストーリー』のカウボーイ人形の名前は？"
+  },
+  {
+   "id": "LEGQ1016",
+   "reason": "既存の問題と重複（BANK:anime）",
+   "question": "『ドラゴンボール』の作者は？",
+   "existing": "『ドラゴンボール』の作者は？"
+  },
+  {
+   "id": "KZ00092",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "アイスランドの首都は？",
+   "existing": "アイスランドの首都は？"
+  },
+  {
+   "id": "KZ00093",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "スリランカの首都は？",
+   "existing": "スリランカの首都は？"
+  },
+  {
+   "id": "KZ00094",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "カザフスタンの首都は？",
+   "existing": "カザフスタンの首都は？"
+  },
+  {
+   "id": "KZ00095",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ウズベキスタンの首都は？",
+   "existing": "ウズベキスタンの首都は？"
+  },
+  {
+   "id": "KZ00099",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ジョージアの首都は？",
+   "existing": "ジョージアの首都は？"
+  },
+  {
+   "id": "KZ00100",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "アルメニアの首都は？",
+   "existing": "アルメニアの首都は？"
+  },
+  {
+   "id": "KZ00101",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "アゼルバイジャンの首都は？",
+   "existing": "アゼルバイジャンの首都は？"
+  },
+  {
+   "id": "KZ00102",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "クロアチアの首都は？",
+   "existing": "クロアチアの首都は？"
+  },
+  {
+   "id": "KZ00103",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "セルビアの首都は？",
+   "existing": "セルビアの首都は？"
+  },
+  {
+   "id": "KZ00104",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "スロベニアの首都は？",
+   "existing": "スロベニアの首都は？"
+  },
+  {
+   "id": "KZ00105",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "スロバキアの首都は？",
+   "existing": "スロバキアの首都は？"
+  },
+  {
+   "id": "KZ00106",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ルーマニアの首都は？",
+   "existing": "ルーマニアの首都は？"
+  },
+  {
+   "id": "KZ00107",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ブルガリアの首都は？",
+   "existing": "ブルガリアの首都は？"
+  },
+  {
+   "id": "KZ00108",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "リトアニアの首都は？",
+   "existing": "リトアニアの首都は？"
+  },
+  {
+   "id": "KZ00109",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ラトビアの首都は？",
+   "existing": "ラトビアの首都は？"
+  },
+  {
+   "id": "KZ00110",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "エストニアの首都は？",
+   "existing": "エストニアの首都は？"
+  },
+  {
+   "id": "KZ00111",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "マルタの首都は？",
+   "existing": "マルタの首都は？"
+  },
+  {
+   "id": "KZ00112",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "キプロスの首都は？",
+   "existing": "キプロスの首都は？"
+  },
+  {
+   "id": "KZ00114",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "セネガルの首都は？",
+   "existing": "セネガルの首都は？"
+  },
+  {
+   "id": "KZ00115",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ガーナの首都は？",
+   "existing": "ガーナの首都は？"
+  },
+  {
+   "id": "KZ00116",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ウガンダの首都は？",
+   "existing": "ウガンダの首都は？"
+  },
+  {
+   "id": "KZ00117",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ルワンダの首都は？",
+   "existing": "ルワンダの首都は？"
+  },
+  {
+   "id": "KZ00118",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ザンビアの首都は？",
+   "existing": "ザンビアの首都は？"
+  },
+  {
+   "id": "KZ00119",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ジンバブエの首都は？",
+   "existing": "ジンバブエの首都は？"
+  },
+  {
+   "id": "KZ00120",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ウルグアイの首都は？",
+   "existing": "ウルグアイの首都は？"
+  },
+  {
+   "id": "KZ00121",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "パラグアイの首都は？",
+   "existing": "パラグアイの首都は？"
+  },
+  {
+   "id": "KZ00123",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "エクアドルの首都は？",
+   "existing": "エクアドルの首都は？"
+  },
+  {
+   "id": "KZ00124",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ベネズエラの首都は？",
+   "existing": "ベネズエラの首都は？"
+  },
+  {
+   "id": "KZ00125",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "コスタリカの首都は？",
+   "existing": "コスタリカの首都は？"
+  },
+  {
+   "id": "KZ00126",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "パナマの首都は？",
+   "existing": "パナマの首都は？"
+  },
+  {
+   "id": "KZ00127",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "グアテマラの首都は？",
+   "existing": "グアテマラの首都は？"
+  },
+  {
+   "id": "KZ00128",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "キューバの首都は？",
+   "existing": "キューバの首都は？"
+  },
+  {
+   "id": "KZ00129",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "ジャマイカの首都は？",
+   "existing": "ジャマイカの首都は？"
+  },
+  {
+   "id": "KZ00131",
+   "reason": "既存の問題と重複（TABLE:capital）",
+   "question": "フィジーの首都は？",
+   "existing": "フィジーの首都は？"
+  },
+  {
+   "id": "KZ00544",
+   "reason": "既存の問題と重複（BANK:money）",
+   "question": "日本の中央銀行は？",
+   "existing": "日本の中央銀行は？"
+  },
+  {
+   "id": "KZ00617",
+   "reason": "既存の問題と重複（BANK:zatsugaku）",
+   "question": "災害用伝言ダイヤルの番号は？",
+   "existing": "災害用伝言ダイヤルの番号は？"
+  },
+  {
+   "id": "KZ00842",
+   "reason": "既存の問題と重複（TABLE:english）",
+   "question": "「available」の意味は？",
+   "existing": "「available」の意味は？"
+  },
+  {
+   "id": "KZ00849",
+   "reason": "既存の問題と重複（TABLE:english）",
+   "question": "「apologize」の意味は？",
+   "existing": "「apologize」の意味は？"
+  },
+  {
+   "id": "KZ00851",
+   "reason": "既存の問題と重複（TABLE:english）",
+   "question": "「schedule」の意味は？",
+   "existing": "「schedule」の意味は？"
+  }
+ ]
+}

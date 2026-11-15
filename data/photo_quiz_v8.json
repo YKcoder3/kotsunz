@@ -1,0 +1,3756 @@
+{
+ "note": "画像・権利確認前。asset_path が null か status が approved でないものはゲームに出さない",
+ "count": 125,
+ "questions": [
+  {
+   "id": "KZI0001",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "エッフェル塔",
+    "東京タワー",
+    "シドニー・オペラハウス",
+    "姫路城"
+   ],
+   "correct_index": 0,
+   "answer": "エッフェル塔",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0001.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0002",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "エッフェル塔",
+    "グランドキャニオン",
+    "東京タワー",
+    "タージ・マハル"
+   ],
+   "correct_index": 2,
+   "answer": "東京タワー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0002.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0003",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "厳島神社の大鳥居",
+    "姫路城",
+    "自由の女神像",
+    "タージ・マハル"
+   ],
+   "correct_index": 1,
+   "answer": "姫路城",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0003.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0004",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "東京タワー",
+    "マチュ・ピチュ",
+    "サグラダ・ファミリア",
+    "金閣寺"
+   ],
+   "correct_index": 1,
+   "answer": "マチュ・ピチュ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0004.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0005",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "サグラダ・ファミリア",
+    "タージ・マハル",
+    "ストーンヘンジ",
+    "ピサの斜塔"
+   ],
+   "correct_index": 1,
+   "answer": "タージ・マハル",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0005.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0006",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "コロッセオ",
+    "エッフェル塔",
+    "自由の女神像",
+    "グランドキャニオン"
+   ],
+   "correct_index": 2,
+   "answer": "自由の女神像",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0006.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0007",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "ストーンヘンジ",
+    "サグラダ・ファミリア",
+    "エッフェル塔",
+    "モアイ像"
+   ],
+   "correct_index": 1,
+   "answer": "サグラダ・ファミリア",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0007.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0008",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "ブルジュ・ハリファ",
+    "グランドキャニオン",
+    "コロッセオ",
+    "万里の長城"
+   ],
+   "correct_index": 2,
+   "answer": "コロッセオ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0008.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0009",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "厳島神社の大鳥居",
+    "モアイ像",
+    "ピサの斜塔",
+    "ストーンヘンジ"
+   ],
+   "correct_index": 2,
+   "answer": "ピサの斜塔",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0009.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0010",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "グランドキャニオン",
+    "ブルジュ・ハリファ",
+    "金閣寺",
+    "マチュ・ピチュ"
+   ],
+   "correct_index": 2,
+   "answer": "金閣寺",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0010.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0011",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "ブルジュ・ハリファ",
+    "厳島神社の大鳥居",
+    "マリーナベイ・サンズ",
+    "グランドキャニオン"
+   ],
+   "correct_index": 1,
+   "answer": "厳島神社の大鳥居",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0011.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0012",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "シドニー・オペラハウス",
+    "ストーンヘンジ",
+    "姫路城",
+    "アンコール・ワット"
+   ],
+   "correct_index": 3,
+   "answer": "アンコール・ワット",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0012.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0013",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "タージ・マハル",
+    "富士山",
+    "アンコール・ワット",
+    "ブルジュ・ハリファ"
+   ],
+   "correct_index": 3,
+   "answer": "ブルジュ・ハリファ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0013.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0014",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "富士山",
+    "シドニー・オペラハウス",
+    "ブルジュ・ハリファ",
+    "姫路城"
+   ],
+   "correct_index": 1,
+   "answer": "シドニー・オペラハウス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0014.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0015",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "自由の女神像",
+    "マリーナベイ・サンズ",
+    "モアイ像",
+    "東京タワー"
+   ],
+   "correct_index": 2,
+   "answer": "モアイ像",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0015.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0016",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "タージ・マハル",
+    "ピサの斜塔",
+    "グランドキャニオン",
+    "マリーナベイ・サンズ"
+   ],
+   "correct_index": 3,
+   "answer": "マリーナベイ・サンズ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0016.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0017",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "モアイ像",
+    "アンコール・ワット",
+    "グランドキャニオン",
+    "富士山"
+   ],
+   "correct_index": 3,
+   "answer": "富士山",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0017.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0018",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "金閣寺",
+    "姫路城",
+    "富士山",
+    "グランドキャニオン"
+   ],
+   "correct_index": 3,
+   "answer": "グランドキャニオン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0018.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0019",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "東京タワー",
+    "ストーンヘンジ",
+    "シドニー・オペラハウス",
+    "富士山"
+   ],
+   "correct_index": 1,
+   "answer": "ストーンヘンジ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0019.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0020",
+   "category_id": "photo",
+   "category": "写真｜世界・日本の名所",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真に写る名所の名前は？",
+   "options": [
+    "エッフェル塔",
+    "サグラダ・ファミリア",
+    "コロッセオ",
+    "万里の長城"
+   ],
+   "correct_index": 3,
+   "answer": "万里の長城",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0020.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0021",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "リンカーン",
+    "夏目漱石",
+    "織田信長",
+    "アインシュタイン"
+   ],
+   "correct_index": 1,
+   "answer": "夏目漱石",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0021.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0022",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "葛飾北斎",
+    "リンカーン",
+    "福沢諭吉",
+    "レオナルド・ダ・ヴィンチ"
+   ],
+   "correct_index": 2,
+   "answer": "福沢諭吉",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0022.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0023",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "野口英世",
+    "織田信長",
+    "樋口一葉",
+    "アインシュタイン"
+   ],
+   "correct_index": 0,
+   "answer": "野口英世",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0023.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0024",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "徳川家康",
+    "シェイクスピア",
+    "夏目漱石",
+    "アインシュタイン"
+   ],
+   "correct_index": 3,
+   "answer": "アインシュタイン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0024.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0025",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "マリー・キュリー",
+    "モーツァルト",
+    "シェイクスピア",
+    "樋口一葉"
+   ],
+   "correct_index": 0,
+   "answer": "マリー・キュリー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0025.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0026",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "織田信長",
+    "モーツァルト",
+    "ガンディー",
+    "リンカーン"
+   ],
+   "correct_index": 2,
+   "answer": "ガンディー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0026.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0027",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "ナイチンゲール",
+    "野口英世",
+    "織田信長",
+    "ニュートン"
+   ],
+   "correct_index": 0,
+   "answer": "ナイチンゲール",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0027.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0028",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "リンカーン",
+    "エジソン",
+    "ナイチンゲール",
+    "樋口一葉"
+   ],
+   "correct_index": 1,
+   "answer": "エジソン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0028.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0029",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "リンカーン",
+    "織田信長",
+    "ダーウィン",
+    "レオナルド・ダ・ヴィンチ"
+   ],
+   "correct_index": 2,
+   "answer": "ダーウィン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0029.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0030",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "ベートーヴェン",
+    "モーツァルト",
+    "リンカーン",
+    "シェイクスピア"
+   ],
+   "correct_index": 0,
+   "answer": "ベートーヴェン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0030.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0031",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "リンカーン",
+    "野口英世",
+    "モーツァルト",
+    "アインシュタイン"
+   ],
+   "correct_index": 2,
+   "answer": "モーツァルト",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0031.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0032",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "伊藤博文",
+    "シェイクスピア",
+    "リンカーン",
+    "徳川家康"
+   ],
+   "correct_index": 3,
+   "answer": "徳川家康",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0032.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0033",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "モーツァルト",
+    "ベートーヴェン",
+    "織田信長",
+    "エジソン"
+   ],
+   "correct_index": 2,
+   "answer": "織田信長",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0033.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0034",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "葛飾北斎",
+    "エジソン",
+    "アインシュタイン",
+    "シェイクスピア"
+   ],
+   "correct_index": 0,
+   "answer": "葛飾北斎",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0034.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0035",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "レオナルド・ダ・ヴィンチ",
+    "野口英世",
+    "福沢諭吉",
+    "リンカーン"
+   ],
+   "correct_index": 0,
+   "answer": "レオナルド・ダ・ヴィンチ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0035.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0036",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "アインシュタイン",
+    "モーツァルト",
+    "シェイクスピア",
+    "マリー・キュリー"
+   ],
+   "correct_index": 2,
+   "answer": "シェイクスピア",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0036.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0037",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "織田信長",
+    "ニュートン",
+    "樋口一葉",
+    "野口英世"
+   ],
+   "correct_index": 1,
+   "answer": "ニュートン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0037.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0038",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "徳川家康",
+    "樋口一葉",
+    "葛飾北斎",
+    "リンカーン"
+   ],
+   "correct_index": 3,
+   "answer": "リンカーン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0038.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0039",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "夏目漱石",
+    "徳川家康",
+    "モーツァルト",
+    "伊藤博文"
+   ],
+   "correct_index": 3,
+   "answer": "伊藤博文",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0039.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0040",
+   "category_id": "photo",
+   "category": "写真｜人物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この人物の名前は？",
+   "options": [
+    "樋口一葉",
+    "マリー・キュリー",
+    "アインシュタイン",
+    "夏目漱石"
+   ],
+   "correct_index": 0,
+   "answer": "樋口一葉",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0040.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0041",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "Google",
+    "モスバーガー",
+    "キリン",
+    "トヨタ"
+   ],
+   "correct_index": 3,
+   "answer": "トヨタ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0041.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0042",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "ファミリーマート",
+    "セブン-イレブン",
+    "サントリー",
+    "ホンダ"
+   ],
+   "correct_index": 3,
+   "answer": "ホンダ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0042.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0043",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "トヨタ",
+    "ソニー",
+    "キリン",
+    "日産"
+   ],
+   "correct_index": 3,
+   "answer": "日産",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0043.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0044",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "ソニー",
+    "アサヒ",
+    "セブン-イレブン",
+    "無印良品"
+   ],
+   "correct_index": 0,
+   "answer": "ソニー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0044.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0045",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "ユニクロ",
+    "Amazon",
+    "任天堂",
+    "モスバーガー"
+   ],
+   "correct_index": 2,
+   "answer": "任天堂",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0045.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0046",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "バーガーキング",
+    "ホンダ",
+    "Amazon",
+    "パナソニック"
+   ],
+   "correct_index": 3,
+   "answer": "パナソニック",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0046.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0047",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "ユニクロ",
+    "セブン-イレブン",
+    "ファミリーマート",
+    "サントリー"
+   ],
+   "correct_index": 0,
+   "answer": "ユニクロ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0047.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0048",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "Apple",
+    "パナソニック",
+    "モスバーガー",
+    "無印良品"
+   ],
+   "correct_index": 3,
+   "answer": "無印良品",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0048.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0049",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "無印良品",
+    "バーガーキング",
+    "サントリー",
+    "任天堂"
+   ],
+   "correct_index": 2,
+   "answer": "サントリー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0049.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0050",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "Amazon",
+    "モスバーガー",
+    "Google",
+    "キリン"
+   ],
+   "correct_index": 3,
+   "answer": "キリン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0050.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0051",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "キリン",
+    "アサヒ",
+    "サントリー",
+    "日産"
+   ],
+   "correct_index": 1,
+   "answer": "アサヒ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0051.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0052",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "キリン",
+    "トヨタ",
+    "Apple",
+    "スターバックス"
+   ],
+   "correct_index": 3,
+   "answer": "スターバックス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0052.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0053",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "サントリー",
+    "Google",
+    "ユニクロ",
+    "マクドナルド"
+   ],
+   "correct_index": 3,
+   "answer": "マクドナルド",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0053.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0054",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "バーガーキング",
+    "アサヒ",
+    "Netflix",
+    "ファミリーマート"
+   ],
+   "correct_index": 0,
+   "answer": "バーガーキング",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0054.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0055",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "LINE",
+    "モスバーガー",
+    "Microsoft",
+    "Google"
+   ],
+   "correct_index": 1,
+   "answer": "モスバーガー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0055.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0056",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "任天堂",
+    "ローソン",
+    "サントリー",
+    "セブン-イレブン"
+   ],
+   "correct_index": 1,
+   "answer": "ローソン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0056.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0057",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "セブン-イレブン",
+    "ホンダ",
+    "ソニー",
+    "YouTube"
+   ],
+   "correct_index": 0,
+   "answer": "セブン-イレブン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0057.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0058",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "LINE",
+    "ソニー",
+    "Apple",
+    "ファミリーマート"
+   ],
+   "correct_index": 3,
+   "answer": "ファミリーマート",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0058.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0059",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "スターバックス",
+    "セブン-イレブン",
+    "Google",
+    "日産"
+   ],
+   "correct_index": 2,
+   "answer": "Google",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0059.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0060",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "YouTube",
+    "ユニクロ",
+    "キリン",
+    "Apple"
+   ],
+   "correct_index": 3,
+   "answer": "Apple",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0060.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0061",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "Netflix",
+    "パナソニック",
+    "キリン",
+    "Microsoft"
+   ],
+   "correct_index": 3,
+   "answer": "Microsoft",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0061.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0062",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "Amazon",
+    "マクドナルド",
+    "LINE",
+    "無印良品"
+   ],
+   "correct_index": 0,
+   "answer": "Amazon",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0062.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0063",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "スターバックス",
+    "YouTube",
+    "Netflix",
+    "モスバーガー"
+   ],
+   "correct_index": 2,
+   "answer": "Netflix",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0063.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0064",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "パナソニック",
+    "Amazon",
+    "YouTube",
+    "セブン-イレブン"
+   ],
+   "correct_index": 2,
+   "answer": "YouTube",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0064.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0065",
+   "category_id": "photo",
+   "category": "写真｜企業ロゴ",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "このロゴの企業・ブランドは？",
+   "options": [
+    "LINE",
+    "Apple",
+    "スターバックス",
+    "無印良品"
+   ],
+   "correct_index": 0,
+   "answer": "LINE",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0065.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0066",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "トムヤムクン",
+    "寿司",
+    "チーズフォンデュ",
+    "お好み焼き"
+   ],
+   "correct_index": 1,
+   "answer": "寿司",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0066.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0067",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "餃子",
+    "たこ焼き",
+    "ピザ",
+    "寿司"
+   ],
+   "correct_index": 1,
+   "answer": "たこ焼き",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0067.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0068",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "お好み焼き",
+    "モンブラン",
+    "たこ焼き",
+    "トムヤムクン"
+   ],
+   "correct_index": 0,
+   "answer": "お好み焼き",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0068.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0069",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "ガパオライス",
+    "そば",
+    "タコス",
+    "天ぷら"
+   ],
+   "correct_index": 3,
+   "answer": "天ぷら",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0069.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0070",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "うどん",
+    "パンケーキ",
+    "寿司",
+    "ハンバーガー"
+   ],
+   "correct_index": 0,
+   "answer": "うどん",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0070.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0071",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "寿司",
+    "オムライス",
+    "ハンバーガー",
+    "そば"
+   ],
+   "correct_index": 3,
+   "answer": "そば",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0071.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0072",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "ハンバーガー",
+    "チーズフォンデュ",
+    "マカロン",
+    "ラーメン"
+   ],
+   "correct_index": 3,
+   "answer": "ラーメン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0072.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0073",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "餃子",
+    "寿司",
+    "ラーメン",
+    "マカロン"
+   ],
+   "correct_index": 0,
+   "answer": "餃子",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0073.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0074",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "カレーライス",
+    "お好み焼き",
+    "タコス",
+    "トムヤムクン"
+   ],
+   "correct_index": 0,
+   "answer": "カレーライス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0074.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0075",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "ティラミス",
+    "オムライス",
+    "ピザ",
+    "ラーメン"
+   ],
+   "correct_index": 1,
+   "answer": "オムライス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0075.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0076",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "パエリア",
+    "カレーライス",
+    "オムライス",
+    "トムヤムクン"
+   ],
+   "correct_index": 0,
+   "answer": "パエリア",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0076.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0077",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "フォー",
+    "ピザ",
+    "マカロン",
+    "モンブラン"
+   ],
+   "correct_index": 0,
+   "answer": "フォー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0077.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0078",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "うどん",
+    "ビビンバ",
+    "カレーライス",
+    "ムサカ"
+   ],
+   "correct_index": 1,
+   "answer": "ビビンバ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0078.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0079",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "タコス",
+    "たこ焼き",
+    "チーズフォンデュ",
+    "ラーメン"
+   ],
+   "correct_index": 0,
+   "answer": "タコス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0079.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0080",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "マカロン",
+    "ハンバーガー",
+    "ピザ",
+    "モンブラン"
+   ],
+   "correct_index": 2,
+   "answer": "ピザ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0080.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0081",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "寿司",
+    "ピザ",
+    "トムヤムクン",
+    "ムサカ"
+   ],
+   "correct_index": 2,
+   "answer": "トムヤムクン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0081.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0082",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "お好み焼き",
+    "ハンバーガー",
+    "クロワッサン",
+    "ガパオライス"
+   ],
+   "correct_index": 3,
+   "answer": "ガパオライス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0082.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0083",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "モンブラン",
+    "オムライス",
+    "ハンバーガー",
+    "チーズフォンデュ"
+   ],
+   "correct_index": 3,
+   "answer": "チーズフォンデュ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0083.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0084",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "トムヤムクン",
+    "ティラミス",
+    "オムライス",
+    "ムサカ"
+   ],
+   "correct_index": 3,
+   "answer": "ムサカ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0084.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0085",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "ハンバーガー",
+    "ラーメン",
+    "チーズフォンデュ",
+    "パンケーキ"
+   ],
+   "correct_index": 0,
+   "answer": "ハンバーガー",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0085.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0086",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "寿司",
+    "トムヤムクン",
+    "クロワッサン",
+    "ガパオライス"
+   ],
+   "correct_index": 2,
+   "answer": "クロワッサン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0086.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0087",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "ラーメン",
+    "たこ焼き",
+    "マカロン",
+    "餃子"
+   ],
+   "correct_index": 2,
+   "answer": "マカロン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0087.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0088",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "ティラミス",
+    "タコス",
+    "寿司",
+    "クロワッサン"
+   ],
+   "correct_index": 0,
+   "answer": "ティラミス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0088.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0089",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "カレーライス",
+    "モンブラン",
+    "チーズフォンデュ",
+    "そば"
+   ],
+   "correct_index": 1,
+   "answer": "モンブラン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0089.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0090",
+   "category_id": "photo",
+   "category": "写真｜料理",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の料理名は？",
+   "options": [
+    "パンケーキ",
+    "クロワッサン",
+    "ビビンバ",
+    "ピザ"
+   ],
+   "correct_index": 0,
+   "answer": "パンケーキ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0090.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0091",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "コアラ",
+    "レッサーパンダ",
+    "アルパカ",
+    "ペンギン"
+   ],
+   "correct_index": 1,
+   "answer": "レッサーパンダ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0091.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0092",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "オオサンショウウオ",
+    "シマウマ",
+    "カピバラ",
+    "ハシビロコウ"
+   ],
+   "correct_index": 2,
+   "answer": "カピバラ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0092.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0093",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "アジサイ",
+    "アルパカ",
+    "サボテン",
+    "フラミンゴ"
+   ],
+   "correct_index": 1,
+   "answer": "アルパカ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0093.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0094",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "ハシビロコウ",
+    "サボテン",
+    "カモノハシ",
+    "フラミンゴ"
+   ],
+   "correct_index": 2,
+   "answer": "カモノハシ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0094.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0095",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "カピバラ",
+    "キリン",
+    "カモノハシ",
+    "ハシビロコウ"
+   ],
+   "correct_index": 3,
+   "answer": "ハシビロコウ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0095.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0096",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "アジサイ",
+    "レッサーパンダ",
+    "フラミンゴ",
+    "カワセミ"
+   ],
+   "correct_index": 2,
+   "answer": "フラミンゴ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0096.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0097",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "キリン",
+    "サボテン",
+    "イソギンチャク",
+    "カワセミ"
+   ],
+   "correct_index": 0,
+   "answer": "キリン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0097.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0098",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "コアラ",
+    "シマウマ",
+    "カピバラ",
+    "アルパカ"
+   ],
+   "correct_index": 1,
+   "answer": "シマウマ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0098.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0099",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "レッサーパンダ",
+    "シマウマ",
+    "コアラ",
+    "アジサイ"
+   ],
+   "correct_index": 2,
+   "answer": "コアラ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0099.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0100",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "フラミンゴ",
+    "ペンギン",
+    "アジサイ",
+    "イソギンチャク"
+   ],
+   "correct_index": 1,
+   "answer": "ペンギン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0100.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0101",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "ハシビロコウ",
+    "コアラ",
+    "イソギンチャク",
+    "カワセミ"
+   ],
+   "correct_index": 3,
+   "answer": "カワセミ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0101.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0102",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "ハシビロコウ",
+    "オオサンショウウオ",
+    "カピバラ",
+    "イソギンチャク"
+   ],
+   "correct_index": 1,
+   "answer": "オオサンショウウオ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0102.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0103",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "サボテン",
+    "イソギンチャク",
+    "オオサンショウウオ",
+    "カモノハシ"
+   ],
+   "correct_index": 1,
+   "answer": "イソギンチャク",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0103.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0104",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "カモノハシ",
+    "ペンギン",
+    "サボテン",
+    "キリン"
+   ],
+   "correct_index": 2,
+   "answer": "サボテン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0104.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0105",
+   "category_id": "photo",
+   "category": "写真｜動物・植物",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この写真の生き物・植物は？",
+   "options": [
+    "キリン",
+    "アジサイ",
+    "シマウマ",
+    "オオサンショウウオ"
+   ],
+   "correct_index": 1,
+   "answer": "アジサイ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0105.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0106",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "イギリス",
+    "ニュージーランド",
+    "日本",
+    "チリ"
+   ],
+   "correct_index": 2,
+   "answer": "日本",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0106.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0107",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "ドイツ",
+    "イタリア",
+    "ベトナム",
+    "オーストラリア"
+   ],
+   "correct_index": 1,
+   "answer": "イタリア",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0107.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0108",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "フランス",
+    "ドイツ",
+    "マダガスカル",
+    "日本"
+   ],
+   "correct_index": 0,
+   "answer": "フランス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0108.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0109",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "ドイツ",
+    "ブラジル",
+    "イギリス",
+    "ベトナム"
+   ],
+   "correct_index": 1,
+   "answer": "ブラジル",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0109.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0110",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "タイ",
+    "オーストラリア",
+    "インド",
+    "アイスランド"
+   ],
+   "correct_index": 1,
+   "answer": "オーストラリア",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0110.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0111",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "中国",
+    "南アフリカ",
+    "ベトナム",
+    "インド"
+   ],
+   "correct_index": 3,
+   "answer": "インド",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0111.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0112",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "ベトナム",
+    "タイ",
+    "カナダ",
+    "マダガスカル"
+   ],
+   "correct_index": 2,
+   "answer": "カナダ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0112.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0113",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "マダガスカル",
+    "中国",
+    "ベトナム",
+    "ブラジル"
+   ],
+   "correct_index": 1,
+   "answer": "中国",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0113.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0114",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "エジプト",
+    "ドイツ",
+    "ブラジル",
+    "イタリア"
+   ],
+   "correct_index": 0,
+   "answer": "エジプト",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0114.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0115",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "カナダ",
+    "ブラジル",
+    "フランス",
+    "タイ"
+   ],
+   "correct_index": 3,
+   "answer": "タイ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0115.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0116",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "ニュージーランド",
+    "アルゼンチン",
+    "日本",
+    "オーストラリア"
+   ],
+   "correct_index": 0,
+   "answer": "ニュージーランド",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0116.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0117",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "韓国",
+    "チリ",
+    "ドイツ",
+    "ベトナム"
+   ],
+   "correct_index": 1,
+   "answer": "チリ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0117.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0118",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "南アフリカ",
+    "イタリア",
+    "アイスランド",
+    "ニュージーランド"
+   ],
+   "correct_index": 2,
+   "answer": "アイスランド",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0118.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0119",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "ベトナム",
+    "日本",
+    "マダガスカル",
+    "ブラジル"
+   ],
+   "correct_index": 2,
+   "answer": "マダガスカル",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0119.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0120",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "イギリス",
+    "南アフリカ",
+    "アルゼンチン",
+    "オーストラリア"
+   ],
+   "correct_index": 0,
+   "answer": "イギリス",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0120.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0121",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "ベトナム",
+    "ドイツ",
+    "アイスランド",
+    "韓国"
+   ],
+   "correct_index": 1,
+   "answer": "ドイツ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0121.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0122",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "南アフリカ",
+    "ドイツ",
+    "アルゼンチン",
+    "ニュージーランド"
+   ],
+   "correct_index": 0,
+   "answer": "南アフリカ",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0122.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0123",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "南アフリカ",
+    "韓国",
+    "ニュージーランド",
+    "タイ"
+   ],
+   "correct_index": 1,
+   "answer": "韓国",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0123.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0124",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "日本",
+    "チリ",
+    "アルゼンチン",
+    "エジプト"
+   ],
+   "correct_index": 2,
+   "answer": "アルゼンチン",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0124.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  },
+  {
+   "id": "KZI0125",
+   "category_id": "photo",
+   "category": "地図｜国・都道府県",
+   "group": "写真クイズ",
+   "difficulty": "ふつう",
+   "question": "この地図のシルエットが示す国は？",
+   "options": [
+    "エジプト",
+    "フランス",
+    "イギリス",
+    "ベトナム"
+   ],
+   "correct_index": 3,
+   "answer": "ベトナム",
+   "explanation": "",
+   "media": {
+    "type": "image",
+    "asset_path": null,
+    "planned_file": "img-0125.webp",
+    "source_page": null,
+    "author": null,
+    "license": null,
+    "license_url": null,
+    "attribution": null,
+    "alt_text": null,
+    "status": "pending_asset_and_license_review"
+   },
+   "review_status": "pending_asset_and_license_review"
+  }
+ ]
+}
