@@ -109,6 +109,8 @@ button:disabled{opacity:.4}
 .lay i.l-vwave::before{top:0;left:12px;height:100%;width:8px;background:none;border-left:3px solid #fff;border-radius:50% 0 0 50%/100% 0 0 100%}
 .lay i.l-zig::before{left:-4px;top:16px;width:40px;height:3px;transform:rotate(-28deg)}
 .lay i.l-one{}
+.lay i.l-hcut::before{left:0;top:18px;width:100%;height:2px;background:#2a1d55;opacity:.35}
+.lay i.l-vcut::before{top:0;left:14px;height:100%;width:2px;background:#2a1d55;opacity:.35}
 .aspect{display:flex;gap:7px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
 .aspect .chip{display:flex;align-items:center;gap:6px}
 .aspect .chip i{display:inline-block;border:2px solid currentColor;border-radius:3px}
@@ -156,6 +158,8 @@ button:disabled{opacity:.4}
         <button class="chip lay" data-lay="wave" aria-pressed="true"><i class="l-wave"></i>なみなみ</button>
         <button class="chip lay" data-lay="vwave" aria-pressed="false"><i class="l-vwave"></i>ゆらゆら</button>
         <button class="chip lay" data-lay="zig" aria-pressed="false"><i class="l-zig"></i>コツン！</button>
+        <button class="chip lay" data-lay="hcut" aria-pressed="false"><i class="l-hcut"></i>上下</button>
+        <button class="chip lay" data-lay="vcut" aria-pressed="false"><i class="l-vcut"></i>左右</button>
         <button class="chip lay" data-lay="one" aria-pressed="false"><i class="l-one"></i>1枚</button>
         <button class="chip" id="swap">⇄ 入れかえ</button>
         <button class="chip" id="sparkBtn" aria-pressed="true">💥 コツン</button>
@@ -166,7 +170,8 @@ button:disabled{opacity:.4}
         <button class="chip" data-asp="916" aria-pressed="false"><i style="width:10px;height:17px"></i>ストーリー</button>
         <button class="chip" data-asp="43" aria-pressed="false"><i style="width:16px;height:12px"></i>よこ</button>
       </div>
-      <p class="hint">2枚の写真が「コツン」とくっつく形です。写真は指で動かして、2本指で拡大できます。</p>
+      <div class="sel-tools" id="sparkTools"><label>💥 コツンの大きさ<input type="range" id="spSize" min="50" max="180" value="100"></label></div>
+      <p class="hint">2枚の写真が「コツン」とくっつく形です。「上下」「左右」はまっすぐ（すきまなし）。写真は指で動かして、2本指で拡大できます。</p>
     </div>
     <div class="pane hidden" id="pane-pho">
       <div class="row" id="phoWho">
@@ -341,7 +346,7 @@ function setLay(lay, resetLogo){
   if(!two() && lay !== "one"){ toast("2枚あるときに使えるよ"); return; }
   S.lay = lay;
   document.querySelectorAll("[data-lay]").forEach(b => { b.setAttribute("aria-pressed", String(b.dataset.lay === lay)); b.disabled = !two() && b.dataset.lay !== "one"; });
-  $("swap").disabled = !two(); $("sparkBtn").disabled = !two() || lay === "one";
+  $("swap").disabled = !two(); $("sparkBtn").disabled = !two() || lay === "one"; syncSpark();
   resize(resetLogo);
 }
 function resize(resetLogo){
@@ -381,6 +386,8 @@ function slots(){
   const A = S.swap ? "environment" : "user", B = other(A), m = Math.min(W, H);
   if(S.lay === "wave"){ const amp = m * .045; return [{ k: B, x: 0, y: H / 2 - amp, w: W, h: H / 2 + amp, path: wavePath(W, H, true, amp, 1.5, 1) }, { k: A, x: 0, y: 0, w: W, h: H / 2 + amp, path: wavePath(W, H, true, amp, 1.5, 0), top: true }]; }
   if(S.lay === "vwave"){ const amp = m * .045; return [{ k: B, x: W / 2 - amp, y: 0, w: W / 2 + amp, h: H, path: wavePath(W, H, false, amp, 1.5, 1) }, { k: A, x: 0, y: 0, w: W / 2 + amp, h: H, path: wavePath(W, H, false, amp, 1.5, 0), top: true }]; }
+  if(S.lay === "hcut"){ const a = new Path2D(), b2 = new Path2D(); a.rect(0, 0, W, H / 2); b2.rect(0, H / 2, W, H / 2); return [{ k: A, x: 0, y: 0, w: W, h: H / 2, path: a }, { k: B, x: 0, y: H / 2, w: W, h: H / 2, path: b2 }]; }
+  if(S.lay === "vcut"){ const a = new Path2D(), b2 = new Path2D(); a.rect(0, 0, W / 2, H); b2.rect(W / 2, 0, W / 2, H); return [{ k: A, x: 0, y: 0, w: W / 2, h: H, path: a }, { k: B, x: W / 2, y: 0, w: W / 2, h: H, path: b2 }]; }
   const tooth = m * .035;   // zig
   return [{ k: B, x: 0, y: H * .38 - tooth, w: W, h: H * .62 + tooth, path: zigPath(W, H, 1) }, { k: A, x: 0, y: 0, w: W, h: H * .62 + tooth, path: zigPath(W, H, 0), top: true }];
 }
@@ -517,7 +524,7 @@ cv.addEventListener("pointermove", e => {
     const [a, b] = ps, k = Math.hypot(a.x - b.x, a.y - b.y) / drag.d0, da = Math.atan2(b.y - a.y, b.x - a.x) - drag.a0, o = drag.obj;
     if(drag.kind === "pan"){ S.view[drag.slot.k].z = Math.max(1, Math.min(4, drag.base.z * k)); syncPhotoTab(); }
     else if(o === "logo") S.logo.s = Math.max(.7, Math.min(1.8, drag.base.s * k));
-    else if(o === "spark") S.spark.s = Math.max(.5, Math.min(1.8, drag.base.s * k));
+    else if(o === "spark"){ S.spark.s = Math.max(.5, Math.min(1.8, drag.base.s * k)); $("spSize").value = Math.round(S.spark.s * 100); }
     else { o.w = Math.max(.1, Math.min(.8, drag.base.w * k)); o.rot = drag.base.rot + da; }
     syncTools(); render(); return;
   }
@@ -538,7 +545,9 @@ document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click",
 document.querySelectorAll("[data-lay]").forEach(b => b.addEventListener("click", () => setLay(b.dataset.lay, false)));
 document.querySelectorAll("[data-asp]").forEach(b => b.addEventListener("click", () => { S.asp = b.dataset.asp; document.querySelectorAll("[data-asp]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); resize(false); }));
 $("swap").addEventListener("click", () => { S.swap = !S.swap; render(); });
-$("sparkBtn").addEventListener("click", () => { S.spark.on = !S.spark.on; $("sparkBtn").setAttribute("aria-pressed", String(S.spark.on)); S.sel = S.spark.on ? "spark" : null; render(); });
+$("sparkBtn").addEventListener("click", () => { S.spark.on = !S.spark.on; $("sparkBtn").setAttribute("aria-pressed", String(S.spark.on)); S.sel = S.spark.on ? "spark" : null; syncSpark(); render(); });
+function syncSpark(){ $("sparkTools").classList.toggle("hidden", !sparkOn()); $("spSize").value = Math.round(S.spark.s * 100); }
+$("spSize").addEventListener("input", e => { S.spark.s = +e.target.value / 100; S.sel = "spark"; render(); });
 // 写真の向き・大きさ
 function syncPhotoTab(){
   const list = photoList(); if(!list.includes(S.who)) S.who = list[0] || "user";

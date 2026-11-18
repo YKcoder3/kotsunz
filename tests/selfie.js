@@ -82,8 +82,10 @@ async function pinch(c, p, sel, center, d0, d1){
   await p.click('#rotL');
   // 2枚のあいだに白い線がない（境目のまん中の列に、真っ白が続かない）
   await p.click('[data-tab="lay"]');
-  const seam = await p.evaluate(async () => { const out = {}; for(const lay of ['wave', 'vwave', 'zig']){ setLay(lay, false); S.spark.on = false; const c = document.createElement('canvas'); c.width = cv.width; c.height = cv.height; drawAll(c.getContext('2d'), true); const g = c.getContext('2d'); let white = 0, n = 0; for(let i = 0; i < 200; i++){ const x = lay === 'vwave' ? c.width / 2 : c.width * i / 200, y = lay === 'vwave' ? c.height * i / 200 : (lay === 'zig' ? c.height * (.62 - .24 * i / 200) : c.height / 2); const d = g.getImageData(x, y, 1, 1).data; n++; if(d[0] > 245 && d[1] > 245 && d[2] > 245) white++; } out[lay] = white / n; } S.spark.on = true; setLay('wave', false); return out; });
-  ok('2枚の形は3種類で、境目に白い線がない', Object.values(seam).every(v => v < .2), seam);
+  const seam = await p.evaluate(async () => { const out = {}; for(const lay of ['wave', 'vwave', 'zig', 'hcut', 'vcut']){ setLay(lay, false); S.spark.on = false; const c = document.createElement('canvas'); c.width = cv.width; c.height = cv.height; drawAll(c.getContext('2d'), true); const g = c.getContext('2d'); let white = 0, n = 0; for(let i = 0; i < 200; i++){ const vert = lay === 'vwave' || lay === 'vcut', x = vert ? c.width / 2 : c.width * i / 200, y = vert ? c.height * i / 200 : (lay === 'zig' ? c.height * (.62 - .24 * i / 200) : c.height / 2); const d = g.getImageData(x, y, 1, 1).data; n++; if(d[0] > 245 && d[1] > 245 && d[2] > 245) white++; } out[lay] = white / n; } S.spark.on = true; setLay('wave', false); return out; });
+  ok('2枚の形は5種類（なみ・ゆら・コツン・上下・左右）で、境目に白い線がない', Object.values(seam).every(v => v < .2), seam);
+  const sp0 = await p.evaluate(() => S.spark.s); await p.$eval('#spSize', e => { e.value = 160; e.dispatchEvent(new Event('input')); });
+  ok('「コツン」マークの大きさをスライダーで変えられる', await p.evaluate(() => S.spark.s === 1.6) && sp0 === 1);
   await p.click('#sparkBtn'); ok('「コツン」マークを消せる', await p.evaluate(() => S.spark.on === false)); await p.click('#sparkBtn');
   for(const a of ['11', '916', '43']){ await p.click(`[data-asp="${a}"]`); }
   ok('写真の形を変えられる（よこ 1440×1080）', await p.evaluate(() => cv.width === 1440 && cv.height === 1080));
@@ -91,7 +93,7 @@ async function pinch(c, p, sel, center, d0, d1){
   await sleep(200); await p.screenshot({ path: OUT + 'c2-edit.png' });
   // 保存（レイアウトごと）
   const res = {};
-  for(const lay of ['wave', 'vwave', 'zig', 'one']){
+  for(const lay of ['wave', 'vwave', 'zig', 'hcut', 'vcut', 'one']){
     await p.click('[data-tab="lay"]'); await p.click(`[data-lay="${lay}"]`); await sleep(200);
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveBtn')]);
     const f = OUT + 'save-' + lay + '.png'; await dl.saveAs(f); res[lay] = png(f);
