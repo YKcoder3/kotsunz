@@ -132,7 +132,6 @@ button:disabled{opacity:.4}
     <video id="video" playsinline autoplay muted></video>
     <div class="msg" id="camMsg">カメラを起動しています…</div>
     <div class="pill" id="camPill">内カメ</div>
-    <div class="inset hidden" id="inset"></div>
     <div class="count hidden" id="count"></div>
     <div class="flash" id="flash"></div>
   </div></div>
@@ -228,8 +227,9 @@ button:disabled{opacity:.4}
 "use strict";
 // 写真はこのページの中（スマホの中）だけで合成する。サーバーには送らない
 const $ = id => document.getElementById(id);
-// [id, 名前, 絵]。表紙の2体は、表紙の絵（assets/ui/title.webp）から切りぬいたもの
+// [id, 名前, 絵]。上の5体は作者が用意した絵を背景だけ切りぬいたもの（ユニフォームのメーカーのマークは消してある）
 const CHARS = [["title-blue","表紙のあお","assets/selfie/title-blue.webp"],["title-yellow","表紙のきいろ","assets/selfie/title-yellow.webp"],
+  ["soccer-green","サッカー緑","assets/selfie/soccer-green.webp"],["soccer-blue","サッカー青","assets/selfie/soccer-blue.webp"],["reindeer","トナカイ","assets/selfie/reindeer.webp"],
   ...[["k001","ぬけもん"],["k002","めだまる"],["k003","ロジポン"],["k006","ムキッツ"],["k007","ウロット"],["k008","クエス"],["k009","ホコリィ"]].map(([id, n]) => [id, n, "assets/characters/" + id + "/stage-1.webp"])];
 const charSrc = id => (CHARS.find(c => c[0] === id) || [])[2];
 const MAX_STICKERS = 6;
@@ -270,7 +270,7 @@ function goHome(){ stopCam(); location.href = "./index.html?notitle=1"; }
 // =============== カメラ ===============
 function stopCam(){ if(S.stream){ S.stream.getTracks().forEach(t => t.stop()); S.stream = null; } video.srcObject = null; }
 async function startCam(facing){
-  stopCam(); S.facing = facing; $("camPill").textContent = NAME[facing]; video.classList.toggle("mirror", facing === "user");
+  stopCam(); S.facing = facing; pillT = 0; showPill(); video.classList.toggle("mirror", facing === "user");
   $("camMsg").textContent = "カメラを起動しています…"; $("camMsg").classList.remove("hidden");
   try{
     if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.isSecureContext) throw new Error("no camera");
@@ -299,19 +299,37 @@ function grab(){
   if(S.facing === "user"){ g.translate(c.width, 0); g.scale(-1, 1); }
   g.drawImage(video, 0, 0, c.width, c.height); return c;
 }
+// ----- スマホの向き（よこ持ちで撮ったら、写真を自動でよこに回す） -----
+let tilt = null, tiltAsked = false;
+window.addEventListener("deviceorientation", e => { if(e.gamma != null){ tilt = { b: e.beta, g: e.gamma }; showPill(); } });
+function askTilt(){
+  // iPhone は「動作と方向」の許可がいる（ボタンを押したときだけたずねられる）
+  if(tiltAsked) return; tiltAsked = true;
+  try{ if(window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") DeviceOrientationEvent.requestPermission().catch(() => {}); }catch(e){}
+}
+function screenLandscape(){ try{ if(screen.orientation && screen.orientation.type) return screen.orientation.type.startsWith("landscape"); }catch(e){} return matchMedia("(orientation: landscape)").matches; }
+// "cw"＝右に回してよこ持ち、"ccw"＝左に回してよこ持ち、null＝たて持ち
+function holdSide(){ if(!tilt || Math.abs(tilt.g) < 55 || Math.abs(tilt.b) > 45) return null; return tilt.g > 0 ? "cw" : "ccw"; }
+function autoRot(c){
+  // 画面が回らない設定（縦向きロック）のままよこに持つと、映像はたてのまま横だおしになる。そのときだけ回す
+  if(!c || screenLandscape() || c.width >= c.height) return 0;
+  const h = holdSide(); return h === "cw" ? 90 : h === "ccw" ? 270 : 0;
+}
+let pillT = 0;
+function showPill(){ const now = Date.now(); if(now - pillT < 250) return; pillT = now; const land = screenLandscape() || !!holdSide(); $("camPill").textContent = NAME[S.facing] + (land ? "・よこ" : ""); }
 function flash(){ const f = $("flash"); f.classList.remove("on"); void f.offsetWidth; f.classList.add("on"); try{ navigator.vibrate && navigator.vibrate(20); }catch(e){} }
 async function shoot(){
   if(S.busy) return; if(!S.stream || !video.videoWidth){ toast("カメラが使えないときは、アルバムからえらんでね"); return; }
   S.busy = true; $("shutter").disabled = true;
   try{
     const first = S.facing, a = grab(); flash(); S.raw = { user: null, environment: null }; S.raw[first] = a;
+    S.rot0 = { user: 0, environment: 0 }; S.rot0[first] = autoRot(a); S.firstShot = first;
     if(S.shots === 2){
-      const ins = $("inset"), cp = document.createElement("canvas"); cp.width = a.width; cp.height = a.height; cp.getContext("2d").drawImage(a, 0, 0); ins.replaceChildren(cp); ins.classList.remove("hidden");
       await startCam(other(first));
       for(const n of [3, 2, 1]){ $("count").textContent = n; $("count").classList.remove("hidden"); await sleep(650); }
       $("count").classList.add("hidden");
-      const b = grab(); if(b){ flash(); S.raw[S.facing] = b; }
-      await sleep(250); ins.classList.add("hidden");
+      const b = grab(); if(b){ flash(); S.raw[S.facing] = b; S.rot0[S.facing] = autoRot(b); }
+      await sleep(250);
     }
     openEditor();
   }finally{ S.busy = false; $("shutter").disabled = false; }
@@ -321,7 +339,7 @@ async function fromFiles(files){
   const toCanvas = f => new Promise((res, rej) => { const u = URL.createObjectURL(f), im = new Image(); im.onload = () => { const k = Math.min(1, 1920 / Math.max(im.naturalWidth, im.naturalHeight)), c = document.createElement("canvas"); c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(u); res(c); }; im.onerror = rej; im.src = u; });
   try{
     const cs = await Promise.all(list.map(toCanvas));
-    S.raw = { user: null, environment: null };
+    S.raw = { user: null, environment: null }; S.rot0 = { user: 0, environment: 0 }; S.firstShot = cs[1] ? "user" : S.facing;
     if(cs[1]){ S.raw.user = cs[0]; S.raw.environment = cs[1]; } else S.raw[S.facing] = cs[0];
     openEditor();
   }catch(e){ toast("写真を読みこめませんでした"); }
@@ -340,9 +358,14 @@ function bake(k){
 }
 function openEditor(){
   stopCam(); S.view = { user: blankView(), environment: blankView() }; S.swap = false; S.sel = null;
+  const r0 = S.rot0 || {}; for(const k of ["user", "environment"]) S.view[k].rot = r0[k] || 0;   // よこ持ちで撮った写真は自動でよこに
   bake("user"); bake("environment"); S.who = photoList()[0] || "user";
   S.spark = { on: true, x: .5, y: .5, s: 1 };
-  setLay(two() ? "hcut" : "one", true); syncPhotoTab();
+  // できあがりの形も、撮った向きに合わせる（よこ → よこ・左右、たて → たて・上下）。あとで自分で変えられる
+  const fp = S.photos[S.firstShot] || S.photos[photoList()[0]];
+  const land = !!fp && fp.width > fp.height;
+  S.asp = land ? "43" : "34"; document.querySelectorAll("[data-asp]").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.asp === S.asp)));
+  setLay(two() ? (land ? "vcut" : "hcut") : "one", true); syncPhotoTab();
   $("scrCam").classList.add("hidden"); $("scrEdit").classList.remove("hidden"); render();
 }
 function setLay(lay, resetLogo){
@@ -623,7 +646,8 @@ $("savedClose").addEventListener("click", () => $("saved").classList.add("hidden
 $("savedShare").addEventListener("click", async () => { try{ await navigator.share({ title: "コツンズ", files: [new File([saved.blob], saved.name, { type: "image/png" })] }); }catch(e){} });
 
 // ----- 撮影画面のボタン -----
-$("shutter").addEventListener("click", shoot);
+$("shutter").addEventListener("click", () => { askTilt(); shoot(); });
+$("scrCam").addEventListener("pointerdown", askTilt, { once: true });
 $("flip").addEventListener("click", () => { if(!S.busy) startCam(other(S.facing)); });
 $("homeCam").addEventListener("click", goHome); $("homeEdit").addEventListener("click", goHome);
 $("retake").addEventListener("click", () => { $("scrEdit").classList.add("hidden"); $("scrCam").classList.remove("hidden"); startCam(S.shots === 2 ? "user" : S.facing); });

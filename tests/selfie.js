@@ -38,15 +38,18 @@ async function pinch(c, p, sel, center, d0, d1){
   ok('ホームボタンが画面の下（親指でとどく所）にある', homeY > .75, +homeY.toFixed(2));
   await p.screenshot({ path: OUT + 'a-camera.png' });
   await p.click('#shutter'); await sleep(1200); await p.screenshot({ path: OUT + 'b-countdown.png' });
+  ok('2枚目を撮るとき、1枚目の写真は画面にうつりこまない', await p.evaluate(() => !document.getElementById('inset') && !document.querySelector('#finder canvas')));
   await p.waitForSelector('#scrEdit:not(.hidden)', { timeout: 10000 });
   const ph = await p.evaluate(() => ({ u: S.photos.user && [S.photos.user.width, S.photos.user.height], e: S.photos.environment && [S.photos.environment.width, S.photos.environment.height], lay: S.lay, cam: !!S.stream }));
-  ok('シャッター1回で内カメ→外カメの2枚がとれて、最初はまっすぐの「上下」になる', ph.u && ph.e && ph.lay === 'hcut' && !ph.cam, ph);
+  ok('シャッター1回で内カメ→外カメの2枚がとれる。よこ長の映像なので、最初はまっすぐの「左右」と「よこ」', ph.u && ph.e && ph.lay === 'vcut' && !ph.cam && await p.evaluate(() => S.asp === '43'), ph);
+  await p.click('[data-asp="34"]');
   ok('ビーリアル風はなくなった', !(await p.$('[data-lay="real"]')));
   ok('写真は映像を切りとらずに保存（形が同じ）', Math.abs(ph.u[0] / ph.u[1] - fit.video) < .02, ph.u);
   // キャラを2体のせる
-  await p.click('[data-tab="chr"]'); const chs = await p.$$('#chars .ch'); ok('キャラは表紙の2体と正式な7体（ルミュなし）', chs.length === 9 && await p.evaluate(() => CHARS[0][0] === 'title-blue' && CHARS[1][0] === 'title-yellow' && !CHARS.some(c => c[0] === 'k005')));
+  await p.click('[data-tab="chr"]'); const chs = await p.$$('#chars .ch'); ok('キャラは新しい5体と正式な7体（ルミュなし）', chs.length === 12 && await p.evaluate(() => ['title-blue','title-yellow','soccer-green','soccer-blue','reindeer'].every((id, i) => CHARS[i][0] === id) && !CHARS.some(c => c[0] === 'k005')));
+  await p.waitForFunction(() => [...document.querySelectorAll('#chars img')].every(i => i.complete), null, { timeout: 8000 }).catch(() => {}); const broken = await p.$$eval('#chars img', is => is.filter(i => !i.complete || !i.naturalWidth).map(i => i.alt)); ok('キャラの絵がすべて読める', broken.length === 0, broken);
   await p.click('#chars .ch:nth-child(2)'); await sleep(300); await p.click('#chars .ch:nth-child(5)'); await sleep(300);
-  ok('キャラを2体のせられる', await p.evaluate(() => S.stickers.length === 2 && S.stickers.map(s => s.id).join() === 'title-yellow,k003'));
+  ok('キャラを2体のせられる', await p.evaluate(() => S.stickers.length === 2 && S.stickers.map(s => s.id).join() === 'title-yellow,reindeer'));
   await p.$eval('#cv', e => e.scrollIntoView({ block: 'center' })); await sleep(200);
   const st0 = await p.evaluate(() => ({ x: S.stickers[1].x, y: S.stickers[1].y, w: S.stickers[1].w }));
   await touchDrag(c, p, '#cv', [st0.x, st0.y], [.3, .45]);
@@ -111,6 +114,23 @@ async function pinch(c, p, sel, center, d0, d1){
   ok('ページのエラーなし', errs.length === 0, errs);
   // ホームにもどる
   await p.click('#homeEdit'); await p.waitForURL(/index\.html/); ok('「ホーム」でゲームのホームにもどる', /notitle/.test(p.url()));
+  // よこ持ち：縦向きロックのままスマホをよこにして撮ったら、写真が自動でよこになり、形も「よこ・左右」になる
+  const c3 = await b.newContext({ ...devices['Pixel 7'], permissions: ['camera'] }); const r = await c3.newPage(); const rerr = []; r.on('pageerror', e => rerr.push(e.message));
+  await r.addInitScript(() => { Object.defineProperty(screen, 'orientation', { value: { type: 'portrait-primary', addEventListener(){} }, configurable: true }); });
+  await r.goto(ORIGIN + 'selfie.html'); await r.waitForFunction(() => document.getElementById('video').videoWidth > 0, null, { timeout: 10000 });
+  // 偽のカメラは横長なので、たての映像（縦向きロックの状態）にみせかける
+  await r.evaluate(() => { const v = document.getElementById('video'); Object.defineProperty(v, 'videoWidth', { get: () => 1080 }); Object.defineProperty(v, 'videoHeight', { get: () => 1440 }); window.dispatchEvent(Object.assign(new Event('deviceorientation'), { beta: 2, gamma: 85 })); });
+  await r.click('#shutter'); await r.waitForSelector('#scrEdit:not(.hidden)', { timeout: 10000 });
+  const auto = await r.evaluate(() => ({ rotU: S.view.user.rot, rotE: S.view.environment.rot, w: S.photos.user.width, h: S.photos.user.height, asp: S.asp, lay: S.lay }));
+  ok('よこ持ちで撮ると、写真が自動でよこに回り、形が「よこ」「左右」になる', auto.rotU === 90 && auto.rotE === 90 && auto.w > auto.h && auto.asp === '43' && auto.lay === 'vcut', auto);
+  await r.click('[data-tab="pho"]'); await r.click('#rotL');
+  ok('自動で回したあとも、自分で回し直せる', await r.evaluate(() => S.view.user.rot === 0));
+  await r.evaluate(() => window.dispatchEvent(Object.assign(new Event('deviceorientation'), { beta: 80, gamma: 3 })));
+  await r.click('#retake'); await r.waitForFunction(() => document.getElementById('video').videoWidth > 0, null, { timeout: 10000 });
+  await r.click('#shutter'); await r.waitForSelector('#scrEdit:not(.hidden)', { timeout: 10000 });
+  const auto2 = await r.evaluate(() => ({ rot: S.view.user.rot, asp: S.asp, lay: S.lay }));
+  ok('たて持ちで撮ると、そのまま「たて」「上下」', auto2.rot === 0 && auto2.asp === '34' && auto2.lay === 'hcut', auto2);
+  ok('よこ持ちの確認でページのエラーなし', rerr.length === 0, rerr);
   // iPhone：アルバムから2枚 → 保存で写真アプリに入れる画面
   const ci = await b.newContext({ ...devices['iPhone 13'] }); const q = await ci.newPage(); const qerr = []; q.on('pageerror', e => qerr.push(e.message));
   await q.goto(ORIGIN + 'selfie.html'); await sleep(800);
