@@ -1178,6 +1178,82 @@
   .act.photo{display:flex;align-items:center;text-decoration:none;margin-top:12px;background:linear-gradient(180deg,#FF8AC0,#F0559C);color:#fff;box-shadow:0 5px 0 #C23A79}
   .act.photo .ai{font-size:24px;display:grid;place-items:center}
   .act.photo small{color:#fff;opacity:.92}
+
+  /* 必殺技えらび v8.2（カッコよく） */
+  .sppanel.sp2{--c1:#FF8A5B;--c2:#E8364F;--glow:255,98,98;background:radial-gradient(120% 90% at 50% 0%,#3a2490 0%,#1d1252 55%,#130b38 100%);border-radius:24px;padding:12px 12px 10px;gap:9px;overflow:hidden;
+    box-shadow:0 12px 28px rgba(18,10,60,.45),inset 0 0 0 1.5px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.18)}
+  .sppanel.sp2.t-guard{--c1:#6CC2FF;--c2:#2F5BEA;--glow:92,170,255}
+  .sppanel.sp2.t-recover{--c1:#62EAA8;--c2:#14A463;--glow:80,230,160}
+  .sppanel.sp2::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 0 70%,rgba(var(--glow),.22) 80%,transparent 90%);animation:spin 6s linear infinite;pointer-events:none}
+  .sppanel.sp2.empty::before{display:none}
+  .sppanel.sp2>*{position:relative}
+  @keyframes spin{to{transform:rotate(1turn)}}
+  .sphd{display:flex;align-items:flex-end;justify-content:space-between;padding:0 2px}
+  .spttl{font-family:var(--round);font-weight:900;font-size:15px;letter-spacing:.12em;color:#fff;text-shadow:0 0 12px rgba(var(--glow),.8),0 2px 0 rgba(0,0,0,.35)}
+  .spttl::before{content:"✦ ";color:#FFE27A}
+  .spsp{display:flex;align-items:baseline;gap:3px;color:#FFE27A;font-family:var(--round);font-weight:900}
+  .spsp small{font-size:11px;letter-spacing:.08em;opacity:.9}.spsp small.mx{color:rgba(255,255,255,.55)}
+  .spsp b{font-size:26px;line-height:1;text-shadow:0 0 14px rgba(255,214,102,.7)}
+  .sp2 .spm{padding:0 2px 16px}
+  .sp2 .spmbar{height:14px;border-radius:8px;background:rgba(255,255,255,.1);box-shadow:inset 0 2px 4px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.1)}
+  .sp2 .spmbar i{border-radius:8px;background:linear-gradient(90deg,#6CC2FF,#B49BFF 50%,#FFC531);box-shadow:0 0 14px rgba(255,214,102,.55);overflow:hidden}
+  .sp2 .spmbar i::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.65) 50%,transparent 70%);transform:translateX(-100%);animation:shimmer 1.8s ease-in-out infinite}
+  .sp2.full .spmbar i{animation:pulseBar 1s ease-in-out infinite alternate}
+  @keyframes shimmer{to{transform:translateX(100%)}}
+  @keyframes pulseBar{to{box-shadow:0 0 22px rgba(255,214,102,.95)}}
+  .sp2 .spmbar .tk{top:-4px;height:22px;width:3px;background:rgba(255,255,255,.3)}
+  .sp2 .spmbar .tk.on{background:#FFE27A;box-shadow:0 0 10px #FFE27A}
+  .sp2 .spmbar .tk em{position:absolute;top:24px;left:50%;transform:translateX(-50%);font-style:normal;font-size:10px;font-weight:900;color:rgba(255,255,255,.45)}
+  .sp2 .spmbar .tk.on em{color:#FFE27A}
+  .spk.card{position:relative;overflow:hidden;min-height:82px;border-radius:20px;padding:10px 14px;gap:12px;color:#fff;
+    background:linear-gradient(135deg,var(--k1),var(--k2));box-shadow:0 5px 0 rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 2px rgba(255,255,255,.18)}
+  .spk.card.attack{--k1:#FF9A5C;--k2:#D9264A;--kg:255,98,98}
+  .spk.card.guard{--k1:#6CC2FF;--k2:#2747D8;--kg:92,170,255}
+  .spk.card.recover{--k1:#6AF0B0;--k2:#109A5C;--kg:80,230,160}
+  .spk.card::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.09) 0 10px,transparent 10px 22px);pointer-events:none}
+  .spk.card .shine{position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);animation:sweep 2.6s ease-in-out infinite;pointer-events:none}
+  @keyframes sweep{0%,55%{left:-60%}100%{left:130%}}
+  .spk.card .spi{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.5),rgba(255,255,255,.12) 60%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),0 4px 10px rgba(0,0,0,.25)}
+  .spk.card .spi svg{width:32px;height:32px;filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
+  .spk.card .spn{gap:1px}
+  .spk.card .spn .ty{order:0;font-size:10.5px;font-weight:900;letter-spacing:.18em;opacity:.9}
+  .spk.card .spn b{font-size:19px;line-height:1.2;text-shadow:0 2px 0 rgba(0,0,0,.3),0 0 12px rgba(255,255,255,.25)}
+  .spk.card .tag{margin-left:auto;flex:none;font-family:var(--round);font-weight:900;font-size:12px;letter-spacing:.08em;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.22);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+  .spk.card.on{transform:scale(1.02);box-shadow:0 0 0 3px #fff,0 0 0 6px #FFC531,0 0 26px rgba(var(--kg),.9),0 6px 0 rgba(0,0,0,.3)}
+  .spk.card.on .tag{background:#FFC531;color:#2a1600;box-shadow:0 2px 0 rgba(0,0,0,.25);animation:pop .3s ease-out}
+  .spk.card.on .spi{animation:beat .9s ease-in-out infinite}
+  @keyframes beat{50%{transform:scale(1.12)}}
+  .spk.card:disabled{filter:grayscale(.75) brightness(.55)}
+  .spk.card:disabled .shine{display:none}
+  .spkeys.n2 .spk.card{padding:10px 9px;gap:7px}.spkeys.n2 .spk.card .spi{width:40px;height:40px}.spkeys.n2 .spk.card .spi svg{width:24px;height:24px}
+  .spkeys.n2 .spk.card .spn b{font-size:14px}.spkeys.n2 .spk.card .tag{display:none}
+  .sptiers.p3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;background:none;padding:0;box-shadow:none;border-radius:0}
+  .sptiers.p3 .spt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:58px;border-radius:16px;background:rgba(255,255,255,.08)!important;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.18)!important;color:#fff!important}
+  .sptiers.p3 .spt .bolt{font-size:11px;line-height:1.2;letter-spacing:-1px;filter:grayscale(1) brightness(1.6);opacity:.6}
+  .sptiers.p3 .spt b{font-family:var(--round);font-size:20px;line-height:1.1}
+  .sptiers.p3 .spt small{font-size:10px;font-weight:900;opacity:.7}
+  .sptiers.p3 .spt.on{color:#2a1600!important}
+  .sptiers.p3 .spt.on.small{background:linear-gradient(180deg,#BDE7FF,#6CC2FF)!important;box-shadow:0 0 0 2px #fff,0 0 16px rgba(108,194,255,.8)!important}
+  .sptiers.p3 .spt.on.medium{background:linear-gradient(180deg,#E0D4FF,#A88BFF)!important;box-shadow:0 0 0 2px #fff,0 0 16px rgba(168,139,255,.8)!important}
+  .sptiers.p3 .spt.on.large{background:linear-gradient(180deg,#FFF1A8,#FFB21A)!important;box-shadow:0 0 0 2px #fff,0 0 20px rgba(255,190,40,.95)!important}
+  .sptiers.p3 .spt.on .bolt{filter:none;opacity:1}
+  .sptiers.p3 .spt:disabled{opacity:.35}
+  .sp2 .spstate{text-align:center;font-weight:900;font-size:12.5px;color:rgba(255,255,255,.75);letter-spacing:.02em}
+  .sp2 .spstate.ok{color:#FFE27A;text-shadow:0 0 10px rgba(255,214,102,.6)}
+  @media (prefers-reduced-motion: reduce){.sppanel.sp2::before,.spk.card .shine,.sp2 .spmbar i::after,.spk.card.on .spi{animation:none}}
+  /* 画面が小さいスマホ（iPhone SE など）は、必殺技えらびをコンパクトに */
+  @media (max-height: 740px){
+    .sppanel.sp2{padding:8px 10px 8px;gap:6px;border-radius:20px}
+    .sphd .spttl{font-size:13px}.spsp b{font-size:19px}
+    .sp2 .spm{padding:0 2px 12px}.sp2 .spmbar{height:11px}.sp2 .spmbar .tk{height:17px;top:-3px}.sp2 .spmbar .tk em{top:18px;font-size:9px}
+    .spk.card{min-height:58px;padding:7px 12px;gap:10px;border-radius:16px}
+    .spk.card .spi{width:42px;height:42px}.spk.card .spi svg{width:25px;height:25px}
+    .spk.card .spn b{font-size:16px}.spk.card .spn .ty{font-size:9.5px}
+    .spk.card .tag{font-size:11px;padding:4px 8px}
+    .sptiers.p3 .spt{min-height:42px;flex-direction:row;gap:5px;border-radius:13px}
+    .sptiers.p3 .spt b{font-size:17px}.sptiers.p3 .spt .bolt{display:none}
+    .sp2 .spstate{display:none}
+  }
 </style>
 </head>
 <body>
@@ -1611,23 +1687,26 @@
   // kotsunz-accts-v1 … アカウントの一覧（ニックネーム・あいことばのハッシュ）と、今ログインしている人
   // kotsunz-hb-u-<uid> … アカウントごとのキャラ・戦績
   const ACCTS = "kotsunz-accts-v1", DATA = uid => "kotsunz-hb-u-" + uid;
-  // v6：全員の記録（アカウントもふくむ）を、この端末で一度だけ消して最初からにする
-  const DATA_VER = 6;
+  // v7（2026-11-19）：全員の記録（アカウント・キャラ・コイン・戦績もふくむ）を、この端末で一度だけ消して最初からにする
+  //   消すのは「kotsunz」で始まるこのアプリの記録だけ（localStorage.clear() は使わない）。前に開いたままの古いタブが書きもどしても読まない
+  const DATA_VER = 7;
   (function resetOnce(){
     try{
       if(localStorage.getItem("kotsunz-reset") === "v" + DATA_VER) return;
       const ks = []; for(let i = 0; i < localStorage.length; i++){ const k = localStorage.key(i); if(/^kotsunz/.test(k)) ks.push(k); }
+      const had = ks.some(k => /^kotsunz-(accts|hb-u-)/.test(k));
       ks.forEach(k => localStorage.removeItem(k));
       localStorage.setItem("kotsunz-reset", "v" + DATA_VER);
+      if(had) localStorage.setItem("kotsunz-reset-notice", "1");
     }catch(e){}
   })();
-  function loadAccts(){ try{ const a = JSON.parse(localStorage.getItem(ACCTS)); if(a && Array.isArray(a.list)) return a; }catch(e){} return { v:1, list:[], cur:null }; }
-  function saveAccts(){ try{ localStorage.setItem(ACCTS, JSON.stringify(AC)); }catch(e){} }
+  function loadAccts(){ try{ const a = JSON.parse(localStorage.getItem(ACCTS)); if(a && a.ver === DATA_VER && Array.isArray(a.list)) return a; }catch(e){} return { v:1, ver: DATA_VER, list:[], cur:null }; }
+  function saveAccts(){ try{ AC.ver = DATA_VER; localStorage.setItem(ACCTS, JSON.stringify(AC)); }catch(e){} }
   let AC = loadAccts();
   const curAcct = () => AC.list.find(a => a.uid === AC.cur) || null;
   function blankS(name){ return { ver: DATA_VER, deviceId: rid(12), name: name || "", dex: [], fid: null, games: 0, wins: 0 }; }
   // 昔の「コツン生まれ」のキャラ（dex）は完全に消す
-  function loadData(uid){ try{ const v = JSON.parse(localStorage.getItem(DATA(uid))); if(v && typeof v === "object") return Object.assign(blankS(), v, { dex: [] }); }catch(e){} return blankS(); }
+  function loadData(uid){ try{ const v = JSON.parse(localStorage.getItem(DATA(uid))); if(v && typeof v === "object" && v.ver === DATA_VER) return Object.assign(blankS(), v, { dex: [] }); }catch(e){} return blankS(); }
   let S = AC.cur && curAcct() ? loadData(AC.cur) : blankS();
   function save(){ const a = curAcct(); if(!a) return; S.name = a.name; try{ localStorage.setItem(DATA(a.uid), JSON.stringify(S)); }catch(e){} }
 
@@ -4273,7 +4352,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
 
   const BROKERS = ["wss://broker.emqx.io:8084/mqtt", "wss://broker.hivemq.com:8884/mqtt", "wss://test.mosquitto.org:8081/mqtt"];
   const brokers = () => Q.get("broker") ? [Q.get("broker")] : BROKERS;
-  const TOPIC = "kotsunz-hb/v1/";
+  const TOPIC = "kotsunz-hb/v2/";   // v7：リセット前の古いアプリとは、同じ部屋に入れない
   const tRoom = c => TOPIC + c + "/room", tHost = c => TOPIC + c + "/h", tCli = (c, id) => TOPIC + c + "/c/" + id;
   const randId = n => [...crypto.getRandomValues(new Uint8Array(n))].map(x => "abcdefghijkmnpqrstuvwxyz23456789"[x % 32]).join("");
   const LIGHT = { hb: 1, ping: 1, pong: 1 };
@@ -5421,25 +5500,31 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       if(sel){ box.textContent = ""; const c = el("span", "spchip " + sel.k + " " + sel.tier); c.innerHTML = SP_ICON[sel.k]; c.append(el("b", null, nameOfK(sel.k) + "・" + SP_TIER_JA[sel.tier])); box.append(c); }
       return;
     }
-    box.hidden = false; box.className = "sppanel" + (G.sp.sealed ? " sealed" : "") + (sel ? " picked" : ""); box.textContent = "";
-    if(!G.shown) $("g-card").classList.add("sp-on");
-    // SPゲージ
-    const mt = el("div", "spm"); const bar = el("div", "spmbar"); const fill = el("i"); fill.style.width = (v / SPC.meter.max * 100) + "%"; bar.append(fill);
-    for(const t of SP_TIERS){ const tk = el("b", "tk" + (v >= T[t] ? " on" : "")); tk.style.left = (T[t] / SPC.meter.max * 100) + "%"; bar.append(tk); }
-    mt.append(el("span", "spml", "SP"), bar, el("span", "spmv", String(v)));
-    box.append(mt);
-    const can = v >= T.small && !G.sp.sealed;
-    // 1段目：このキャラの必殺技（名前のボタン）。持っている技だけ出す。押したものだけ明るく✓、もう一度押すと取り消し
     const av = G.sp.av || (G.sp.sk ? [{ k: G.sp.sk.c, n: G.sp.sk.n }] : []);
+    const can = v >= T.small && !G.sp.sealed;
+    const mainK = sel ? sel.k : (av[0] && av[0].k) || "attack";
+    box.hidden = false; box.className = "sppanel sp2 t-" + mainK + (G.sp.sealed ? " sealed" : "") + (sel ? " picked" : "") + (can ? " ready" : " empty") + (v >= SPC.meter.max ? " full" : ""); box.textContent = "";
+    if(!G.shown) $("g-card").classList.add("sp-on");
+    // 見出し：必殺技 ＋ SPの数字
+    const hd = el("div", "sphd");
+    hd.append(el("span", "spttl", "必殺技"), el("span", "spsp", ""));
+    hd.lastChild.append(el("small", null, "SP"), el("b", null, String(v)), el("small", "mx", "/" + SPC.meter.max));
+    box.append(hd);
+    // SPゲージ（小・中・大の目もり）
+    const mt = el("div", "spm"); const bar = el("div", "spmbar"); const fill = el("i"); fill.style.width = (v / SPC.meter.max * 100) + "%"; bar.append(fill);
+    for(const t of SP_TIERS){ const tk = el("b", "tk " + t + (v >= T[t] ? " on" : "")); tk.style.left = (T[t] / SPC.meter.max * 100) + "%"; tk.append(el("em", null, SP_TIER_JA[t])); bar.append(tk); }
+    mt.append(bar); box.append(mt);
+    // 技のカード（このキャラが持っている技だけ）。押すとセット、もう一度押すと取り消し
     const r1 = el("div", "spkeys n" + Math.max(1, av.length));
     if(!av.length) r1.append(el("div", "spnone", "このキャラは必殺技を持っていません"));
     for(const s2 of av){
       const k = s2.k, on = !!sel && sel.k === k;
-      const b = el("button", "spk named " + k + (on ? " on" : ""));
+      const b = el("button", "spk named card " + k + (on ? " on" : ""));
       b.setAttribute("aria-pressed", on ? "true" : "false");
+      b.append(el("span", "shine"));
       const ic = el("span", "spi"); ic.innerHTML = SP_ICON[k]; b.append(ic);
-      const tx = el("span", "spn"); tx.append(el("b", null, s2.n), el("small", null, SP_LABEL[k])); b.append(tx);
-      if(on) b.append(el("span", "chk", "✓"));
+      const tx = el("span", "spn"); tx.append(el("small", "ty", SP_LABEL[k]), el("b", null, s2.n)); b.append(tx);
+      b.append(el("span", "tag", on ? (sel.st === "ok" ? "SET!" : "…") : can ? "TAP" : "🔒"));
       b.disabled = !can;
       b.addEventListener("click", () => {
         if(on){ spSend(null, null); return; }
@@ -5448,11 +5533,12 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       });
       r1.append(b);
     }
-    // 2段目：小・中・大（1本のスイッチ。えらんだところが白くなる）
-    const r2 = el("div", "sptiers");
+    // パワー：小・中・大（⚡の数と、使うSP）
+    const r2 = el("div", "sptiers p3");
     for(const t of SP_TIERS){
       const on = sel ? sel.tier === t : (G.spTier || "small") === t;
-      const b = el("button", "spt " + t + (on ? " on" : ""), (v < T[t] ? "🔒" : "") + SP_TIER_JA[t]);
+      const b = el("button", "spt " + t + (on ? " on" : ""));
+      b.append(el("span", "bolt", "⚡".repeat(SP_TIERS.indexOf(t) + 1)), el("b", null, SP_TIER_JA[t]), el("small", null, v < T[t] ? "🔒" + T[t] : "SP" + T[t]));
       b.setAttribute("aria-pressed", on ? "true" : "false");
       b.disabled = v < T[t] || G.sp.sealed;
       b.addEventListener("click", () => { G.spTier = t; if(sel) spSend(sel.k, t); else renderSkillPanel(); });
@@ -5461,7 +5547,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(r1, r2);
     // 今の状態を1行で
     const st = el("div", "spstate" + (sel ? (sel.st === "ok" ? " ok" : " wait") : ""));
-    st.textContent = G.sp.sealed ? "🔒 封印中" : !can ? "SPをためよう" : sel ? (sel.st === "ok" ? "✓ " + nameOfK(sel.k) + "・" + SP_TIER_JA[sel.tier] + "　セット完了" : "セット中…") : (av.length > 1 ? "使う技をえらぶ（使わなくてもOK）" : "技を使うときはタップ（使わなくてもOK）");
+    st.textContent = G.sp.sealed ? "🔒 封印中" : !can ? "正解してSPをためよう" : sel ? (sel.st === "ok" ? "「" + nameOfK(sel.k) + "」" + SP_TIER_JA[sel.tier] + "　セット完了！" : "セット中…") : (av.length > 1 ? "使う技をタップ（使わなくてもOK）" : "技を使うならタップ（使わなくてもOK）");
     box.append(st);
   }
   const CHAIN_SVG = `<svg viewBox="0 0 64 64"><g fill="none" stroke="#C9CCD8" stroke-width="5" stroke-linecap="round"><rect x="2" y="10" width="20" height="12" rx="6" transform="rotate(35 12 16)"/><rect x="16" y="22" width="20" height="12" rx="6" transform="rotate(35 26 28)"/><rect x="30" y="32" width="20" height="12" rx="6" transform="rotate(35 40 38)"/><rect x="42" y="44" width="20" height="12" rx="6" transform="rotate(35 52 50)"/></g><g fill="none" stroke="#6B6F82" stroke-width="1.6"><rect x="2" y="10" width="20" height="12" rx="6" transform="rotate(35 12 16)"/><rect x="30" y="32" width="20" height="12" rx="6" transform="rotate(35 40 38)"/></g><rect x="22" y="26" width="20" height="16" rx="3" fill="#FFC531" stroke="#7a5600" stroke-width="2"/><path d="M26 26v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#7a5600" stroke-width="3"/></svg>`;
@@ -6239,7 +6325,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   // =====================================================================
   // オンライン対戦（公開の中継サーバーで、待っている人どうしを自動でつなぐ）
   // =====================================================================
-  const MM_TOPIC = "kotsunz-mm/v6";
+  const MM_TOPIC = "kotsunz-mm/v7";
   let MM = null;
   async function startOnline(qkey){
     if(!needName()) return;
@@ -6915,6 +7001,14 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   document.addEventListener("touchstart", () => audio(), { once: true, passive: true });
 
   initTitle();
+  // 全員リセットのお知らせ（前の記録があった人にだけ、1回）
+  (function resetNotice(){
+    let f = null; try{ f = localStorage.getItem("kotsunz-reset-notice"); }catch(e){}
+    if(f !== "1") return;
+    $("ask-title").textContent = "お知らせ"; $("ask-text").textContent = "アップデートにともない、全員のアカウント・キャラ・コイン・戦績をリセットしました。アカウントを作りなおして、最初からお楽しみください。";
+    $("ask-input").hidden = true; $("ask-no").hidden = true; $("ask-ok").textContent = "OK"; $("ask").hidden = false;
+    $("ask-ok").onclick = () => { $("ask").hidden = true; $("ask-input").hidden = false; $("ask-no").hidden = false; $("ask-ok").onclick = null; try{ localStorage.setItem("kotsunz-reset-notice", "seen"); }catch(e){} };
+  })();
   if(Q.has("notitle")) leaveTitle();
   if(DEBUG) window.__qdump = () => {
     const bank = {}; for(const [g, l] of Object.entries(BANK)) bank[g] = l.map(q => [q[0], q[1]]);
