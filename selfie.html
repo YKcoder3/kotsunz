@@ -155,12 +155,12 @@ button:disabled{opacity:.4}
     </div>
     <div class="pane" id="pane-lay">
       <div class="row" id="layRow">
-        <button class="chip lay" data-lay="wave" aria-pressed="true"><i class="l-wave"></i>なみなみ</button>
-        <button class="chip lay" data-lay="vwave" aria-pressed="false"><i class="l-vwave"></i>ゆらゆら</button>
-        <button class="chip lay" data-lay="zig" aria-pressed="false"><i class="l-zig"></i>コツン！</button>
-        <button class="chip lay" data-lay="hcut" aria-pressed="false"><i class="l-hcut"></i>上下</button>
-        <button class="chip lay" data-lay="vcut" aria-pressed="false"><i class="l-vcut"></i>左右</button>
-        <button class="chip lay" data-lay="one" aria-pressed="false"><i class="l-one"></i>1枚</button>
+<button class="chip lay" data-lay="hcut" aria-pressed="true"><i class="l-hcut"></i>上下</button>
+<button class="chip lay" data-lay="vcut" aria-pressed="false"><i class="l-vcut"></i>左右</button>
+<button class="chip lay" data-lay="wave" aria-pressed="false"><i class="l-wave"></i>なみなみ</button>
+<button class="chip lay" data-lay="vwave" aria-pressed="false"><i class="l-vwave"></i>ゆらゆら</button>
+<button class="chip lay" data-lay="zig" aria-pressed="false"><i class="l-zig"></i>コツン！</button>
+<button class="chip lay" data-lay="one" aria-pressed="false"><i class="l-one"></i>1枚</button>
         <button class="chip" id="swap">⇄ 入れかえ</button>
         <button class="chip" id="sparkBtn" aria-pressed="true">💥 コツン</button>
       </div>
@@ -171,7 +171,7 @@ button:disabled{opacity:.4}
         <button class="chip" data-asp="43" aria-pressed="false"><i style="width:16px;height:12px"></i>よこ</button>
       </div>
       <div class="sel-tools" id="sparkTools"><label>💥 コツンの大きさ<input type="range" id="spSize" min="50" max="180" value="100"></label></div>
-      <p class="hint">2枚の写真が「コツン」とくっつく形です。「上下」「左右」はまっすぐ（すきまなし）。写真は指で動かして、2本指で拡大できます。</p>
+      <p class="hint">「上下」「左右」はまっすぐ（すきまなし）。「なみなみ」「ゆらゆら」「コツン！」は、2枚がコツンとくっつく形です。写真は指で動かして、2本指で拡大できます。</p>
     </div>
     <div class="pane hidden" id="pane-pho">
       <div class="row" id="phoWho">
@@ -228,7 +228,10 @@ button:disabled{opacity:.4}
 "use strict";
 // 写真はこのページの中（スマホの中）だけで合成する。サーバーには送らない
 const $ = id => document.getElementById(id);
-const CHARS = [["k001","ぬけもん"],["k002","めだまる"],["k003","ロジポン"],["k005","ルミュ"],["k006","ムキッツ"],["k007","ウロット"],["k008","クエス"],["k009","ホコリィ"]];
+// [id, 名前, 絵]。表紙の2体は、表紙の絵（assets/ui/title.webp）から切りぬいたもの
+const CHARS = [["title-blue","表紙のあお","assets/selfie/title-blue.webp"],["title-yellow","表紙のきいろ","assets/selfie/title-yellow.webp"],
+  ...[["k001","ぬけもん"],["k002","めだまる"],["k003","ロジポン"],["k006","ムキッツ"],["k007","ウロット"],["k008","クエス"],["k009","ホコリィ"]].map(([id, n]) => [id, n, "assets/characters/" + id + "/stage-1.webp"])];
+const charSrc = id => (CHARS.find(c => c[0] === id) || [])[2];
 const MAX_STICKERS = 6;
 const ASPECTS = { "34": [1080, 1440], "11": [1080, 1080], "916": [1080, 1920], "43": [1440, 1080] };
 const LOGO_STYLES = [
@@ -339,7 +342,7 @@ function openEditor(){
   stopCam(); S.view = { user: blankView(), environment: blankView() }; S.swap = false; S.sel = null;
   bake("user"); bake("environment"); S.who = photoList()[0] || "user";
   S.spark = { on: true, x: .5, y: .5, s: 1 };
-  setLay(two() ? "wave" : "one", true); syncPhotoTab();
+  setLay(two() ? "hcut" : "one", true); syncPhotoTab();
   $("scrCam").classList.add("hidden"); $("scrEdit").classList.remove("hidden"); render();
 }
 function setLay(lay, resetLogo){
@@ -430,7 +433,7 @@ function drawSpark(g){
 function loadImg(src){ return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
 async function addSticker(id){
   if(S.stickers.length >= MAX_STICKERS){ toast("キャラは" + MAX_STICKERS + "体までだよ"); return; }
-  try{ if(!S.imgs[id]) S.imgs[id] = await loadImg("assets/characters/" + id + "/stage-1.webp"); }catch(e){ toast("キャラの絵を読みこめませんでした"); return; }
+  try{ if(!S.imgs[id]) S.imgs[id] = await loadImg(charSrc(id)); }catch(e){ toast("キャラの絵を読みこめませんでした"); return; }
   const n = S.stickers.length, st = { id, x: .72 - (n % 3) * .22, y: .8 - Math.floor(n / 3) * .2, w: .3, rot: 0, flip: false };
   S.stickers.push(st); S.sel = st; syncTools(); render(); drawChars();
 }
@@ -563,9 +566,9 @@ $("phReset").addEventListener("click", () => { S.view[S.who] = blankView(); bake
 $("phZoom").addEventListener("input", e => { S.view[S.who].z = +e.target.value / 100; render(); });
 function drawChars(){
   const box = $("chars"); box.replaceChildren();
-  for(const [id, name] of CHARS){
+  for(const [id, name, src] of CHARS){
     const b = document.createElement("button"); b.className = "ch"; b.type = "button";
-    const im = document.createElement("img"); im.src = "assets/characters/" + id + "/stage-1.webp"; im.alt = name; im.loading = "lazy";
+    const im = document.createElement("img"); im.src = src; im.alt = name; im.loading = "lazy";
     const nb = document.createElement("b"); nb.textContent = name; b.append(im, nb);
     const n = S.stickers.filter(s => s.id === id).length; if(n){ const c = document.createElement("span"); c.className = "n"; c.textContent = n; b.append(c); }
     b.addEventListener("click", () => addSticker(id)); box.append(b);

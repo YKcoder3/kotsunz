@@ -40,13 +40,13 @@ async function pinch(c, p, sel, center, d0, d1){
   await p.click('#shutter'); await sleep(1200); await p.screenshot({ path: OUT + 'b-countdown.png' });
   await p.waitForSelector('#scrEdit:not(.hidden)', { timeout: 10000 });
   const ph = await p.evaluate(() => ({ u: S.photos.user && [S.photos.user.width, S.photos.user.height], e: S.photos.environment && [S.photos.environment.width, S.photos.environment.height], lay: S.lay, cam: !!S.stream }));
-  ok('シャッター1回で内カメ→外カメの2枚がとれて、「なみなみ」の形になる', ph.u && ph.e && ph.lay === 'wave' && !ph.cam, ph);
+  ok('シャッター1回で内カメ→外カメの2枚がとれて、最初はまっすぐの「上下」になる', ph.u && ph.e && ph.lay === 'hcut' && !ph.cam, ph);
   ok('ビーリアル風はなくなった', !(await p.$('[data-lay="real"]')));
   ok('写真は映像を切りとらずに保存（形が同じ）', Math.abs(ph.u[0] / ph.u[1] - fit.video) < .02, ph.u);
   // キャラを2体のせる
-  await p.click('[data-tab="chr"]'); const chs = await p.$$('#chars .ch'); ok('キャラは正式な8体', chs.length === 8);
+  await p.click('[data-tab="chr"]'); const chs = await p.$$('#chars .ch'); ok('キャラは表紙の2体と正式な7体（ルミュなし）', chs.length === 9 && await p.evaluate(() => CHARS[0][0] === 'title-blue' && CHARS[1][0] === 'title-yellow' && !CHARS.some(c => c[0] === 'k005')));
   await p.click('#chars .ch:nth-child(2)'); await sleep(300); await p.click('#chars .ch:nth-child(5)'); await sleep(300);
-  ok('キャラを2体のせられる', await p.evaluate(() => S.stickers.length === 2 && S.stickers.map(s => s.id).join() === 'k002,k006'));
+  ok('キャラを2体のせられる', await p.evaluate(() => S.stickers.length === 2 && S.stickers.map(s => s.id).join() === 'title-yellow,k003'));
   await p.$eval('#cv', e => e.scrollIntoView({ block: 'center' })); await sleep(200);
   const st0 = await p.evaluate(() => ({ x: S.stickers[1].x, y: S.stickers[1].y, w: S.stickers[1].w }));
   await touchDrag(c, p, '#cv', [st0.x, st0.y], [.3, .45]);
