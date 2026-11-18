@@ -1545,7 +1545,7 @@
   <div class="shhead"><h2>このアプリについて</h2><button class="xbtn" data-close>閉じる</button></div>
   <div class="about">
     <p><b>遊びかた</b>　ホストが部屋を作り、招待リンクかコードでみんなが入ります（最大10人）。ゲームを始めるには、全員が近くの人とスマホをコツンしてキャラを生む必要があります（試作では2人で同時に「コツンした！」を押しても成立）。速く正解した人ほど、たくさんの相手に大きなダメージを与えます。</p>
-    <p><b>必殺技</b>　ジャンルが出てから問題が出るまでに、⚔️攻撃・🛡守り・固有技を、小（25）・中（55）・大（90）からえらびます。その問題に正解したときだけ発動してゲージを使います。まちがえたら不発で、ゲージは使いません。だれが何を使ったかは、答え合わせのあとに全員に出ます。</p>
+    <p><b>必殺技</b>　ジャンルが出てから問題が出るまでに、自分のキャラの必殺技を、小（25）・中（55）・大（90）からえらびます。攻撃の技は1位で正解したとき、回復の技は正解したときに発動してゲージを使います（不発ならゲージは使いません）。防御の技は、まちがえても・時間切れでも発動して、受けるダメージを減らします。だれが何を使ったかは、答え合わせのあとに全員に出ます。</p>
     <p><b>コラボ</b>　他社の作品（Disney・アニメ・ドラマなど）とのコラボは、権利者の許可がないので入れていません。<button class="linkbtn" id="b-collab" type="button">コラボ枠の管理画面（すべてロック中）</button></p>
     <p><b>記録とアカウント</b>　アカウント（ニックネームとあいことば）とキャラ・戦績は、このスマホのブラウザの中だけに保存し、サーバーには送りません。あいことばはそのままではなく、変換した値（ハッシュ）だけを保存します。引き継ぎのときだけ、暗号化したデータを公開の中継サーバーに一時的に置きます。</p>
     <p><b>通信</b>　対戦中は、ニックネーム・キャラ・答えだけを公開の中継サーバーを通して部屋の人に送ります。本名・位置情報・写真・連絡先は集めません。ニックネームに本名は入れないでね。</p>
@@ -4092,7 +4092,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   // =====================================================================
   // 必殺技エンジン（v7）。画面や通信にふれない純粋な関数だけ
   //   数値はすべて special_config_v3.json（SPC）から読む
-  //   ・ジャンル発表後、問題が出る前に宣言 → その問題に正解したときだけ発動・消費
+  //   ・ジャンル発表後、問題が出る前に宣言 → その問題に正解したときだけ発動・消費（防御の技は、まちがえても発動）
   //   ・不正解／時間切れは不発。技のコストは引かず、ふつうの減少だけ
   //   ・コストは「ジャンル発表時のゲージ」から引き、その問題で増えた分はあとで足す
   // =====================================================================
@@ -4106,6 +4106,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   // ボタン(key)とキャラの系統(fam)から、実際の技の種類を決める
   const spTypeOf = (key, fam) => SP_KEYS.includes(key) ? (SK_CAT[fam] === key ? "unique" : key) : null;
   const spIsAttack = (type, fam) => type === "attack" || (type === "unique" && SK_CAT[fam] === "attack");
+  // 防御（DEFEND）の技は、まちがえても・時間切れでも発動する（v8.3）
+  const spIsGuard = (type, fam) => type === "guard" || (type === "unique" && SK_CAT[fam] === "guard");
   const spClamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
   const spCost = tier => SPC.meter.tiers[tier];
 
@@ -4133,7 +4135,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const start = o.start;
     if(!Number.isFinite(start) || start < 0 || start > SPC.meter.max) throw new Error("invalid starting meter");
     const ok = !!(o.intent && SP_TYPES.includes(o.intent.type) && spCanDeclare({ gauge: start, tier: o.intent.tier, alive: o.alive, sealed: o.sealed }));
-    const activated = !!(o.correct && ok && !o.blocked);
+    const activated = !!((o.correct || o.guardAlways) && ok && !o.blocked);
     const spent = activated ? spCost(o.intent.tier) : 0;
     // v7.2：発動したらSPは0にリセット（その問題で増える分も入らない）。不発ならコストは引かない
     if(activated && SPC.meter.resetOnUse) return { activated, declaredOk: ok, spent: start, earned: 0, end: 0 };
@@ -4199,10 +4201,12 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       if(!p.alive || !p.intent) continue;
       const it = p.intent, ok = SP_TYPES.includes(it.type) && spCanDeclare({ gauge: p.meter, tier: it.tier, alive: p.alive, sealed: p.sealed });
       if(!ok){ fizzle[p.id] = "ゲージ不足か封印中で、宣言は無効でした"; continue; }
-      if(!p.rank){ fizzle[p.id] = (p.answered ? "不正解" : "時間切れ") + "で不発。ゲージは使っていません"; continue; }
+      if(!p.rank && !spIsGuard(it.type, p.fam)){ fizzle[p.id] = (p.answered ? "不正解" : "時間切れ") + "で不発。ゲージは使っていません"; continue; }
       // 攻撃は1位の人だけ。攻撃系の技は1位でなければ不発（ゲージは使わない）
       if(SPC.abilities.attackNeedsFirstPlace && spIsAttack(it.type, p.fam) && p.rank !== 1){ fizzle[p.id] = "1位ではなかったので不発"; blocked.add(p.id); continue; }
-      act.set(p.id, spEffect({ type: it.type, tier: it.tier, fam: p.fam, rarity: p.rarity, stage: p.stage }));
+      const e = spEffect({ type: it.type, tier: it.tier, fam: p.fam, rarity: p.rarity, stage: p.stage });
+      if(!p.rank) delete e.nextQuestionRemoveWrongChoices;          // まちがえたときは「守り」だけ（次の問題の3択はなし）
+      act.set(p.id, e);
     }
     // 1) 追加攻撃（通常攻撃が届く相手だけ）
     const extra = {}, dealtX = {}, hitTo = {};
@@ -4257,7 +4261,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     for(const p of ps){
       if(!p.alive){ meter[p.id] = p.meter; continue; }
       const r = spFinish({ start: p.meter, intent: p.intent, alive: p.alive, sealed: p.sealed, correct: !!p.rank, rank: p.rank, correctStreak: p.correctStreak, firstStreak: p.firstStreak,
-        affinity: p.affinity, adv: p.adv, bonus: p.rank ? p.bonus : 0, ko: hp[p.id] <= 0, blocked: blocked.has(p.id) });
+        affinity: p.affinity, adv: p.adv, bonus: p.rank ? p.bonus : 0, ko: hp[p.id] <= 0, blocked: blocked.has(p.id), guardAlways: !!(p.intent && spIsGuard(p.intent.type, p.fam)) });
       meter[p.id] = r.end; spent[p.id] = r.spent; earned[p.id] = r.earned;
     }
     // 8) 公開するイベント（全員に見せる。発動したものだけ）
@@ -4798,7 +4802,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     normal: { ok: .55, ms: [1500, 8500], skip: .3, label: "ふつう" },
     hard:   { ok: .78, ms: [700, 4200],  skip: .1, label: "つよい" },
   };
-  // CPUも同じルール（宣言は出題前・正解したときだけ発動）
+  // CPUも同じルール（宣言は出題前。攻撃・回復は正解で、防御はまちがえても発動）
   function cpuDeclare(p){
     const G = H.game; if(!G || !p.alive || p.sealedR === G.r) return;
     const can = SP_TIERS.filter(t => p.meter >= spCost(t)); if(!can.length || Math.random() < (CPU_LV[H.cpuLv] || CPU_LV.normal).skip) return;
@@ -6071,7 +6075,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(tb);
     if(fam === "seal" && st < 2) box.append(el("p", "muted small", "封印はS2から使えます（S1では追加攻撃だけ）"));
     const bonus = SPC.abilities.rarityUniqueBonus[m.rarity] + SPC.abilities.stageUniqueBonus[String(st)];
-    box.append(el("p", "muted small", "バトルでは、この技の名前のボタンで使います（" + ({ attack: "ATTACK", guard: "DEFEND", recover: "RECOVER" })[SK_CAT[fam]] + "）。レア度と進化で数値が +" + bonus + "（上限あり）"));
+    box.append(el("p", "muted small", "バトルでは、この技の名前のボタンで使います（" + ({ attack: "ATTACK", guard: "DEFEND", recover: "RECOVER" })[SK_CAT[fam]] + "）。" + ({ attack: "1位で正解したときに発動。", guard: "まちがえても・時間切れでも発動して、ダメージを減らします。", recover: "正解したときに発動。" })[SK_CAT[fam]] + "レア度と進化で数値が +" + bonus + "（上限あり）"));
     return box;
   }
   function kInfo(m, st, owned){
