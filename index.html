@@ -417,7 +417,8 @@
   .act.primary{background:linear-gradient(180deg,#FFD866,#FFB800);color:var(--ink);box-shadow:0 5px 0 #D69200}
   .act.blue{background:linear-gradient(180deg,#5C93FF,#3D6BFF);color:#fff;box-shadow:0 5px 0 #2448C4}
   .act.blue .ai{background:rgba(255,255,255,.2)}
-  .act.ghost{background:#fff;color:var(--ink);box-shadow:0 5px 0 #DDD8E8;min-height:62px}
+  .act.photo{display:flex;align-items:center;text-decoration:none;margin-top:12px;background:linear-gradient(180deg,#FF8AC0,#F0559C);color:#fff;box-shadow:0 5px 0 #C23A79}.act.photo .ai{font-size:24px;display:grid;place-items:center}.act.photo small{color:#fff;opacity:.92}
+.act.ghost{background:#fff;color:var(--ink);box-shadow:0 5px 0 #DDD8E8;min-height:62px}
   .act.ghost .ai{background:#F1EEF8}
   .act:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -1232,6 +1233,7 @@
       <button class="tile dex" id="b-dex"><span class="tic">📖</span><b>図鑑</b><small id="t-dex"></small></button>
       <button class="tile prof" id="b-prof"><span class="tic">🏅</span><b>称号</b><small id="t-prof"></small></button>
     </div>
+    <a class="act photo" id="b-selfie" href="./selfie.html"><span class="ai">📸</span><span class="at"><b>コツンズ自撮り</b><small>キャラといっしょに、内カメ・外カメで写真をとる</small></span></a>
     <div class="status" id="home-status"></div>
     <div class="homefoot"><span id="home-rec"></span><button class="linkbtn" id="b-about">このアプリについて</button></div>
   </section>

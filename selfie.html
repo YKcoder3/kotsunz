@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#22173f">
+<title>コツンズ自撮り | コツンズ</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;--ink:#261c4d;--violet:#6f48d8;--pink:#ff6ca9;--gold:#ffd44a;--line:#e4d9f8;--bg:#f6f2ff}*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#f8f5ff,#fff9f4);color:var(--ink);min-height:100vh}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:default}a{color:inherit;text-decoration:none}.app{max-width:550px;margin:auto;padding:14px 15px max(28px,env(safe-area-inset-bottom))}.top{display:flex;align-items:center;justify-content:space-between;padding:7px 2px 17px}.back{font-size:14px;font-weight:750}.brand{font-size:28px;letter-spacing:-1px;font-weight:1000;color:white;-webkit-text-stroke:4px #332169;paint-order:stroke fill;text-shadow:2px 3px #d4c8ff}.brand .star{color:#ffe169;-webkit-text-stroke:2px #332169;font-size:16px;vertical-align:top}.tag{font-size:11px;color:#6e6387;font-weight:700}.headline{margin:4px 0 12px;font-size:20px;font-weight:900}.sub{font-size:12px;line-height:1.55;color:#796f91;margin:0 0 14px}.card{background:#fff;border:1px solid #ece6fa;box-shadow:0 10px 38px #39266a0e;border-radius:22px;padding:15px;margin-bottom:12px}.label{font-size:12px;font-weight:850;color:#59458f;margin:0 0 10px}.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.seg button,.pick button{border:1px solid #e5ddf4;background:#f7f4ff;border-radius:13px;padding:11px 5px;color:#504276;font-weight:850;font-size:12px}.seg button[aria-pressed=true],.pick button[aria-pressed=true]{background:#4a318c;color:white;border-color:#4a318c;box-shadow:0 5px 12px #4a318c25}.camera{position:relative;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 30% 20%,#6251a1,#201838 72%);aspect-ratio:3 / 4;display:grid;place-items:center;color:#fff}.camera video{position:absolute;width:100%;height:100%;object-fit:cover;inset:0;display:none}.camera video.mirror{transform:scaleX(-1)}.camera .no-cam{font-size:13px;text-align:center;line-height:1.8;max-width:220px;color:#e8ddff}.live-pill{position:absolute;left:12px;top:11px;background:#140c2dba;border:1px solid #fff4;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:800;z-index:1}.camera-tools{display:flex;gap:10px;margin-top:12px}.camera-tools button{flex:1}.btn{border:0;background:#eee8ff;border-radius:14px;padding:12px 14px;font-weight:850;color:#40306d}.btn.primary{background:linear-gradient(100deg,#f875ad,#e34c95);color:white;box-shadow:0 5px 18px #e34c9538}.btn.dark{background:#34245f;color:white}.btn.small{padding:9px 12px;font-size:12px}.help{margin:9px 0 2px;font-size:11px;color:#7d7590;line-height:1.6}.photo-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:11px 0}.photo-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#faf8ff}.photo-card .thumb{aspect-ratio:3 / 2;display:grid;place-items:center;background:#eee6ff;color:#65538b;font-size:12px;font-weight:850}.photo-card .thumb img{width:100%;height:100%;object-fit:cover}.photo-card button{border:0;background:transparent;width:100%;color:#64578b;font-weight:800;padding:7px;font-size:11px}.characters{display:flex;gap:8px;overflow-x:auto;padding:2px 0 9px;scroll-snap-type:x mandatory}.char{scroll-snap-align:start;flex:0 0 76px;min-width:76px;border:2px solid #e8dff6;background:#faf7ff;border-radius:16px;padding:7px 3px 6px;text-align:center;display:grid;place-items:center;gap:2px;color:#5b5182}.char.active{border-color:#ff74a3;background:#fff2f7;box-shadow:0 0 0 2px #ffd9e6}.char img{width:52px;height:52px;object-fit:contain}.char .emoji{font-size:35px;height:52px;display:grid;place-items:center}.char b{font-size:10px;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.edit-area{display:flex;gap:12px;align-items:flex-start}.preview{width:100%;display:block;border-radius:15px;background:#eeeaf8;touch-action:none;box-shadow:0 4px 14px #29214319}.controls{display:grid;gap:10px}.control-line{display:flex;align-items:center;gap:8px;font-size:12px}.control-line input{flex:1;accent-color:#7951dc}.control-line span{min-width:65px;font-weight:850}.pick{display:flex;gap:8px}.pick button{flex:1}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}.privacy{font-size:10px;color:#7d7590;line-height:1.55;text-align:center;margin-top:10px}.status{font-size:12px;color:#735e97;min-height:18px;margin:11px 0 0;line-height:1.5}.status.error{color:#af2f59}.hidden{display:none!important}.note{padding:10px;border-radius:12px;background:#f6f0ff;font-size:11px;line-height:1.6;color:#5b4c80}.divider{height:1px;background:#efeaf5;margin:12px 0}.live-ui{margin:10px 0;text-align:center;font-size:12px;color:#6b587f}.saved{position:fixed;inset:0;background:#140c2de6;z-index:9;display:grid;place-items:center;padding:16px}.saved-box{background:#fff;border-radius:20px;padding:12px;max-width:430px;width:100%;max-height:92vh;overflow:auto}.saved-box img{width:100%;display:block;border-radius:12px;-webkit-touch-callout:default;user-select:auto}.saved-tip{font-size:12px;color:#5b4c80;text-align:center;line-height:1.6;margin:10px 0 0}.footer{font-size:11px;color:#867e9b;text-align:center;margin:17px 0}@media(min-width:550px){.camera{max-height:515px}.app{padding-top:24px}}@media(prefers-reduced-motion:no-preference){button{transition:transform .12s,background .15s}button:active{transform:scale(.98)}}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="top"><a class="back" href="./index.html?notitle=1" aria-label="ホームに戻る">‹ ホーム</a><div class="brand" aria-label="コツンズ">コツンズ<span class="star">✦</span></div><span class="tag">PHOTO</span></header>
+  <h1 class="headline">コツンズ自撮り <span aria-hidden="true">📸</span></h1>
+  <p class="sub">自分と景色、そしてお気に入りの相棒。好きなレイアウトで撮って、コツンズの思い出を残そう！</p>
+  <section class="card">
+    <h2 class="label">① 写真のレイアウト</h2>
+    <div class="seg" id="modeSelector" aria-label="レイアウト"><button type="button" data-mode="side" aria-pressed="true">◧ 左右50:50</button><button type="button" data-mode="stack" aria-pressed="false">⬒ 上下50:50</button><button type="button" data-mode="full" aria-pressed="false">▣ 全画面</button></div>
+    <p class="help">撮影後も変更できます。全画面では、内カメ・外カメの好きな方を1枚にできます。</p>
+  </section>
+  <section class="card">
+    <h2 class="label">② 撮影する</h2>
+    <div class="camera" id="cameraView">
+      <div class="no-cam" id="noCam">📷<br>「カメラ起動」を押して撮影<br>または写真を選んでください</div>
+      <video id="video" playsinline autoplay muted></video>
+      <span class="live-pill" id="livePill">内カメ</span>
+    </div>
+    <div class="camera-tools"><button class="btn dark" id="startCamera">カメラ起動</button><button class="btn" id="flipCamera">↻ 内／外を切替</button></div>
+    <div class="camera-tools"><button class="btn primary" id="captureBtn">内カメを撮影</button><button class="btn" id="chooseFile">写真を選ぶ</button></div>
+    <input type="file" id="filePicker" accept="image/*" class="hidden" aria-label="写真を選ぶ">
+    <div class="photo-cards">
+      <div class="photo-card"><div class="thumb" id="thumbFront">内カメ未撮影</div><button type="button" id="frontReplace">内カメの写真を選択</button></div>
+      <div class="photo-card"><div class="thumb" id="thumbRear">外カメ未撮影</div><button type="button" id="rearReplace">外カメの写真を選択</button></div>
+    </div>
+    <p class="help">※スマホによっては内外カメラの同時起動ができないため、順番に撮影します。写真は自動アップロードされません。</p>
+  </section>
+  <section class="card" id="editorSection">
+    <h2 class="label">③ キャラを選ぶ（なしも選択OK）</h2>
+    <div class="characters" id="characterPicker" role="group" aria-label="キャラクター選択"></div>
+    <div class="divider"></div>
+    <h2 class="label">④ ロゴ入りの完成写真</h2>
+    <p class="help">写真の上でキャラをドラッグして移動できます。キャラの大きさも調整できます。</p>
+    <div class="pick hidden" id="fullSelector" aria-label="全画面で使う写真"><button id="fullFront" aria-pressed="true">内カメを使う</button><button id="fullRear" aria-pressed="false">外カメを使う</button></div>
+    <div style="margin-top:9px"><canvas class="preview" id="resultCanvas" width="1200" height="1600" role="img" aria-label="コツンズロゴ入りの写真プレビュー"></canvas></div>
+    <div class="controls" style="margin-top:13px">
+      <label class="control-line"><span>キャラの大きさ</span><input type="range" id="charScale" min="15" max="60" value="34"><strong id="scaleLabel">34%</strong></label>
+      <button type="button" class="btn small" id="resetPosition">キャラの位置をリセット</button>
+    </div>
+    <div class="actions"><button class="btn primary" id="download">写真を保存（PNG）</button><button class="btn dark" id="share">共有する</button></div>
+    <div class="note">すべてのレイアウトで、保存される写真には<strong>必ず「コツンズ」</strong>の文字が入ります。キャラクターは「なし」を選べますが、ロゴは消せません。</div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </section>
+  <p class="privacy">プライバシー：写真の合成はこのブラウザ内で行います。撮影画像をサーバーへ送信せず、カメラはページを閉じると停止します。</p>
+  <footer class="footer">© KOTSUNZ — コツンズ</footer>
+</main>
+<div class="saved hidden" id="savedSheet" role="dialog" aria-modal="true" aria-label="できあがった写真">
+  <div class="saved-box">
+    <img id="savedImg" alt="コツンズのロゴ入りの写真">
+    <p class="saved-tip" id="savedTip">写真を長押しして「"写真"に保存」を選んでください。</p>
+    <div class="actions" style="margin:8px 0 0"><button class="btn primary" id="savedShare">共有・保存する</button><button class="btn" id="savedClose">とじる</button></div>
+  </div>
+</div>
+<script type="module">
+const $=x=>document.getElementById(x);
+const ids=[['k001','ぬけもん'],['k002','めだまる'],['k003','ロジポン'],['k005','ルミュ'],['k006','ムキッツ'],['k007','ウロット'],['k008','クエス'],['k009','ホコリィ']];
+const state={mode:'side',facing:'user',fullSource:'user',photos:{user:null,environment:null},images:{},selected:'k002',scale:.34,position:{x:.73,y:.77},stream:null,fileTarget:'user',dragging:false,renderId:0};
+const video=$('video'),canvas=$('resultCanvas'),ctx=canvas.getContext('2d',{alpha:false});
+const names={user:'内カメ',environment:'外カメ'};
+function msg(t,error=false){$('status').textContent=t;$('status').classList.toggle('error',error)}
+function nextNeeded(){if(state.mode==='full')return state.facing;if(!state.photos.user)return 'user';if(!state.photos.environment)return 'environment';return state.facing}
+function updateCaptureLabel(){const facing=state.facing;$('captureBtn').textContent=names[facing]+'を撮影';$('livePill').textContent=names[facing]; video.classList.toggle('mirror',facing==='user')}
+function stopStream(){if(state.stream){state.stream.getTracks().forEach(t=>t.stop());state.stream=null}video.pause();video.srcObject=null;video.style.display='none';$('noCam').classList.remove('hidden')}
+async function startCamera(facing=state.facing){stopStream();state.facing=facing;updateCaptureLabel();try{if(!navigator.mediaDevices?.getUserMedia||!window.isSecureContext)throw new Error('HTTPSが必要です');const stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:facing},width:{ideal:1280},height:{ideal:1920}}});state.stream=stream;video.srcObject=stream;await video.play();video.style.display='block';$('noCam').classList.add('hidden');msg(names[facing]+'のカメラが起動しました')}catch(e){msg('カメラを起動できませんでした。アクセスを許可するか「写真を選ぶ」をお使いください。',true)}}
+function drawCover(c,img,x,y,w,h,mirror=false){const iw=img.naturalWidth||img.videoWidth||img.width;const ih=img.naturalHeight||img.videoHeight||img.height;if(!iw||!ih)return;const ratio=Math.max(w/iw,h/ih),sw=w/ratio,sh=h/ratio,sx=(iw-sw)/2,sy=(ih-sh)/2;c.save();if(mirror){c.translate(x+w,0);c.scale(-1,1);c.drawImage(img,sx,sy,sw,sh,0,y,w,h)}else c.drawImage(img,sx,sy,sw,sh,x,y,w,h);c.restore()}
+function loadImage(src){return new Promise((resolve,reject)=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=reject;img.src=src})}
+async function saveCaptured(src,facing){let url=src;if(src instanceof Blob)url=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(src)});try{const img=await loadImage(url);state.photos[facing]=img;updateThumbs();render();msg(names[facing]+'の写真をセットしました。')}catch(e){msg('画像を読み込めませんでした。',true)}}
+function captureFrame(){if(!state.stream||!video.videoWidth){msg('先にカメラを起動するか写真を選んでください。',true);return}const off=document.createElement('canvas');off.width=1080;off.height=1440;const oc=off.getContext('2d');drawCover(oc,video,0,0,off.width,off.height,state.facing==='user');off.toBlob(async blob=>{if(!blob)return;const before=state.facing;await saveCaptured(blob,before);if(state.mode!=='full'&&before==='user'&&!state.photos.environment)await startCamera('environment')},'image/jpeg',.95)}
+function updateThumbs(){[['user','thumbFront'],['environment','thumbRear']].forEach(([f,id])=>{const box=$(id);box.replaceChildren();const img=state.photos[f];if(img){const i=img.cloneNode(false);i.src=img.src;box.appendChild(i)}else box.textContent=names[f]+'未撮影'})}
+function makePicker(){const holder=$('characterPicker');holder.innerHTML='';const options=[['none','キャラなし'],...ids];for(const [id,name] of options){const b=document.createElement('button');b.type='button';b.className='char'+(id===state.selected?' active':'');b.setAttribute('aria-pressed',String(id===state.selected));if(id==='none'){b.innerHTML='<span class="emoji">🚫</span><b>キャラなし</b>'}else{const im=document.createElement('img');im.src=`assets/characters/${id}/stage-1.webp`;im.alt=name;im.loading='lazy';b.appendChild(im);const label=document.createElement('b');label.textContent=name;b.appendChild(label)}b.addEventListener('click',async()=>{state.selected=id;makePicker();if(id!=='none'&&!state.images[id]){try{state.images[id]=await loadImage(`assets/characters/${id}/stage-1.webp`)}catch(e){msg('キャラクター画像を読み込めませんでした。',true)}}render()});holder.appendChild(b)}}
+function drawPlaceholder(x,y,w,h,text){ctx.save();const grad=ctx.createLinearGradient(x,y,x+w,y+h);grad.addColorStop(0,'#efeaff');grad.addColorStop(1,'#dbd0f6');ctx.fillStyle=grad;ctx.fillRect(x,y,w,h);ctx.textAlign='center';ctx.fillStyle='#63518c';ctx.font=`bold ${Math.round(w/17)}px sans-serif`;ctx.fillText(text,x+w/2,y+h/2);ctx.restore()}
+function renderPhoto(img,x,y,w,h,text){if(img)drawCover(ctx,img,x,y,w,h);else drawPlaceholder(x,y,w,h,text)}
+function drawBrand(W,H){const size=Math.round(W*.073),x=W/2,y=H*.082;ctx.save();ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';ctx.shadowColor='#150733aa';ctx.shadowBlur=W*.017;ctx.shadowOffsetY=W*.008;ctx.font=`1000 ${size}px "Arial Rounded MT Bold","Hiragino Kaku Gothic ProN",system-ui,sans-serif`;ctx.lineWidth=Math.max(12,W*.017);ctx.strokeStyle='#352067';ctx.strokeText('コツンズ',x,y);ctx.fillStyle='#fff';ctx.fillText('コツンズ',x,y);ctx.shadowColor='transparent';ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.fillStyle='#ffd74d';ctx.font=`900 ${Math.round(size*.55)}px sans-serif`;ctx.fillText('✦',x+size*2.5,y-size*.48);ctx.restore()}
+function drawChar(W,H){if(state.selected==='none')return;const img=state.images[state.selected];if(!img)return;const w=W*state.scale,ratio=img.naturalHeight/img.naturalWidth,h=w*ratio;let cx=state.position.x*W,cy=state.position.y*H;cx=Math.max(w*.36,Math.min(W-w*.36,cx));cy=Math.max(h*.3,Math.min(H-h*.3,cy));ctx.save();ctx.shadowColor='#21114466';ctx.shadowBlur=W*.018;ctx.shadowOffsetY=W*.01;ctx.drawImage(img,cx-w/2,cy-h/2,w,h);ctx.restore()}
+function drawFooterWm(W,H){ctx.save();ctx.textAlign='right';ctx.font=`700 ${Math.round(W*.019)}px system-ui,sans-serif`;ctx.lineWidth=Math.max(3,W*.003);ctx.lineJoin='round';ctx.strokeStyle='#352067';ctx.strokeText('KOTSUNZ',W*.97,H*.971);ctx.fillStyle='#fff';ctx.fillText('KOTSUNZ',W*.97,H*.971);ctx.restore()}
+function render(){const full=state.mode==='full';const W=full?1080:1200,H=full?1920:1600;if(canvas.width!==W||canvas.height!==H){canvas.width=W;canvas.height=H}ctx.clearRect(0,0,W,H);if(full){const pic=state.photos[state.fullSource]||state.photos[state.fullSource==='user'?'environment':'user'];renderPhoto(pic,0,0,W,H,'写真を撮影してください')}else if(state.mode==='side'){renderPhoto(state.photos.user,0,0,W/2,H,'内カメ');renderPhoto(state.photos.environment,W/2,0,W/2,H,'外カメ');ctx.fillStyle='#fff';ctx.fillRect(W/2-5,0,10,H)}else{renderPhoto(state.photos.user,0,0,W,H/2,'内カメ');renderPhoto(state.photos.environment,0,H/2,W,H/2,'外カメ');ctx.fillStyle='#fff';ctx.fillRect(0,H/2-5,W,10)}drawChar(W,H);drawBrand(W,H);drawFooterWm(W,H)}
+function setMode(mode){state.mode=mode;$('fullSelector').classList.toggle('hidden',mode!=='full');document.querySelectorAll('[data-mode]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.mode===mode)));render();msg('レイアウトを変更しました。保存時にも反映されます。')}
+function resetPosition(){state.position={x:.73,y:.77};render()}
+function hasPhotos(){return state.mode==='full'?Boolean(state.photos.user||state.photos.environment):Boolean(state.photos.user&&state.photos.environment)}
+function exportBlob(){return new Promise(resolve=>canvas.toBlob(resolve,'image/png'))}
+async function savePhoto(share){if(!hasPhotos()){msg(state.mode==='full'?'まず写真を1枚撮影してください。':'内カメと外カメの写真が両方必要です。',true);return}render();const blob=await exportBlob();if(!blob){msg('写真の書き出しに失敗しました。',true);return}const filename=`KOTSUNZ_${new Date().toISOString().replace(/[:.]/g,'-')}.png`;const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+if(!share&&ios){showSaved(blob,filename);return}   // iPhoneの「ダウンロード」はファイルアプリに入るので、写真アプリに入れられる画面を出す
+if(share&&navigator.share&&navigator.canShare){try{const file=new File([blob],filename,{type:'image/png'});if(navigator.canShare({files:[file]})){await navigator.share({title:'コツンズ自撮り',files:[file]});return}}catch(e){if(e.name==='AbortError')return}}const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);msg('「コツンズ」ロゴ入りの写真を保存しました。')}
+let savedUrl=null,savedBlob=null,savedName='';
+function showSaved(blob,filename){if(savedUrl)URL.revokeObjectURL(savedUrl);savedBlob=blob;savedName=filename;savedUrl=URL.createObjectURL(blob);$('savedImg').src=savedUrl;let canFile=false;try{canFile=!!(navigator.canShare&&navigator.canShare({files:[new File([blob],filename,{type:'image/png'})]}))}catch(e){}$('savedShare').classList.toggle('hidden',!canFile);$('savedTip').textContent=canFile?'「共有・保存する」から「画像を保存」を選ぶと、写真アプリに入ります。写真を長押しして保存することもできます。':'写真を長押しして「"写真"に保存」を選んでください。';$('savedSheet').classList.remove('hidden');msg('写真ができました。')}
+$('savedClose').addEventListener('click',()=>$('savedSheet').classList.add('hidden'));
+$('savedShare').addEventListener('click',async()=>{if(!savedBlob)return;try{await navigator.share({title:'コツンズ自撮り',files:[new File([savedBlob],savedName,{type:'image/png'})]});msg('「コツンズ」ロゴ入りの写真を共有しました。')}catch(e){}});
+$('startCamera').addEventListener('click',()=>startCamera());$('flipCamera').addEventListener('click',()=>startCamera(state.facing==='user'?'environment':'user'));$('captureBtn').addEventListener('click',captureFrame);$('chooseFile').addEventListener('click',()=>{state.fileTarget=state.facing;$('filePicker').click()});$('frontReplace').addEventListener('click',()=>{state.fileTarget='user';$('filePicker').click()});$('rearReplace').addEventListener('click',()=>{state.fileTarget='environment';$('filePicker').click()});$('filePicker').addEventListener('change',async e=>{const f=e.target.files?.[0];if(f)await saveCaptured(f,state.fileTarget);e.target.value=''});document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+$('fullFront').addEventListener('click',()=>{state.fullSource='user';$('fullFront').setAttribute('aria-pressed','true');$('fullRear').setAttribute('aria-pressed','false');render()});$('fullRear').addEventListener('click',()=>{state.fullSource='environment';$('fullFront').setAttribute('aria-pressed','false');$('fullRear').setAttribute('aria-pressed','true');render()});$('charScale').addEventListener('input',e=>{state.scale=Number(e.target.value)/100;$('scaleLabel').textContent=e.target.value+'%';render()});$('resetPosition').addEventListener('click',resetPosition);$('download').addEventListener('click',()=>savePhoto(false));$('share').addEventListener('click',()=>savePhoto(true));
+const pointerPos=e=>{const r=canvas.getBoundingClientRect();return{x:Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y:Math.max(0,Math.min(1,(e.clientY-r.top)/r.height))}};
+canvas.addEventListener('pointerdown',e=>{if(state.selected==='none')return;state.dragging=true;canvas.setPointerCapture(e.pointerId);state.position=pointerPos(e);render()});canvas.addEventListener('pointermove',e=>{if(!state.dragging)return;state.position=pointerPos(e);render()});['pointercancel','pointerup'].forEach(type=>canvas.addEventListener(type,()=>state.dragging=false));
+window.addEventListener('pagehide',stopStream);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopStream()});
+(async()=>{makePicker();try{state.images[state.selected]=await loadImage(`assets/characters/${state.selected}/stage-1.webp`)}catch(e){msg('キャラクター画像を読み込めませんでした。',true)}updateCaptureLabel();render()})();
+</script>
+</body>
+</html>
