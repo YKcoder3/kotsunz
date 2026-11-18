@@ -5,7 +5,7 @@ let F = 0, P = 0; const ok = (n, c, x) => { c ? P++ : F++; console.log((c ? 'PAS
 const inView = (r, vw, vh) => r && r.left >= 0 && r.top >= 0 && r.right <= vw + .5 && r.bottom <= vh + .5 && r.width > 0;
 (async () => {
   const b = await chromium.launch({ args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] });
-  for(const dev of ['iPhone 13 landscape', 'iPhone SE landscape', 'Pixel 7 landscape', 'Galaxy S9+ landscape']){
+  for(const dev of ['iPhone 13 landscape', 'iPhone 15 Pro Max landscape', 'iPhone SE landscape', 'Pixel 7 landscape', 'Galaxy S9+ landscape']){
     const d = devices[dev]; const c = await b.newContext({ ...d, permissions: ['camera'], acceptDownloads: true }); const p = await c.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto(ORIGIN + 'selfie.html'); await p.waitForFunction(() => document.getElementById('video').videoWidth > 0 && document.getElementById('camMsg').classList.contains('hidden'), null, { timeout: 10000 }); await sleep(500);
     const vw = d.viewport.width, vh = d.viewport.height;

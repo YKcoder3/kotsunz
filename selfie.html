@@ -117,37 +117,36 @@ button:disabled{opacity:.4}
 .sty.none span{font-size:13px;-webkit-text-stroke:0;color:#fff;font-weight:900}
 .tools2{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
 /* スマホをよこにしたとき：撮影はファインダーを大きく左に、ボタンは右のたての列に。仕上げは写真を左、操作を右に */
-@media (orientation: landscape) and (max-height: 620px){
-  #scrCam{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto minmax(0,1fr) auto;padding-left:env(safe-area-inset-left)}
-  #scrCam .bar-top{grid-column:1;grid-row:1;min-height:0;padding:max(6px,env(safe-area-inset-top)) 10px 2px}
-  #scrCam .logo-mini{font-size:17px;-webkit-text-stroke:4px #2a1d55}
-  #scrCam .chip-toggle button{padding:5px 10px;font-size:11px}
-  #scrCam .finder-wrap{grid-column:1;grid-row:2;padding:2px 6px}
-  #scrCam .finder{border-radius:18px}
-  #scrCam .finder .count{font-size:80px}
-  #scrCam .under{grid-column:1;grid-row:3;padding:0 0 max(2px,env(safe-area-inset-bottom))}
-  #scrCam .linkish{font-size:12px;padding:3px 8px}
-  #scrCam .bar-bottom{grid-column:2;grid-row:1/4;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) 6px}
-  #scrCam .round{width:52px;height:52px;font-size:11px}
-  #scrCam .shutter{width:76px;height:76px}
-  #scrCam .shutter span{width:56px;height:56px}
-  #scrEdit{display:grid;grid-template-columns:minmax(0,1fr) min(48vw,430px);grid-template-rows:auto minmax(0,1fr);padding-left:env(safe-area-inset-left)}
-  #scrEdit .edit-top{grid-column:1;grid-row:1;padding:max(4px,env(safe-area-inset-top)) 8px 2px}
-  #scrEdit .edit-top .logo-mini{font-size:16px;-webkit-text-stroke:4px #2a1d55}
-  #scrEdit .stage{grid-column:1;grid-row:2;padding:2px 8px max(8px,env(safe-area-inset-bottom))}
-  #scrEdit .panel{grid-column:2;grid-row:1/3;border-radius:22px 0 0 22px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;padding:8px max(12px,env(safe-area-inset-right)) 0 12px;box-shadow:-8px 0 30px #0005}
-  #scrEdit .tabs{margin-bottom:8px}
-  #scrEdit .tabs button{font-size:11px;white-space:nowrap;padding:8px 1px}
-  #scrEdit .pane{min-height:0}
-  #scrEdit .bar-edit{margin-top:auto;position:sticky;bottom:0;background:#fff;padding-top:8px}
-  .toast{bottom:calc(24px + env(safe-area-inset-bottom))}
-  .saved{padding:10px max(10px,env(safe-area-inset-right)) 10px max(10px,env(safe-area-inset-left))}
-  .saved-box{display:grid;grid-template-columns:auto 200px;align-items:center;gap:14px;width:auto;max-width:96vw;max-height:94vh;overflow:hidden}
-  .saved-box img{width:auto;max-width:calc(96vw - 250px);max-height:calc(94vh - 24px)}
-  .saved-side{min-width:0}
-  .saved-tip{margin:0 0 10px;word-break:break-all}
-  .saved-btns{grid-template-columns:1fr}
-}
+/* よこ画面：html.land（JSで、画面がよこ長で高さが620px以下のときにつける） */
+html.land #scrCam{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto minmax(0,1fr) auto;padding-left:env(safe-area-inset-left)}
+html.land #scrCam .bar-top{grid-column:1;grid-row:1;min-height:0;padding:max(6px,env(safe-area-inset-top)) 10px 2px}
+html.land #scrCam .logo-mini{font-size:17px;-webkit-text-stroke:4px #2a1d55}
+html.land #scrCam .chip-toggle button{padding:5px 10px;font-size:11px}
+html.land #scrCam .finder-wrap{grid-column:1;grid-row:2;padding:2px 6px}
+html.land #scrCam .finder{border-radius:18px}
+html.land #scrCam .finder .count{font-size:80px}
+html.land #scrCam .under{grid-column:1;grid-row:3;padding:0 0 max(2px,env(safe-area-inset-bottom))}
+html.land #scrCam .linkish{font-size:12px;padding:3px 8px}
+html.land #scrCam .bar-bottom{grid-column:2;grid-row:1/4;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) 6px}
+html.land #scrCam .round{width:52px;height:52px;font-size:11px}
+html.land #scrCam .shutter{width:76px;height:76px}
+html.land #scrCam .shutter span{width:56px;height:56px}
+html.land #scrEdit{display:grid;grid-template-columns:minmax(0,1fr) min(48vw,430px);grid-template-rows:auto minmax(0,1fr);padding-left:env(safe-area-inset-left)}
+html.land #scrEdit .edit-top{grid-column:1;grid-row:1;padding:max(4px,env(safe-area-inset-top)) 8px 2px}
+html.land #scrEdit .edit-top .logo-mini{font-size:16px;-webkit-text-stroke:4px #2a1d55}
+html.land #scrEdit .stage{grid-column:1;grid-row:2;padding:2px 8px max(8px,env(safe-area-inset-bottom))}
+html.land #scrEdit .panel{grid-column:2;grid-row:1/3;border-radius:22px 0 0 22px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;padding:8px max(12px,env(safe-area-inset-right)) 0 12px;box-shadow:-8px 0 30px #0005}
+html.land #scrEdit .tabs{margin-bottom:8px}
+html.land #scrEdit .tabs button{font-size:11px;white-space:nowrap;padding:8px 1px}
+html.land #scrEdit .pane{min-height:0}
+html.land #scrEdit .bar-edit{margin-top:auto;position:sticky;bottom:0;background:#fff;padding-top:8px}
+html.land .toast{bottom:calc(24px + env(safe-area-inset-bottom))}
+html.land .saved{padding:10px max(10px,env(safe-area-inset-right)) 10px max(10px,env(safe-area-inset-left))}
+html.land .saved-box{display:grid;grid-template-columns:auto 200px;align-items:center;gap:14px;width:auto;max-width:96vw;max-height:94vh;overflow:hidden}
+html.land .saved-box img{width:auto;max-width:calc(96vw - 250px);max-height:calc(94vh - 24px)}
+html.land .saved-side{min-width:0}
+html.land .saved-tip{margin:0 0 10px;word-break:break-all}
+html.land .saved-btns{grid-template-columns:1fr}
 </style>
 </head>
 <body>
@@ -690,9 +689,11 @@ const setShots = n => { S.shots = n; $("m2").setAttribute("aria-pressed", String
 $("m2").addEventListener("click", () => setShots(2)); $("m1").addEventListener("click", () => setShots(1));
 window.addEventListener("pagehide", stopCam);
 document.addEventListener("visibilitychange", () => { if(document.hidden) stopCam(); else if(!$("scrCam").classList.contains("hidden")) startCam(S.facing); });
-window.addEventListener("resize", fitFinder);
+function setLand(){ const l = innerWidth > innerHeight && innerHeight <= 620; document.documentElement.classList.toggle("land", l); }
+setLand();
+window.addEventListener("resize", () => { setLand(); fitFinder(); });
 // 画面が回ったとき・映像の形が変わったときも合わせなおす（iPhone は少しおくれて大きさが変わる）
-const refit = () => { fitFinder(); setTimeout(fitFinder, 120); setTimeout(fitFinder, 400); };
+const refit = () => { setLand(); fitFinder(); setTimeout(() => { setLand(); fitFinder(); }, 120); setTimeout(() => { setLand(); fitFinder(); }, 400); };
 try{ screen.orientation && screen.orientation.addEventListener("change", refit); }catch(e){}
 window.addEventListener("orientationchange", refit); video.addEventListener("resize", refit); video.addEventListener("loadedmetadata", refit);
 
