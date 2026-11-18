@@ -417,8 +417,7 @@
   .act.primary{background:linear-gradient(180deg,#FFD866,#FFB800);color:var(--ink);box-shadow:0 5px 0 #D69200}
   .act.blue{background:linear-gradient(180deg,#5C93FF,#3D6BFF);color:#fff;box-shadow:0 5px 0 #2448C4}
   .act.blue .ai{background:rgba(255,255,255,.2)}
-  .act.photo{display:flex;align-items:center;text-decoration:none;margin-top:12px;background:linear-gradient(180deg,#FF8AC0,#F0559C);color:#fff;box-shadow:0 5px 0 #C23A79}.act.photo .ai{font-size:24px;display:grid;place-items:center}.act.photo small{color:#fff;opacity:.92}
-.act.ghost{background:#fff;color:var(--ink);box-shadow:0 5px 0 #DDD8E8;min-height:62px}
+  .act.ghost{background:#fff;color:var(--ink);box-shadow:0 5px 0 #DDD8E8;min-height:62px}
   .act.ghost .ai{background:#F1EEF8}
   .act:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.2)}
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -1163,6 +1162,22 @@
   /* v8：写真クイズ */
   .qmedia.photo{width:100%;max-width:320px;margin:8px auto 0;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#eee}
   .qmedia.photo .qimg{display:block;width:100%;height:100%;object-fit:cover}
+
+  /* 必殺技：キャラが持っている技の名前のボタン（v8.1） */
+  .spkeys.n1{grid-template-columns:1fr}
+  .spkeys.n2{grid-template-columns:1fr 1fr}
+  .spk.named{flex-direction:row;justify-content:flex-start;gap:12px;min-height:74px;padding:10px 16px;text-align:left}
+  .spk.named .spi svg{width:38px;height:38px}
+  .spk.named .spn{display:flex;flex-direction:column;min-width:0;gap:2px}
+  .spk.named .spn b{font-family:var(--round),system-ui,sans-serif;font-size:18px;letter-spacing:0;line-height:1.25;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+  .spk.named .spn small{font-size:11px;font-weight:900;letter-spacing:.08em;opacity:.85;padding:0;white-space:nowrap}
+  .spkeys.n2 .spk.named{padding:10px 10px;gap:8px}
+  .spkeys.n2 .spk.named .spn b{font-size:14.5px}
+  .spnone{color:rgba(255,255,255,.75);font-weight:800;font-size:13px;text-align:center;padding:14px}
+  /* ホームの「コツンズ自撮り」 */
+  .act.photo{display:flex;align-items:center;text-decoration:none;margin-top:12px;background:linear-gradient(180deg,#FF8AC0,#F0559C);color:#fff;box-shadow:0 5px 0 #C23A79}
+  .act.photo .ai{font-size:24px;display:grid;place-items:center}
+  .act.photo small{color:#fff;opacity:.92}
 </style>
 </head>
 <body>
@@ -4668,11 +4683,13 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     return { d, why };
   }
   // ---------- 必殺技（ホスト） ----------
+  // そのキャラが持っている必殺技だけ（ふつうの ATTACK・DEFEND・RECOVER は出さない）
+  function spOwn(f){ const m = isK(f) ? KMASTER[f.cid] : null; return m ? [{ k: SK_CAT[m.skill.fam], n: m.skill.name, f: m.skill.fam }] : []; }
   function spView(p){
     const G = H.game; if(!G || !p) return { t:"sp" };
     const m = isK(p.fighter) ? KMASTER[p.fighter.cid] : null;
     return { t:"sp", g: G.id, r: G.r, m: p.meter, sealed: p.sealedR === G.r, alive: !!p.alive, open: !!G.q && performance.now() < G.declareUntil,
-             sk: m ? { n: m.skill.name, f: m.skill.fam, c: SK_CAT[m.skill.fam] } : null, it: (G.intent.get(p.id) || null) && { k: G.intent.get(p.id).k, tier: G.intent.get(p.id).tier, n: G.intent.get(p.id).n } };
+             sk: m ? { n: m.skill.name, f: m.skill.fam, c: SK_CAT[m.skill.fam] } : null, av: spOwn(p.fighter), it: (G.intent.get(p.id) || null) && { k: G.intent.get(p.id).k, tier: G.intent.get(p.id).tier, n: G.intent.get(p.id).n } };
   }
   function onSkillIntent(id, m){
     const G = H.game, p = H.players.get(id);
@@ -4688,7 +4705,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(performance.now() > G.declareUntil) res = [false, "締め切りに間に合いませんでした"];
     else if(!p.alive) res = [false, "KO中は使えません"];
     else if(m.k == null){ G.intent.delete(id); res = [true, ""]; }
-    else if(!SP_KEYS.includes(m.k) || !SP_TIERS.includes(m.tier)) res = [false, "その技は使えません"];
+    else if(!SP_KEYS.includes(m.k) || !SP_TIERS.includes(m.tier) || !spOwn(p.fighter).some(x => x.k === m.k)) res = [false, "その技は使えません"];
     else if(p.sealedR === G.r) res = [false, "封印されています"];
     else if(p.meter < spCost(m.tier)) res = [false, "ゲージが足りません"];
     else { G.intent.set(id, { k: m.k, tier: m.tier, n }); res = [true, ""]; }
@@ -4707,8 +4724,8 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const G = H.game; if(!G || !p.alive || p.sealedR === G.r) return;
     const can = SP_TIERS.filter(t => p.meter >= spCost(t)); if(!can.length || Math.random() < (CPU_LV[H.cpuLv] || CPU_LV.normal).skip) return;
     const tier = can.length > 1 && Math.random() < .35 ? can[can.length - 2] : can[can.length - 1];
-    const low = p.hp <= p.max * .45;
-    const k = low ? pick(["guard", "recover", "recover"]) : pick(["attack", "attack", "guard", "recover"]);
+    const own = spOwn(p.fighter); if(!own.length) return;
+    const k = pick(own).k;                                                  // CPUも自分の必殺技だけ
     G.intent.set(p.id, { k, tier, n: "cpu" + G.r });
   }
   // 写真が読めなかった人がいたら、その問題はノーカウント（ダメージ・SP・順位なし）にして次へ
@@ -5349,7 +5366,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   const TIER_SHORT = { small: "小", medium: "中", large: "大" };
   function onSpView(m){
     const G = VS.game; if(!G || (m.g && G.id && m.g !== G.id)) return;
-    G.sp.m = num(m.m, 0, SPC.meter.max); G.sp.sk = m.sk || G.sp.sk;
+    G.sp.m = num(m.m, 0, SPC.meter.max); G.sp.sk = m.sk || G.sp.sk; if(Array.isArray(m.av)) G.sp.av = m.av;
     if(!m.after){ if(G.sp.r !== m.r) G.sp.sel = null; G.sp.r = m.r; G.sp.sealed = !!m.sealed; }
     if(!m.after && m.it && (!G.sp.sel || G.sp.sel.n === m.it.n)) G.sp.sel = { k: m.it.k, tier: m.it.tier, n: m.it.n, st: "ok" };   // 再接続：ホストが受けとった宣言を表示
     if(m.after){
@@ -5412,14 +5429,16 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     mt.append(el("span", "spml", "SP"), bar, el("span", "spmv", String(v)));
     box.append(mt);
     const can = v >= T.small && !G.sp.sealed;
-    // 1段目：ATTACK / DEFEND / RECOVER（押したものだけ明るく、✓がつく。もう一度押すと取り消し）
-    const r1 = el("div", "spkeys");
-    for(const k of SP_KEYS){
-      const on = !!sel && sel.k === k;
-      const b = el("button", "spk " + k + (on ? " on" : "") + (uniq === k ? " uniq" : ""));
+    // 1段目：このキャラの必殺技（名前のボタン）。持っている技だけ出す。押したものだけ明るく✓、もう一度押すと取り消し
+    const av = G.sp.av || (G.sp.sk ? [{ k: G.sp.sk.c, n: G.sp.sk.n }] : []);
+    const r1 = el("div", "spkeys n" + Math.max(1, av.length));
+    if(!av.length) r1.append(el("div", "spnone", "このキャラは必殺技を持っていません"));
+    for(const s2 of av){
+      const k = s2.k, on = !!sel && sel.k === k;
+      const b = el("button", "spk named " + k + (on ? " on" : ""));
       b.setAttribute("aria-pressed", on ? "true" : "false");
-      b.innerHTML = SP_ICON[k]; b.append(el("b", null, SP_LABEL[k]));
-      if(uniq === k) b.append(el("small", null, G.sp.sk.n));
+      const ic = el("span", "spi"); ic.innerHTML = SP_ICON[k]; b.append(ic);
+      const tx = el("span", "spn"); tx.append(el("b", null, s2.n), el("small", null, SP_LABEL[k])); b.append(tx);
       if(on) b.append(el("span", "chk", "✓"));
       b.disabled = !can;
       b.addEventListener("click", () => {
@@ -5442,7 +5461,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(r1, r2);
     // 今の状態を1行で
     const st = el("div", "spstate" + (sel ? (sel.st === "ok" ? " ok" : " wait") : ""));
-    st.textContent = G.sp.sealed ? "🔒 封印中" : !can ? "SPをためよう" : sel ? (sel.st === "ok" ? "✓ " + nameOfK(sel.k) + "・" + SP_TIER_JA[sel.tier] + "　セット完了" : "セット中…") : "技をえらぶ（えらばなくてもOK）";
+    st.textContent = G.sp.sealed ? "🔒 封印中" : !can ? "SPをためよう" : sel ? (sel.st === "ok" ? "✓ " + nameOfK(sel.k) + "・" + SP_TIER_JA[sel.tier] + "　セット完了" : "セット中…") : (av.length > 1 ? "使う技をえらぶ（使わなくてもOK）" : "技を使うときはタップ（使わなくてもOK）");
     box.append(st);
   }
   const CHAIN_SVG = `<svg viewBox="0 0 64 64"><g fill="none" stroke="#C9CCD8" stroke-width="5" stroke-linecap="round"><rect x="2" y="10" width="20" height="12" rx="6" transform="rotate(35 12 16)"/><rect x="16" y="22" width="20" height="12" rx="6" transform="rotate(35 26 28)"/><rect x="30" y="32" width="20" height="12" rx="6" transform="rotate(35 40 38)"/><rect x="42" y="44" width="20" height="12" rx="6" transform="rotate(35 52 50)"/></g><g fill="none" stroke="#6B6F82" stroke-width="1.6"><rect x="2" y="10" width="20" height="12" rx="6" transform="rotate(35 12 16)"/><rect x="30" y="32" width="20" height="12" rx="6" transform="rotate(35 40 38)"/></g><rect x="22" y="26" width="20" height="16" rx="3" fill="#FFC531" stroke="#7a5600" stroke-width="2"/><path d="M26 26v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#7a5600" stroke-width="3"/></svg>`;
@@ -5966,7 +5985,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     box.append(tb);
     if(fam === "seal" && st < 2) box.append(el("p", "muted small", "封印はS2から使えます（S1では追加攻撃だけ）"));
     const bonus = SPC.abilities.rarityUniqueBonus[m.rarity] + SPC.abilities.stageUniqueBonus[String(st)];
-    box.append(el("p", "muted small", "バトルでは「" + ({ attack: "ATTACK", guard: "DEFEND", recover: "RECOVER" })[SK_CAT[fam]] + "」ボタンがこの技になります。レア度と進化で数値が +" + bonus + "（上限あり）"));
+    box.append(el("p", "muted small", "バトルでは、この技の名前のボタンで使います（" + ({ attack: "ATTACK", guard: "DEFEND", recover: "RECOVER" })[SK_CAT[fam]] + "）。レア度と進化で数値が +" + bonus + "（上限あり）"));
     return box;
   }
   function kInfo(m, st, owned){
