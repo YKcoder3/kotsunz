@@ -40,7 +40,8 @@ async function pinch(c, p, sel, center, d0, d1){
   await p.click('#shutter'); await sleep(1200); await p.screenshot({ path: OUT + 'b-countdown.png' });
   await p.waitForSelector('#scrEdit:not(.hidden)', { timeout: 10000 });
   const ph = await p.evaluate(() => ({ u: S.photos.user && [S.photos.user.width, S.photos.user.height], e: S.photos.environment && [S.photos.environment.width, S.photos.environment.height], lay: S.lay, cam: !!S.stream }));
-  ok('シャッター1回で内カメ→外カメの2枚がとれて、ビーリアル風になる', ph.u && ph.e && ph.lay === 'real' && !ph.cam, ph);
+  ok('シャッター1回で内カメ→外カメの2枚がとれて、「なみなみ」の形になる', ph.u && ph.e && ph.lay === 'wave' && !ph.cam, ph);
+  ok('ビーリアル風はなくなった', !(await p.$('[data-lay="real"]')));
   ok('写真は映像を切りとらずに保存（形が同じ）', Math.abs(ph.u[0] / ph.u[1] - fit.video) < .02, ph.u);
   // キャラを2体のせる
   await p.click('[data-tab="chr"]'); const chs = await p.$$('#chars .ch'); ok('キャラは正式な8体', chs.length === 8);
@@ -56,8 +57,8 @@ async function pinch(c, p, sel, center, d0, d1){
   ok('2本指でキャラを大きくできる', st2 > st0.w * 1.5, { before: st0.w, after: st2 });
   await p.click('#stFlip'); ok('反転できる', await p.evaluate(() => S.stickers[1].flip === true));
   // ロゴ
-  await p.click('[data-tab="logo"]'); const sty = await p.$$('#styles .sty'); ok('ロゴの形は4種類（公式・ぷっくり・てがき・どっしり）', sty.length === 4);
-  await p.click('#styles .sty:nth-child(3)'); await p.click('#colors .dot:nth-child(2)');
+  await p.click('[data-tab="logo"]'); const sty = await p.$$('#styles .sty'); ok('ロゴは「なし」と4種類（公式・ぷっくり・てがき・どっしり）', sty.length === 5);
+  await p.click('#styles .sty:nth-child(4)'); await p.click('#colors .dot:nth-child(2)');
   const lg0 = await p.evaluate(() => ({ x: S.logo.x, y: S.logo.y }));
   await touchDrag(c, p, '#cv', [lg0.x, lg0.y], [.5, .2]);
   const lg1 = await p.evaluate(() => ({ x: S.logo.x, y: S.logo.y, style: S.logo.style, color: S.logo.color }));
@@ -65,21 +66,43 @@ async function pinch(c, p, sel, center, d0, d1){
   await touchDrag(c, p, '#cv', [.5, .2], [.5, -0.5]);
   ok('ロゴは写真の外には出ない', await p.evaluate(() => S.logo.y > 0.02));
   await p.click('[data-pos="top"]');
+  await p.click('[data-pos="top"]');
   const fontsOk = await p.evaluate(() => ['KZ Pop', 'KZ Hand', 'KZ Bold'].every(f => document.fonts.check("40px '" + f + "'", 'コツンズ')));
   ok('かわいいロゴのフォント3つが読みこめている', fontsOk);
   await sleep(200); await p.screenshot({ path: OUT + 'c-edit.png' });
+  // 写真の向きと大きさ（撮ったあと）
+  await p.click('[data-tab="pho"]'); await p.click('[data-who="environment"]');
+  const r0 = await p.evaluate(() => [S.photos.environment.width, S.photos.environment.height]);
+  await p.click('#rotR'); const r1 = await p.evaluate(() => [S.photos.environment.width, S.photos.environment.height, S.view.environment.rot]);
+  ok('撮ったあとで写真を90度回せる（縦と横が入れかわる）', r1[0] === r0[1] && r1[1] === r0[0] && r1[2] === 90, { r0, r1 });
+  await p.$eval('#phZoom', e => { e.value = 250; e.dispatchEvent(new Event('input')); });
+  ok('撮ったあとで写真の大きさ（拡大）を変えられる', await p.evaluate(() => S.view.environment.z === 2.5));
+  await p.click('#phFlip'); ok('写真を反転できる', await p.evaluate(() => S.view.environment.flip === true));
+  await p.click('#phReset'); ok('写真をもとにもどせる', await p.evaluate(() => S.view.environment.rot === 0 && S.view.environment.z === 1 && !S.view.environment.flip));
+  await p.click('#rotL');
+  // 2枚のあいだに白い線がない（境目のまん中の列に、真っ白が続かない）
+  await p.click('[data-tab="lay"]');
+  const seam = await p.evaluate(async () => { const out = {}; for(const lay of ['wave', 'vwave', 'zig']){ setLay(lay, false); S.spark.on = false; const c = document.createElement('canvas'); c.width = cv.width; c.height = cv.height; drawAll(c.getContext('2d'), true); const g = c.getContext('2d'); let white = 0, n = 0; for(let i = 0; i < 200; i++){ const x = lay === 'vwave' ? c.width / 2 : c.width * i / 200, y = lay === 'vwave' ? c.height * i / 200 : (lay === 'zig' ? c.height * (.62 - .24 * i / 200) : c.height / 2); const d = g.getImageData(x, y, 1, 1).data; n++; if(d[0] > 245 && d[1] > 245 && d[2] > 245) white++; } out[lay] = white / n; } S.spark.on = true; setLay('wave', false); return out; });
+  ok('2枚の形は3種類で、境目に白い線がない', Object.values(seam).every(v => v < .2), seam);
+  await p.click('#sparkBtn'); ok('「コツン」マークを消せる', await p.evaluate(() => S.spark.on === false)); await p.click('#sparkBtn');
+  for(const a of ['11', '916', '43']){ await p.click(`[data-asp="${a}"]`); }
+  ok('写真の形を変えられる（よこ 1440×1080）', await p.evaluate(() => cv.width === 1440 && cv.height === 1080));
+  await p.click('[data-asp="34"]');
+  await sleep(200); await p.screenshot({ path: OUT + 'c2-edit.png' });
   // 保存（レイアウトごと）
   const res = {};
-  for(const lay of ['real', 'side', 'stack', 'one']){
+  for(const lay of ['wave', 'vwave', 'zig', 'one']){
     await p.click('[data-tab="lay"]'); await p.click(`[data-lay="${lay}"]`); await sleep(200);
     const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveBtn')]);
     const f = OUT + 'save-' + lay + '.png'; await dl.saveAs(f); res[lay] = png(f);
   }
   ok('どのレイアウトも 1080×1440 のPNGで保存', Object.values(res).every(r => r.png && r.w === 1080 && r.h === 1440), res);
-  // キャラなし・公式ロゴでもロゴが入る
-  await p.evaluate(() => { S.stickers = []; S.logo.style = 'official'; S.sel = null; });
-  const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveBtn')]); const f2 = OUT + 'save-official.png'; await dl.saveAs(f2);
-  ok('キャラなし・公式ロゴでも保存できる', png(f2).png);
+  // ロゴなし
+  await p.click('[data-tab="logo"]'); await p.click('#styles .sty:nth-child(1)');
+  const nologo = await p.evaluate(async () => { const c = document.createElement('canvas'); c.width = cv.width; c.height = cv.height; drawAll(c.getContext('2d'), true); const a = c.toDataURL(); S.logo.style = 'pop'; drawAll(c.getContext('2d'), true); const b2 = c.toDataURL(); S.logo.style = 'none'; return a !== b2; });
+  ok('「ロゴなし」をえらぶと、ロゴを入れずに保存できる', nologo && await p.evaluate(() => S.logo.style === 'none') && await p.isHidden('#logoOpts'));
+  const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveBtn')]); const f2 = OUT + 'save-nologo.png'; await dl.saveAs(f2);
+  ok('ロゴなしでも保存できる', png(f2).png);
   ok('保存する写真に、えらんでいる枠は入らない', await p.evaluate(async () => { const h = async () => new Uint8Array(await (await exportBlob()).arrayBuffer()).join(); S.sel = null; const a = await h(); S.sel = 'logo'; const b2 = await h(); return a === b2; }));
   ok('自撮りの画面から外のサーバーに何も送っていない', ext.length === 0, ext.slice(0, 5));
   ok('読みこめないファイルがない', bad.length === 0, bad);
@@ -90,7 +113,7 @@ async function pinch(c, p, sel, center, d0, d1){
   const ci = await b.newContext({ ...devices['iPhone 13'] }); const q = await ci.newPage(); const qerr = []; q.on('pageerror', e => qerr.push(e.message));
   await q.goto(ORIGIN + 'selfie.html'); await sleep(800);
   ok('アルバムから写真をえらぶボタンがある（カメラが使えないとき用）', await q.isVisible('#pickBtn'));
-  await q.setInputFiles('#file', [OUT + 'save-side.png', OUT + 'save-stack.png']); await q.waitForSelector('#scrEdit:not(.hidden)', { timeout: 8000 });
+  await q.setInputFiles('#file', [OUT + 'save-wave.png', OUT + 'save-zig.png']); await q.waitForSelector('#scrEdit:not(.hidden)', { timeout: 8000 });
   await q.click('#saveBtn'); await q.waitForSelector('#saved:not(.hidden)', { timeout: 8000 }).catch(() => {});
   ok('iPhoneは保存すると、写真アプリに入れられる画面が出る', await q.isVisible('#saved') && await q.evaluate(() => document.getElementById('savedImg').naturalWidth === 1080));
   await q.screenshot({ path: OUT + 'd-iphone-saved.png' });

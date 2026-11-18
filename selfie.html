@@ -103,6 +103,17 @@ button:disabled{opacity:.4}
 .saved-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .saved-btns button{height:48px;border-radius:15px;font-weight:900;background:#f2ecff;color:var(--ink)}
 .saved-btns .p{background:linear-gradient(180deg,#ff8cc2,#ff4f97);color:#fff}
+.tabs{grid-template-columns:repeat(4,1fr)}
+.tabs button{font-size:12px;padding:9px 2px}
+.lay i.l-wave::before{left:0;top:15px;width:100%;height:8px;background:none;border-top:3px solid #fff;border-radius:50% 50% 0 0/100% 100% 0 0}
+.lay i.l-vwave::before{top:0;left:12px;height:100%;width:8px;background:none;border-left:3px solid #fff;border-radius:50% 0 0 50%/100% 0 0 100%}
+.lay i.l-zig::before{left:-4px;top:16px;width:40px;height:3px;transform:rotate(-28deg)}
+.lay i.l-one{}
+.aspect{display:flex;gap:7px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.aspect .chip{display:flex;align-items:center;gap:6px}
+.aspect .chip i{display:inline-block;border:2px solid currentColor;border-radius:3px}
+.sty.none span{font-size:13px;-webkit-text-stroke:0;color:#fff;font-weight:900}
+.tools2{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
 </style>
 </head>
 <body>
@@ -138,17 +149,38 @@ button:disabled{opacity:.4}
   <div class="stage"><canvas id="cv" width="1080" height="1440" role="img" aria-label="できあがりの写真"></canvas></div>
   <div class="panel">
     <div class="tabs" role="tablist">
-      <button data-tab="lay" aria-pressed="true">🖼 レイアウト</button><button data-tab="chr" aria-pressed="false">🧸 キャラ</button><button data-tab="logo" aria-pressed="false">✨ ロゴ</button>
+      <button data-tab="lay" aria-pressed="true">🖼 形</button><button data-tab="pho" aria-pressed="false">🔄 写真</button><button data-tab="chr" aria-pressed="false">🧸 キャラ</button><button data-tab="logo" aria-pressed="false">✨ ロゴ</button>
     </div>
     <div class="pane" id="pane-lay">
       <div class="row" id="layRow">
-        <button class="chip lay" data-lay="real" aria-pressed="true"><i class="l-real"></i>ビーリアル風</button>
-        <button class="chip lay" data-lay="side" aria-pressed="false"><i class="l-side"></i>左右</button>
-        <button class="chip lay" data-lay="stack" aria-pressed="false"><i class="l-stack"></i>上下</button>
-        <button class="chip lay" data-lay="one" aria-pressed="false"><i></i>1枚</button>
+        <button class="chip lay" data-lay="wave" aria-pressed="true"><i class="l-wave"></i>なみなみ</button>
+        <button class="chip lay" data-lay="vwave" aria-pressed="false"><i class="l-vwave"></i>ゆらゆら</button>
+        <button class="chip lay" data-lay="zig" aria-pressed="false"><i class="l-zig"></i>コツン！</button>
+        <button class="chip lay" data-lay="one" aria-pressed="false"><i class="l-one"></i>1枚</button>
         <button class="chip" id="swap">⇄ 入れかえ</button>
+        <button class="chip" id="sparkBtn" aria-pressed="true">💥 コツン</button>
       </div>
-      <p class="hint" id="layHint">写真を指で動かすと、うつる場所を変えられます。2本指で拡大もできます。</p>
+      <div class="aspect" id="aspRow">
+        <button class="chip" data-asp="34" aria-pressed="true"><i style="width:12px;height:16px"></i>たて</button>
+        <button class="chip" data-asp="11" aria-pressed="false"><i style="width:14px;height:14px"></i>四角</button>
+        <button class="chip" data-asp="916" aria-pressed="false"><i style="width:10px;height:17px"></i>ストーリー</button>
+        <button class="chip" data-asp="43" aria-pressed="false"><i style="width:16px;height:12px"></i>よこ</button>
+      </div>
+      <p class="hint">2枚の写真が「コツン」とくっつく形です。写真は指で動かして、2本指で拡大できます。</p>
+    </div>
+    <div class="pane hidden" id="pane-pho">
+      <div class="row" id="phoWho">
+        <button class="chip" data-who="user" aria-pressed="true">🤳 内カメ</button>
+        <button class="chip" data-who="environment" aria-pressed="false">🌄 外カメ</button>
+      </div>
+      <div class="tools2">
+        <button class="mini" id="rotL">⟲ 左に回す</button>
+        <button class="mini" id="rotR">⟳ 右に回す</button>
+        <button class="mini" id="phFlip">↔ 反転</button>
+        <button class="mini" id="phReset">もとにもどす</button>
+      </div>
+      <div class="sel-tools"><label>大きさ<input type="range" id="phZoom" min="100" max="400" value="100"></label></div>
+      <p class="hint">写真の上をドラッグすると、うつる場所を動かせます。</p>
     </div>
     <div class="pane hidden" id="pane-chr">
       <div class="chars" id="chars"></div>
@@ -161,18 +193,18 @@ button:disabled{opacity:.4}
     </div>
     <div class="pane hidden" id="pane-logo">
       <div class="styles" id="styles"></div>
-      <div class="dots" id="colors"></div>
-      <div class="sel-tools">
-        <label>大きさ<input type="range" id="lgSize" min="70" max="180" value="100"></label>
+      <div id="logoOpts">
+        <div class="dots" id="colors"></div>
+        <div class="sel-tools"><label>大きさ<input type="range" id="lgSize" min="70" max="180" value="100"></label></div>
+        <div class="row" style="margin-top:8px" id="lgPos">
+          <button class="chip" data-pos="top">上</button><button class="chip" data-pos="mid">まん中</button><button class="chip" data-pos="bottom">下</button><button class="chip" data-pos="tl">左上</button><button class="chip" data-pos="br">右下</button>
+        </div>
       </div>
-      <div class="row" style="margin-top:8px" id="lgPos">
-        <button class="chip" data-pos="top">上</button><button class="chip" data-pos="mid">まん中</button><button class="chip" data-pos="bottom">下</button><button class="chip" data-pos="tl">左上</button><button class="chip" data-pos="br">右下</button>
-      </div>
-      <p class="hint">ロゴは写真の上でドラッグしても動かせます。「コツンズ」のロゴはどの写真にも入ります。</p>
+      <p class="hint" id="logoHint">ロゴは写真の上でドラッグしても動かせます。</p>
     </div>
     <div class="bar-edit">
       <button class="round" id="homeEdit" aria-label="ホームにもどる"><span class="i">🏠</span>ホーム</button>
-      <button class="round" id="retake" aria-label="撮りなおす"><span class="i">📷</span>撮りなおす</button>
+      <button class="round" id="retake" aria-label="撮りなおす"><span class="i">📷</span>撮り直す</button>
       <button class="save" id="saveBtn">保存する</button>
     </div>
   </div>
@@ -180,7 +212,7 @@ button:disabled{opacity:.4}
 
 <div class="saved hidden" id="saved" role="dialog" aria-modal="true" aria-label="できあがった写真">
   <div class="saved-box">
-    <img id="savedImg" alt="コツンズのロゴ入りの写真">
+    <img id="savedImg" alt="できあがった写真">
     <p class="saved-tip" id="savedTip"></p>
     <div class="saved-btns"><button id="savedClose">とじる</button><button class="p" id="savedShare">共有・保存</button></div>
   </div>
@@ -193,25 +225,29 @@ button:disabled{opacity:.4}
 const $ = id => document.getElementById(id);
 const CHARS = [["k001","ぬけもん"],["k002","めだまる"],["k003","ロジポン"],["k005","ルミュ"],["k006","ムキッツ"],["k007","ウロット"],["k008","クエス"],["k009","ホコリィ"]];
 const MAX_STICKERS = 6;
+const ASPECTS = { "34": [1080, 1440], "11": [1080, 1080], "916": [1080, 1920], "43": [1440, 1080] };
 const LOGO_STYLES = [
+  { id: "none", label: "なし" },
   { id: "official", label: "公式" },
   { id: "pop", label: "ぷっくり", font: "KZ Pop" },
   { id: "hand", label: "てがき", font: "KZ Hand" },
   { id: "bold", label: "どっしり", font: "KZ Bold" },
 ];
 const LOGO_COLORS = [
-  { id: "white", fill: ["#ffffff", "#f3ecff"], stroke: "#2a1d55", glow: "#ff6fae" },
-  { id: "pink", fill: ["#ffd1e6", "#ff5fa8"], stroke: "#4b1238", glow: "#ffffff" },
-  { id: "sun", fill: ["#fff6a8", "#ffbf1a"], stroke: "#4a2a00", glow: "#ff6fae" },
-  { id: "sky", fill: ["#e4f6ff", "#59b8ff"], stroke: "#13305a", glow: "#ffffff" },
+  { id: "white", fill: ["#ffffff", "#f3ecff"], stroke: "#2a1d55" },
+  { id: "pink", fill: ["#ffd1e6", "#ff5fa8"], stroke: "#4b1238" },
+  { id: "sun", fill: ["#fff6a8", "#ffbf1a"], stroke: "#4a2a00" },
+  { id: "sky", fill: ["#e4f6ff", "#59b8ff"], stroke: "#13305a" },
 ];
+const blankView = () => ({ ox: 0, oy: 0, z: 1, rot: 0, flip: false });
 const S = {
   shots: 2, facing: "user", stream: null, busy: false,
-  photos: { user: null, environment: null },               // 撮った写真（canvas）
-  view: { user: { ox: 0, oy: 0, z: 1 }, environment: { ox: 0, oy: 0, z: 1 } },  // 写真の見える場所
-  lay: "real", swap: false,
-  inset: { x: .05, y: .04, w: .30 },                       // ビーリアル風の小さい写真
-  stickers: [], sel: null,                                  // sel: "logo" | "inset" | sticker
+  raw: { user: null, environment: null },                  // 撮ったままの写真（canvas）
+  photos: { user: null, environment: null },               // 回転・反転したあとの写真
+  view: { user: blankView(), environment: blankView() },   // 写真の向き・大きさ・見える場所
+  who: "user", lay: "wave", asp: "34", swap: false,
+  spark: { on: true, x: .5, y: .5, s: 1 },                 // 2枚がくっつく所の「コツン」
+  stickers: [], sel: null,                                  // sel: "logo" | "spark" | sticker
   logo: { style: "pop", color: "white", s: 1, x: .5, y: .1 },
   imgs: {}, logoImg: null,
 };
@@ -260,16 +296,16 @@ async function shoot(){
   if(S.busy) return; if(!S.stream || !video.videoWidth){ toast("カメラが使えないときは、アルバムからえらんでね"); return; }
   S.busy = true; $("shutter").disabled = true;
   try{
-    const first = S.facing; const a = grab(); flash(); S.photos = { user: null, environment: null }; S.photos[first] = a;
+    const first = S.facing, a = grab(); flash(); S.raw = { user: null, environment: null }; S.raw[first] = a;
     if(S.shots === 2){
-      const ins = $("inset"); ins.replaceChildren(a.cloneNode()); ins.firstChild.getContext("2d").drawImage(a, 0, 0); ins.classList.remove("hidden");
+      const ins = $("inset"), cp = document.createElement("canvas"); cp.width = a.width; cp.height = a.height; cp.getContext("2d").drawImage(a, 0, 0); ins.replaceChildren(cp); ins.classList.remove("hidden");
       await startCam(other(first));
       for(const n of [3, 2, 1]){ $("count").textContent = n; $("count").classList.remove("hidden"); await sleep(650); }
       $("count").classList.add("hidden");
-      const b = grab(); if(b){ flash(); S.photos[S.facing] = b; }
+      const b = grab(); if(b){ flash(); S.raw[S.facing] = b; }
       await sleep(250); ins.classList.add("hidden");
     }
-    openEditor(S.shots === 2 && S.photos.user && S.photos.environment ? "real" : "one");
+    openEditor();
   }finally{ S.busy = false; $("shutter").disabled = false; }
 }
 async function fromFiles(files){
@@ -277,40 +313,76 @@ async function fromFiles(files){
   const toCanvas = f => new Promise((res, rej) => { const u = URL.createObjectURL(f), im = new Image(); im.onload = () => { const k = Math.min(1, 1920 / Math.max(im.naturalWidth, im.naturalHeight)), c = document.createElement("canvas"); c.width = Math.round(im.naturalWidth * k); c.height = Math.round(im.naturalHeight * k); c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); URL.revokeObjectURL(u); res(c); }; im.onerror = rej; im.src = u; });
   try{
     const cs = await Promise.all(list.map(toCanvas));
-    S.photos = { user: cs[0], environment: cs[1] || null };
-    if(!cs[1]){ S.photos = { user: null, environment: null }; S.photos[S.facing] = cs[0]; }
-    openEditor(cs[1] ? "real" : "one");
+    S.raw = { user: null, environment: null };
+    if(cs[1]){ S.raw.user = cs[0]; S.raw.environment = cs[1]; } else S.raw[S.facing] = cs[0];
+    openEditor();
   }catch(e){ toast("写真を読みこめませんでした"); }
 }
 
 // =============== 仕上げ ===============
-const photoList = () => ["user", "environment"].filter(k => S.photos[k]);
-function openEditor(lay){
-  stopCam(); S.view = { user: { ox: 0, oy: 0, z: 1 }, environment: { ox: 0, oy: 0, z: 1 } }; S.swap = false; S.sel = null;
-  setLay(lay, true);
+const photoList = () => ["user", "environment"].filter(k => S.raw[k]);
+const two = () => photoList().length > 1;
+// 回転・反転した写真を作りなおす（大きさ・場所は S.view の z・ox・oy）
+function bake(k){
+  const r = S.raw[k]; if(!r){ S.photos[k] = null; return; }
+  const v = S.view[k], q = ((v.rot % 360) + 360) % 360, side = q === 90 || q === 270;
+  const c = document.createElement("canvas"); c.width = side ? r.height : r.width; c.height = side ? r.width : r.height; const g = c.getContext("2d");
+  g.translate(c.width / 2, c.height / 2); g.rotate(q * Math.PI / 180); if(v.flip) g.scale(-1, 1); g.drawImage(r, -r.width / 2, -r.height / 2);
+  S.photos[k] = c;
+}
+function openEditor(){
+  stopCam(); S.view = { user: blankView(), environment: blankView() }; S.swap = false; S.sel = null;
+  bake("user"); bake("environment"); S.who = photoList()[0] || "user";
+  S.spark = { on: true, x: .5, y: .5, s: 1 };
+  setLay(two() ? "wave" : "one", true); syncPhotoTab();
   $("scrCam").classList.add("hidden"); $("scrEdit").classList.remove("hidden"); render();
 }
 function setLay(lay, resetLogo){
-  if(photoList().length < 2 && lay !== "one") { toast("2枚あるときに使えるよ"); return; }
+  if(!two() && lay !== "one"){ toast("2枚あるときに使えるよ"); return; }
   S.lay = lay;
-  document.querySelectorAll("[data-lay]").forEach(b => { b.setAttribute("aria-pressed", String(b.dataset.lay === lay)); b.disabled = photoList().length < 2 && b.dataset.lay !== "one"; });
-  const [W, H] = size(); cv.width = W; cv.height = H;
-  if(resetLogo || S.logo.y === undefined) placeLogo(lay === "real" || lay === "one" ? "bottom" : "top");
-  if(S.sel === "inset" && lay !== "real") S.sel = null;
+  document.querySelectorAll("[data-lay]").forEach(b => { b.setAttribute("aria-pressed", String(b.dataset.lay === lay)); b.disabled = !two() && b.dataset.lay !== "one"; });
+  $("swap").disabled = !two(); $("sparkBtn").disabled = !two() || lay === "one";
+  resize(resetLogo);
+}
+function resize(resetLogo){
+  const [W, H] = ASPECTS[S.asp]; if(cv.width !== W || cv.height !== H){ cv.width = W; cv.height = H; }
+  if(resetLogo) placeLogo("top");
+  S.spark.x = .5; S.spark.y = .5;            // 2枚がくっつく所のまん中
   render();
 }
-function size(){ return [1080, 1440]; }      // どのレイアウトも 3:4（ふつうの写真の形）
-// どの写真をどこに置くか
+
+// ----- 2枚の形（白い線を入れず、コツンとくっつく形） -----
+// それぞれの写真の「入る範囲」（rect）と「切りぬく形」（path）
+function wavePath(W, H, horizontal, amp, n, side){
+  // horizontal: 上下に分ける波。side 0 = 上（左）、1 = 下（右）
+  const p = new Path2D(), steps = 60, mid = horizontal ? H / 2 : W / 2, len = horizontal ? W : H;
+  const f = t => mid + Math.sin(t / len * Math.PI * 2 * n) * amp;
+  if(horizontal){
+    if(side === 0){ p.moveTo(0, 0); p.lineTo(W, 0); for(let i = steps; i >= 0; i--){ const x = W * i / steps; p.lineTo(x, f(x)); } }
+    else { p.moveTo(0, H); p.lineTo(W, H); for(let i = steps; i >= 0; i--){ const x = W * i / steps; p.lineTo(x, f(x)); } }
+  }else{
+    if(side === 0){ p.moveTo(0, 0); p.lineTo(0, H); for(let i = steps; i >= 0; i--){ const y = H * i / steps; p.lineTo(f(y), y); } }
+    else { p.moveTo(W, 0); p.lineTo(W, H); for(let i = steps; i >= 0; i--){ const y = H * i / steps; p.lineTo(f(y), y); } }
+  }
+  p.closePath(); return p;
+}
+function zigPath(W, H, side){
+  // ななめのギザギザ（ぶつかった「コツン！」の形）。左下から右上へ
+  const p = new Path2D(), n = 9, y0 = H * .62, y1 = H * .38, tooth = Math.min(W, H) * .035;
+  const pts = []; for(let i = 0; i <= n * 2; i++){ const t = i / (n * 2), x = W * t, y = y0 + (y1 - y0) * t + (i % 2 ? -tooth : tooth); pts.push([x, y]); }
+  pts[0][1] = y0; pts[pts.length - 1][1] = y1;
+  if(side === 0){ p.moveTo(0, 0); p.lineTo(W, 0); for(let i = pts.length - 1; i >= 0; i--) p.lineTo(pts[i][0], pts[i][1]); }
+  else { p.moveTo(0, H); p.lineTo(W, H); for(let i = pts.length - 1; i >= 0; i--) p.lineTo(pts[i][0], pts[i][1]); }
+  p.closePath(); return p;
+}
 function slots(){
   const W = cv.width, H = cv.height, list = photoList();
-  const A = S.swap ? "environment" : "user", B = other(A);     // 左・上 = 内カメ（入れかえできる）
-  if(S.lay === "one" || list.length < 2){ const k = list.length === 1 ? list[0] : (S.swap ? "user" : "environment"); return [{ k, x: 0, y: 0, w: W, h: H }]; }
-  if(S.lay === "side") return [{ k: A, x: 0, y: 0, w: W / 2, h: H }, { k: B, x: W / 2, y: 0, w: W / 2, h: H }];
-  if(S.lay === "stack") return [{ k: A, x: 0, y: 0, w: W, h: H / 2 }, { k: B, x: 0, y: H / 2, w: W, h: H / 2 }];
-  // ビーリアル風：大きいのは外カメ、小さいのは自撮り（入れかえできる）
-  const main = S.swap ? "user" : "environment", small = other(main);
-  const iw = W * S.inset.w, ih = iw * 4 / 3;
-  return [{ k: main, x: 0, y: 0, w: W, h: H }, { k: small, x: S.inset.x * W, y: S.inset.y * H, w: iw, h: ih, inset: true }];
+  if(S.lay === "one" || list.length < 2){ const k = list.length === 1 ? list[0] : (S.swap ? "environment" : "user"); const r = new Path2D(); r.rect(0, 0, W, H); return [{ k, x: 0, y: 0, w: W, h: H, path: r }]; }
+  const A = S.swap ? "environment" : "user", B = other(A), m = Math.min(W, H);
+  if(S.lay === "wave"){ const amp = m * .045; return [{ k: B, x: 0, y: H / 2 - amp, w: W, h: H / 2 + amp, path: wavePath(W, H, true, amp, 1.5, 1) }, { k: A, x: 0, y: 0, w: W, h: H / 2 + amp, path: wavePath(W, H, true, amp, 1.5, 0), top: true }]; }
+  if(S.lay === "vwave"){ const amp = m * .045; return [{ k: B, x: W / 2 - amp, y: 0, w: W / 2 + amp, h: H, path: wavePath(W, H, false, amp, 1.5, 1) }, { k: A, x: 0, y: 0, w: W / 2 + amp, h: H, path: wavePath(W, H, false, amp, 1.5, 0), top: true }]; }
+  const tooth = m * .035;   // zig
+  return [{ k: B, x: 0, y: H * .38 - tooth, w: W, h: H * .62 + tooth, path: zigPath(W, H, 1) }, { k: A, x: 0, y: 0, w: W, h: H * .62 + tooth, path: zigPath(W, H, 0), top: true }];
 }
 function srcRect(img, s){
   const v = S.view[s.k], iw = img.width, ih = img.height;
@@ -319,53 +391,67 @@ function srcRect(img, s){
   v.ox = Math.max(-mx, Math.min(mx, v.ox)); v.oy = Math.max(-my, Math.min(my, v.oy));
   return [mx + v.ox, my + v.oy, sw, sh];
 }
-function rr(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 function drawPhotos(g){
   const W = cv.width, H = cv.height;
   g.fillStyle = "#2a1d55"; g.fillRect(0, 0, W, H);
   for(const s of slots()){
     const img = S.photos[s.k]; if(!img) continue;
     const [sx, sy, sw, sh] = srcRect(img, s);
-    g.save();
-    if(s.inset){ g.shadowColor = "#0008"; g.shadowBlur = 26; g.shadowOffsetY = 8; rr(g, s.x, s.y, s.w, s.h, 30); g.fillStyle = "#000"; g.fill(); g.shadowColor = "transparent"; rr(g, s.x, s.y, s.w, s.h, 30); g.clip(); }
-    else{ g.beginPath(); g.rect(s.x, s.y, s.w, s.h); g.clip(); }
-    g.drawImage(img, sx, sy, sw, sh, s.x, s.y, s.w, s.h); g.restore();
-    if(s.inset){ g.save(); rr(g, s.x, s.y, s.w, s.h, 30); g.lineWidth = 7; g.strokeStyle = "#fff"; g.stroke(); g.restore(); }
+    if(s.top){
+      // 上にかさなる写真のふちに、やわらかい影（線ではなく、重なっている感じ）
+      g.save(); g.shadowColor = "rgba(27,15,58,.55)"; g.shadowBlur = Math.min(W, H) * .035; g.shadowOffsetY = Math.min(W, H) * .008; g.fillStyle = "#2a1d55"; g.fill(s.path); g.restore();
+    }
+    g.save(); g.clip(s.path); g.drawImage(img, sx, sy, sw, sh, s.x, s.y, s.w, s.h); g.restore();
   }
-  if(S.lay === "side" && photoList().length > 1){ g.fillStyle = "#fff"; g.fillRect(W / 2 - 4, 0, 8, H); }
-  if(S.lay === "stack" && photoList().length > 1){ g.fillStyle = "#fff"; g.fillRect(0, H / 2 - 4, W, 8); }
+}
+// ----- 「コツン」マーク（2枚がくっつく所） -----
+function burst(g, x, y, r, n){ g.beginPath(); for(let i = 0; i < n * 2; i++){ const a = i * Math.PI / n - Math.PI / 2, rr2 = i % 2 ? r * .62 : r * (i % 4 ? .92 : 1); g.lineTo(x + Math.cos(a) * rr2, y + Math.sin(a) * rr2); } g.closePath(); }
+const sparkOn = () => S.spark.on && two() && S.lay !== "one";
+function sparkR(){ return Math.min(cv.width, cv.height) * .11 * S.spark.s; }
+function drawSpark(g){
+  if(!sparkOn()) return;
+  const W = cv.width, H = cv.height, x = S.spark.x * W, y = S.spark.y * H, r = sparkR();
+  g.save(); g.lineJoin = "round";
+  g.shadowColor = "#1b0f3a66"; g.shadowBlur = r * .25; g.shadowOffsetY = r * .08;
+  burst(g, x, y, r, 9); g.fillStyle = "#fff"; g.fill(); g.shadowColor = "transparent";
+  burst(g, x, y, r * .86, 9); const gr = g.createRadialGradient(x, y - r * .3, r * .1, x, y, r); gr.addColorStop(0, "#fff6a8"); gr.addColorStop(1, "#ffb21a"); g.fillStyle = gr; g.fill(); g.lineWidth = r * .07; g.strokeStyle = "#2a1d55"; g.stroke();
+  const f = Math.round(r * .5); g.font = f + "px 'KZ Pop',system-ui"; g.textAlign = "center"; g.textBaseline = "middle";
+  g.lineWidth = f * .26; g.strokeStyle = "#2a1d55"; g.strokeText("コツン", x, y + f * .05); g.fillStyle = "#ff4f97"; g.fillText("コツン", x, y + f * .05);
+  g.restore();
 }
 // ----- キャラ -----
 function loadImg(src){ return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
 async function addSticker(id){
   if(S.stickers.length >= MAX_STICKERS){ toast("キャラは" + MAX_STICKERS + "体までだよ"); return; }
   try{ if(!S.imgs[id]) S.imgs[id] = await loadImg("assets/characters/" + id + "/stage-1.webp"); }catch(e){ toast("キャラの絵を読みこめませんでした"); return; }
-  const n = S.stickers.length, st = { id, x: .7 - (n % 3) * .2, y: .74 - Math.floor(n / 3) * .2, w: .34, rot: 0, flip: false };
+  const n = S.stickers.length, st = { id, x: .72 - (n % 3) * .22, y: .8 - Math.floor(n / 3) * .2, w: .3, rot: 0, flip: false };
   S.stickers.push(st); S.sel = st; syncTools(); render(); drawChars();
 }
-function stBox(st){ const W = cv.width, H = cv.height, im = S.imgs[st.id], w = st.w * W, h = w * im.naturalHeight / im.naturalWidth; return { cx: st.x * W, cy: st.y * H, w, h }; }
+function stBox(st){ const W = cv.width, H = cv.height, im = S.imgs[st.id], w = st.w * Math.min(W, H * .75), h = w * im.naturalHeight / im.naturalWidth; return { cx: st.x * W, cy: st.y * H, w, h }; }
 function drawSticker(g, st){
   const im = S.imgs[st.id]; if(!im) return; const b = stBox(st);
   g.save(); g.translate(b.cx, b.cy); g.rotate(st.rot); if(st.flip) g.scale(-1, 1);
   g.shadowColor = "#1b0f3a66"; g.shadowBlur = 22; g.shadowOffsetY = 10; g.drawImage(im, -b.w / 2, -b.h / 2, b.w, b.h); g.restore();
 }
-// ----- ロゴ（必ず入る） -----
+// ----- ロゴ（「なし」もえらべる） -----
+const logoOn = () => S.logo.style !== "none";
+const fontOf = st => (LOGO_STYLES.find(x => x.id === st) || LOGO_STYLES[2]).font || "KZ Pop";
+const logoBase = () => Math.min(cv.width, cv.height * .75);
 function logoMetrics(){
-  const W = cv.width, st = S.logo.style;
-  if(st === "official" && S.logoImg){ const w = W * .44 * S.logo.s; return { w, h: w * S.logoImg.naturalHeight / S.logoImg.naturalWidth }; }
-  const f = Math.round(W * .118 * S.logo.s); cx.save(); cx.font = f + "px '" + fontOf(st) + "',system-ui"; const tw = cx.measureText("コツンズ").width; cx.restore();
+  const B = logoBase(), st = S.logo.style;
+  if(st === "official" && S.logoImg){ const w = B * .44 * S.logo.s; return { w, h: w * S.logoImg.naturalHeight / S.logoImg.naturalWidth }; }
+  const f = Math.round(B * .118 * S.logo.s); cx.save(); cx.font = f + "px '" + fontOf(st) + "',system-ui"; const tw = cx.measureText("コツンズ").width; cx.restore();
   return { w: tw + f * .9, h: f * 1.35, f };
 }
-const fontOf = st => (LOGO_STYLES.find(x => x.id === st) || LOGO_STYLES[1]).font || "KZ Pop";
 function clampLogo(){ const m = logoMetrics(), W = cv.width, H = cv.height; S.logo.x = Math.max(m.w / 2 / W, Math.min(1 - m.w / 2 / W, S.logo.x)); S.logo.y = Math.max(m.h / 2 / H, Math.min(1 - m.h / 2 / H, S.logo.y)); }
 function placeLogo(pos){
   const m = logoMetrics(), W = cv.width, H = cv.height, mx = m.w / 2 / W + .03, my = m.h / 2 / H + .025;
   const P = { top: [.5, my], mid: [.5, .5], bottom: [.5, 1 - my - .02], tl: [mx, my], br: [1 - mx, 1 - my - .02] }[pos] || [.5, my];
-  if(pos === "tl" && S.lay === "real") P[1] = S.inset.y + (S.inset.w * W * 4 / 3) / H + my + .01;   // 小さい写真とかさならないように
   S.logo.x = P[0]; S.logo.y = P[1]; clampLogo();
 }
 function star(g, x, y, r){ g.beginPath(); for(let i = 0; i < 8; i++){ const a = i * Math.PI / 4 - Math.PI / 2, rr2 = i % 2 ? r * .38 : r; g.lineTo(x + Math.cos(a) * rr2, y + Math.sin(a) * rr2); } g.closePath(); }
 function drawLogo(g){
+  if(!logoOn()) return;
   clampLogo(); const W = cv.width, H = cv.height, m = logoMetrics(), x = S.logo.x * W, y = S.logo.y * H;
   if(S.logo.style === "official" && S.logoImg){ g.save(); g.shadowColor = "#1b0f3a88"; g.shadowBlur = 18; g.shadowOffsetY = 6; g.drawImage(S.logoImg, x - m.w / 2, y - m.h / 2, m.w, m.h); g.restore(); return; }
   const C = LOGO_COLORS.find(c => c.id === S.logo.color) || LOGO_COLORS[0], f = m.f;
@@ -381,14 +467,15 @@ function drawLogo(g){
   star(g, sx + f * .12, sy + f * .55, f * .14); g.lineWidth = f * .07; g.stroke(); g.fillStyle = "#fff"; g.fill();
   g.restore();
 }
-function drawMark(g){ const W = cv.width, H = cv.height; g.save(); g.textAlign = "right"; g.font = "800 " + Math.round(W * .02) + "px system-ui,sans-serif"; g.lineWidth = 4; g.lineJoin = "round"; g.strokeStyle = "#2a1d55"; g.strokeText("KOTSUNZ", W * .97, H * .975); g.fillStyle = "#fff"; g.fillText("KOTSUNZ", W * .97, H * .975); g.restore(); }
+function drawMark(g){ if(!logoOn()) return; const W = cv.width, H = cv.height, B = logoBase(); g.save(); g.textAlign = "right"; g.font = "800 " + Math.round(B * .02) + "px system-ui,sans-serif"; g.lineWidth = 4; g.lineJoin = "round"; g.strokeStyle = "#2a1d55"; g.strokeText("KOTSUNZ", W - B * .03, H - B * .03); g.fillStyle = "#fff"; g.fillText("KOTSUNZ", W - B * .03, H - B * .03); g.restore(); }
+function rr(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 function drawAll(g, forExport){
-  drawPhotos(g); for(const st of S.stickers) drawSticker(g, st); drawLogo(g); drawMark(g);
+  drawPhotos(g); drawSpark(g); for(const st of S.stickers) drawSticker(g, st); drawLogo(g); drawMark(g);
   if(forExport || !S.sel) return;
   // えらんでいるものの枠（保存する写真には入らない）
   let b = null; const W = cv.width, H = cv.height;
-  if(S.sel === "logo"){ const m = logoMetrics(); b = { cx: S.logo.x * W, cy: S.logo.y * H, w: m.w, h: m.h, rot: 0 }; }
-  else if(S.sel === "inset"){ const s = slots()[1]; if(s) b = { cx: s.x + s.w / 2, cy: s.y + s.h / 2, w: s.w + 16, h: s.h + 16, rot: 0 }; }
+  if(S.sel === "logo" && logoOn()){ const m = logoMetrics(); b = { cx: S.logo.x * W, cy: S.logo.y * H, w: m.w, h: m.h, rot: 0 }; }
+  else if(S.sel === "spark" && sparkOn()){ const r = sparkR(); b = { cx: S.spark.x * W, cy: S.spark.y * H, w: r * 2, h: r * 2, rot: 0 }; }
   else if(S.stickers.includes(S.sel)){ const t = stBox(S.sel); b = { ...t, rot: S.sel.rot }; }
   if(!b) return;
   g.save(); g.translate(b.cx, b.cy); g.rotate(b.rot); g.setLineDash([18, 12]); g.lineWidth = 5; g.strokeStyle = "#ffffff"; g.shadowColor = "#ff4f97"; g.shadowBlur = 10; rr(g, -b.w / 2 - 8, -b.h / 2 - 8, b.w + 16, b.h + 16, 22); g.stroke(); g.restore();
@@ -396,31 +483,30 @@ function drawAll(g, forExport){
 let raf = 0;
 function render(){ if(raf) return; raf = requestAnimationFrame(() => { raf = 0; drawAll(cx, false); }); }
 
-// ----- 指の操作：キャラ・ロゴ・小さい写真を動かす。何もないところは写真を動かす -----
+// ----- 指の操作：キャラ・ロゴ・コツンを動かす。何もないところは写真を動かす -----
 const pts = new Map(); let drag = null;
 function toCv(e){ const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * cv.width / r.width, y: (e.clientY - r.top) * cv.height / r.height }; }
 function hit(p){
-  const W = cv.width, H = cv.height, m = logoMetrics();
-  if(Math.abs(p.x - S.logo.x * W) < m.w / 2 + 10 && Math.abs(p.y - S.logo.y * H) < m.h / 2 + 10) return "logo";
+  const W = cv.width, H = cv.height;
+  if(logoOn()){ const m = logoMetrics(); if(Math.abs(p.x - S.logo.x * W) < m.w / 2 + 10 && Math.abs(p.y - S.logo.y * H) < m.h / 2 + 10) return "logo"; }
   for(let i = S.stickers.length - 1; i >= 0; i--){
     const st = S.stickers[i], b = stBox(st), dx = p.x - b.cx, dy = p.y - b.cy, c = Math.cos(-st.rot), s = Math.sin(-st.rot);
     const lx = dx * c - dy * s, ly = dx * s + dy * c; if(Math.abs(lx) < b.w * .42 && Math.abs(ly) < b.h * .42) return st;
   }
-  const sl = slots();
-  if(S.lay === "real" && sl[1]){ const s = sl[1]; if(p.x > s.x && p.x < s.x + s.w && p.y > s.y && p.y < s.y + s.h) return "inset"; }
+  if(sparkOn() && Math.hypot(p.x - S.spark.x * W, p.y - S.spark.y * H) < sparkR() * .9) return "spark";
   return null;
 }
-function slotAt(p){ const sl = slots(); for(let i = sl.length - 1; i >= 0; i--){ const s = sl[i]; if(p.x >= s.x && p.x <= s.x + s.w && p.y >= s.y && p.y <= s.y + s.h) return s; } return sl[0]; }
+function slotAt(p){ const sl = slots(); for(let i = sl.length - 1; i >= 0; i--){ if(cx.isPointInPath(sl[i].path, p.x, p.y)) return sl[i]; } return sl[0]; }
 function startGesture(){
   const ps = [...pts.values()];
   if(ps.length === 1){
     const p = ps[0], h = hit(p);
-    if(h){ S.sel = h; if(h !== "logo" && h !== "inset"){ S.stickers.splice(S.stickers.indexOf(h), 1); S.stickers.push(h); } drag = { kind: "obj", obj: h, last: p }; showTabFor(h); }
-    else { S.sel = null; drag = { kind: "pan", slot: slotAt(p), last: p }; }
+    if(h){ S.sel = h; if(typeof h === "object"){ S.stickers.splice(S.stickers.indexOf(h), 1); S.stickers.push(h); } drag = { kind: "obj", obj: h, last: p }; showTabFor(h); }
+    else { S.sel = null; const s = slotAt(p); drag = { kind: "pan", slot: s, last: p }; S.who = s.k; syncPhotoTab(); }
     syncTools();
   }else if(ps.length === 2 && drag){
     const [a, b] = ps; drag.d0 = Math.hypot(a.x - b.x, a.y - b.y); drag.a0 = Math.atan2(b.y - a.y, b.x - a.x);
-    const o = drag.obj; drag.base = drag.kind === "pan" ? { z: S.view[drag.slot.k].z } : o === "logo" ? { s: S.logo.s } : o === "inset" ? { w: S.inset.w } : { w: o.w, rot: o.rot };
+    const o = drag.obj; drag.base = drag.kind === "pan" ? { z: S.view[drag.slot.k].z } : o === "logo" ? { s: S.logo.s } : o === "spark" ? { s: S.spark.s } : { w: o.w, rot: o.rot };
   }
   render();
 }
@@ -429,16 +515,16 @@ cv.addEventListener("pointermove", e => {
   if(!pts.has(e.pointerId) || !drag) return; pts.set(e.pointerId, toCv(e)); const ps = [...pts.values()], W = cv.width, H = cv.height;
   if(ps.length >= 2 && drag.d0){
     const [a, b] = ps, k = Math.hypot(a.x - b.x, a.y - b.y) / drag.d0, da = Math.atan2(b.y - a.y, b.x - a.x) - drag.a0, o = drag.obj;
-    if(drag.kind === "pan") S.view[drag.slot.k].z = Math.max(1, Math.min(4, drag.base.z * k));
+    if(drag.kind === "pan"){ S.view[drag.slot.k].z = Math.max(1, Math.min(4, drag.base.z * k)); syncPhotoTab(); }
     else if(o === "logo") S.logo.s = Math.max(.7, Math.min(1.8, drag.base.s * k));
-    else if(o === "inset") S.inset.w = Math.max(.2, Math.min(.45, drag.base.w * k));
+    else if(o === "spark") S.spark.s = Math.max(.5, Math.min(1.8, drag.base.s * k));
     else { o.w = Math.max(.1, Math.min(.8, drag.base.w * k)); o.rot = drag.base.rot + da; }
     syncTools(); render(); return;
   }
   const p = ps[0], dx = p.x - drag.last.x, dy = p.y - drag.last.y; drag.last = p;
   if(drag.kind === "pan"){ const s = drag.slot, img = S.photos[s.k]; if(img){ const v = S.view[s.k], k = Math.max(s.w / img.width, s.h / img.height) * v.z; v.ox -= dx / k; v.oy -= dy / k; } }
   else if(drag.obj === "logo"){ S.logo.x += dx / W; S.logo.y += dy / H; }
-  else if(drag.obj === "inset"){ const iw = S.inset.w * W, ih = iw * 4 / 3; S.inset.x = Math.max(.02, Math.min(1 - iw / W - .02, S.inset.x + dx / W)); S.inset.y = Math.max(.02, Math.min(1 - ih / H - .02, S.inset.y + dy / H)); }
+  else if(drag.obj === "spark"){ S.spark.x = Math.max(.05, Math.min(.95, S.spark.x + dx / W)); S.spark.y = Math.max(.05, Math.min(.95, S.spark.y + dy / H)); }
   else { const o = drag.obj; o.x = Math.max(0, Math.min(1, o.x + dx / W)); o.y = Math.max(0, Math.min(1, o.y + dy / H)); }
   render();
 });
@@ -446,11 +532,26 @@ const endPt = e => { pts.delete(e.pointerId); if(pts.size === 0) drag = null; el
 cv.addEventListener("pointerup", endPt); cv.addEventListener("pointercancel", endPt);
 
 // ----- パネル -----
-function showTab(t){ document.querySelectorAll("[data-tab]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === t))); ["lay", "chr", "logo"].forEach(k => $("pane-" + k).classList.toggle("hidden", k !== t)); }
-function showTabFor(h){ if(h === "logo") showTab("logo"); else if(h && h !== "inset") showTab("chr"); }
+function showTab(t){ document.querySelectorAll("[data-tab]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.tab === t))); ["lay", "pho", "chr", "logo"].forEach(k => $("pane-" + k).classList.toggle("hidden", k !== t)); }
+function showTabFor(h){ if(h === "logo") showTab("logo"); else if(h === "spark") showTab("lay"); else if(h) showTab("chr"); }
 document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
 document.querySelectorAll("[data-lay]").forEach(b => b.addEventListener("click", () => setLay(b.dataset.lay, false)));
+document.querySelectorAll("[data-asp]").forEach(b => b.addEventListener("click", () => { S.asp = b.dataset.asp; document.querySelectorAll("[data-asp]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); resize(false); }));
 $("swap").addEventListener("click", () => { S.swap = !S.swap; render(); });
+$("sparkBtn").addEventListener("click", () => { S.spark.on = !S.spark.on; $("sparkBtn").setAttribute("aria-pressed", String(S.spark.on)); S.sel = S.spark.on ? "spark" : null; render(); });
+// 写真の向き・大きさ
+function syncPhotoTab(){
+  const list = photoList(); if(!list.includes(S.who)) S.who = list[0] || "user";
+  $("phoWho").classList.toggle("hidden", list.length < 2);
+  document.querySelectorAll("[data-who]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.who === S.who)));
+  $("phZoom").value = Math.round(S.view[S.who].z * 100);
+}
+document.querySelectorAll("[data-who]").forEach(b => b.addEventListener("click", () => { S.who = b.dataset.who; syncPhotoTab(); }));
+const rotate = d => { const v = S.view[S.who]; v.rot = (v.rot + d + 360) % 360; v.ox = v.oy = 0; bake(S.who); render(); };
+$("rotL").addEventListener("click", () => rotate(-90)); $("rotR").addEventListener("click", () => rotate(90));
+$("phFlip").addEventListener("click", () => { const v = S.view[S.who]; v.flip = !v.flip; bake(S.who); render(); });
+$("phReset").addEventListener("click", () => { S.view[S.who] = blankView(); bake(S.who); syncPhotoTab(); render(); });
+$("phZoom").addEventListener("input", e => { S.view[S.who].z = +e.target.value / 100; render(); });
 function drawChars(){
   const box = $("chars"); box.replaceChildren();
   for(const [id, name] of CHARS){
@@ -473,11 +574,14 @@ $("stDel").addEventListener("click", () => { const i = S.stickers.indexOf(S.sel)
 function drawStyles(){
   const box = $("styles"); box.replaceChildren();
   for(const s of LOGO_STYLES){
-    const b = document.createElement("button"); b.className = "sty"; b.type = "button"; b.setAttribute("aria-pressed", String(S.logo.style === s.id)); b.setAttribute("aria-label", s.label);
-    if(s.id === "official"){ const im = document.createElement("img"); im.src = "assets/ui/logo_light.webp"; im.alt = ""; b.append(im); }
+    const b = document.createElement("button"); b.className = "sty" + (s.id === "none" ? " none" : ""); b.type = "button"; b.setAttribute("aria-pressed", String(S.logo.style === s.id)); b.setAttribute("aria-label", "ロゴ " + s.label);
+    if(s.id === "none"){ const sp = document.createElement("span"); sp.textContent = "ロゴなし"; b.append(sp); }
+    else if(s.id === "official"){ const im = document.createElement("img"); im.src = "assets/ui/logo_light.webp"; im.alt = ""; b.append(im); }
     else { const sp = document.createElement("span"); sp.textContent = "コツンズ"; sp.style.fontFamily = "'" + s.font + "'"; b.append(sp); }
-    b.addEventListener("click", () => { S.logo.style = s.id; S.sel = "logo"; drawStyles(); render(); }); box.append(b);
+    b.addEventListener("click", () => { S.logo.style = s.id; S.sel = s.id === "none" ? null : "logo"; drawStyles(); render(); }); box.append(b);
   }
+  $("logoOpts").classList.toggle("hidden", !logoOn());
+  $("logoHint").textContent = logoOn() ? "ロゴは写真の上でドラッグしても動かせます。" : "ロゴを入れずに保存します。";
   const cb = $("colors"); cb.replaceChildren(); cb.classList.toggle("hidden", S.logo.style === "official");
   for(const c of LOGO_COLORS){ const d = document.createElement("button"); d.className = "dot"; d.type = "button"; d.style.background = "linear-gradient(180deg," + c.fill[0] + "," + c.fill[1] + ")"; d.setAttribute("aria-pressed", String(S.logo.color === c.id)); d.setAttribute("aria-label", "ロゴの色"); d.addEventListener("click", () => { S.logo.color = c.id; S.sel = "logo"; drawStyles(); render(); }); cb.append(d); }
 }
@@ -510,7 +614,7 @@ $("savedShare").addEventListener("click", async () => { try{ await navigator.sha
 $("shutter").addEventListener("click", shoot);
 $("flip").addEventListener("click", () => { if(!S.busy) startCam(other(S.facing)); });
 $("homeCam").addEventListener("click", goHome); $("homeEdit").addEventListener("click", goHome);
-$("retake").addEventListener("click", () => { $("scrEdit").classList.add("hidden"); $("scrCam").classList.remove("hidden"); startCam(S.facing === "environment" && S.shots === 2 ? "user" : S.facing); });
+$("retake").addEventListener("click", () => { $("scrEdit").classList.add("hidden"); $("scrCam").classList.remove("hidden"); startCam(S.shots === 2 ? "user" : S.facing); });
 $("pickBtn").addEventListener("click", () => $("file").click());
 $("file").addEventListener("change", e => { fromFiles(e.target.files || []); e.target.value = ""; });
 const setShots = n => { S.shots = n; $("m2").setAttribute("aria-pressed", String(n === 2)); $("m1").setAttribute("aria-pressed", String(n === 1)); toast(n === 2 ? "内カメ→外カメの順に2枚とるよ" : "1枚だけとるよ"); };
