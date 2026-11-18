@@ -1166,6 +1166,18 @@
 
   .spk.none{opacity:.38}
   .sktable .skhead.locked{opacity:.5}
+
+  /* 必殺技：キャラが持っている技の名前のボタン（v8.1） */
+  .spkeys.n1{grid-template-columns:1fr}
+  .spkeys.n2{grid-template-columns:1fr 1fr}
+  .spk.named{flex-direction:row;justify-content:flex-start;gap:12px;min-height:74px;padding:10px 16px;text-align:left}
+  .spk.named .spi svg{width:38px;height:38px}
+  .spk.named .spn{display:flex;flex-direction:column;min-width:0;gap:2px}
+  .spk.named .spn b{font-family:var(--round),system-ui,sans-serif;font-size:18px;letter-spacing:0;line-height:1.25;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+  .spk.named .spn small{font-size:11px;font-weight:900;letter-spacing:.08em;opacity:.85;padding:0;white-space:nowrap}
+  .spkeys.n2 .spk.named{padding:10px 10px;gap:8px}
+  .spkeys.n2 .spk.named .spn b{font-size:14.5px}
+  .spnone{color:rgba(255,255,255,.75);font-weight:800;font-size:13px;text-align:center;padding:14px}
 </style>
 </head>
 <body>
@@ -3851,8 +3863,7 @@
     const m = KMASTER[cid], role = KEY_ROLE[key]; if(!role) return null;
     const u = m ? m.skills.find(k => k.role === role && (stage || 1) >= k.stage) : null;
     if(u) return { unique: true, id: u.id, name: u.name, role, mirror: !!u.mirror };
-    if(role === "recover") return null;                            // 回復は固有技を持つキャラだけ
-    return { unique: false, id: "basic_" + role, name: SP_TYPE_JA[key], role, mirror: false };
+    return null;                                                   // 持っていない種類の技は使えない（共通の技はない）
   }
   // 技の強さ（HPの絶対値）。固有技だけ、レア度・進化・レベルで少し上がる（上限あり）
   function spPower(sk, tier, rarity, stage, level){
@@ -5235,18 +5246,18 @@
     mt.append(el("span", "spml", "SP"), bar, el("span", "spmv", String(v)));
     box.append(mt);
     const can = v >= T.small && !G.sp.sealed;
-    // 1段目：ATTACK / DEFEND / RECOVER（押したものだけ明るく、✓がつく。もう一度押すと取り消し）
-    const r1 = el("div", "spkeys");
-    for(const k of SP_KEYS){
-      const on = !!sel && sel.k === k;
-      const a = av[k];
-      const b = el("button", "spk " + k + (on ? " on" : "") + (a && a.u ? " uniq" : "") + (a ? "" : " none"));
+    // 1段目：このキャラが使える必殺技（名前のボタン）。持っている技・解放ずみの技だけ出す
+    const own = SP_KEYS.filter(k => av[k]).map(k => ({ k, n: av[k].n, m: av[k].m }));
+    const r1 = el("div", "spkeys n" + Math.max(1, own.length));
+    if(!own.length) r1.append(el("div", "spnone", "このキャラは、まだ使える必殺技がありません"));
+    for(const s2 of own){
+      const k = s2.k, on = !!sel && sel.k === k;
+      const b = el("button", "spk named " + k + (on ? " on" : ""));
       b.setAttribute("aria-pressed", on ? "true" : "false");
-      b.innerHTML = SP_ICON[k]; b.append(el("b", null, SP_LABEL[k]));
-      if(a && a.u) b.append(el("small", null, a.n));
-      if(!a) b.append(el("small", null, "🔒"));
+      const ic = el("span", "spi"); ic.innerHTML = SP_ICON[k]; b.append(ic);
+      const tx = el("span", "spn"); tx.append(el("b", null, s2.n), el("small", null, SP_LABEL[k] + (s2.m ? "・ミラー" : ""))); b.append(tx);
       if(on) b.append(el("span", "chk", "✓"));
-      b.disabled = !can || !a;
+      b.disabled = !can;
       b.addEventListener("click", () => {
         if(on){ spSend(null, null); return; }
         const tier = sel && v >= T[sel.tier] ? sel.tier : (G.spTier && v >= T[G.spTier] ? G.spTier : "small");
@@ -5267,7 +5278,7 @@
     box.append(r1, r2);
     // 今の状態を1行で
     const st = el("div", "spstate" + (sel ? (sel.st === "ok" ? " ok" : " wait") : ""));
-    st.textContent = G.sp.sealed ? "🔒 封印中" : !can ? "SPをためよう" : sel ? (sel.st === "ok" ? "✓ " + nameOfK(sel.k) + "・" + SP_TIER_JA[sel.tier] + "　セット完了" : "セット中…") : "技をえらぶ（えらばなくてもOK）";
+    st.textContent = G.sp.sealed ? "🔒 封印中" : !can ? "SPをためよう" : sel ? (sel.st === "ok" ? "✓ " + nameOfK(sel.k) + "・" + SP_TIER_JA[sel.tier] + "　セット完了" : "セット中…") : (own.length > 1 ? "使う技をえらぶ（使わなくてもOK）" : "技を使うときはタップ（使わなくてもOK）");
     box.append(st);
   }
   const CHAIN_SVG = `<svg viewBox="0 0 64 64"><g fill="none" stroke="#C9CCD8" stroke-width="5" stroke-linecap="round"><rect x="2" y="10" width="20" height="12" rx="6" transform="rotate(35 12 16)"/><rect x="16" y="22" width="20" height="12" rx="6" transform="rotate(35 26 28)"/><rect x="30" y="32" width="20" height="12" rx="6" transform="rotate(35 40 38)"/><rect x="42" y="44" width="20" height="12" rx="6" transform="rotate(35 52 50)"/></g><g fill="none" stroke="#6B6F82" stroke-width="1.6"><rect x="2" y="10" width="20" height="12" rx="6" transform="rotate(35 12 16)"/><rect x="30" y="32" width="20" height="12" rx="6" transform="rotate(35 40 38)"/></g><rect x="22" y="26" width="20" height="16" rx="3" fill="#FFC531" stroke="#7a5600" stroke-width="2"/><path d="M26 26v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#7a5600" stroke-width="3"/></svg>`;
@@ -5771,7 +5782,7 @@
       }
       box.append(tb);
     }
-    box.append(el("p", "muted small", "バトルではATTACK・DEFEND・RECOVERのボタンが、解放ずみの技になります"));
+    box.append(el("p", "muted small", "バトルでは、解放ずみの技を名前のボタンでえらんで使います"));
     return box;
   }
   function kInfo(m, st, owned){

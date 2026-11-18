@@ -68,7 +68,9 @@ ok('発動したらゲージは0（ユーザー指定のリセット）', m.end 
 ok('反射ダメージは整数で配る', Object.values(E.spSplitTotal(3, ['b', 'a', 'c'], 's')).reduce((a, b) => a + b, 0) === 3);
 // 2つ目の技の解放
 const n1 = master.find(c => c.r === '普通'), sr = master.find(c => c.r === 'SR' || c.r === 'レジェンド');
-ok('普通のキャラは2つ目の技がS2から', n1.sk[1].st === 2 && !E.spSkillFor(n1.id, 1, { a: 'attack', d: 'guard', r: 'recover' }[n1.sk[1].r]) === (n1.sk[1].r === 'r') || E.spSkillFor(n1.id, 1, { a: 'attack', d: 'guard', r: 'recover' }[n1.sk[1].r]).unique === false);
+const K2 = { a: 'attack', d: 'guard', r: 'recover' };
+ok('普通のキャラは2つ目の技がS2から（S1では使えない）', n1.sk[1].st === 2 && E.spSkillFor(n1.id, 1, K2[n1.sk[1].r]) === null && E.spSkillFor(n1.id, 2, K2[n1.sk[1].r]).unique === true);
+ok('持っていない種類の技は使えない（共通の ATTACK・DEFEND・RECOVER はない）', master.every(c => ['attack', 'guard', 'recover'].filter(k => !c.sk.some(x => K2[x.r] === k)).every(k => E.spSkillFor(c.id, 3, k) === null)));
 ok('SR・レジェンドは2つ目もS1から', sr && sr.sk.every(k => k.st === 1), sr && sr.sk);
 ok('全キャラ2技・役割は3種・ミラーは防御だけ', master.every(c => c.sk.length === 2 && c.sk.every(k => 'adr'.includes(k.r) && (!k.m || k.r === 'd'))));
 ok('技IDと技名は900件すべて別', new Set(master.flatMap(c => c.sk.map(k => k.id))).size === 900 && new Set(master.flatMap(c => c.sk.map(k => k.n))).size === 900);

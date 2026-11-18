@@ -67,7 +67,8 @@ async function page(c){ const p = await c.newPage(); p.errs = []; p.on('pageerro
     await p.evaluate(() => { for(const x of window.__hb.host().players.values()) x.meter = 100; });
     await p.waitForFunction(() => { const s = window.__hb.sp(); return s && s.av && s.r === window.__hb.host().game.r && !s.sel; }, null, { timeout: 15000 }).catch(() => {});
     const av = await p.evaluate(() => window.__hb.sp() && window.__hb.sp().av);
-    const k = av && (av.attack ? 'attack' : av.guard ? 'guard' : 'recover');
+    const k = av && ['attack', 'guard', 'recover'].find(x => av[x]);
+    if(r === 0){ const ui = await p.evaluate(() => ({ n: document.querySelectorAll('#g-sp .spk').length, names: [...document.querySelectorAll('#g-sp .spk b')].map(b => b.textContent), av: window.__hb.sp().av })); const own = Object.values(ui.av).filter(Boolean).map(x => x.n); ok('技のボタンは、キャラが使える技の名前だけ', ui.n === own.length && ui.names.join() === own.join() && !ui.names.some(n => /^(ATTACK|DEFEND|RECOVER)$/.test(n)), ui); await p.screenshot({ path: '/home/claude/report/sk-v9.png' }); }
     if(k){ await p.evaluate(k => window.__hb.spSend(k, 'large'), k); await sleep(250); const it = await p.evaluate(() => { const x = window.__hb.host().game.intent.get('host'); return x ? x.k : null; }); if(it) declared++; }
     await p.waitForFunction(() => document.querySelectorAll('#g-choices button:not([disabled])').length >= 3 || window.__hb.host().phase !== 'game', null, { timeout: 20000 }).catch(() => {});
     await p.evaluate(() => { const g = window.__hb.host().game; if(!g || !g.q) return; const bs = document.querySelectorAll('#g-choices button'); if(bs[g.q.answer]) bs[g.q.answer].click(); });
