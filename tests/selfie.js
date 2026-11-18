@@ -1,56 +1,99 @@
-// コツンズ自撮り（selfie.html）のテスト。偽のカメラで、内カメ→外カメの順に撮って、キャラをのせて保存する
+// コツンズ自撮り（selfie.html）のテスト。偽のカメラで「内カメ→外カメ」を撮り、キャラとロゴをのせて保存する
+//   実行: node selfie.js （http://127.0.0.1:8082 で main の内容、ws://127.0.0.1:9001 にMQTTブローカー）
 const { chromium, devices } = require('playwright'); const fs = require('fs'), path = require('path'); const NM = path.join(__dirname, 'node_modules');
 const ORIGIN = 'http://127.0.0.1:8082/'; const OUT = '/home/claude/report/selfie/'; fs.mkdirSync(OUT, { recursive: true });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let F = 0, P = 0; const ok = (n, c, x) => { c ? P++ : F++; console.log((c ? 'PASS ' : 'FAIL ') + n + (x !== undefined ? '  ' + JSON.stringify(x) : '')); };
+const png = f => { const b = fs.readFileSync(f); return { png: b.slice(1, 4).toString() === 'PNG', w: b.readUInt32BE(16), h: b.readUInt32BE(20) }; };
+async function touchDrag(c, p, sel, from, to){
+  const box = await p.$(sel).then(e => e.boundingBox()); const s = await c.newCDPSession(p);
+  const at = (x, y) => [{ x: box.x + box.width * x, y: box.y + box.height * y }];
+  await s.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: at(...from) });
+  for(let i = 1; i <= 8; i++) await s.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: at(from[0] + (to[0] - from[0]) * i / 8, from[1] + (to[1] - from[1]) * i / 8) });
+  await s.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await sleep(150);
+}
+async function pinch(c, p, sel, center, d0, d1){
+  const box = await p.$(sel).then(e => e.boundingBox()); const s = await c.newCDPSession(p);
+  const pt = d => [{ x: box.x + box.width * (center[0] - d), y: box.y + box.height * center[1], id: 1 }, { x: box.x + box.width * (center[0] + d), y: box.y + box.height * center[1], id: 2 }];
+  await s.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: pt(d0) });
+  for(let i = 1; i <= 8; i++) await s.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: pt(d0 + (d1 - d0) * i / 8) });
+  await s.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await sleep(150);
+}
 (async () => {
   const b = await chromium.launch({ args: ['--use-fake-device-for-media-stream', '--use-fake-ui-for-media-stream'] });
   const c = await b.newContext({ ...devices['Pixel 7'], permissions: ['camera'], acceptDownloads: true });
   await c.route('https://unpkg.com/**', r => r.fulfill({ path: path.join(NM, 'mqtt/dist/mqtt.min.js'), contentType:'application/javascript' }));
   await c.route('https://cdn.jsdelivr.net/**', r => r.fulfill({ path: path.join(NM, 'qrcode-generator/qrcode.js'), contentType:'application/javascript' }));
-  const ext = []; c.on('request', r => { const u = r.url(); if(!u.startsWith(ORIGIN) && !u.startsWith('data:') && !u.startsWith('blob:')) ext.push(u); });
+  let onSelfie = false; const ext = [], bad = []; c.on('request', r => { if(onSelfie && !r.url().startsWith(ORIGIN) && !/^(data|blob):/.test(r.url())) ext.push(r.url()); });
+  c.on('response', r => { if(onSelfie && r.status() >= 400) bad.push(r.status() + ' ' + r.url()); });
   const p = await c.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-  await p.goto(ORIGIN + 'index.html?debug=1&notitle=1&broker=ws://127.0.0.1:9001/mqtt'); await p.evaluate(() => window.__hb.quickLogin('じどり')); await sleep(800);
+  await p.goto(ORIGIN + 'index.html?debug=1&notitle=1&broker=ws://127.0.0.1:9001/mqtt'); await p.evaluate(() => window.__hb.quickLogin('じどり')); await sleep(600);
   ok('ホームに「コツンズ自撮り」のメニューがある', await p.isVisible('#b-selfie'));
-  await p.screenshot({ path: OUT + '0-home.png', fullPage: true });
-  ext.length = 0; let onSelfie = false; c.on('request', r => { if(onSelfie && !r.url().startsWith(ORIGIN) && !/^(data|blob):/.test(r.url())) ext.push('S ' + r.url()); });
-  await p.click('#b-selfie'); await p.waitForURL(/selfie\.html/); onSelfie = true; await sleep(800);
-  ok('メニューから自撮りの画面が開く', /selfie\.html/.test(p.url()));
-  const picks = await p.$$eval('#characterPicker .char', bs => bs.map(x => x.textContent.trim()));
-  ok('キャラは「キャラなし」と正式8体', picks.length === 9 && picks[0].endsWith('キャラなし'), picks);
-  const broken = await p.$$eval('#characterPicker img', is => is.filter(i => !i.complete || !i.naturalWidth).map(i => i.alt));
-  ok('キャラの絵がすべて読める', broken.length === 0, broken);
-  await p.click('#startCamera'); await p.waitForFunction(() => document.getElementById('video').videoWidth > 0, null, { timeout: 10000 });
-  ok('内カメが起動', (await p.textContent('#captureBtn')).includes('内カメ'));
-  await p.click('#captureBtn'); await p.waitForFunction(() => document.getElementById('captureBtn').textContent.includes('外カメ') && document.getElementById('video').videoWidth > 0, null, { timeout: 10000 });
-  ok('内カメを撮ったら外カメに切りかわる', true);
-  await sleep(300); await p.click('#captureBtn'); await p.waitForFunction(() => !!document.querySelector('#thumbRear img'), null, { timeout: 8000 }).catch(() => {});
-  ok('2枚とも撮れた', await p.evaluate(() => !!document.querySelector('#thumbFront img') && !!document.querySelector('#thumbRear img')));
-  await p.click('#characterPicker .char:nth-child(5)'); await sleep(500);
-  const box = await p.$('#resultCanvas').then(e => e.boundingBox());
-  await p.mouse.move(box.x + box.width * .73, box.y + box.height * .77); await p.mouse.down(); await p.mouse.move(box.x + box.width * .3, box.y + box.height * .5, { steps: 6 }); await p.mouse.up();
-  await p.$eval('#charScale', e => { e.value = 50; e.dispatchEvent(new Event('input')); });
-  await sleep(300); await p.screenshot({ path: OUT + '1-side.png', fullPage: true });
-  const modes = {};
-  for(const m of ['side', 'stack', 'full']){
-    await p.click(`[data-mode="${m}"]`); await sleep(300);
-    if(m === 'full') await p.click('#fullRear');
-    const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#download')]);
-    const f = OUT + 'save-' + m + '.png'; await dl.saveAs(f);
-    const buf = fs.readFileSync(f); modes[m] = { png: buf.slice(1, 4).toString() === 'PNG', w: buf.readUInt32BE(16), h: buf.readUInt32BE(20), name: dl.suggestedFilename() };
+  onSelfie = true; await p.click('#b-selfie'); await p.waitForURL(/selfie\.html/);
+  await p.waitForFunction(() => document.getElementById('video').videoWidth > 0 && document.getElementById('camMsg').classList.contains('hidden'), null, { timeout: 10000 });
+  ok('開くとすぐ内カメが起動（ボタンを押さなくてよい）', await p.evaluate(() => S.facing === 'user' && !!S.stream));
+  const fit = await p.evaluate(() => { const v = document.getElementById('video'), f = document.getElementById('finder').getBoundingClientRect(); return { video: +(v.videoWidth / v.videoHeight).toFixed(3), finder: +(f.width / f.height).toFixed(3), vw: v.videoWidth, vh: v.videoHeight }; });
+  ok('ファインダーの形がカメラの映像と同じ（切りとらない）', Math.abs(fit.video - fit.finder) < .02, fit);
+  const homeY = await p.$eval('#homeCam', e => { const r = e.getBoundingClientRect(); return r.top / innerHeight; });
+  ok('ホームボタンが画面の下（親指でとどく所）にある', homeY > .75, +homeY.toFixed(2));
+  await p.screenshot({ path: OUT + 'a-camera.png' });
+  await p.click('#shutter'); await sleep(1200); await p.screenshot({ path: OUT + 'b-countdown.png' });
+  await p.waitForSelector('#scrEdit:not(.hidden)', { timeout: 10000 });
+  const ph = await p.evaluate(() => ({ u: S.photos.user && [S.photos.user.width, S.photos.user.height], e: S.photos.environment && [S.photos.environment.width, S.photos.environment.height], lay: S.lay, cam: !!S.stream }));
+  ok('シャッター1回で内カメ→外カメの2枚がとれて、ビーリアル風になる', ph.u && ph.e && ph.lay === 'real' && !ph.cam, ph);
+  ok('写真は映像を切りとらずに保存（形が同じ）', Math.abs(ph.u[0] / ph.u[1] - fit.video) < .02, ph.u);
+  // キャラを2体のせる
+  await p.click('[data-tab="chr"]'); const chs = await p.$$('#chars .ch'); ok('キャラは正式な8体', chs.length === 8);
+  await p.click('#chars .ch:nth-child(2)'); await sleep(300); await p.click('#chars .ch:nth-child(5)'); await sleep(300);
+  ok('キャラを2体のせられる', await p.evaluate(() => S.stickers.length === 2 && S.stickers.map(s => s.id).join() === 'k002,k006'));
+  await p.$eval('#cv', e => e.scrollIntoView({ block: 'center' })); await sleep(200);
+  const st0 = await p.evaluate(() => ({ x: S.stickers[1].x, y: S.stickers[1].y, w: S.stickers[1].w }));
+  await touchDrag(c, p, '#cv', [st0.x, st0.y], [.3, .45]);
+  const st1 = await p.evaluate(() => ({ x: S.stickers[1].x, y: S.stickers[1].y }));
+  ok('キャラを指でドラッグして動かせる', Math.abs(st1.x - .3) < .05 && Math.abs(st1.y - .45) < .05, st1);
+  await pinch(c, p, '#cv', [.3, .45], .06, .12);
+  const st2 = await p.evaluate(() => S.stickers[1].w);
+  ok('2本指でキャラを大きくできる', st2 > st0.w * 1.5, { before: st0.w, after: st2 });
+  await p.click('#stFlip'); ok('反転できる', await p.evaluate(() => S.stickers[1].flip === true));
+  // ロゴ
+  await p.click('[data-tab="logo"]'); const sty = await p.$$('#styles .sty'); ok('ロゴの形は4種類（公式・ぷっくり・てがき・どっしり）', sty.length === 4);
+  await p.click('#styles .sty:nth-child(3)'); await p.click('#colors .dot:nth-child(2)');
+  const lg0 = await p.evaluate(() => ({ x: S.logo.x, y: S.logo.y }));
+  await touchDrag(c, p, '#cv', [lg0.x, lg0.y], [.5, .2]);
+  const lg1 = await p.evaluate(() => ({ x: S.logo.x, y: S.logo.y, style: S.logo.style, color: S.logo.color }));
+  ok('ロゴを指で動かせる・形と色を変えられる', Math.abs(lg1.y - .2) < .05 && lg1.style === 'hand' && lg1.color === 'pink', lg1);
+  await touchDrag(c, p, '#cv', [.5, .2], [.5, -0.5]);
+  ok('ロゴは写真の外には出ない', await p.evaluate(() => S.logo.y > 0.02));
+  await p.click('[data-pos="top"]');
+  const fontsOk = await p.evaluate(() => ['KZ Pop', 'KZ Hand', 'KZ Bold'].every(f => document.fonts.check("40px '" + f + "'", 'コツンズ')));
+  ok('かわいいロゴのフォント3つが読みこめている', fontsOk);
+  await sleep(200); await p.screenshot({ path: OUT + 'c-edit.png' });
+  // 保存（レイアウトごと）
+  const res = {};
+  for(const lay of ['real', 'side', 'stack', 'one']){
+    await p.click('[data-tab="lay"]'); await p.click(`[data-lay="${lay}"]`); await sleep(200);
+    const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveBtn')]);
+    const f = OUT + 'save-' + lay + '.png'; await dl.saveAs(f); res[lay] = png(f);
   }
-  ok('左右・上下は1200×1600、全画面は1080×1920のPNGで保存', modes.side.png && modes.side.w === 1200 && modes.side.h === 1600 && modes.stack.w === 1200 && modes.full.w === 1080 && modes.full.h === 1920, modes);
-  // ロゴ：キャラなしでも上の真ん中に文字が入る（白と濃い紫のふち）
-  await p.click('#characterPicker .char:nth-child(1)'); await sleep(200);
-  const logo = await p.evaluate(() => { const c = document.getElementById('resultCanvas'), x = c.getContext('2d'); const d = x.getImageData(c.width * .3, c.height * .06, c.width * .4, c.height * .05).data; let white = 0, ink = 0; for(let i = 0; i < d.length; i += 4){ if(d[i] > 245 && d[i + 1] > 245 && d[i + 2] > 245) white++; if(d[i] < 70 && d[i + 1] < 50 && d[i + 2] > 80 && d[i + 2] < 130) ink++; } return { white, ink }; });
-  ok('キャラなしでも「コツンズ」のロゴが入る', logo.white > 500 && logo.ink > 500, logo);
-  ok('自撮りの画面から外のサーバーに何も送っていない', ext.filter(x => x.startsWith('S ')).length === 0, ext.slice(0, 5));
+  ok('どのレイアウトも 1080×1440 のPNGで保存', Object.values(res).every(r => r.png && r.w === 1080 && r.h === 1440), res);
+  // キャラなし・公式ロゴでもロゴが入る
+  await p.evaluate(() => { S.stickers = []; S.logo.style = 'official'; S.sel = null; });
+  const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#saveBtn')]); const f2 = OUT + 'save-official.png'; await dl.saveAs(f2);
+  ok('キャラなし・公式ロゴでも保存できる', png(f2).png);
+  ok('保存する写真に、えらんでいる枠は入らない', await p.evaluate(async () => { const h = async () => new Uint8Array(await (await exportBlob()).arrayBuffer()).join(); S.sel = null; const a = await h(); S.sel = 'logo'; const b2 = await h(); return a === b2; }));
+  ok('自撮りの画面から外のサーバーに何も送っていない', ext.length === 0, ext.slice(0, 5));
+  ok('読みこめないファイルがない', bad.length === 0, bad);
   ok('ページのエラーなし', errs.length === 0, errs);
-  // iPhone：保存ボタンで、写真アプリに入れる画面が出る
-  const ci = await b.newContext({ ...devices['iPhone 13'], permissions: ['camera'] }); const q = await ci.newPage(); q.on('pageerror', e => console.log('QERR', e.message)); q.on('console', m => console.log('QLOG', m.text()));
-  await q.goto(ORIGIN + 'selfie.html'); await q.click('[data-mode="full"]'); await q.setInputFiles('#filePicker', OUT + 'save-side.png'); await sleep(800);
-  await q.click('#download'); await q.waitForSelector('#savedSheet:not(.hidden)', { timeout: 8000 }).catch(() => {}); await sleep(300); console.log('dbg', JSON.stringify(await q.evaluate(() => ({ st: document.getElementById('status').textContent, sheet: document.getElementById('savedSheet').className, w: document.getElementById('savedImg').naturalWidth, ua: navigator.userAgent.slice(0, 40), front: !!document.querySelector('#thumbFront img') }))));
-  ok('iPhoneでは保存すると写真の画面が出る（長押しで写真に保存）', await q.isVisible('#savedSheet') && await q.evaluate(() => document.getElementById('savedImg').naturalWidth === 1080));
-  await q.screenshot({ path: OUT + '2-iphone-saved.png' });
+  // ホームにもどる
+  await p.click('#homeEdit'); await p.waitForURL(/index\.html/); ok('「ホーム」でゲームのホームにもどる', /notitle/.test(p.url()));
+  // iPhone：アルバムから2枚 → 保存で写真アプリに入れる画面
+  const ci = await b.newContext({ ...devices['iPhone 13'] }); const q = await ci.newPage(); const qerr = []; q.on('pageerror', e => qerr.push(e.message));
+  await q.goto(ORIGIN + 'selfie.html'); await sleep(800);
+  ok('アルバムから写真をえらぶボタンがある（カメラが使えないとき用）', await q.isVisible('#pickBtn'));
+  await q.setInputFiles('#file', [OUT + 'save-side.png', OUT + 'save-stack.png']); await q.waitForSelector('#scrEdit:not(.hidden)', { timeout: 8000 });
+  await q.click('#saveBtn'); await q.waitForSelector('#saved:not(.hidden)', { timeout: 8000 }).catch(() => {});
+  ok('iPhoneは保存すると、写真アプリに入れられる画面が出る', await q.isVisible('#saved') && await q.evaluate(() => document.getElementById('savedImg').naturalWidth === 1080));
+  await q.screenshot({ path: OUT + 'd-iphone-saved.png' });
+  ok('iPhoneでもページのエラーなし', qerr.length === 0, qerr);
   await b.close(); console.log(`\n${P} passed, ${F} failed`); process.exit(F ? 1 : 0);
 })();
