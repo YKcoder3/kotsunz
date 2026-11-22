@@ -4339,7 +4339,17 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
 
   // ---------- 画面 ----------
   let screen = "home";
-  function show(n){ screen = n; document.body.dataset.scr = n; document.documentElement.dataset.scr = n; for(const s of document.querySelectorAll("main > section")) s.hidden = s.id !== "s-" + n; window.scrollTo(0, 0); }
+  function show(n){ screen = n; document.body.dataset.scr = n; document.documentElement.dataset.scr = n; for(const s of document.querySelectorAll("main > section")) s.hidden = s.id !== "s-" + n; window.scrollTo(0, 0); keepAwake(); }
+  // 部屋・ゲーム中は、スマホの画面が自動で消えないようにする（画面が消えると通信が止まり、ホストなら全員の問題が止まる）
+  let wakeLock = null;
+  async function keepAwake(){
+    const want = ["lobby", "game", "end"].includes(screen) && document.visibilityState === "visible";
+    try{
+      if(want && !wakeLock && navigator.wakeLock){ wakeLock = await navigator.wakeLock.request("screen"); wakeLock.addEventListener("release", () => { wakeLock = null; }); }
+      else if(!want && wakeLock){ const w = wakeLock; wakeLock = null; await w.release(); }
+    }catch(e){ wakeLock = null; }
+  }
+  document.addEventListener("visibilitychange", keepAwake);
   let toastT = null;
   function toast(t){ const e = $("toast"); e.textContent = t; e.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => e.classList.remove("on"), 2200); }
   const buzz = p => { try{ navigator.vibrate && navigator.vibrate(p); }catch(e){} };
@@ -4467,9 +4477,13 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       const c = await mqOpen(list[i]);
       if(!c) continue;
       reached = true;
+      // 部屋の目印（保存されたメッセージ）が来るのを待つ。来なければ、取り直しを2回まで（電波が悪いときのため）
       const ok = await new Promise(res => {
-        const t = setTimeout(() => res(false), 3000);
-        c.on("message", (topic, buf) => { if(topic === tRoom(code)){ const d = parse(buf); if(d && d.v){ clearTimeout(t); res(true); } } });
+        let n = 0, done = false;
+        const fin = v => { if(done) return; done = true; clearTimeout(t); res(v); };
+        const again = () => { if(done) return; if(++n > 2) return fin(false); try{ c.unsubscribe(tRoom(code), () => c.subscribe(tRoom(code), { qos: 1 })); }catch(e){} t = setTimeout(again, 1800); };
+        let t = setTimeout(again, 1800);
+        c.on("message", (topic, buf) => { if(topic === tRoom(code)){ const d = parse(buf); if(d && d.v) fin(true); } });
         c.subscribe(tRoom(code), { qos: 1 });
       });
       if(ok){ found = c; brokerIx = i; break; }
@@ -4491,11 +4505,13 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     mq.subscribe(tCli(code, myId), { qos: 1 }, () => hello());
     homeStatus("部屋につないでいます…");
     clearTimeout(joinT);
-    joinT = setTimeout(() => {
+    const t0 = performance.now();
+    const retry = () => {
       if(role !== "guest" || screen !== "home") return;
-      hello();
-      joinT = setTimeout(() => { if(role === "guest" && screen === "home") leave("部屋から返事がありません。ホストの人に、部屋の画面を開いておいてもらってね。"); }, 7000);
-    }, 6000);
+      if(performance.now() - t0 > 20000){ leave("部屋から返事がありません。ホストの人に、部屋の画面を開いておいてもらってね。"); return; }
+      hello(); joinT = setTimeout(retry, 1500);
+    };
+    joinT = setTimeout(retry, 1500);
   }
 
   function startDemo(){
@@ -4532,7 +4548,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
 
   function leave(msg){
     stopOnline();
-    clearInterval(hbTimer); stopGameTimers();
+    clearInterval(hbTimer); hbTimer = null; stopGameTimers();
     if(H && H.game) clearTimeout(H.game.timer);
     clearTimeout(joinT); busy = false;
     try{ closeMq(role === "host" && !demo); }catch(e){}
@@ -4600,8 +4616,10 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
           if(H.phase === "game" && H.game){
             sendTo(from, startView());
             if(H.game.lastQ && H.game.lastQ.r === H.game.r) sendTo(from, H.game.lastQ);
+            if(!H.game.q && H.game.lastRes && H.game.lastRes.r === H.game.r) sendTo(from, H.game.lastRes);
             sendTo(from, spView(p));
-          }else pushLobby();
+          }else if(H.phase === "end" && H.lastEnd) sendTo(from, H.lastEnd);
+          else pushLobby();
           break;
         }
         if(H.phase !== "lobby"){ if(c) c.send({ t:"reject", reason:"いまゲーム中です。終わってから入ってね。" }); conns.delete(from); return; }
@@ -4619,7 +4637,12 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       case "sync":
         if(!p) break;
         if(H.phase === "lobby") sendTo(from, lobbyView());
-        else if(H.phase === "game" && H.game){ sendTo(from, startView()); if(H.game.q && H.game.lastQ) sendTo(from, H.game.lastQ); sendTo(from, spView(p)); }
+        else if(H.phase === "game" && H.game){
+          const G = H.game; sendTo(from, startView());
+          if(G.q && G.lastQ) sendTo(from, G.lastQ);
+          else if(G.lastRes && G.lastRes.r === G.r){ if(G.lastQ && G.lastQ.r === G.r) sendTo(from, G.lastQ); sendTo(from, G.lastRes); }
+          sendTo(from, spView(p));
+        }
         else if(H.phase === "end" && H.lastEnd) sendTo(from, H.lastEnd);
         break;
       case "bye": dropPlayer(from); break;
@@ -4708,7 +4731,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
   function hbView(){
     const G = H.game;
     return { t:"hb", ph: H.phase, lv: H.lv || 0, eid: H.lastEnd ? H.lastEnd.id : null,
-      g: G ? { id: G.id, r: G.r, open: !!G.q, hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) } : null };
+      g: G ? { id: G.id, r: G.r, open: !!G.q, res: G.lastRes ? G.lastRes.r : -1, hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) } : null };
   }
   function startView(){ return { t:"start", id: H.game && H.game.id, total: H.count, players: H.order.map(id => { const p = H.players.get(id); return { id, name: p.name, fighter: p.fighter, hp: p.hp, max: p.max }; }) }; }
   function nextQ(){
@@ -4816,8 +4839,9 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     const G = H.game; if(!G || !G.q || !G.q.img || m.r !== G.r) return;
     clearTimeout(G.timer);
     const q = G.q; G.q = null;
-    bcast({ t:"res", id: G.id, r: G.r, skip: 1, genre: q.genre, prompt: q.prompt, choices: q.choices, answer: -1, atext: "", ranking: [], answers: {}, taken: {}, dealt: {}, why: {}, heal: {}, self: {}, out: [], guard: {}, weak: {}, skillEvents: [], sealedNext: [],
-            hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) });
+    G.lastRes = { t:"res", id: G.id, r: G.r, skip: 1, genre: q.genre, prompt: q.prompt, choices: q.choices, answer: -1, atext: "", ranking: [], answers: {}, taken: {}, dealt: {}, why: {}, heal: {}, self: {}, out: [], guard: {}, weak: {}, skillEvents: [], sealedNext: [],
+            hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) };
+    bcast(G.lastRes);
     for(const p of live()) if(!p.cpu) sendTo(p.id, spView(p));
     G.timer = setTimeout(nextQ, 2200);
   }
@@ -4873,9 +4897,10 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       if(p.hp <= 0){ p.hp = 0; p.alive = false; p.outR = G.r; out.push(p.id); }
     }
     const answers = {}; for(const [k, v] of G.ans) answers[k] = v.c;
-    bcast({ t:"res", id: G.id, r: G.r, genre: q.genre, prompt: q.prompt, choices: q.choices, answer: q.answer, atext: q.choices[q.answer], qid: q.qid || null, ex: q.ex || "", ranking: correct.map(p => ({ id: p.id, ms: Math.round(G.ans.get(p.id).ms) })),
+    G.lastRes = { t:"res", id: G.id, r: G.r, genre: q.genre, prompt: q.prompt, choices: q.choices, answer: q.answer, atext: q.choices[q.answer], qid: q.qid || null, ex: q.ex || "", ranking: correct.map(p => ({ id: p.id, ms: Math.round(G.ans.get(p.id).ms) })),
             answers, taken: R.taken, dealt, why, heal: R.healed, self: {}, out, guard, weak: R.weakProt, skillEvents: R.events, sealedNext: Object.keys(R.next).filter(id => R.next[id].sealed),
-            hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) });
+            hp: Object.fromEntries([...H.players.values()].map(p => [p.id, p.hp])) };
+    bcast(G.lastRes);
     // 本人にだけ：ゲージの増減と、不発の理由（他の人には見せない）
     for(const p of alive) if(!p.cpu){
       const v = spView(p); v.after = 1; v.spent = R.spent[p.id] || 0; v.earned = R.earned[p.id] || 0; v.fz = R.fizzle[p.id] || ""; v.next = R.next[p.id] || {};
@@ -4912,17 +4937,19 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
       hostHandle("host", { t:"spike", at: t }); hostHandle(cpu, { t:"spike", at: t + 40 });
       return;
     }
-    sendToHost({ t:"spike", at: role === "host" ? t : t + offset });
+    const sp = { t:"spike", at: role === "host" ? t : t + offset };
+    sendToHost(sp); if(role === "guest") setTimeout(() => sendToHost(sp), 350);   // 電波が悪くても届くように2回（ホストは同じ揺れを1回として数える）
   }
 
   // ---------- 全員の画面 ----------
   function clientHandle(m){
     if(!m || typeof m !== "object") return;
     if(role === "guest"){ lastHost = performance.now(); hostWaitToast = false; }
+    if(role === "guest" && screen === "home" && (m.t === "lobby" || m.t === "hb" || m.t === "start")){ clearTimeout(joinT); homeStatus(""); if(!hbTimer) { startHeartbeat(); syncClock(); } if(m.t !== "start") show("lobby"); if(m.t === "hb") askSync(); }
     switch(m.t){
       case "welcome":
         myId = m.you; roomCode = String(m.code || "");
-        if(role === "guest"){ clearTimeout(joinT); homeStatus(""); startHeartbeat(); syncClock(); }
+        if(role === "guest"){ clearTimeout(joinT); homeStatus(""); if(!hbTimer) startHeartbeat(); syncClock(); }
         if(screen === "home") show("lobby");
         break;
       case "hb": if(role === "guest") onHeartbeat(m); break;
@@ -5194,12 +5221,13 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(m.ph === "game" && m.g){
       const G = VS.game;
       if(!G || G.id !== m.g.id){ askSync(); return; }
-      if(m.g.open && G.r < m.g.r) askSync();
+      if(G.r !== m.g.r && (m.g.open || m.g.res === m.g.r)) askSync();          // 問題か結果を受けとりもれた
+      else if(!m.g.open && m.g.res === m.g.r && G.resR !== m.g.r) askSync();   // 結果だけ受けとりもれた
       // 演出中でなければ、HPをホストの値にそろえる
       if(performance.now() > (G.animUntil || 0)){
         let changed = false;
         for(const [id, hp] of Object.entries(m.g.hp || {})){ const p = G.players.get(id); if(p && p.hp !== hp){ p.hp = hp; p.alive = hp > 0; changed = true; } }
-        if(changed){ renderRoster(G.lastMarks); renderMe(); }
+        if(changed){ renderRoster(null, G.lastMarks); renderMe(); }
       }
     }
   }
@@ -5212,7 +5240,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
     if(VS.game && m.id && VS.game.id === m.id && screen === "game"){
       // 同じ試合の送り直し。HPだけそろえる
       for(const p of m.players){ const q = VS.game.players.get(p.id); if(q){ q.hp = p.hp; q.alive = p.hp > 0; } }
-      renderRoster(VS.game.lastMarks); renderMe(); return;
+      renderRoster(null, VS.game.lastMarks); renderMe(); return;
     }
     $("birth").hidden = true; closeSheets(); $("rename").hidden = true;
     VS.game = { id: m.id, total: m.total, r: -1, players: new Map(), order: [], myCorrect: 0, counted: new Set(),
@@ -5328,7 +5356,7 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
           b.classList.add("mine"); for(const x of ch.children) x.disabled = true;
           buzz(25);
           $("g-stat").textContent = (ms / 1000).toFixed(2) + "秒で回答！ みんなを待っています…";
-          sendToHost({ t:"ans", r: m.r, c: i, ms });
+          sendAns(G, { t:"ans", r: m.r, c: i, ms });
         });
         ch.appendChild(b);
       });
@@ -5337,9 +5365,15 @@ ${cheeks}${eye(eyeL, -1)}${eye(eyeR, 1)}${mouth()}${sig.front || ""}${over}</svg
         const left = Math.max(0, limit - (performance.now() - t0));
         $("g-timer").style.width = (left / limit * 100) + "%";
         $("g-timer").classList.toggle("hurry", left < 3000);
-        if(left <= 0){ clearInterval(qTimer); if(!G.answered && alive){ G.answered = true; for(const x of ch.children) x.disabled = true; $("g-stat").textContent = "時間切れ…"; sendToHost({ t:"ans", r: m.r, c: -1, ms: limit }); } }
+        if(left <= 0){ clearInterval(qTimer); if(!G.answered && alive){ G.answered = true; for(const x of ch.children) x.disabled = true; $("g-stat").textContent = "時間切れ…"; sendAns(G, { t:"ans", r: m.r, c: -1, ms: limit }); } }
       }, 80);
     }, Math.max(0, showAt - performance.now()));
+  }
+  // 答えは、ホストに届いたとわかるまで送り直す（ホストは同じ人の2回目を受けつけないので、二重にはならない）
+  function sendAns(G, a){
+    sendToHost(a); let n = 0;
+    const again = () => { if(VS.game !== G || G.r !== a.r || G.resR === a.r || (G.ansIds || []).includes(myId) || ++n > 8) return; sendToHost(a); fxTimers.push(setTimeout(again, 1000)); };
+    fxTimers.push(setTimeout(again, 1000));
   }
   function onAnswered(m){
     const G = VS.game; if(!G || m.r !== G.r || G.res) return;
