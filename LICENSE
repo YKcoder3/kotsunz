@@ -1,0 +1,27 @@
+Copyright (c) 2026 YK (GitHub: YKcoder3). All rights reserved.
+
+【日本語】
+このリポジトリに含まれるソースコード、キャラクター（名前・設定・画像）、ロゴ、
+クイズの問題文、文章、その他すべてのコンテンツの著作権は作者に帰属します。
+作者の書面による許可なく、複製、改変、再配布、商用利用、派生作品の作成を行うことを禁止します。
+
+ただし、GitHub の利用規約により認められる範囲（GitHub 上での閲覧やフォーク）は除きます。
+これは、上記の利用を許可するものではありません。
+
+利用や協業のご相談は、GitHub（https://github.com/YKcoder3）経由で作者にご連絡ください。
+
+【English】
+All source code, characters (names, settings, and artwork), logos, quiz questions,
+text, and other content in this repository are the property of the author.
+No part of this repository may be copied, modified, redistributed, used commercially,
+or used to create derivative works without the author's prior written permission.
+
+The only exception is viewing and forking on GitHub to the extent permitted by
+GitHub's Terms of Service. That exception does not grant any of the rights above.
+
+【第三者のソフトウェア / Third-party software】
+以下のライブラリは、それぞれのライセンスに従います。
+The following libraries are used under their own licenses.
+
+- MQTT.js 5.16.1 (MIT License)
+- qrcode-generator 1.4.4 (MIT License, Kazuhiko Arase)
